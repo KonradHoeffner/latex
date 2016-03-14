@@ -1,6 +1,9 @@
 \documentclass[14pt]{beamer}
 \usepackage[utf8]{inputenc} 
 \usetheme{simple}
+\usepackage{array}
+\usepackage{csquotes}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
 \author{Konrad Höffner}
 \title{AKSW Colloquium}
 \subtitle{PhD progress \& CubeQA}
@@ -10,43 +13,76 @@
 \titlepage
 \end{frame}
 
-\section{PhD progress}
+\section{PhD progress February 2015--March 2016}
 \section{CubeQA}
 
 \begin{frame}{Thesis Core Progress}
-\begin{tabular}{lc}
-LinkedSpending	&\checkmark\\
-QA Survey	&major revision\\
-CubeQA Short	&\checkmark\\
-CubeQA Long	&revision for resubmit\\
-?QA		&\\
+\only<1>
+{
+\begin{tabular}{lHcH}
+LinkedSpending	&SWJ		&\checkmark\\
+QA Survey	&SWJ		&\enquote{major revision}		&April 14\\
+CubeQA Short	&SEMANTiCS 2014	&\checkmark\\
+CubeQA Long	&IJCAI 2016	&revision for resubmit			&April 30\\
+CubeQA Journal	&SWJ|JWS	&future work				&2016\\
+ProcQA(?)	&?		&future work				&2016\\
 \end{tabular}
+}
+\only<2>
+{
+\begin{tabular}{lHcr}
+LinkedSpending	&SWJ		&\checkmark\\
+QA Survey	&SWJ		&\enquote{major revision}		&April 14\\
+CubeQA Short	&SEMANTiCS 2014	&\checkmark\\
+CubeQA Long	&IJCAI 2016	&revision for resubmit			&April 30\\
+CubeQA Journal	&SWJ|JWS	&future work				&2016\\
+ProcQA(?)	&?		&future work				&2016\\
+\end{tabular}
+}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{2015--now Coauthorship}
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
+\item kOre 
+\item AskNow
+\item *path
 \end{itemize}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{2015--now Other Work}
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
+\item Supervisor for Software Engineering Student Internship \enquote{Interactive Budget Calculator for the City of Leipzig}
+\item Creation of QALD 6 Task 3 Benchmark (QA on RDF Data Cubes)
+\item GeoKnow service administration (Website, Wiki, Blog)
+\item GeoKnow documentation
+\item Reviews for KESW, SWJ, $\ldots$
+\item aksw.org Website Data Officer MOLE
 \end{itemize}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{2015--now }
+\begin{block}{What went well}
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
+\item QA Survey (thanks for all the help!) 
+\item Coauthorships 
+\item Other Work 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{2015--now Problems: CubeQA}
+\end{frame}
+
+\begin{frame}{2015--now Problems: CubeQA}
+\begin{itemize}
+\item long version of CubeQA not published yet
+\item new research sub-field, needs groundwork
+\begin{itemize}
+\item needs to solve too many things at once, lack of focus
+\item tension between completeness and understandability 
+\end{itemize}
+\item $F_1=0.4$ not deemed high enough (even though only CubeQA can do it at all)
+\item formalization  
 \end{itemize}
 \end{frame}
 
