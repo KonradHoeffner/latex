@@ -1,0 +1,144 @@
+\documentclass[14pt]{beamer}
+\usepackage[utf8]{inputenc} 
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+\usepackage{array}
+\usepackage{csquotes}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
+\author{Konrad Höffner}
+\title{AKSW Colloquium}
+\subtitle{PhD progress \& CubeQA}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{PhD progress \mbox{February 2015--May 2016}}
+
+\begin{frame}{Thesis Core Progress}
+\begin{tabular}{lHcH}
+LinkedSpending	&SWJ		&\checkmark\\
+QA Survey	&SWJ		&revised \& submitted\\
+CubeQA Short	&SEMANTiCS 2014	&\checkmark\\
+CubeQA Long	&ISWC 2016	&submitted\\
+CubeQA Journal	&SWJ|JWS	&future work				&2016\\
+ProcQA(?)	&?		&future work				&2016\\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{2015--now Authorship (Published \& Pending)}
+\begin{block}{First Author}
+\begin{itemize}
+\item QA Survey 
+\item CubeQA long 
+\end{itemize}
+\end{block}
+
+\begin{block}{Coauthor}
+\begin{itemize}
+\item kOre 
+\item AskNow
+\item *path
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Planned Autorship}
+
+\begin{block}{Coauthor---now---unrelated to thesis}
+\begin{itemize}
+\item Defacto (Diego Esteves)
+\item high performance string similarity (André)
+\item *path (Edgard)
+\end{itemize}
+\end{block}
+
+\begin{block}{First Author---soon---core}
+\begin{itemize}
+\item CubeQA journal 
+\item ProcQA(?) 
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{2015--now Other Work}
+\begin{itemize}
+\item Supervisor for Software Engineering Student Internship \enquote{Interactive Budget Calculator for the City of Leipzig}
+\item Creation of QALD 6 Task 3 Benchmark (QA on RDF Data Cubes)
+\item GeoKnow service administration (Website, Wiki, Blog)
+\item GeoKnow documentation
+\item Reviews for KESW, SWJ, $\ldots$
+\item aksw.org Website Data Officer MOLE
+\end{itemize}
+\end{frame}
+
+\begin{frame}{2015--now }
+\begin{block}{What went well}
+\begin{itemize}
+\item QA Survey (thanks for all the help!) 
+\item Coauthorships 
+\item Other Work 
+\end{itemize}
+\end{block}
+\begin{block}{What didn't}
+\begin{itemize}
+\item publication of CubeQA long version
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Lessons Learned}
+\begin{itemize}
+\item focus on formalization 
+\item get more authors on board early to combine strenghts and offset weaknesses 
+\item projects need promotion to become noticed 
+\end{itemize}
+\end{frame}
+
+\section{CubeQA}
+
+\begin{frame}{CubeQA}
+\begin{itemize}
+\item Question Answering on RDF Data Cubes 
+\item New research sub-field 
+\item CubeQA project: Question Corpus, Benchmarks, TCQA algorithm
+\item Short Paper Preprint \url{http://svn.aksw.org/papers/2014/cubeqa/short/public.pdf} 
+\item Long Paper (rejected, revising) \url{http://svn.aksw.org/papers/2016/IJCAI\_cubeqa/submission.pdf}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CubeQA}
+\begin{itemize}
+\item Question Corpus: realistic statistical questions from volunteers
+\item Benchmarks
+\begin{itemize}
+\item single-dataset
+\item choice-among-many-datasets, now QALD 6 Task 3 (current evaluation)
+\item combination-among-many-datasets (in progress)
+\item hard challenges: implied aggregations, subqueries,  
+\end{itemize}
+\item TCQA: Tree-based Cube Question Answering, first algorithm that can answer these Questions
+\item $F_1 \approx 0.4$ on QALD 6 Task 3 train
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problems of CubeQA}
+\begin{itemize}
+\item long version of CubeQA not published yet
+\item new research sub-field, needs groundwork
+\begin{itemize}
+\item needs to solve too many things at once, lack of focus
+\item tension between completeness and understandability 
+\end{itemize}
+\item $F_1=0.4$ not deemed high enough (even though only CubeQA can do it at all)
+\item formalization  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CubeQA Paper}
+\url{http://svn.aksw.org/papers/2016/ISWC\_cubeqa/paper.pdf}
+\end{frame}
+\end{document}
