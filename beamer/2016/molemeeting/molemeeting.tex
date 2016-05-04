@@ -4,72 +4,56 @@
 \usecolortheme{whiteonblack}
 \usepackage{array}
 \usepackage{csquotes}
+\usepackage{amssymb}
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{pifont}
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
 \author{Konrad Höffner}
 \title{Mole Meeting}
-\subtitle{PhD progress \& CubeQA}
+\subtitle{Short update on PhD progress to March colloquium presentation}
 
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\section{PhD progress \mbox{February 2015--May 2016}}
+%\section{PhD progress \mbox{November 2014--May 2016}}
 
 \begin{frame}{Thesis Core Progress}
-\begin{tabular}{lHcH}
-LinkedSpending	&SWJ		&\checkmark\\
-QA Survey	&SWJ		&revised \& submitted\\
-CubeQA Short	&SEMANTiCS 2014	&\checkmark\\
-CubeQA Long	&ISWC 2016	&submitted\\
-CubeQA Journal	&SWJ|JWS	&future work				&2016\\
-ProcQA(?)	&?		&future work				&2016\\
+\begin{tabular}{llcl}
+LinkedSpending	&SWJ		&\checkmark				&2014-11\\
+QA Survey	&SWJ		&submitted				&2015-10\\
+QA Survey	&SWJ		&revised				&2016-04\\
+CubeQA Short	&SMT		&\checkmark				&2014-08\\
+CubeQA Long	&AAAI		&\xmark					&2015-12\\
+CubeQA Long	&ESWC		&\xmark					&2016-03\\
+CubeQA Long	&ISWC		&submitted				&2016-04\\
+\rule{0pt}{3ex}                                                         
+CubeQA Journal	&SWJ		&planning				&2016-??\\
+ProcQA(?)	&?		&planning				&2016-??\\
 \end{tabular}
 \end{frame}
 
-\begin{frame}{2015--now Authorship (Published \& Pending)}
-\begin{block}{First Author}
-\begin{itemize}
-\item QA Survey 
-\item CubeQA long 
-\end{itemize}
-\end{block}
+\begin{frame}{Coauthorship}
+\begin{tabular}{lllll}
+kOre		&SMT		&\checkmark	      	&2014-08	&Ivan E.\\
+*path		&WWW		&\xmark			&2015-10      	&Edgard M.\\
+AskNow		&ESWC		&\checkmark	      	&2016-03	&Mohnish D.\\
+\rule{0pt}{3ex}                                                         
+*path		&SMT		&writing	      	&2016-05 	&Edgard M.\\
+Defacto		&COLING		&writing	      	&2016-07	&Diego E.\\	
+HPSS(?)		&?		&writing		&2016-??	&André V.\\
 
-\begin{block}{Coauthor}
-\begin{itemize}
-\item kOre 
-\item AskNow
-\item *path
-\end{itemize}
-\end{block}
+\end{tabular}
 \end{frame}
-
-\begin{frame}{Planned Autorship}
-
-\begin{block}{Coauthor---now---unrelated to thesis}
-\begin{itemize}
-\item Defacto (Diego Esteves)
-\item high performance string similarity (André)
-\item *path (Edgard)
-\end{itemize}
-\end{block}
-
-\begin{block}{First Author---soon---core}
-\begin{itemize}
-\item CubeQA journal 
-\item ProcQA(?) 
-\end{itemize}
-\end{block}
-
-\end{frame}
-
 
 \begin{frame}{2015--now Other Work}
 \begin{itemize}
 \item Supervisor for Software Engineering Student Internship \enquote{Interactive Budget Calculator for the City of Leipzig}
 \item Creation of QALD 6 Task 3 Benchmark (QA on RDF Data Cubes)
 \item GeoKnow service administration (Website, Wiki, Blog)
-\item GeoKnow documentation
+\item GeoKnow documentation and Handbook
+\item GeoKnow chapter for \enquote{The Semantic Web in Earth and Space Science}
 \item Reviews for KESW, SWJ, $\ldots$
 \item aksw.org Website Data Officer MOLE
 \end{itemize}
@@ -90,55 +74,42 @@ ProcQA(?)	&?		&future work				&2016\\
 \end{block}
 \end{frame}
 
-\begin{frame}{Lessons Learned}
+\begin{frame}{Thanks \& Outlook}
 \begin{itemize}
-\item focus on formalization 
-\item get more authors on board early to combine strenghts and offset weaknesses 
-\item projects need promotion to become noticed 
+\item thanks to Jens, other coauthors and other people who give help and advice
 \end{itemize}
+\begin{block}{Outlook}
+\begin{enumerate}
+\item coauthor papers with Edgard, Diego E. and André(?) until reviews are in, then rebuttal
+\item write 4th core paper to have enough thesis material
+\item write thesis, defend
+\item ?
+\end{enumerate}
+\end{block}
 \end{frame}
 
-\section{CubeQA}
-
-\begin{frame}{CubeQA}
+\begin{frame}{Unrelated Proposal: Virtual Paper Review}
+Workflow at the moment: finish papers at last moment and only review among coauthors.
+\only<1>
+{
+\begin{block}{Problem}
 \begin{itemize}
-\item Question Answering on RDF Data Cubes 
-\item New research sub-field 
-\item CubeQA project: Question Corpus, Benchmarks, TCQA algorithm
-\item Short Paper Preprint \url{http://svn.aksw.org/papers/2014/cubeqa/short/public.pdf} 
-\item Long Paper (rejected, revising) \url{http://svn.aksw.org/papers/2016/IJCAI\_cubeqa/submission.pdf}
+\item In case of emergencies no paper 
+\item Authors and coauthors know what the paper is about and thus cannot judge understandability.
 \end{itemize}
+\end{block}
+}
+\only<2>
+{
+\begin{block}{Solution}
+\begin{itemize}
+\item Virtual deadline one week before real one
+\item Coworkers who are not coauthors review it
+\item Submitted paper is then already revised 
+\end{itemize}
+\end{block}
+}
 \end{frame}
 
-\begin{frame}{CubeQA}
-\begin{itemize}
-\item Question Corpus: realistic statistical questions from volunteers
-\item Benchmarks
-\begin{itemize}
-\item single-dataset
-\item choice-among-many-datasets, now QALD 6 Task 3 (current evaluation)
-\item combination-among-many-datasets (in progress)
-\item hard challenges: implied aggregations, subqueries,  
-\end{itemize}
-\item TCQA: Tree-based Cube Question Answering, first algorithm that can answer these Questions
-\item $F_1 \approx 0.4$ on QALD 6 Task 3 train
-\end{itemize}
-\end{frame}
 
-\begin{frame}{Problems of CubeQA}
-\begin{itemize}
-\item long version of CubeQA not published yet
-\item new research sub-field, needs groundwork
-\begin{itemize}
-\item needs to solve too many things at once, lack of focus
-\item tension between completeness and understandability 
-\end{itemize}
-\item $F_1=0.4$ not deemed high enough (even though only CubeQA can do it at all)
-\item formalization  
-\end{itemize}
-\end{frame}
-
-\begin{frame}{CubeQA Paper}
-\url{http://svn.aksw.org/papers/2016/ISWC\_cubeqa/paper.pdf}
-\end{frame}
 \end{document}
