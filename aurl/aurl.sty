@@ -1,6 +1,13 @@
+% aurl.sty---Semantic Web style abbreviated hyperlinked URLs
+% 2016 Konrad Höffner, freely distributable, https://latex-project.org/lppl/lppl-1-3c.html
+% Usage: \aurl{abbreviated prefix}{suffix}
+% Example: \aurl{rdfs}{label}
+% The 100 top prefixes from prefix.cc are included by default, use the [1000] package option to include the top 1000.
+% Define your own prefixes using \daurl{abbreviated prefix}{full prefix}
+% Example: \daurl{rdf}{http://www.w3.org/1999/02/22-rdf-syntax-ns\#}
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{aurl}[2016/01/11]
-% loads the 100 top prefixes by default, use [1000] to specify the top 1000.
 \RequirePackage{hyperref}
 
 \newcommand\daurl[2]{%
