@@ -37,6 +37,35 @@ bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
 \end{frame}
 
 \begin{frame}{2015--now Other Work}
+work
+- zweisprachig (englisch und deutsch)
+- synonyme -> bessere suchfunktion
+- suchfunktion im javascript basiert auf bif:contains, nutzt virtuoso index, ist schnell
+- nachteil: muss exakt vorkommen, edit distance = 0
+- future work: edit distance > 1, z.B. mit apache lucene/solr index
+
+
+design decisions
+- rdfs:label vs skos:altLabel: ausgeschriebenes ist rdfs:label, abkürzung skos:altLabel (z.B. CIO, chief information officer)
+- aussagen über aussagen mit owl axiomen
+- triple page
+- materialisierung von transitiven properties wie rdfs:subclassOf, hier kann man: nichts materialisieren, alles materialisieren, meta oberklasse materialisieren (Role,Function,...)
+-> nichts materialisierung, weil sonst visualisierung unübersichtlich, es gibt sparql 1.1 property paths
+
+
+probleme:
+owl modellierung und rdf-serialisierung/sicht
+- protege zeigt gut an aber andere rdf tools haben probleme mit vielen owl statments
+beispiel owl restriction -> some ... -> blanknodes, komplizierte visualisierung, ist aber nötig wegen meta-ontologie
+bei modellierung wurde mehr wert auf owl gelegt, bei anwendung dann aber eher rdf
+
+aufteilung:
+meta ontologie für gemeinsam verwendete begriffe
+
+
+future work:
+- bessere bibliographie (ohne eigenes vokabular mit triple page und so)
+
 \begin{itemize}
 \item Supervisor for Software Engineering Student Internship \enquote{Interactive Budget Calculator for the City of Leipzig}
 \item Creation of QALD 6 Task 3 Benchmark (QA on RDF Data Cubes)
