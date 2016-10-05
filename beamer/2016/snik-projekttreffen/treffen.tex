@@ -67,25 +67,8 @@
 \item Studenten sind zwar (Medizin-)Informatiker, haben aber nicht zwangsweise die Semantic Web Vorlesungen von Prof. Fähnrich besucht
 \item $\rightarrow$ kein Vorwissen in SPARQL und RDF-Serialisierungsformaten vorauszusetzen
 \item Protégé kein intuitiver Gesamtüberblick, getestete Graphplugins skalieren nicht
+\item Lösung: Eigenentwicklung einer Visualisierung unter Verwendung ausgereifter Bibliotheken
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Lösung: Graphvisualisierung}
-\begin{block}{Anforderungen}
-\begin{itemize}
-\item performant bei mehreren tausend Knoten und Kanten 
-\item keine Installation nötig 
-\item Suchfunktion
-\item Filterung
-\item Operationen wie kürzeste Wege, \emph{Spiderworm}
-\end{itemize}
-\end{block}
-\begin{block}{Implementierung}
-\begin{itemize}
-\item Javascript 
-\item mehr in Teil 2 (15:45)
-\end{itemize}
-\end{block}
 \end{frame}
 
 \begin{frame}{\url{http://www.snik.eu/(p)graph/}}
@@ -103,16 +86,82 @@
 \centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/pbrowser.png}
 \end{frame}
 
-\begin{frame}{}
-\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/shortestpath.png}
+\begin{frame}{Kürzester Weg}
+\centering\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{img/shortestpath.png}
 \end{frame}
 
-\begin{frame}{}
-\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/spiderworm.png}
+\begin{frame}{Spiderworm}
+\centering\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{img/spiderworm.png}
+\end{frame}
+
+\begin{frame}{Praktische Vorführung}
+\begin{itemize}
+\item Kürzester Weg und Spiderworm
+\item Suche
+\item Filterung
+\item Hilfe
+\item Feedback
+\item Browse
+\end{itemize}
+\end{frame}
+
+\section{Implementierung}%********************************************************
+
+\subsection{Visualisierung}%****************************
+
+\begin{frame}{Visualisierung}
+\begin{block}{Anforderungen}
+\begin{itemize}
+\item performant bei mehreren tausend Knoten und Kanten 
+\item keine Installation nötig
+\item geringer Implementationsaufwand
+\item Suchfunktion
+\item Filterung
+\item Graphoperationen wie kürzeste Wege, Spiderworm
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{Designentscheidungen}
+\begin{itemize}
+\item Javascript $\rightarrow$ keine Installation nötig, immer verfügbar, kein Server nötig
+\item Cytoscape.js performante Graphbibliothek mit genügend Funktionalität
+\item SPARQL Endpunkt mit bif:contains-Index für schnelle Suche
+\item Pubby SPARQL Browser zur Detailansicht 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{bif:contains SPARQL Query}
+\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{bif:contains SPARQL Query}
+\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}
+\end{block}
 \end{frame}
 
 
-\section{Implementation}
+
+\begin{frame}{Visualisierung}
+\begin{block}{}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{block}
+\end{frame}
 
 \begin{frame}{Vokabulare}
 \small
@@ -126,6 +175,7 @@ bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
 \end{tabular}
 \end{frame}
 
+\iffalse
 *** TO INSERT ***
 https://bitbucket.org/imise/snik-ontology
 https://bitbucket.org/imise/snik-ontology/issues
@@ -133,7 +183,7 @@ https://bitbucket.org/imise/snik-ontology/downloads/snik.js
 select ?x {?x rdfs:subClassOf meta:Function.}
 select ?x {?x rdfs:subClassOf* meta:Function.}
 Firefox Addon \href{CORS Everywhere}{https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/}
-\begin{frame}{2015--now Other Work}
+\fi
 work
 - zweisprachig (englisch und deutsch)
 - synonyme -> bessere suchfunktion
@@ -162,69 +212,6 @@ meta ontologie für gemeinsam verwendete begriffe
 
 future work:
 - bessere bibliographie (ohne eigenes vokabular mit triple page und so)
-
-\begin{itemize}
-\item Supervisor for Software Engineering Student Internship \enquote{Interactive Budget Calculator for the City of Leipzig}
-\item Creation of QALD 6 Task 3 Benchmark (QA on RDF Data Cubes)
-\item GeoKnow service administration (Website, Wiki, Blog)
-\item GeoKnow documentation and Handbook
-\item GeoKnow chapter for \enquote{The Semantic Web in Earth and Space Science}
-\item Reviews for KESW, SWJ, $\ldots$
-\item aksw.org Website Data Officer MOLE
-\end{itemize}
-\end{frame}
-
-\begin{frame}{2015--now }
-\begin{block}{What went well}
-\begin{itemize}
-\item QA Survey (thanks for all the help!) 
-\item Coauthorships 
-\item Other Work 
-\end{itemize}
-\end{block}
-\begin{block}{What didn't}
-\begin{itemize}
-\item publication of CubeQA long version
-\end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{Thanks \& Outlook}
-\begin{itemize}
-\item thanks to Jens, other coauthors and other people who give help and advice
-\end{itemize}
-\begin{block}{Outlook}
-\begin{enumerate}
-\item coauthor papers with Edgard, Diego E. and André(?) until reviews are in, then rebuttal
-\item write 4th core paper to have enough thesis material
-\item write thesis, defend
-\item ?
-\end{enumerate}
-\end{block}
-\end{frame}
-
-\begin{frame}{Unrelated Proposal: Virtual Paper Review}
-Workflow at the moment: finish papers at last moment and only review among coauthors.
-\only<1>
-{
-\begin{block}{Problem}
-\begin{itemize}
-\item In case of emergencies no paper 
-\item Authors and coauthors know what the paper is about and thus cannot judge understandability.
-\end{itemize}
-\end{block}
-}
-\only<2>
-{
-\begin{block}{Solution}
-\begin{itemize}
-\item Virtual deadline one week before real one
-\item Coworkers who are not coauthors review it
-\item Submitted paper is then already revised 
-\end{itemize}
-\end{block}
-}
-\end{frame}
-
+ersion
 
 \end{document}
