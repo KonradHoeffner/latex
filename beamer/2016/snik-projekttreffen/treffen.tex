@@ -14,18 +14,108 @@
 \usepackage{pifont}
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
 \author{\texorpdfstring{Konrad Höffner\newline\url{konrad.hoeffner@imise.uni-leipzig.de}}{Konrad Höffner}}
-\title{}
-\subtitle{SNIK Ontologie}
-
+\title{SNIK Ontologie---Lehre und Implementierung}
+\subtitle{\url{https://github.com/KonradHoeffner/latex/tree/master/beamer/2016/snik-projekttreffen}}
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\section{Überblick}
+\begin{frame}{Vorstellung}
+\only<1>
+{
+\begin{itemize}
+\item Konrad Höffner
+\item Studium Diplominformatik an Uni Leipzig
+\item Doktorand der Informatik beim AKSW, Uni Leipzig/InfAI
+\item Thema \enquote{Question Answering auf RDF Data Cubes}
+\item bei IMISE und im SNIK Projekt seit Juli
+\item kein Vorwissen über Medizin aber viel praktische Erfahrung mit Semantic Web-Technologien
+\end{itemize}
+}
+\only<2>
+{
+\begin{itemize}
+\item Visualisierung, Implementierung, Serialisierung
+\item Qualitätssicherung
+\item Aufsetzen von Services
+\vspace{1em}
+\item Raum 227, Tel. (0341)97-16363
+\item \href{mailto://konrad.hoeffner@imise.uni-leipzig.de}{konrad.hoeffner@imise.uni-leipzig.de}
+\item \url{https://github.com/KonradHoeffner/latex/tree/master/beamer/2016/snik-projekttreffen}
+\end{itemize}
+}
+\end{frame}
+
+\section{Einsatz in der Lehre}
+
+\begin{frame}{}
+\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{img/lehre.png}
+\end{frame}
+
+\begin{frame}{Ziele}
+\begin{itemize}
+\item modelliertes Wissen vermitteln, zusätzlich zu Lehrbüchern, Vorlesungen und Übungen
+\item Exploration 
+\item Erstellen von Übungsaufgaben
+\item Semantic Web nur Mittel zum Zweck, so viel Zeit wie möglich für Gesundheitsinformationssysteme 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problem}
+\begin{itemize}
+\item Studenten sind zwar (Medizin-)Informatiker, haben aber nicht zwangsweise die Semantic Web Vorlesungen von Prof. Fähnrich besucht
+\item $\rightarrow$ kein Vorwissen in SPARQL und RDF-Serialisierungsformaten vorauszusetzen
+\item Protégé kein intuitiver Gesamtüberblick, getestete Graphplugins skalieren nicht
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lösung: Graphvisualisierung}
+\begin{block}{Anforderungen}
+\begin{itemize}
+\item performant bei mehreren tausend Knoten und Kanten 
+\item keine Installation nötig 
+\item Suchfunktion
+\item Filterung
+\item Operationen wie kürzeste Wege, \emph{Spiderworm}
+\end{itemize}
+\end{block}
+\begin{block}{Implementierung}
+\begin{itemize}
+\item Javascript 
+\item mehr in Teil 2 (15:45)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{\url{http://www.snik.eu/(p)graph/}}
+\begin{itemize}
+\item Öffentliche alte Version ohne CIOx \url{http://www.snik.eu/graph/}
+\item Passwortgeschützte neue Version mit CIOx \url{http://www.snik.eu/pgraph/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/browser.png}
+\end{frame}
+
+\begin{frame}{}
+\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/pbrowser.png}
+\end{frame}
+
+\begin{frame}{}
+\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/shortestpath.png}
+\end{frame}
+
+\begin{frame}{}
+\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/spiderworm.png}
+\end{frame}
+
+
 \section{Implementation}
 
 \begin{frame}{Vokabulare}
+\small
 \begin{tabular}{lll}
 ov		&\url{http://open.vocab.org/terms/}		&Ontologiedefinition\\
 %vann		&\url{http://purl.org/vocab/vann/}	&\\%too little usage
@@ -36,6 +126,13 @@ bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
 \end{tabular}
 \end{frame}
 
+*** TO INSERT ***
+https://bitbucket.org/imise/snik-ontology
+https://bitbucket.org/imise/snik-ontology/issues
+https://bitbucket.org/imise/snik-ontology/downloads/snik.js
+select ?x {?x rdfs:subClassOf meta:Function.}
+select ?x {?x rdfs:subClassOf* meta:Function.}
+Firefox Addon \href{CORS Everywhere}{https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/}
 \begin{frame}{2015--now Other Work}
 work
 - zweisprachig (englisch und deutsch)
