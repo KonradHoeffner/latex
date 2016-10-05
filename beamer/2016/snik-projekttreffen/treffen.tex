@@ -10,8 +10,8 @@
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{amssymb}
-\newcommand{\xmark}{\ding{55}}%
 \usepackage{pifont}
+\newcommand{\xmark}{\ding{55}}%
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
 \author{\texorpdfstring{Konrad Höffner\newline\url{konrad.hoeffner@imise.uni-leipzig.de}}{Konrad Höffner}}
 \title{SNIK Ontologie---Lehre und Implementierung}
@@ -107,28 +107,136 @@
 
 \section{Implementierung}%********************************************************
 
-\subsection{Serialisierung}%****************************
+\subsection{Modellierung und Serialisierung}%****************************
 
-\begin{frame}{Serialisierung}
-\begin{block}{}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Überblick}
+\begin{tabular}{ll}
+Ontologie	&Anzahl Tripel\\
+meta	&244\\
+bb	&35803\\
+links-bb	&79\\
+ciox	&1933\\
+links-ciox	&29\\
+ob	&25894\\
+gesamt	&63982\\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Überblick}
+\begin{tabular}{ll}
+Oberklasse	&Anzahl\\
+meta:Role	&79\\
+meta:Function	&154\\
+meta:EntityType	&1395\\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Ausgangssituation}
 \begin{itemize}
-\item 
+\item SNIK-Ontologien bb, ob und ciox wurden mit Protégé bearbeitet und als RDF/XML serialisiert
+\item bei Änderungen mussten andere Personen informiert und mit aktualisierten Dateien versorgt werden 
+\item $\rightarrow$ schwierige Kooperation 
 \end{itemize}
 \end{block}
 \end{frame}
 
-\begin{frame}{Serialisierung}
-\begin{block}{}
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Lösung}
 \begin{itemize}
-\item 
+\item Einsatz des Versionskontrollsystems git
+\item RDF/XML-Serialisierung mit Texteditor bearbeitet
+\item gleichzeitige Änderungen möglich, Konflikte durch git merge-Mechanismus beheben
+\item Rückkehr zu jedem früheren Zeitpunkt möglich
+\item durch reguläre Ausdrucke gleichzeitige Änderungen an hunderten Entitäten gleichzeitig möglich
+\item Änderungen benötigen Kenntnisse in RDF/XML und git
+\item wenn großflächige syntaktische Änderungen fertig, Rückkehr zur Protégé möglich
 \end{itemize}
 \end{block}
 \end{frame}
 
-\begin{frame}{Serialisierung}
-\begin{block}{}
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Modellierungsprinzipien}
 \begin{itemize}
-\item 
+\item Verwendung existierender Vokabulare
+\item Konsistenz: gleiche Eigenschaften auf gleiche Weise modellieren
+\item Zusammenfassen von gleichen Werten zu mehrfach genutzten Objekten, ähnlich Normalform bei Datenbanken, reduziert Inkonsistenzen, Arbeitsaufwand und Fehleranfälligkeit (Bsp.: Lehrbuchquelle)
+\item Bevorzugen von Object Properties gegenüber Data Type Properties
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Prefixe und Vokabulare}
+\small
+\begin{tabular}{lll}
+Ontologie	&Prefix						&Inhalt\\
+meta		&\url{http://www.snik.eu/ontology/meta}		&SNIK Meta-Ontologie\\
+bb		&\url{http://www.snik.eu/ontology/bb}		&SNIK Blaues Buch\\
+ob		&\url{http://www.snik.eu/ontology/ob}		&SNIK Oranges Buch\\
+ciox		&\url{http://www.snik.eu/ontology/meta}		&SNIK CIOx Interviews\\
+ov		&\url{http://open.vocab.org/terms/}		&Ontologiedefinition\\
+%vann		&\url{http://purl.org/vocab/vann/}	&\\%too little usage
+skos		&\url{http://www.w3.org/2004/02/skos/core\#}	&Interlinks, Definitionen\\
+dc		&\url{http://purl.org/dc/terms}			&Metadaten\\
+bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
+%		&\url{}					&\\
+\end{tabular}
+Dazu Standardvokabulare RDF, RDFS, OWL.
+\end{block}
+\end{frame}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Anwendung der Prinzipien}
+\begin{itemize}
+\item konsequente Anwendung der Prinzipien zieht große Zahl an Änderungen nach sich
+\item in 3 Monaten: 31000 hinzugefügte, 28000 entfernte Zeilen
+\item teilweise automatisierbar, teilweise Entscheidung bei jedem Fall nötig
+\item Gartenmetapher: es ist immer etwas zu tun
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Modellierung und Serialisierung}
+\begin{block}{Anwendung der Prinzipien: Beispiel 1}
+\begin{itemize}
+\item Synonyme sind mit \texttt{<Synonym>Text</Synonym>} modelliert 
+\item Problem 1a: Benutzung des leeren Präfixes führt bei jeder Teilontologie zu anderer URI (ob:Synonym, bb:Synonym, $\ldots$) 
+\item Problem 1b: Synonym ist nicht definiert, daher genaue Semantik unbekannt, wird auch anderswo nicht verwendet
+\item Typische Lösung: Identifizieren und Verwenden eines existierenden Vokabulars
+\item Also: Ersetzen von \texttt{Synonym} durch \texttt{skos:altLabel}
+\item Problem 2a: Wie entscheidet sich, welches label rdfs:label und welches skos:altLabel wird? Existierende Daten inkonsistent z.B. bei Abkürzungen. 
+\item Problem 2b: Language tags fehlen, entweder "de" oder "en".
+\item $\rightarrow$ manuelles Entscheiden in > 500 Fällen, Abkürzungen immer skos:altLabel
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Modellierung und Serialisierung}
+\begin{block}{Anwendung der Prinzipien: Beispiel 2}
+\begin{itemize}
+\item Materialisierung von transitiven Properties wie rdfs:subClassOf
+\item $A \subseteq B \subseteq C \rightarrow A \subseteq C$
+\item Diese Tripel können inferiert werden, Virtuoso und die Cytoscape.js unterstützen dies aber nicht.
+\item Materialisierte Tripel können von anderen nicht unterschieden werden und machen Visualisierung unübersichtlich.
+\item Nichts materialisieren, alles materialisieren oder nur oberste Klasse (meta:Role/Function/EntityType) materialisieren?
+\item Anfangszustand: Teilweise nichts materialisiert, teilweise oberste Klasse materialisiert.
+\item Entscheidung: Oberste Klasse mit neuer Property, meta:topClass angegeben, in Visualisierung nicht angezeigt
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Modellierung und Serialisierung}
+\begin{block}{Ausblick}
+\begin{itemize}
+\item Fertigstellung großflächiger syntaktische Änderungen
+\item Kooperative punktuelle semantische Änderungen durch Domänenexperten
+\item siehe Abschnitt Qualitätssicherung 
 \end{itemize}
 \end{block}
 \end{frame}
@@ -153,7 +261,7 @@
 \begin{itemize}
 \item Javascript $\rightarrow$ keine Installation nötig, immer verfügbar, kein Server nötig
 \item Cytoscape.js performante Graphbibliothek mit genügend Funktionalität
-\item SPARQL Endpunkt mit bif:contains-Index für schnelle Suche
+\item SPARQL Endpunkt mit bif:contains-Index für schnelle Suche (future work: Lucene Index)
 \item Pubby SPARQL Browser zur Detailansicht 
 \end{itemize}
 \end{block}
@@ -171,6 +279,99 @@
 \end{block}
 \end{frame}
 
+\begin{frame}{Visualisierung}
+\begin{block}{bif:contains SPARQL Query}
+\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{bif:contains SPARQL Query}
+\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-result.png}
+\end{block}
+\end{frame}
+
+\begin{frame}{Visualisierung}
+\begin{block}{Ausblick}
+\begin{itemize}
+\item Suche von Phrasen statt Wörtern
+\item Suche mit Synonymen und Schreibfehlern
+\item z.B. durch Apache Lucene/SOLR index
+\item Bugfixing
+\item Wechsel von Pubby zu modernerem RDF browser
+\item Export von Selektionen
+\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{Qualitätssicherung}%*******************************************
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Ausgangspunkt: 5 Star Linked Data}
+\begin{enumerate}
+\item Daten sind im Web in irgendweinem Format verfügbar \checkmark{}
+\item maschinenlesbare strukturierte Daten (z.B. kein PNG) \checkmark{}
+\item nichtprorietäres Format (z.B. CSV, nicht Excel) \checkmark{}	
+\item nach den offenen Standards des W3C publiziert (RDF and SPARQL) \checkmark{}
+\item mit Links zu anderer Linked Data \checkmark (zwischen Teilontologien) / \xmark{} (außerhalb SNIK)
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Dimensionen der Qualität}
+\begin{itemize}
+\item \href{Quality Assessment for Linked Data: A Survey}{http://www.semantic-web-journal.net/content/quality-assessment-linked-data-survey}, Meta-Studie von Amrapali Zaveri
+\item 18 gemeinsame Dimensionen
+\item teilweise subjektiv
+\item aufwändig zu bestimmen, teilweise Crowdsourcing nötig
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Dimensionen der Qualität---Beispiele}
+\begin{itemize}
+\item Accessibility -- Serialisierte Dateien, SPARQL Endpunkt, im Browser aufrufbare URLs
+\item Lizenzen -- bei Datenbanken nicht betrachtet aber bei Linked Data notwendig 
+\item Interlinking -- Verknüpfungen von und zu anderen Datensets 
+\item Performance -- Latenzzeit, Skalierbarkeit
+\item Understandability, Completeness, Relevanz, $\ldots$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Designierte Manuelle Korrektur}
+\begin{itemize}
+\item semantische Korrektheit von Fakten benötigt manuellen Input
+\item serielles Durcharbeiten der serialisierten Ontologien beschränkt Personen auf Schnittmenge von Semantic-Web-Experten und Domänenexperten
+\item besser: zufällige Stichproben von Fakten
+\item manuell ausgezeichnet als korrekt, falsch oder ungewiss 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Designierte Manuelle Korrektur}
+\begin{itemize}
+\item Korrektur kann in beliebig großen Arbeitsabschnitten erfolgen
+\item bei Überschneidung inter-rater-agreement
+\item Triple Checkmate Tool von AKSW 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Qualitätssicherung}
+\begin{block}{Feedback von Visualisierung}
+\begin{itemize}
+\item wenn Fehler bemerkt werden, kann Ticket erstellt werden
+\item \url{https://bitbucket.org/imise/snik-ontology/issues}
+\item Feedback für Visualisierung und Ontologie getrennt
+\item (wenn Internet funktioniert) Vorführung 
+\end{itemize}
+\end{block}
+\end{frame}
 
 \begin{frame}{Cytoscape Desktop}
 \centering\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{img/types_classrelations.png}
@@ -189,73 +390,18 @@
 \end{frame}
 
 
-\begin{frame}{Visualisierung}
-\begin{block}{bif:contains SPARQL Query}
-\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}
-\end{block}
-\end{frame}
-
-\begin{frame}{Visualisierung}
-\begin{block}{bif:contains SPARQL Query}
-\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-result.png}
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Visualisierung}
-\begin{block}{}
-\begin{itemize}
-\item 
-\end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{Namespaces und Vokabulare}
-\small
-\begin{tabular}{lll}
-meta		&\url{http://www.snik.eu/ontology/meta}		&SNIK Meta-Ontologie\\
-bb		&\url{http://www.snik.eu/ontology/bb}		&SNIK Blaues Buch\\
-ob		&\url{http://www.snik.eu/ontology/ob}		&SNIK Oranges Buch\\
-ciox		&\url{http://www.snik.eu/ontology/meta}		&SNIK CIOx Interviews\\
-ov		&\url{http://open.vocab.org/terms/}		&Ontologiedefinition\\
-%vann		&\url{http://purl.org/vocab/vann/}	&\\%too little usage
-skos		&\url{http://www.w3.org/2004/02/skos/core\#}	&Interlinks, Definitionen\\
-dc		&\url{http://purl.org/dc/terms}			&Metadaten\\
-bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
-%		&\url{}					&\\
-\end{tabular}
+\begin{frame}{Diskussion}
 \end{frame}
 
 \iffalse
 *** TO INSERT ***
-https://bitbucket.org/imise/snik-ontology
-https://bitbucket.org/imise/snik-ontology/issues
-https://bitbucket.org/imise/snik-ontology/downloads/snik.js
+\url{https://bitbucket.org/imise/snik-ontology}
+\url{https://bitbucket.org/imise/snik-ontology/downloads/snik.js}
 select ?x {?x rdfs:subClassOf meta:Function.}
 select ?x {?x rdfs:subClassOf* meta:Function.}
 Firefox Addon \href{CORS Everywhere}{https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/}
-\fi
 work
-- zweisprachig (englisch und deutsch)
-- synonyme -> bessere suchfunktion
-- suchfunktion im javascript basiert auf bif:contains, nutzt virtuoso index, ist schnell
-- nachteil: muss exakt vorkommen, edit distance = 0
-- future work: edit distance > 1, z.B. mit apache lucene/solr index
-
-
-design decisions
-- rdfs:label vs skos:altLabel: ausgeschriebenes ist rdfs:label, abkürzung skos:altLabel (z.B. CIO, chief information officer)
-- aussagen über aussagen mit owl axiomen
-- triple page
-- materialisierung von transitiven properties wie rdfs:subclassOf, hier kann man: nichts materialisieren, alles materialisieren, meta oberklasse materialisieren (Role,Function,...)
--> nichts materialisierung, weil sonst visualisierung unübersichtlich, es gibt sparql 1.1 property paths
-
-
 probleme:
-owl modellierung und rdf-serialisierung/sicht
-- protege zeigt gut an aber andere rdf tools haben probleme mit vielen owl statments
-beispiel owl restriction -> some ... -> blanknodes, komplizierte visualisierung, ist aber nötig wegen meta-ontologie
-bei modellierung wurde mehr wert auf owl gelegt, bei anwendung dann aber eher rdf
 
 aufteilung:
 meta ontologie für gemeinsam verwendete begriffe
@@ -264,5 +410,6 @@ meta ontologie für gemeinsam verwendete begriffe
 future work:
 - bessere bibliographie (ohne eigenes vokabular mit triple page und so)
 ersion
+\fi
 
 \end{document}
