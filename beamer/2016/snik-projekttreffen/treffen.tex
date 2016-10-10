@@ -6,6 +6,10 @@
 \usetheme{simple}
 \usecolortheme{whiteonblack}
 \usepackage{array}
+\usepackage{aurl}
+\daurl{meta}{http://www.snik.eu/ontology/meta/}
+\daurl{ob}{http://www.snik.eu/ontology/ob/}
+\daurl{bb}{http://www.snik.eu/ontology/bb/}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{csquotes}
@@ -13,9 +17,10 @@
 \usepackage{pifont}
 \newcommand{\xmark}{\ding{55}}%
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
+\date{5. Oktober 2016}
 \author{\texorpdfstring{Konrad Höffner\newline\url{konrad.hoeffner@imise.uni-leipzig.de}}{Konrad Höffner}}
 \title{SNIK Ontologie---Lehre und Implementierung}
-\subtitle{\url{https://github.com/KonradHoeffner/latex/tree/master/beamer/2016/snik-projekttreffen}}
+\subtitle{mit nachträglichen Anmerkungen vom 10. Oktober 2016}
 \begin{document}
 \begin{frame}
 \titlepage
@@ -73,8 +78,9 @@
 
 \begin{frame}{\url{http://www.snik.eu/(p)graph/}}
 \begin{itemize}
-\item Öffentliche alte Version ohne CIOx \url{http://www.snik.eu/graph/}
+\item Öffentliche alte Version (wird aktualisiert) ohne CIOx \url{http://www.snik.eu/graph/}
 \item Passwortgeschützte neue Version mit CIOx \url{http://www.snik.eu/pgraph/}
+\item CIOx-Ontologie enthält Betriebsinterna, Zugangsdaten nur auf sichere Art und Weise an Befugte Weitergeben! 
 \end{itemize}
 \end{frame}
 
@@ -126,12 +132,12 @@ gesamt	&63982\\
 \end{frame}
 
 \begin{frame}{Modellierung und Serialisierung}
-\begin{block}{Überblick}
+\begin{block}{Überblick\footnote{Untere Schranken, noch nicht alle \aurl{meta}{subTop}-Beziehungen modelliert.}}
 \begin{tabular}{ll}
 Oberklasse	&Anzahl\\
-meta:Role	&79\\
-meta:Function	&154\\
-meta:EntityType	&1395\\
+\aurl{meta}{Role}	&79\\
+\aurl{meta}{Function}	&154\\
+\aurl{meta}{EntityType}	&1395\\
 \end{tabular}
 \end{block}
 \end{frame}
@@ -174,7 +180,8 @@ meta:EntityType	&1395\\
 \begin{frame}{Modellierung und Serialisierung}
 \begin{block}{Prefixe und Vokabulare}
 \small
-\begin{tabular}{lll}
+{
+\begin{tabular}{l>{\footnotesize}ll}
 Ontologie	&Prefix						&Inhalt\\
 meta		&\url{http://www.snik.eu/ontology/meta}		&SNIK Meta-Ontologie\\
 bb		&\url{http://www.snik.eu/ontology/bb}		&SNIK Blaues Buch\\
@@ -187,6 +194,8 @@ dc		&\url{http://purl.org/dc/terms}			&Metadaten\\
 bibo		&\url{http://purl.org/ontology/bibo/}		&Bibliographie\\
 %		&\url{}					&\\
 \end{tabular}
+}
+~\\
 Dazu Standardvokabulare RDF, RDFS, OWL.
 \end{block}
 \end{frame}
@@ -203,30 +212,42 @@ Dazu Standardvokabulare RDF, RDFS, OWL.
 \end{frame}
 
 \begin{frame}[fragile]{Modellierung und Serialisierung}
-\begin{block}{Anwendung der Prinzipien: Beispiel 1}
+\begin{block}{Anwendung der Prinzipien: Beispiel Synonyme}
 \begin{itemize}
+\only<1>
+{
 \item Synonyme sind mit \texttt{<Synonym>Text</Synonym>} modelliert 
-\item Problem 1a: Benutzung des leeren Präfixes führt bei jeder Teilontologie zu anderer URI (ob:Synonym, bb:Synonym, $\ldots$) 
+\item Problem 1a: Benutzung des leeren Präfixes führt bei jeder Teilontologie zu anderer URI (\aurl{ob}{Synonym}, \aurl{bb}{Synonym}, $\ldots$) 
 \item Problem 1b: Synonym ist nicht definiert, daher genaue Semantik unbekannt, wird auch anderswo nicht verwendet
+}
+\only<2>
+{
 \item Typische Lösung: Identifizieren und Verwenden eines existierenden Vokabulars
-\item Also: Ersetzen von \texttt{Synonym} durch \texttt{skos:altLabel}
-\item Problem 2a: Wie entscheidet sich, welches label rdfs:label und welches skos:altLabel wird? Existierende Daten inkonsistent z.B. bei Abkürzungen. 
+\item Also: Ersetzen von \texttt{Synonym} durch \texttt{\aurl{skos}{altLabel}}
+\item Problem 2a: Wie entscheidet sich, welches label \aurl{rdfs}{label} und welches \aurl{skos}{altLabel} wird? Existierende Daten inkonsistent z.B. bei Abkürzungen. 
 \item Problem 2b: Language tags fehlen, entweder "de" oder "en".
-\item $\rightarrow$ manuelles Entscheiden in > 500 Fällen, Abkürzungen immer skos:altLabel
+\item $\rightarrow$ manuelles Entscheiden in > 500 Fällen, Abkürzungen immer \aurl{skos}{altLabel}
+}
 \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Modellierung und Serialisierung}
-\begin{block}{Anwendung der Prinzipien: Beispiel 2}
+\begin{block}{Anwendung der Prinzipien: Beispiel Transitivität}
 \begin{itemize}
-\item Materialisierung von transitiven Properties wie rdfs:subClassOf
+\only<1>
+{
+\item Materialisierung von transitiven Properties wie \aurl{rdfs}{subClassOf}
 \item $A \subseteq B \subseteq C \rightarrow A \subseteq C$
 \item Diese Tripel können inferiert werden, Virtuoso und die Cytoscape.js unterstützen dies aber nicht.
 \item Materialisierte Tripel können von anderen nicht unterschieden werden und machen Visualisierung unübersichtlich.
-\item Nichts materialisieren, alles materialisieren oder nur oberste Klasse (meta:Role/Function/EntityType) materialisieren?
-\item Anfangszustand: Teilweise nichts materialisiert, teilweise oberste Klasse materialisiert.
-\item Entscheidung: Oberste Klasse mit neuer Property, meta:topClass angegeben, in Visualisierung nicht angezeigt
+}
+\only<2>
+{
+\item Entscheidung: Nichts materialisieren, alles materialisieren oder nur zweitoberste Klasse (\aurl{meta}{Role}/Function/EntityType) materialisieren? (oberste ist \aurl{meta}{Top})
+\item Anfangszustand: Teilweise nichts materialisiert, teilweise zweitoberste Klasse materialisiert.
+\item Entscheidung: Oberste Klasse mit neuer Property, \aurl{meta}{subTopClass} angegeben, in Visualisierung nicht angezeigt
+}
 \end{itemize}
 \end{block}
 \end{frame}
@@ -280,14 +301,10 @@ Dazu Standardvokabulare RDF, RDFS, OWL.
 \end{frame}
 
 \begin{frame}{Visualisierung}
-\begin{block}{bif:contains SPARQL Query}
-\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}
-\end{block}
-\end{frame}
-
-\begin{frame}{Visualisierung}
-\begin{block}{bif:contains SPARQL Query}
-\centering\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-result.png}
+\begin{block}{Suche mit bif:contains SPARQL Query}
+\centering
+\only<1>{\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-query.png}}
+\only<2>{\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{img/bifcontains-result.png}}
 \end{block}
 \end{frame}
 
@@ -389,27 +406,49 @@ Dazu Standardvokabulare RDF, RDFS, OWL.
 \centering\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{img/types_classrelations_zoomed.png}
 \end{frame}
 
+\section{Nachträgliche Anmerkungen}
 
 \begin{frame}{Diskussion}
+\begin{itemize}
+\only<1>
+{
+\item Transformation RDF->CSV mittels SPARQL Anatoli Zeiser beibringen
+\item Visualisierung bereitet Einigen Kopfschmerzen, Option auf hellen Hintergrund gewünscht
+\item Hervorheben von Interontologierelationen durch Filter (bereits erledigt)
+\item Hinzufügen fehlender Daten im RDF-Browser
+}
+\only<2>
+{
+\item Beschriebene Prozesse stehen in der Mitte des Gesamtworkflows, Faktenextraktion ist davon unberührt.
+\item Für zukünftige Extraktionen (z.B. durch Birgit Schneider) ändert sich also nicht direkt etwas.
+\item Allerdings ist Änderung der Extraktion geplant, um großen Aufwand der Ontologiequalitätsverbesserung nach Extraktion zu verkleinern, durch Angleichen von Tabellenformular mit RDF und Ontologie.
+\item Außerdem Untersuchung von Excel2OWL-Alternativen geplant.
+}
+\end{itemize}
 \end{frame}
 
-\iffalse
-*** TO INSERT ***
-\url{https://bitbucket.org/imise/snik-ontology}
-\url{https://bitbucket.org/imise/snik-ontology/downloads/snik.js}
-select ?x {?x rdfs:subClassOf meta:Function.}
-select ?x {?x rdfs:subClassOf* meta:Function.}
-Firefox Addon \href{CORS Everywhere}{https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/}
-work
-probleme:
+\begin{frame}{Referenzen und Weitere Informationen}
+\begin{itemize}
+\item \url{https://wiki.imise.uni-leipzig.de/Projekte/SNIK/ontologie/workflow}
+\item \url{https://github.com/IMISE/snik-cytoscape.js}
+\item \url{https://github.com/IMISE/snik-ontology} (URL wird evtl. geändert)
+\item \url{https://bitbucket.org/imise/snik-ontology} (URL wird geändert)
+\item \url{http://www.snik.eu/graph}
+\item \url{http://www.snik.eu/pgraph}
+\item \url{http://www.snik.eu/sparql}
+\item \url{http://www.snik.eu/ontology}
+\item Und natürlich \href{mich fragen}{mailto://konrad.hoeffner@imise.uni-leipzig.de} :-)
+\end{itemize}
+\end{frame}
 
-aufteilung:
-meta ontologie für gemeinsam verwendete begriffe
-
-
-future work:
-- bessere bibliographie (ohne eigenes vokabular mit triple page und so)
-ersion
-\fi
+\begin{frame}{Mitarbeit}
+\begin{itemize}
+\item alles open source (außer CIOx)
+\item alle können sehr gerne Mitentwickeln
+\item entweder pull-Request oder mich fragen und GitHub/Bitbucket-Account in Entwicklerteam aufnehmen lassen
+\item readme-Dateien im Wurzelordner der Repositories lesen
+\item Bug gefunden? Ticket im Repository erstellen.
+\end{itemize}
+\end{frame}
 
 \end{document}
