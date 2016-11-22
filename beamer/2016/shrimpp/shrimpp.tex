@@ -2,19 +2,68 @@
 \usepackage[utf8]{inputenc} 
 \usetheme{simple}
 \usecolortheme{whiteonblack}
-\usepackage{array}
-\usepackage{csquotes}
-\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
-\author{Konrad Höffner}
-\title{Vorteile von RDF für Shrimpp}
-%\subtitle{PhD progress \& CubeQA}
+%\usepackage{array}
+%\usepackage{hyperref}
+%\usepackage{csquotes}
+
+%\author{Konrad Höffner}
+%\title{Resource Description Framework (RDF) und Ontologien}
+%\subtitle{Kurze Einführung mit Vorteilen für Shrimpp}
 
 \begin{document}
-\begin{frame}
-\titlepage
+
+%\begin{frame}
+%\titlepage
+%\end{frame}
+
+\section{Was ist RDF?}
+
+\begin{frame}{Tripel}
+\begin{itemize}
+\item RDF Datenmodell basiert dem Tripel (3-Tupel)
+\item Ein Tripel repräsentiert eine simple Aussage
+\item Bestandteile: Subjekt, Prädikat, Objekt
+\end{itemize}
 \end{frame}
 
-\section{Was ist RDF}
+\begin{frame}{Subjekt}
+\begin{itemize}
+\item Subjekt wird mittels URI (Uniform Resource Identifier) identifiziert
+\item Beispiel: \url{http://dbpedia.org/resource/Leipzig}
+\item Ein Subjekt bezeichnet ein beliebiges Ding (eine \emph{Ressource})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objekt}
+\begin{itemize}
+\item Entweder eine Ressource (ein anderes Ding) oder ein Literal (eine Zeichenkette) 
+\item \url{http://dbpedia.org/resource/Burkhard\_Jung}
+\item \enquote{POINT(12.383333206177 51.333332061768)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Prädikat}
+\begin{itemize}
+\item auch eine Ressource (mittels URI identifiziert)
+\item eine zweistellige Relation, die Subjekt und Objekt verbindet
+\item \url{http://dbpedia.org/property/mayor}
+\item \url{http://www.w3.org/2003/01/geo/wgs84\_pos#geometry} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Beispieltripel}
+\begin{itemize}
+\item \url{http://dbpedia.org/resource/Leipzig} \url{http://dbpedia.org/property/mayor} \url{http://dbpedia.org/resource/Burkhard\_Jung}.
+\item y
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Symmetrie}
+\begin{itemize}
+\item x
+\item y
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Was }
 \only<1>
@@ -30,12 +79,42 @@
 \end{frame}
 
 \begin{frame}{}
-
 \begin{block}{}
 \begin{itemize}
 \item x
 \item y
 \end{itemize}
 \end{block}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+\item x
+\item y
+\end{itemize}
+\end{frame}
+
+\section{Reasoning}
+
+\begin{frame}{Was ist Reasoning?}
+\begin{itemize}
+\item Inferieren von Impliziter Information aus vorhandener Fakten und Relationseigenschaften
+\item Beispiel: Alice ist Mutter von Trudy. Trudy ist Mutter von Bob. $\rightarrow$ Alice ist Großmutter von Bob. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Symmetrie}
+\begin{itemize}
+\item x
+\item y
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+\item x
+\item y
+\end{itemize}
+\end{frame}
 
 \end{document}
