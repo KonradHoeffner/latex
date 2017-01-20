@@ -5,9 +5,10 @@
 \usepackage{xcolor}
 %\usepackage{etoolbox}
 
+
 \mode<presentation>
 
-\renewcommand{\sfdefault}{pfu}
+\renewcommand{\sfdefault}{pfu} % IMISE requires proprietary Futura font, needs to be installed
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -22,7 +23,7 @@
 \renewcommand\frametitle[1]{\origframetitle
 {
 \includegraphics[height=0.7cm,right]{img/unileipzig.pdf}\\
-\vspace{-2em}
+\vspace{-1.7em}
 #1
 }
 }
@@ -30,33 +31,34 @@
 \defbeamertemplate*{title page}{customized}[1][]
 {
 \setbeamertemplate{footline}{}
-  \includegraphics[height=0.7cm,right]{img/unileipzig.pdf}\\
+  ~~~~\includegraphics[height=0.8cm,right]{img/unileipzig.pdf}\\
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
   \usebeamerfont{subtitle}\insertsubtitle\par
 \vspace{0.2\textheight}
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.6\textheight,dp=1ex,colsep=10pt,left]{footer}%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.7\textheight,dp=1ex,colsep=10pt,left]{footer}%
 \usebeamerfont{author}\insertauthor\par
   \usebeamerfont{date}\insertdate\par
 ~\\~\\~\\~\\
 {\normalsize imise \hspace{-0.3em}\huge\color{orange}.}\\
- Institut für Medizinische Informatik, Statistik und Epidemiologie
+ Institut für Medizinische Informatik, Statistik und Epidemiologie\\~\\
   \end{beamercolorbox}%
 }
 
 \makeatother
 \setbeamertemplate{footline}
 {
+ \vspace{1.5em} % put footnotes higher, unfortunately also 
  \ifnum\insertframenumber>1%
 \vspace{-5em} %ifnum somehow moves it too far below, workaround
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.8ex,dp=1ex,colsep=0pt,left]{footer}%colsep and extra width to hopefully prevent white vertical lines in between color boxes
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,left]{footer}%colsep and extra width to hopefully prevent white vertical lines in between color boxes
 {\normalsize imise \hspace{-0.3em}\huge\color{orange}.}
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.8ex,dp=1ex,colsep=0pt,center]{footer}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,center]{footer}%
     \usebeamerfont{title in head/foot}\insertshorttitle---\insertshortauthor---\insertdate
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.8ex,dp=1ex,colsep=0pt,right]{footer}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.9ex,dp=1ex,colsep=0pt,right]{footer}%
     \usebeamerfont{title in head/foot}\insertframenumber{} %/ \inserttotalframenumber
     \hspace*{1ex}
   \end{beamercolorbox}
