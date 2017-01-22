@@ -3,12 +3,12 @@
 \setbeamertemplate{headline}{}
 \usepackage[export]{adjustbox}
 \usepackage{xcolor}
-%\usepackage{etoolbox}
 
+\usepackage{fontspec}
+\setmainfont{futura.ttc}
 
 \mode<presentation>
-
-\renewcommand{\sfdefault}{pfu} % IMISE requires proprietary Futura font, needs to be installed
+\usepackage{tikz}
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -16,14 +16,19 @@
 \setbeamercolor{footer}{fg=white, bg=imiseblue}
 \setbeamercolor{title}{fg=darkred, bg=white}
 
-%\RequirePackage{bera}
+\setbeamertemplate{itemize item}{\color{imiseblue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{imiseblue}$\blacktriangleright$}
+\setbeamertemplate{section in toc}{\color{imiseblue}\inserttocsection}
+\setbeamercolor{local structure}{fg=imiseblue}
 
 \setbeamertemplate{frametitle}[default][left] 
 \let\origframetitle=\frametitle
 \renewcommand\frametitle[1]{\origframetitle
 {
-\includegraphics[height=0.7cm,right]{img/unileipzig.pdf}\\
-\vspace{-1.7em}
+\begin{tikzpicture}[remember picture,overlay]  
+    \node [anchor=north east,xshift=0.4em,yshift=0.4em] at (current page.north east) % for unknown reasons, the x and y shift is necessary and different for each aspect ratio 
+      {\includegraphics[width=0.35\textwidth,right]{img/unileipzig.pdf}};
+  \end{tikzpicture}
 #1
 }
 }
@@ -31,11 +36,17 @@
 \defbeamertemplate*{title page}{customized}[1][]
 {
 \setbeamertemplate{footline}{}
-  ~~~~\includegraphics[height=0.8cm,right]{img/unileipzig.pdf}\\
+
+\begin{tikzpicture}[remember picture,overlay]  
+    \node [anchor=north east,xshift=0.4em,yshift=0.4em] at (current page.north east) % for unknown reasons, the x and y shift is necessary for perfect alignment
+      {\includegraphics[width=0.35\textwidth,right]{img/unileipzig.pdf}};
+  \end{tikzpicture}
+
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+ \vspace{0.05\textheight}
   \usebeamerfont{subtitle}\insertsubtitle\par
-\vspace{0.2\textheight}
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.7\textheight,dp=1ex,colsep=10pt,left]{footer}%
+\vspace{0.15\textheight}% align blue box at bottom
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.6\textheight,dp=1ex,colsep=10pt,left]{footer}%
 \usebeamerfont{author}\insertauthor\par
   \usebeamerfont{date}\insertdate\par
 ~\\~\\~\\~\\
