@@ -1,5 +1,0 @@
-IMISE corporate design LaTeX beamer template, made in 2017 by Konrad Höffner <konrad.hoeffner@imise.uni-leipzig.de> with help from Stefan Faulhaber.
-
-Needs to be compiled with xelated.
-
-For correct visual appearence, please download the futura font: http://www.zv.uni-leipzig.de/intranet/rektorat/universitaetskommunikation/service/corporate-design/hausschrift-futura.html and put futura.ttc into the same directory as beamerthemeimise.sty.
