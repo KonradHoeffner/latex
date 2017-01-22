@@ -1,25 +1,68 @@
-\documentclass{beamer}
-\usepackage[utf8]{inputenc}
+\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}% does not work correctly with the logo
+%\documentclass[aspectratio=1610]{beamer}% does not work correctly with the logo
+
 \usepackage[english]{babel}
 %\usepackage[ngerman]{babel} %use this for German presentations
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length 
+\usepackage{hyperref}
 
 \usetheme{imise}
 \author{Konrad Höffner}
 \date{2017-01-19}
-\title{IMISE \LaTeX{} Beamer Theme}
-\subtitle{For optimal visual appearance, install the futura font.}
+\title{IMISE Student \LaTeX{} Beamer Theme}
+\subtitle{You must use either this or the Powerpoint template for your IMISE student presentations. Report issues and suggestions at \url{https://github.com/IMISE/imise-beamertheme/issues}.}
 
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{This is the Title of the Frame}
-\textbf{Here} is an \emph{equation}\footnote{This is a footnote}:
-\begin{equation}
-x_t = Ax_{t-1} + w_t
-\end{equation}
-A Sentence.\footnote{With another footnote}
+\begin{frame}
+\frametitle{How to use this Template}
+\begin{enumerate}
+\item Clone or download the complete directory from \url{https://github.com/IMISE/imise-beamertheme}
+\item Get futura.ttc from the University of Leipzig Intranet and place it in the same directory.
+\item Rename imisetest.tex, modify title, author and date.
+\item Fill with your presentation.
+\item Compile with xelatex.
+\item Alternatively to xelatex, you can also use pdflatex but then you need to install the font into your texmf directory and change the template and the beamer theme, which is not trivial to do.
+\end{enumerate}
+If you set up the font correctly, no text should have serifs. Also:\\
+\textbf{This text should be bold.}\\
+\emph{This text should be italic.}
 \end{frame}
+
+\begin{frame}{Example Slide}
+\begin{itemize}
+\item this is a bullet point 
+\item this is a footnote\footnote{footnote text}
+\item this is a clickable link: \url{http://www.imise.de}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tables}
+\begin{tabulary}{\textwidth}{lL}
+\toprule
+advice number    &advice\\
+\midrule
+1   &Use the booktabs package to get nice horizontal lines.\\
+2   &Never use vertical lines in tables.\\
+3   &Use tabulary if your content is so long that it fills the whole width and maybe even needs line breaks.\\
+\bottomrule
+\end{tabulary}
+\end{frame}
+
+\begin{frame}{IMISE Presentation Rules}
+\begin{itemize}
+\item you can usually choose between English and German
+\item don't go over the allotted time
+\begin{itemize}
+\item practise beforehand to estimate your presentation duration 
+\item advice: use a stopwatch or have someone signal you when you have 10, 5, 1 minutes left
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 \end{document}
