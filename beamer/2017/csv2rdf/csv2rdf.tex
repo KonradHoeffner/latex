@@ -1,0 +1,254 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[ngerman]{babel} %use this for German presentations
+
+\usetheme{imise}
+\author{Konrad Höffner}
+\date{2017-01-19}
+\title{CSV2RDF for SNIK}
+\subtitle{Converting SNIK Extraction Tables to RDF/OWL Ontologies}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A Page}
+Here is an equation:
+\begin{equation}
+x_t = Ax_{t-1} + w_t
+\end{equation}
+\end{frame}
+
+\begin{frame}{Problem}
+The SNIK ontology consists of the central meta ontology and several subontologies.
+Each subontology is manually created by people reading text books and extracting their facts to spreadsheets, from now on called "tables".
+As our final representation format is RDF/OWL, and there are thousands of rows extracted from each textbook, we need an automatic conversion method. This task is commonly abbreviated as *CSV2RDF*, referring to the text based *comma separated value* table format.
+ 
+\begin{frame}{}
+For our existing subontologies<sup name="a1">[1](#f1)</sup>, we used a specifically developped tool called [Excel2OWL](https://www.ncbi.nlm.nih.gov/pubmed/27577406).
+Its advantages are that it:
+
+<b id="f1">1</b> bb—"blue book", "Health Information Systems". ob—"orange book", "IT-Projektmanagement im Gesundheitswesen" [↩](#a1)
+
+- specifies an intuitive table input format that doesn't require RDF/OWL knowledge from the extractors and
+- validates the input and warns about certain inconsistencies with the meta ontology
+
+Its disadvantages are that:
+
+- The input format is hard coded and only works for a very specific case, thus
+- it is time consuming to implement an improved modelling method and
+- it is not easyily adaptable to new subtasks, especially as
+- it is not maintained anymore, thus there will be no more bugfixes or updates.
+
+Instead, we are going to use a more flexible approach where we use the generic SPARQLify CSV rewriter tool that provides the SML mapping language. This has the advantages that
+
+- The development time is massively reduced (writing a mapping configuration vs developing a whole tool).
+- No maintenance is necessary.
+- SML is very close to SPARQL, so resulting RDF can be modelled very intuitively and little extra training is necessary.
+- SPARQLify is open source and the developer is very responsive to requests for help or new features.
+
+and the disadvantages that
+
+- The mapping languing is less expressive than a full-fledged programming language, thus
+- the input format needs to be more closely aligned to RDF/OWL, thus
+- the extractors need a basic knowledge of RDF/OWL.
+- We need to validate the input separately.
+- SPARQLify is a research prototype made in part time by a single (even though very talented and enthusiastic) developer, not industrial strength software made by a large team. Thus, setting it up is a bit tricky and a few workarounds are necessary.
+
+A third option would be a imperative mapping language where you "program" your mapping like in Excel2OWL but don't have to develop or maintain the tool itself.
+
+Due to the major saving of time and the increased flexibility, we decided to use SPARQLify CSV for our upcoming subontologies.
+Providing a basic level of RDF/OWL knowledge is useful is useful anyways, because it helps the extractors understand, wheter the process captures what they actually intent to model.
+This gap was especially problematic for `owl:someValuesFrom` existential restrictions, which were always generated for all triples using meta ontology properties by Excel2OWL, even though the actual intention of the extractor may have been something different, like a universal `owl:allValuesFrom` quantifier or a direct connection between the classes.
+
+
+<!--
+If we could choose the format of the tables freely, the task would be trivial, as we could define a mapping from CSV to RDF with a table containing one triple per row with three columns containing subject, predicate and object.
+In that case we could also just let our extractors use RDF directly, but they are no RDF specialists
+
+There is a tension between (1) the closeness to RDF/OWL and (2) the intuitiveness for the extractor.
+(1) results in less mapping effort, more modelling freedom and less nunances lost in translation
+while
+(2) means less initial training, faster extraction and less modelling errors.
+Further criteria for the tool we are looking for are (3) time for initial setup or development (4)
+-->
+
+\begin{frame}{}
+## Related Work
+CSV2RDF is a common task in the field, which caused the W3C to produce a [recommendation document](https://www.w3.org/TR/csv2rdf/) on 2015-12-17.
+There are many existing CSV2RDF tools  (see the lists of [the W3C ](https://www.w3.org/wiki/ConverterToRdf#CSV_.28Comma-Separated_Values.29) and
+[timrdf](https://github.com/timrdf/csv2rdf4lod-automation/wiki/Alternative-Tabular-to-RDF-converters])). Almost any of them could be used for the task, so I chose SPARQLify CSV for my own convenience because I [am already experienced with it](http://svn.aksw.org/papers/2015/SEMANTICS_ITMOLOD_DEMO/public.pdf) and know that it works reliably and because I have a good connection with the developer, Claus Stadler from AKSW, so that I can get help and give feedback about bugs and useful enhancements on short notice. Still, I went through the lists in case there is some killer feature available somewhere else and to contribute something back to Claus.
+
+[Mapping Large Scale Research Metadata to Linked Data](https://arxiv.org/pdf/1506.04006v2.pdf) compares the speed and memory usage of different RDF producing tools, which is relevant when you have hundreds of millions of triples but we only have several thousand triples in total so the performance is irrelevant for us.
+They initially considered Tarql, SPARQLify and Tabels 
+
+<!--
+In short, the following tools could all have been used as well, but none of them had a killer feature either for our case, but may be interesting for you if
+you plan to do "CSV2RDF-ing" on a different task.-->
+
+[csv2rdf4lod]
+
+[Karma](http://usc-isi-i2.github.io/karma) is a semi-automatic approach with a graphical user interface that seems great on unknown data with a large schema but not necessary in our case where we designed a simple input format ourselves.
+
+[Any23](http://any23.apache.org) accepts a wide range of input formats
+
+[CSVImport](http://aksw.org/Projects/CSVImport.html) is a special purpose tool for RDF Data Cubes, that is multidimensional numerical data.
+
+[Tarql](http://tarql.github.io/) is actually quite similar to SPARQLify CSV; you write the mapping as a SPARQL 1.1 query. Some of my feature requests for SPARQLify are already implemented there such as "skip bad rows" with `WHERE { FILTER (BOUND(?d)) }`, "split a field value into multiple values" with the `apf:strSplit (?var "<delimiter>")` property function and `expandPrefixedName(?var)`. This lead me to abandon SPARQLify for the moment and switch to tarql. 
+
+basically write SPARQL is very comfortable
+
+\begin{frame}{}
+Future Work
+mapping would be a Groovy script file
+but that needs Groovy expertise
+bus factor
+Claus Stadler thinks about SPARQL based imperative extensions
+three components in the mapping
+
+1. line by line
+2. program code
+using lambda expressions
+
+```
+mapper.define("y").asUri((col)-> prefix("owl")+col)
+?y = uri (owl:,?col)
+
+mapper.setPrefix("ex","http://")
+.addMapping("myMapping")
+.addTriple("?s a ex:foobar")
+.define("s").asUri()
+```
+
+3. load the table into an SQL server to use SQL like explode ("")
+4. workflow engine for large files to resume after crashes
+
+## Future Work
+- train extractors and check adoption by them
+- use with full data when available
+
+
+
+Now want to apply it to our own data and take look at the first few rows including the headers, where we removed spaces to use them in the [SML Mapping Language](http://sparqlify.org/smlLanguage):
+
+| SubjektUri                     	| SubjDe                                  	| SubjEn                   	| SubjAltDe 	| SubjAltEn 	| Subjekttyp  	| Relation        	| Objekt               	| SeiteRelation 	| Definition                                        	| SeiteDefinition 	| Kapitel 	|
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Abgb                           	| Allgemeines Bürgerliches Gesetzbuch (Ö) 	|                          	| ABGB      	|           	| EntityType  	| rdfs:subClassOf 	| Gesetz               	|               	| Allgemeines Bürgerliches Gesetzbuch (Österreich). 	| Website;67      	| RECHT   	|
+| Ablauforganisation             	| Ablauforganisation                      	| Organizational Structure 	|           	|           	| EntityType  	| meta:isBasedOn  	| ImKonzept            	| 18            	|                                                   	|                 	| ERMOD   	|
+| AbleitenTeilstrategien         	| Ableiten von Teilstrategien             	|                          	|           	|           	| Function    	|                 	|                      	|               	|                                                   	| 117;120         	|         	|
+| AbstimmenUnternehmensstrategie 	| Abstimmen mit der Unternehmensstrategie 	|                          	|           	|           	| Function    	| meta:uses       	| Wettbewerbsstrategie 	| 117           	|                                                   	|                 	|         	|
+| AbstimmenUnternehmensstrategie 	| Abstimmen mit der Unternehmensstrategie 	| business-IT-alignment    	|           	|           	| Function    	|                 	|                      	|               	| Da die strategischen IT-Ziele [...]               	| 117             	|         	|
+| Abstraktionsprinzip            	| Abstraktionsprinzip                     	|                          	|           	|           	| EntityType  	| rdfs:subClassOf 	| Architekturprinzip   	| 52            	| Das Abstraktionsprinzip verlangt [...]            	| 52              	| ARCHI   	|
+| Abstraktionsprinzip            	| Abstraktionsprinzip                     	|                          	|           	|           	| EntityType  	| rdfs:subClassOf 	| Architekturprinzip   	| 52            	| Das Abstraktionsprinzip verlangt [...]            	| 52              	| ARCHI   	|
+
+As SPARQlify cannot guess the prefixes of our entites, we had to provide them in the "Relation" column.
+For SubjektUri, Subjekttyp, Relation and Objekt and Kapitel, we don't need prefixes though because they always imply the local (default) prefix, which we can add in the mapping.
+
+The SML file, which specifies the mapping for a specific table format, is surprisingly simple and needs only minor adaptions for future subontologies:
+
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX he: <http://www.snik.eu/ontology/he/>
+PREFIX meta: <http://www.snik.eu/ontology/meta/>
+
+Create View Template test As
+  Construct {
+    ?s  a owl:Class;
+        meta:subTopClass ?st;
+        rdfs:label ?lde, ?len;
+        skos:altLabel ?lade, ?laden;
+        ?p ?o;
+        he:page ?pd;
+        skos:definition ?d;
+        he:chapter ?ch.
+  }
+
+With
+    ?s = uri(he:, ?SubjektUri)
+    ?st = uri(meta:, ?Subjekttyp)
+    ?lde = plainLiteral(?SubjDe,"de")
+    ?len = plainLiteral(?SubjEn,"en")
+    ?lade = plainLiteral(?SubjAltDe,"de")
+    ?laen = plainLiteral(?SubjAltEn,"en")
+    ?p = uri(?Relation)
+    ?o = uri(he:,?Objekt)
+    ?pr = typedLiteral(?SeiteRelation,xsd:positiveInteger)
+    ?d = plainLiteral(?Definition,"de")
+    ?pd = typedLiteral(?SeiteDefinition,xsd:positiveInteger)
+    ?ch = uri(he:,?Kapitel)
+```
+
+We execute this mapping and filter out debug messages with:
+
+`sparqlify 2>&1 -c heinrich.sml -f htest.csv > heinrich.nt  | egrep -v "(TRACE)|(DEBUG)"`
+
+This results in 8729 triples from our 1439 rows long test table, which is a preliminary excerpt of the ongoing extraction of the new "Heinrich" (he) ontology.
+
+
+```
+<http://www.snik.eu/ontology/he/Ablauforganisation> <meta:isBasedOn> <http://www.snik.eu/ontology/he/ImKonzept> .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.w3.org/2004/02/skos/core#definition> ""@de .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.w3.org/2004/02/skos/core#altLabel> ""@de .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.w3.org/2000/01/rdf-schema#label> "Ablauforganisation"@de .                                                                                                                    
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.snik.eu/ontology/he/page> ""^^<http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.snik.eu/ontology/he/chapter> <http://www.snik.eu/ontology/he/ERMOD> .
+<http://www.snik.eu/ontology/he/Ablauforganisation> <http://www.w3.org/2000/01/rdf-schema#label> "Organizational Structure"@en .
+```
+
+Unfortunately, SPARQLify creates empty triples for empty objects so that we must filter out lines containing `<>` and `""` for now in a `fix` script.
+Different null handling choices will be available soon, however.
+SPARQLify does not support already prefixed URIs and embraces them like `<meta:isBasedOn>`, which we correct in the fix script as well.
+Finally, we convert the ntriples output to turtle for easier viewing.
+Because ntriples doesn't support prefixed values, we merge the output with a predefined prefix file and treat it like a turtle file.
+The full fix script:
+
+```
+cp prefix.ttl /tmp/tmp.ttl                                                                                                                                                                                                                    
+egrep -v '("")|(<>)' heinrich.nt | sed -r "s|<([^ /]+):([^ /]+)>|\1:\2|g" >> /tmp/tmp.ttl
+rapper -i turtle -o turtle /tmp/tmp.ttl > fixed.ttl
+```
+
+While this results in a syntactically correct turtle file, the modelling of meta relations is semantically incorrect, as they should be OWL restrictions and not direct connections between classes.
+For more detail about OWL restrictions,  see [my last blogpost about property validation](https://imise.github.io/snik-ontology/2017/01/12/propertyvalidation/).
+I assume that the old tool had a list of meta properties and treated them differently then the others but SML does not allow this so that we have to create two additional columns *RestrictionProperty* and *RestrictionObject*.
+On the positive side, this allows us to add a third column named "RestrictionType" to finally make explicit and allow not only the formerly exclusively used "someValuesFrom" restriction but also "allValuesFrom" and potentially later the others (owl:hasValue, owl:cardinality, owl:minCardinality, owl:maxCardinality, [more information here](http://www.cs.vu.nl/~guus/public/owl-restrictions/)).
+
+## TARQL
+
+### Installation
+TARQL is very easy to install. Download the [latest release](https://github.com/tarql/tarql/releases), unzip it to a folder of your choice and execute `bin/tarql`. Requires an installed Java 8 JRE.
+
+#### Input Table
+We reuse the modified input table from our SPARQLify CSV try without changes.
+
+### Mapping File
+Unlike SPARQLify, TARQL doesn't have a formally specified language but it has an [introduction](http://tarql.github.io/) that gives a general idea and some [examples](http://tarql.github.io/examples/), that hopefully will be enough for our purposes.
+
+Regular expression to change the binding format, manually changes are still necessary.
+`:%s/\(?[a-z]*\) = \(.*\)$/BIND (\2 AS \1)/`
+expandPrefixedName
+
+Plain literals:
+`:%s/plainLiteral/STRLANG`
+
+Our required null handling by default. See...
+
+```
+he:AbleitenTeilstrategien
+        rdf:type          owl:Class ;
+        meta:subTopClass  meta:Function ;
+        rdfs:label        "Ableiten von Teilstrategien"@de .
+```
+
+... which has a German label but no English one. Still, the bound part of the row is mapped and there are no empty values.
+
+
+
+\end{document}
