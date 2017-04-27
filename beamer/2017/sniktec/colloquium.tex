@@ -1,7 +1,5 @@
 \documentclass{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-%\usepackage[ngerman]{babel} %use this for German presentations
+\usepackage[ngerman]{babel}
 \usepackage{booktabs}
 \usepackage{tabulary}
 \usepackage{siunitx}
@@ -12,7 +10,7 @@
 \title{Tools der SNIK Ontologie}
 %\institute{IMISE Institutskolloquium}
 \subtitle{\url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}}
-
+\newcommand{\todo}[1]{TODO: #1}
 \begin{document}
 \begin{frame}
 \titlepage
@@ -26,16 +24,38 @@
 \item $\approx \num{4000}$ Klassen, 32 Properties, $\approx \num{82000}$ Tripel
 \end{itemize}
 \end{frame}
-% --- oben neu, unten wird angepasst 
+
 \begin{frame}{Einsatz}
-\begin{itemize}
-\item Lehre%, Teachers and Students
-\item 
-\item Datenintegration im Krankenhaus%CIO, Krankenhausleitung
-\item Formalisierung  
-\end{itemize}
+\begin{tabular}{ll}
+\toprule
+\textbf{Ziel}	&\textbf{Zielgruppe}\\
+\midrule
+Lehre			&Lehrer und Studenten\\ 
+Datenintegration	&Krankenhausleitung, CIO\\
+Formalisierung		&Domänenexperten, Ontologen\\
+\bottomrule
+\end{tabular}
 \end{frame}
-% --- unten alt 
+
+\begin{frame}
+\includegraphics[width=\textwidth]{img/protege.png}
+\end{frame}
+
+\begin{frame}{Einsatz}
+\begin{tabulary}{\textwidth}{lLL}
+\toprule
+\textbf{Ziel}		&\textbf{Zielgruppe}		&\textbf{Wünsche}\\
+\midrule
+Lehre			&Lehrer und Studenten		&Visualisierung, RDF-Browser\\
+~\\
+Datenintegration	&Krankenhausleitung, CIO	&SPARQL-Endpunkt\\
+~\\
+Formalisierung		&Domänenexperten, Ontologen	&RDF Dump, Statistiken\\
+\bottomrule
+\end{tabulary}
+\end{frame}
+
+% --- alt 
 \begin{frame}{Ziele}
 \begin{itemize}
 \item freie Verfügbarkeit
