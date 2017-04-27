@@ -4,30 +4,86 @@
 %\usepackage[ngerman]{babel} %use this for German presentations
 \usepackage{booktabs}
 \usepackage{tabulary}
+\usepackage{siunitx}
 
 \usetheme{imise}
 \author{Konrad Höffner}
-\date{2017-05-16}
-\title{Technische Umgebung von SNIK}
-\institute{IMISE Institutskolloquium}
-%\subtitle{Kurzer Überblick für das Institutskolloqiuum}
+\date{2017-05-16, Institutskolloquium}
+\title{Tools der SNIK Ontologie}
+%\institute{IMISE Institutskolloquium}
+\subtitle{\url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}}
 
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
+\begin{frame}{SNIK Ontologie}
+\begin{itemize}
+\item Semantisches Netz des Informationsmanagements im Krankenhaus
+\item Fakten aus Lehrbüchern extrahiert
+\item Handmodelliertes Metamodell
+\item $\approx \num{4000}$ Klassen, 32 Properties, $\approx \num{82000}$ Tripel
+\end{itemize}
+\end{frame}
+% --- oben neu, unten wird angepasst 
+\begin{frame}{Einsatz}
+\begin{itemize}
+\item Lehre%, Teachers and Students
+\item 
+\item Datenintegration im Krankenhaus%CIO, Krankenhausleitung
+\item Formalisierung  
+\end{itemize}
+\end{frame}
+% --- unten alt 
+\begin{frame}{Ziele}
+\begin{itemize}
+\item freie Verfügbarkeit
+\item Datensicherung
+\item Qualitätskontrolle und -verbesserung
+\pause
+\item Services für Mensch \& Maschine
+\item Effiziente Entwicklung und Qualitätskontrolle
+\end{itemize}
+\end{frame}
+
+\section{Services}
+\begin{frame}{Services für Menschen}
+\begin{itemize}
+\item Visualisierung: Gesamtüberblick, Beziehungen zwischen den Klassen
+\item Browsing: Detailansicht einer Klasse
+\item Qualitätskontrolle: Kontrolle zufällige Stichproben
+\item Ticketsystem: Melden zufällig entdeckter Fehler 
+\item Social Media: Facebook, Twitter, technisches Blog
+\end{itemize}
+\end{frame}
+
 \begin{frame}
 \includegraphics[width=\textwidth]{img/architecture.png}
 \end{frame}
 
-\begin{frame}{Ausgangspunkt}
+\begin{frame}{Beispiel: RDF Browser}
+\centering\includegraphics[height=0.8\textheight]{img/browse.png}
+\end{frame}
+
+\begin{frame}{Services für Maschinen}
 \begin{itemize}
-%\item SNIK Forschungsprojekt
-\item Extraktionstabellen mit Fakten aus Lehrbüchern 
-\item Handmodelliertes Metamodell
+\item Serialisiertes RDF: RDF/XML kann von fast allen Tools gelesen werden, z.B. Protégé
+\item SPARQL Endpunkt für formale Abfragen, externe Services, z.B. LodLive   
+\end{itemize}
+\includegraphics[width=\textwidth]{img/lodlive.png}
+\end{frame}
+
+
+\begin{frame}{Service: Graphvisualisierung}
+\includegraphics[width=\textwidth]{img/graph.png}
+\begin{itemize}
+\item viele neue Funktionen, z.B. Stern, Doppelstern 
+\item \url{http://www.snik.eu/graph}: Öffentliche, stabile Version
+\item \url{http://www.snik.eu/pgraph}: Private, experimentelle Version mit CIOX und Heinrich 
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Ziele I}
 \begin{itemize}
@@ -56,16 +112,6 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Ziele II}
-\begin{itemize}
-\item freie Verfügbarkeit
-\item Datensicherung
-\item Qualitätskontrolle und -verbesserung
-\pause
-\item Services für Mensch \& Maschine
-\item Effiziente Entwicklung und Qualitätskontrolle
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Effizienz}
 \begin{itemize}
@@ -75,39 +121,6 @@
 \item Keine Rücksicht auf veraltete Systeme
 \item Tools und Beratung durch Arbeitsgruppe AKSW der Uni Leipzig
 \item Komponenten als Docker Container durch Sebastian Stäubert 
-\end{itemize}
-\end{frame}
-
-\section{Services}
-\begin{frame}{Services für Menschen}
-\begin{itemize}
-\item Visualisierung: Gesamtüberblick, Beziehungen zwischen den Klassen
-\item Browsing: Detailansicht einer Klasse
-\item Qualitätskontrolle: Kontrolle zufällige Stichproben
-\item Ticketsystem: Melden zufällig entdeckter Fehler 
-\item Social Media: Facebook, Twitter, technisches Blog
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Beispiel: RDF Browser}
-\centering\includegraphics[height=0.8\textheight]{img/browse.png}
-\end{frame}
-
-\begin{frame}{Services für Maschinen}
-\begin{itemize}
-\item Serialisiertes RDF: RDF/XML kann von fast allen Tools gelesen werden, z.B. Protégé
-\item SPARQL Endpunkt für formale Abfragen, externe Services, z.B. LodLive   
-\end{itemize}
-\includegraphics[width=\textwidth]{img/lodlive.png}
-\end{frame}
-
-
-\begin{frame}{Service: Graphvisualisierung}
-\includegraphics[width=\textwidth]{img/graph.png}
-\begin{itemize}
-\item viele neue Funktionen, z.B. Stern, Doppelstern 
-\item \url{http://www.snik.eu/graph}: Öffentliche, stabile Version
-\item \url{http://www.snik.eu/pgraph}: Private, experimentelle Version mit CIOX und Heinrich 
 \end{itemize}
 \end{frame}
 
