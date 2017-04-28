@@ -11,6 +11,16 @@
 %\institute{IMISE Institutskolloquium}
 \subtitle{\url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}}
 \newcommand{\todo}[1]{TODO: #1}
+\newcommand{\imageslide}[2]
+{
+%\usebackgroundtemplate{\includegraphics[height=1.05\textheight]{#1}}
+%\usebackgroundtemplate{\includegraphics[width=1.07\textwidth]{#1}}
+\begin{frame}{#1}
+\centering\includegraphics[width=1\textwidth,height=0.8\textheight,keepaspectratio]{#2}
+\end{frame}
+%\usebackgroundtemplate{}
+}
+
 \begin{document}
 \begin{frame}
 \titlepage
@@ -37,7 +47,7 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \end{tabular}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{RDF Dump in Protégé}
 \includegraphics[width=\textwidth]{img/protege.png}
 \end{frame}
 
@@ -46,14 +56,22 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \toprule
 \textbf{Ziel}		&\textbf{Zielgruppe}		&\textbf{Wünsche}\\
 \midrule
+Formalisierung		&Domänenexperten, Ontologen	&RDF Dump, Statistiken, Evaluation, Ticketsystem\\
+~\\
 Lehre			&Lehrer und Studenten		&Visualisierung, RDF-Browser\\
 ~\\
-Datenintegration	&Krankenhausleitung, CIO	&SPARQL-Endpunkt\\
-~\\
-Formalisierung		&Domänenexperten, Ontologen	&RDF Dump, Statistiken\\
+Datenintegration	&Krankenhausleitung, CIO	&SPARQL-Endpunkt, Dokumentation\\
 \bottomrule
 \end{tabulary}
 \end{frame}
+
+\imageslide{Protégé}{img/protege.png}
+\imageslide{Visualisierung I---Cytoscape.js}{img/graph-entitytype.png}
+\imageslide{Visualisierung II---Cytoscape.js}{img/graph-erf.png}
+\imageslide{SPARQL Endpoint}{img/sparqlresult.png}
+\imageslide{RDF Browser---LodLive}{img/browse-cio.png}
+\imageslide{Dashboard---Sgvizler}{img/dashboard-medley.png}
+
 
 % --- alt 
 \begin{frame}{Ziele}
@@ -82,10 +100,6 @@ Formalisierung		&Domänenexperten, Ontologen	&RDF Dump, Statistiken\\
 \includegraphics[width=\textwidth]{img/architecture.png}
 \end{frame}
 
-\begin{frame}{Beispiel: RDF Browser}
-\centering\includegraphics[height=0.8\textheight]{img/browse.png}
-\end{frame}
-
 \begin{frame}{Services für Maschinen}
 \begin{itemize}
 \item Serialisiertes RDF: RDF/XML kann von fast allen Tools gelesen werden, z.B. Protégé
@@ -98,9 +112,7 @@ Formalisierung		&Domänenexperten, Ontologen	&RDF Dump, Statistiken\\
 \begin{frame}{Service: Graphvisualisierung}
 \includegraphics[width=\textwidth]{img/graph.png}
 \begin{itemize}
-\item viele neue Funktionen, z.B. Stern, Doppelstern 
 \item \url{http://www.snik.eu/graph}: Öffentliche, stabile Version
-\item \url{http://www.snik.eu/pgraph}: Private, experimentelle Version mit CIOX und Heinrich 
 \end{itemize}
 \end{frame}
 
@@ -191,13 +203,21 @@ Teilsynchronisation	&möglich					&nicht möglich\\
 
 \begin{frame}[fragile]{Fragen?}
 \begin{itemize}
-\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/heidelberg/sniktec.pdf}
-\item LodView RDF Browser \url{www.snik.eu/ontology}
+\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+\vspace{0.5em}%here it works as intended
+\item Überblick \url{http://www.snik.eu}
+\item Visualisierung \url{http://www.snik.eu/graph}
+\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
+\item RDF Browser \url{http://www.snik.eu/ontology}
+\item Evaluation \url{http://www.snik.eu/evaluation}
 \item Twitter \url{https://twitter.com/snik\_proj}
 \item Technisches Blog \url{https://imise.github.io/snik-ontology}
-\item Graphvisualisierung \url{http://www.snik.eu/(p)graph}
-\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
 \item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Externe Tools und Bibliotheken}
+\begin{itemize}
 \item LIMES Interlinker \url{http://aksw.org/Projects/LIMES}
 \item Tarql Konvertierungstool \url{https://tarql.github.io/}
 \item Cytoscape.js Graphbibliothek \url{http://js.cytoscape.org/}
