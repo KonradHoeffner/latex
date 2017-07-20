@@ -1,0 +1,184 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{siunitx}
+
+\usetheme{imise}
+\author{Konrad Höffner}
+\date{2017-07-20, Abschlusstreffen}
+\title{Meine persönlichen Erkenntnisse aus dem SNIK-Projekt}
+\subtitle{OWL Restrictions, Toolentwicklung}
+%{\url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}}
+\newcommand{\todo}[1]{TODO: #1}
+\newcommand{\imageslide}[3][]
+{
+\begin{frame}{#2}
+\centering\includegraphics[width=1\textwidth,height=0.8\textheight,keepaspectratio]{#3}
+\\#1
+\end{frame}
+%\usebackgroundtemplate{}
+}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{OWL Restrictions}
+
+\imageslide{Vorstellung}{img/virtual.png}
+\imageslide{Vorstellung}{img/virtual-expectation.png}
+
+\begin{frame}{OWL Restrictions}
+\begin{itemize}
+\item in existierender RDF-Datei vorhanden
+\item mir vorher unbekannt
+\item Verwendung semantisch richtig, ermöglicht Reasoning
+\item Aber:
+\item ständige Verwirrung bei Extraktion 
+\item schwerer zu implementieren
+\item Möglichkeiten nicht genutzt
+\item 
+\item Überlegung: Abschaffung
+\end{itemize}
+\end{frame}
+
+\begin{frame}{OWL Restrictions}
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{OWL Restrictions}
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{OWL Restrictions}
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\section{Entwicklung}
+
+\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{../sniktec/img/5star.png}
+
+\begin{frame}{Einsatz}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Ziel}	&\textbf{Zielgruppe}\\
+\midrule
+Lehre			&Lehrer und Studenten\\ 
+Datenintegration	&Krankenhausleitung, CIO\\
+Formalisierung		&Domänenexperten, Ontologen\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Ziele}
+\begin{enumerate}
+\item Publizieren 
+\item Visualisieren 
+\item Evaluieren
+\item Integrieren 
+\end{enumerate}
+\end{frame}
+
+\section{Publizieren}
+
+\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{../sniktec/img/rdfdump.png}
+\imageslide[\url{https://protegewiki.stanford.edu/}]{RDF Dump in Protégé}{../sniktec/img/protege.png}
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{../sniktec/img/sparqlresult.png}
+
+\section{Visualisieren}
+
+\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{../sniktec/img/browse-cio.png}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung I}{../sniktec/img/graph-entitytype.png}
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{../sniktec/img/graph-erf.png}
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Kürzester Weg}{../sniktec/img/shortestpath.png}
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{../sniktec/img/spiderworm.png}
+
+
+\begin{frame}{LodLive \& Relfinder}
+\centering
+\includegraphics[width=\textwidth]{../sniktec/img/lodlive.png}\\
+\includegraphics[width=\textwidth]{../sniktec/img/relfinder.png}
+\end{frame}
+
+\section{Evaluieren}
+
+\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{../sniktec/img/dashboard-medley.png}
+\imageslide[\url{https://github.com/IMISE/snik-ontology/issues}]{Ticketsystem}{../sniktec/img/gitissue.png}
+\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{../sniktec/img/triplecheckmate.png}
+
+\section{Integrieren}
+
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{../sniktec/img/sparqlresult.png}
+
+\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{../sniktec/img/limes.png}
+
+\iffalse
+\begin{frame}{Interlinking}
+\begin{itemize}
+\item Verknüpfungen zwischen Klassen verschiedener Ontologien
+\item LIMES Tool von AKSW um Axel Ngonga
+\item Finden von Kandidaten durch Stringähnlichkeit, manuelle Verifizierung und Kategorisierung
+\end{itemize}
+\end{frame}
+\fi
+
+\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{../sniktec/img/github.png}
+
+\section{Überblick}
+
+\begin{frame}
+\includegraphics[width=\textwidth]{../sniktec/img/architecture.png}
+\end{frame}
+
+\begin{frame}[fragile]{Fragen?}
+\begin{itemize}
+\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+\vspace{0.5em}%here it works as intended
+\item Überblick \url{http://www.snik.eu}
+\item Visualisierung \url{http://www.snik.eu/graph}
+\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
+\item RDF Browser \url{http://www.snik.eu/ontology}
+\item Evaluation \url{http://www.snik.eu/evaluation}
+\item Twitter \url{https://twitter.com/snik\_proj}
+\item Technisches Blog \url{https://imise.github.io/snik-ontology}
+\item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Externe Tools und Bibliotheken}
+\begin{itemize}
+\item LIMES Interlinker \url{http://aksw.org/Projects/LIMES}
+\item Tarql Konvertierungstool \url{https://tarql.github.io/}
+\item Cytoscape.js Graphbibliothek \url{http://js.cytoscape.org/}
+\item Cytoscape Desktopvisualisierung \url{http://www.cytoscape.org/}
+\end{itemize}
+\end{frame}
+ 
+\end{document}
