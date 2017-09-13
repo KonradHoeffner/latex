@@ -2,6 +2,15 @@
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
 \setbeameroption{show notes on second screen}
+% beamer xelatex notes bug workaround, see https://tex.stackexchange.com/questions/232168/normal-text-is-invisible-when-using-beamer-with-notes-and-xelatex 
+\makeatletter 
+\def\beamer@framenotesbegin{% at beginning of slide
+    \usebeamercolor[fg]{normal text}
+    \gdef\beamer@noteitems{}% 
+    \gdef\beamer@notes{}% 
+}
+\makeatother
+% workaround end **************************************************************
 \usepackage[ngerman]{babel}
 \usepackage{booktabs}
 \usepackage{tabulary}
@@ -26,6 +35,16 @@ GMDS Jahrestagung, Raum A01 0-006}
 \begin{document}
 \begin{frame}
 \titlepage
+\iffalse
+\note{
+\begin{itemize}
+\item 
+\item  
+\item 
+\item 
+\end{itemize}
+}
+\fi
 \end{frame}
 
 
@@ -38,7 +57,7 @@ GMDS Jahrestagung, Raum A01 0-006}
 \end{itemize}
 
 \begin{enumerate}
-\item Rechtssicherheit für Benutzer durch offnene Datenlizenz. PDFs der Bücher dürfen allerdings nicht online gestellt werden. Nur wenn jemand fragt:
+\item Rechtssicherheit für Benutzer durch offene Datenlizenz. PDFs der Bücher dürfen allerdings nicht online gestellt werden. Nur wenn jemand fragt:
 \begin{itemize}
 \item CC BY-NC-SA 4.0 Lizenz (Creative Commons Attribution-NonCommercial-ShareAlike).
 \item Erlaubt: Teilen, Adaptieren
@@ -49,8 +68,8 @@ GMDS Jahrestagung, Raum A01 0-006}
 \item Konvertierung der Tabelle zu einer Ontologie mittels Tarql scripts, viel Vorarbeit in Tabellen 
 \item Interlinks zwischen Büchern automatisch erstellt durch LIMES
 \end{enumerate}
-
 }
+
 \begin{frame}{Einsatz}
 \centering
 \begin{tabular}{ll}
@@ -62,28 +81,80 @@ Datenintegration	&Krankenhausleitung, CIO\\
 Formalisierung		&Domänenexperten, Ontologen\\
 \bottomrule
 \end{tabular}
+\note{
+\begin{itemize}
+\item benötigte Tools hängen von Zielen und Zielgruppen ab 
+\item Lehre: Vermittlung des Fachwissens an Studenten. Für Vorteil gegenüber/zusätzlich zu Lesen der Bücher: kein Vorwissen, schnelle, simple und intuitive Wissensvermittlung.
+\item Datenintegration: Ontologie kann als Vokabular von verschiedenen Anwendungen benutzt werden
+\item Verbesserung des durch Studenten extrahierten formalisierten Fachwissens durch Ontologen und Domänenexperten
+\end{itemize}
+}
 \end{frame}
 
-\begin{frame}{Ziele}
-\begin{enumerate}
-\item Publizieren 
-\item Visualisieren 
-\item Evaluieren
-\item Integrieren 
-\end{enumerate}
-\end{frame}
+\imageslide[\url{https://github.com/IMISE/snik-ontology}]{Ausgangspunkt: RDF Dump}{img/rdfdump.png}{
+\begin{itemize}
+\item Nach Erklimmen der 5 Stufen erhalten wir eine RDF/OWL Ontologie, im Bild im RDF/XML-Serialisierungsformat
+\item in Metaontologie und Unterontologien aufgeteilt, eine pro Buch/andere Quelle
+\item große Ontologie, weist viele Eigenschaften einer Wissensdatenbank mit Instanzdaten auf
+\end{itemize}
+}
+
+\imageslide[\url{https://protegewiki.stanford.edu/}]{RDF Dump in Protégé}{img/protege.png}{
+\begin{itemize}
+\item mit RDF Dump kann man nicht viel machen, Ontologen können es z.B. in Protégé bearbeiten (siehe Bild) 
+\item viele Ontologieentwickler hören an dieser Stelle schon auf, aber für unsere Ziele nicht genug, da nur für Experten geeignet
+\item um Ziele zu erfüllen, haben wir Services entwickelt 
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{
+\begin{itemize}
+\item Kernservice, auf dem fast alle anderen aufbauen 
+\item SPARQL ist defacto-Standard-Abfragespache für Linked Data
+\item Experten können selbst abfragen stellen, andere greifen auf Services zu
+\item analog zu relationaler Datenbank
+\end{itemize}
+}
 
 
-\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{img/rdfdump.png}{}
-\imageslide[\url{https://protegewiki.stanford.edu/}]{RDF Dump in Protégé}{img/protege.png}{}
-\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}
+\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{
+\begin{itemize}
+\item jeder Begriff unserer Ontologie hat eine URL 
+\item aufgelöst zu LodView, Detailansicht der Eigenschaften des Begriffs
+\item für alle Zielgruppen 
+\item RDF besteht aus Tripeln: Subjekt (aufgerufene URL), Prädikat (Spalte links), Objekt (Spalte rechts)
+\end{itemize}
+}
 
-\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{}
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung I}{img/graph-entitytype}{
+\begin{itemize}
+\item LodView bietet Detailansicht aber keinen Überblick  
+\item Eigenentwicklung einer Webapp zur Visualisierung der Ontologie als Graph auf Basis der Cytoscape.js-Bibliothek
+\item jeder Begriff ein Knoten (Kreis) im Graph, Beziehungen sind Kanten
+\item 
+\item 
+\end{itemize}
+}
 
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung I}{img/graph-entitytype.png}{}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{img/graph-erf.png}{}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Kürzester Weg}{img/shortestpath.png}{}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{img/spiderworm.png}{}
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{img/graph-erf.png}{
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{img/spiderworm.png}{
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+}
 
 \begin{frame}{LodLive \& Relfinder}
 \centering
