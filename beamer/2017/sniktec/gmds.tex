@@ -35,16 +35,17 @@ GMDS Jahrestagung, Raum A01 0-006}
 \begin{document}
 \begin{frame}
 \titlepage
-\iffalse
 \note{
+Publikum motivieren! der Session, Leute sofort begeistern, damit sie nicht einschlafen. 
 \begin{itemize}
-\item 
-\item  
-\item 
-\item 
+\item Akzeptanz des Semantic Web in Community der Medizinischer Informatik gestiegen
+\item Vielleicht haben Sie ja Daten, bei denen Sie sich nicht sicher sind, ob sich Konvertierung nach Linked Data lohnt und wie aufwändig das ist?
+\item Oder sie haben sich bereits entscheiden, wissen aber nicht wie?
+\item Technische Umgebung des SNIK-Projekts als Beispiel, viel lässt sich auf andere Anwendungsfälle übertragen 
+\item Verwenden von Standardformaten: starke Reduktion von Entwicklungsaufwand durch Verwendung und Adaption existierender Services
+\item Gesamte hier vorgestellte technische Umgebung wurde von nur zwei Personen in Teilzeit aufgesetzt. 
 \end{itemize}
 }
-\fi
 \end{frame}
 
 
@@ -131,28 +132,24 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \item LodView bietet Detailansicht aber keinen Überblick  
 \item Eigenentwicklung einer Webapp zur Visualisierung der Ontologie als Graph auf Basis der Cytoscape.js-Bibliothek
 \item jeder Begriff ein Knoten (Kreis) im Graph, Beziehungen sind Kanten
-\item 
-\item 
+\item Farben für unterschiedliche Unterontologien, rot Metamodell 
 \end{itemize}
 }
 
 \imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{img/graph-erf.png}{
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
-\item 
+\item die üblichen Graphoperationen: kürzester Weg, direkte Nachbarn
+\item Suche 
+\item Navigation
+\item Integration mit anderen Services: RDF Browser für bestimmten Begriff öffnen, Fehler melden, editieren
+\item Probieren Sie es selbst! www.snik.eu/graph
 \end{itemize}
 }
 
 \imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{img/spiderworm.png}{
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
-\item 
+\item Spiderworm: kürzester Weg + alle direkten Nachbarn vom Zielknoten
+\item Einsatz in der Lehre
 \end{itemize}
 }
 
@@ -160,19 +157,44 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \centering
 \includegraphics[width=\textwidth]{img/lodlive.png}\\
 \includegraphics[width=\textwidth]{img/relfinder.png}
+\note{
+\begin{itemize}
+\item über SPARQL Endpunkt kann man auch externe Services anbinden 
+\item keinerlei Entwicklungsaufwand für uns
+\item Beispiel: LodLive zum schrittweise Graph-Explorieren
+\item Beispiel: Relfinder für alle kurzen Wege zwischen zwei Knoten, genaue Beziehung zwischen ihnen
+\end{itemize}
+}
 \end{frame}
 
 
 
-\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{img/dashboard-medley.png}{}
-\imageslide[\url{https://github.com/IMISE/snik-ontology/issues}]{Ticketsystem}{img/gitissue.png}{}
-\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}{}
+\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{img/dashboard-medley.png}{
+\begin{itemize}
+\item für Fehlersuche  
+\item 
+\item 
+\end{itemize}
+}
 
+\imageslide[\url{https://github.com/IMISE/snik-ontology/issues}]{Ticketsystem}{img/gitissue.png}{
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+}
 
+\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}
 
-\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}
+\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}{
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+}
 
-\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}{}
 
 \iffalse
 \begin{frame}{Interlinking}
@@ -184,17 +206,29 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \end{frame}
 \fi
 
-\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{}
-
+\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+}
 
 
 \begin{frame}
 \includegraphics[width=\textwidth]{img/architecture.png}
+\note{
+\begin{itemize}
+\item da kennst du dich ja selbst am besten aus 
+\item 
+\item 
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}[fragile]{Fragen?}
 \begin{itemize}
-\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+%\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
 \vspace{0.5em}%here it works as intended
 \item Überblick \url{http://www.snik.eu}
 \item Visualisierung \url{http://www.snik.eu/graph}
@@ -207,13 +241,4 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Externe Tools und Bibliotheken}
-\begin{itemize}
-\item LIMES Interlinker \url{http://aksw.org/Projects/LIMES}
-\item Tarql Konvertierungstool \url{https://tarql.github.io/}
-\item Cytoscape.js Graphbibliothek \url{http://js.cytoscape.org/}
-\item Cytoscape Desktopvisualisierung \url{http://www.cytoscape.org/}
-\end{itemize}
-\end{frame}
- 
 \end{document}
