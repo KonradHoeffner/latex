@@ -1,0 +1,279 @@
+% 2019-05-22 11:20--11:40
+% 7. Leipziger Semantic Web Tag, English presentation about the SNIK project and ontology.
+% 15 minutes presentation, 5 minutes for questions.
+
+%\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length 
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\usetheme{imise2}
+\author{Konrad Höffner, Institute for Medical Informatics, Statistics and Epidemiology}
+%\title{The SNIK Ontology of Information Management in Hospitals}
+\title{SNIK: Teaching Students about Information Management in Hospitals}
+\subtitle{}
+\date{May 22, 2019}
+%\date{May 22, 2019, LSWT 2019, \url{https://lswt2019.aksw.org}}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@imise.uni-leipzig.de} 
+\def\telephone{+49 341 97 16322}
+
+\newcommand{\imageslide}[4][]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\centering\includegraphics[width=1\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+\restoregeometry
+}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Domain}
+% Information Management in Hospitals is a core topic for students of medical computer science.
+% Unfortunately, there are many different views of the domain, whose relationship is often unclear, and the terminology is full of synonyms and homonyms.
+% So this domain is difficult to learn for students. 
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-bb.jpg}
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-ob.jpg}
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-he.jpg}
+\end{frame}
+\restoregeometry
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Ontology}
+% SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
+\centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
+\end{frame}
+\restoregeometry
+
+\begin{frame}{Extraction}
+\end{frame}
+
+\imageslide{Meta Model}{img/metamodel9s.pdf}
+
+\begin{frame}{Example Slide}
+\begin{itemize}
+\item this is a bullet point 
+\item this is a clickable link: \url{http://www.imise.de}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tables}
+\begin{tabulary}{\textwidth}{lL}
+\toprule
+advice number    &advice\\
+\midrule
+1   &Use the booktabs package to get nice horizontal lines.\\
+2   &Never use vertical lines in tables.\\
+3   &Use tabulary if your content is so long that it fills the whole width and maybe even needs line breaks.\\
+\bottomrule
+\end{tabulary}
+\end{frame}
+
+\begin{frame}{Colors}
+The following colors can be used for diagrams, tables and emphasis.
+You may use shades of the colors in $20 \%$ steps for purposes like diagrams.\\
+~\\
+\centering
+\scalebox{1.5}
+{
+\begin{tabulary}{\textwidth}{llll}
+\toprule
+Identifier	&Color					&Shades																		&RGB\\
+\midrule
+mediblue   	&\Huge\color{mediblue}$\blacksquare$	&\Huge\color{mediblue!80}$\blacksquare$\color{mediblue!60}$\blacksquare$\color{mediblue!40}$\blacksquare$\color{mediblue!20}$\blacksquare$	&$(0,138,201)$\\
+mixblue   	&\Huge\color{mixblue}$\blacksquare$	&\Huge\color{mixblue!80}$\blacksquare$\color{mixblue!60}$\blacksquare$\color{mixblue!40}$\blacksquare$\color{mixblue!20}$\blacksquare$	&$(0,167,214)$\\
+aquamarine	&\Huge\color{aquamarine}$\blacksquare$	&\Huge\color{aquamarine!80}$\blacksquare$\color{aquamarine!60}$\blacksquare$\color{aquamarine!40}$\blacksquare$\color{aquamarine!20}$\blacksquare$	&$(0,194,209)$\\
+black		&\Huge\color{black}$\blacksquare$	&\Huge\color{black!80}$\blacksquare$\color{black!60}$\blacksquare$\color{black!40}$\blacksquare$\color{black!20}$\blacksquare$	&$(0,0,0)$\\
+\bottomrule
+\end{tabulary}
+}
+\end{frame}
+
+
+\end{document}
+\iffalse
+\newcommand{\todo}[1]{TODO: #1}
+
+\begin{document}
+
+\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}
+{
+\begin{itemize}
+\item kurze Einführung SNIK-Projekt
+\item offene Bereitstellung von computerverarbeitbaren Fakten des Informationsmanagements im Krankenhaus aus Lehrbüchern
+\item Nutzen maximieren: 5 Sterne Schema für offene Daten von Tim Berners-Lee
+\end{itemize}
+
+\begin{enumerate}
+\item Rechtssicherheit für Benutzer durch offene Datenlizenz. PDFs der Bücher dürfen allerdings nicht online gestellt werden. Nur wenn jemand fragt:
+\begin{itemize}
+\item CC BY-NC-SA 4.0 Lizenz (Creative Commons Attribution-NonCommercial-ShareAlike).
+\item Erlaubt: Teilen, Adaptieren
+\item Bedingungen: Attribution, Nichtkommerziell, gleiche Lizenz für Derivate. Für eine offene Lizenz recht restriktiv, sind aber für andere Optionen offen
+\end{itemize}
+\item Strukturiertes Format: Lesen der Bücher und manuelles modellieren der Fakten in Tabellen, sehr zeitaufwändig 
+\item Stufe 3 trivial: speichern in offenem Format, in unserem Fall CSV
+\item Konvertierung der Tabelle zu einer Ontologie mittels Tarql scripts, viel Vorarbeit in Tabellen 
+\item Interlinks zwischen Büchern automatisch erstellt durch LIMES
+\end{enumerate}
+}
+
+\begin{frame}{Einsatz}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Ziel}	&\textbf{Zielgruppe}\\
+\midrule
+Lehre			&Lehrer und Studenten\\ 
+Datenintegration	&Krankenhausleitung, CIO\\
+Formalisierung		&Domänenexperten, Ontologen\\
+\bottomrule
+\end{tabular}
+\note{
+\begin{itemize}
+\item benötigte Tools hängen von Zielen und Zielgruppen ab 
+\item Lehre: Vermittlung des Fachwissens an Studenten. Für Vorteil gegenüber/zusätzlich zu Lesen der Bücher: kein Vorwissen, schnelle, simple und intuitive Wissensvermittlung.
+\item Datenintegration: Ontologie kann als Vokabular von verschiedenen Anwendungen benutzt werden
+\item Verbesserung des durch Studenten extrahierten formalisierten Fachwissens durch Ontologen und Domänenexperten
+\end{itemize}
+}
+\end{frame}
+
+\imageslide[\url{https://github.com/IMISE/snik-ontology}]{Ausgangspunkt: RDF Dump}{img/rdfdump.png}{
+\begin{itemize}
+\item Nach Erklimmen der 5 Stufen erhalten wir eine RDF/OWL Ontologie, im Bild im RDF/XML-Serialisierungsformat
+\item in Metaontologie und Unterontologien aufgeteilt, eine pro Buch/andere Quelle
+\item große Ontologie, weist viele Eigenschaften einer Wissensdatenbank mit Instanzdaten auf
+\end{itemize}
+}
+
+\imageslide[\url{https://protegewiki.stanford.edu/}]{RDF Dump in Protégé}{img/protege.png}{
+\begin{itemize}
+\item mit RDF Dump kann man nicht viel machen, Ontologen können es z.B. in Protégé bearbeiten (siehe Bild) 
+\item viele Ontologieentwickler hören an dieser Stelle schon auf, aber für unsere Ziele nicht genug, da nur für Experten geeignet
+\item um Ziele zu erfüllen, haben wir Services entwickelt 
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{
+\begin{itemize}
+\item Kernservice, auf dem fast alle anderen aufbauen 
+\item SPARQL ist defacto-Standard-Abfragespache für Linked Data
+\item Experten können selbst abfragen stellen, andere greifen auf Services zu
+\item analog zu relationaler Datenbank
+\end{itemize}
+}
+
+
+\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{
+\begin{itemize}
+\item jeder Begriff unserer Ontologie hat eine URL 
+\item aufgelöst zu LodView, Detailansicht der Eigenschaften des Begriffs
+\item für alle Zielgruppen 
+\item RDF besteht aus Tripeln: Subjekt (aufgerufene URL), Prädikat (Spalte links), Objekt (Spalte rechts)
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung I}{img/graph-entitytype}{
+\begin{itemize}
+\item LodView bietet Detailansicht aber keinen Überblick  
+\item Eigenentwicklung einer Webapp zur Visualisierung der Ontologie als Graph auf Basis der Cytoscape.js-Bibliothek
+\item jeder Begriff ein Knoten (Kreis) im Graph, Beziehungen sind Kanten
+\item Farben für unterschiedliche Unterontologien, rot Metamodell 
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{img/graph-erf.png}{
+\begin{itemize}
+\item die üblichen Graphoperationen: kürzester Weg, direkte Nachbarn
+\item Suche 
+\item Navigation
+\item Integration mit anderen Services: RDF Browser für bestimmten Begriff öffnen, Fehler melden, editieren
+\item Probieren Sie es selbst! www.snik.eu/graph
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{img/spiderworm.png}{
+\begin{itemize}
+\item Spiderworm: kürzester Weg + alle direkten Nachbarn vom Zielknoten
+\item Einsatz in der Lehre
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Verwandte Begriffe}{img/roleuseinner.png}{
+\begin{itemize}
+\item Vollansicht manchmal unübersichtlich, Anzeige verwandter Begriffe zu einem bestimmten Begriff möglich 
+\end{itemize}
+}
+
+\begin{frame}{LodLive \& Relfinder}
+\centering
+\includegraphics[width=\textwidth]{img/lodlive.png}\\
+\includegraphics[width=\textwidth]{img/relfinder.png}
+\note{
+\begin{itemize}
+\item über SPARQL Endpunkt kann man auch externe Services anbinden 
+\item keinerlei Entwicklungsaufwand für uns
+\item Beispiel: LodLive zum schrittweise Graph-Explorieren
+\item Beispiel: Relfinder für alle kurzen Wege zwischen zwei Knoten, genaue Beziehung zwischen ihnen
+\end{itemize}
+}
+\end{frame}
+
+
+
+\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{img/dashboard-medley.png}{
+\begin{itemize}
+\item Qualitätsmetriken und Statistiken
+\item JavaScript-Bibliothek Sgvizler: SPARQL Queries als Diagramme anzeigen
+\end{itemize}
+}
+
+\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}{
+Stichprobenartige Evaluation einzelner Ressourcen
+}
+
+\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}{
+\begin{itemize}
+\item Automatisches Verknüpfen ähnlicher Begriffe verschiedener Unterontologien 
+\item Finden von Kandidaten durch Textähnlichkeit, manuelle Verifizierung und Kategorisierung
+\item semantische Ähnlichkeit ist future work
+\end{itemize}
+}
+
+\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{
+\begin{itemize}
+\item Bereitstellung der Software und der Ontologie
+\item Ticketsystem 
+\end{itemize}
+}
+
+\begin{frame}[fragile]{Fragen?}
+\begin{itemize}
+%\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+\vspace{0.5em}%here it works as intended
+\item Überblick \url{http://www.snik.eu}
+\item Visualisierung \url{http://www.snik.eu/graph}
+\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
+\item RDF Browser \url{http://www.snik.eu/ontology}
+\item Evaluation \url{http://www.snik.eu/evaluation}
+\item Twitter \url{https://twitter.com/snik\_proj}
+\item Technisches Blog \url{https://imise.github.io/snik-ontology}
+\item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
+\end{itemize}
+\end{frame}
+
+\end{document}
+/fi
