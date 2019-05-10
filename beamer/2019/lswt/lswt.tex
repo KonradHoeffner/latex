@@ -50,8 +50,50 @@
 \end{frame}
 \restoregeometry
 
+\begin{frame}{Problems}
+Core topic for students but...
+\begin{itemize}
+\item large domain
+\item different textbooks and frameworks with different views
+\item different names for the same concept (synonyms)
+\item same name for different concepts  (homonyms)
+\item unclear relationship between sources
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Project Goals}
+\begin{enumerate}
+\item create a modular ontology of Information Management in Hospitals:
+\begin{itemize}
+\item develop a core vocabulary (meta model)
+\item transform textbooks to subontologies 
+\end{itemize}
+\item manage Linked Data Lifecycle 
+\item create teaching tools
+\item offer low-threshold self-learning tools to students
+\end{enumerate}
+\end{frame}
+
+%\section{Ontology Creation}
+
+\imageslide{Meta Model}{img/metamodel9s.pdf}
+
 \newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Extraction}
+\begin{frame}[plain]{~~~~Example}
+~\\~\\
+\begin{itemize}
+\item excerpt of \emph{Health Information Systems}, A. Winter et al.
+\item CIO is responsible for different functions and entity types
+\item functions read information from or write it to the Strategic Information Management Plan
+\end{itemize}
+~\\~\\
+\centering\includegraphics[width=\textwidth,keepaspectratio]{img/snik-graph-cio.png}
+\end{frame}
+\restoregeometry
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Transformation}
 \centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
 \centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
 \centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
@@ -59,24 +101,38 @@
 \end{frame}
 \restoregeometry
 
+\begin{frame}{Transformation Challenges}
+\begin{itemize}
+\item manual, time-consuming extraction
+\item not all extractors have Semantic Web skills 
+\begin{itemize}
+\item table as intermediate step
+\item "media discontinuity", loss of information
+\item inference of OWL restrictions from limited data 
+\end{itemize}
+\item modelling as classes vs. individuals
+\item detailed ontology modelling vs. large amounts of instances 
+\end{itemize}
+\end{frame}
+
+
 %\imageslide{Extraction}{img/5star.png}
 
+
 \newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Ontology}
+\begin{frame}[plain]{~~~~Applications}
 % SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
 \centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
 \end{frame}
 \restoregeometry
 
-\begin{frame}{Extraction}
-\end{frame}
-
-\imageslide{Meta Model}{img/metamodel9s.pdf}
 
 \begin{frame}{Example Slide}
 \begin{itemize}
-\item this is a bullet point 
-\item this is a clickable link: \url{http://www.imise.de}
+\item 
+\item 
+\item 
+\item 
 \end{itemize}
 \end{frame}
 
@@ -254,14 +310,6 @@ Formalisierung		&Domänenexperten, Ontologen\\
 
 \imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}{
 Stichprobenartige Evaluation einzelner Ressourcen
-}
-
-\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}{
-\begin{itemize}
-\item Automatisches Verknüpfen ähnlicher Begriffe verschiedener Unterontologien 
-\item Finden von Kandidaten durch Textähnlichkeit, manuelle Verifizierung und Kategorisierung
-\item semantische Ähnlichkeit ist future work
-\end{itemize}
 }
 
 \imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{
