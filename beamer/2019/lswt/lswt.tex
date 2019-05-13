@@ -13,15 +13,17 @@
 \usepackage{siunitx}
 
 \usetheme{imise2}
-\author{Konrad Höffner, Institute for Medical Informatics, Statistics and Epidemiology}
+\author{Konrad Höffner}%, Institute for Medical Informatics, Statistics and Epidemiology}
 %\title{The SNIK Ontology of Information Management in Hospitals}
-\title{SNIK: Teaching Students about Information Management in Hospitals}
+\title{SNIK: An Ontology of Information Management in Hospitals}
 \subtitle{}
-\date{May 22, 2019}
+\date{~}
 %\date{May 22, 2019, LSWT 2019, \url{https://lswt2019.aksw.org}}
 \def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
 \def\email{konrad.hoeffner@imise.uni-leipzig.de} 
 \def\telephone{+49 341 97 16322}
+
+% TODO: Use SNIK Graph as title slide, get audience attention right away
 
 \newcommand{\imageslide}[4][]
 {
@@ -35,9 +37,19 @@
 }
 
 \begin{document}
+{
+\setbeamertemplate{background canvas}%
+{
+ \vbox to \paperheight{\vfil\hbox to \paperwidth{%
+ \hfil \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/snik-graph.png} \hfil}
+ }
+}
 \begin{frame}
 \titlepage
 \end{frame}
+}
+
+\imageslide{Domain}{img/wordcloud.png}
 
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Domain}
@@ -50,8 +62,16 @@
 \end{frame}
 \restoregeometry
 
-\begin{frame}{Problems}
-Core topic for students but...
+\begin{frame}{Synonyms and Homonyms}
+\end{frame}
+
+\iffalse
+Hospital Information System is a homonym:
+1. the collection of all the hardware, software and their users 
+2. Just a software product in the hospital
+
+Synonyms: Chief Information Officer (CEO) --- IT Manager
+
 \begin{itemize}
 \item large domain
 \item different textbooks and frameworks with different views
@@ -59,7 +79,17 @@ Core topic for students but...
 \item same name for different concepts  (homonyms)
 \item unclear relationship between sources
 \end{itemize}
-\end{frame}
+
+select *
+{
+ ?s a owl:Class.
+ ?s rdfs:label ?l.
+ ?s skos:altLabel ?al.
+ filter(langMatches(lang(?l),"en"))
+ filter(langMatches(lang(?al),"en"))
+}
+\fi
+
 
 
 \begin{frame}{Project Goals}
@@ -126,6 +156,7 @@ Core topic for students but...
 \end{frame}
 \restoregeometry
 
+%\imageslide{RDF Browser LodView}{img/lodview.png}
 
 \begin{frame}{Example Slide}
 \begin{itemize}
@@ -136,6 +167,7 @@ Core topic for students but...
 \end{itemize}
 \end{frame}
 
+\iffalse 
 \begin{frame}{Tables}
 \begin{tabulary}{\textwidth}{lL}
 \toprule
@@ -167,7 +199,7 @@ black		&\Huge\color{black}$\blacksquare$	&\Huge\color{black!80}$\blacksquare$\co
 \end{tabulary}
 }
 \end{frame}
-
+\fi
 
 \end{document}
 \iffalse
