@@ -69,13 +69,13 @@
 \newcommand{\medfak}{
 \begin{tikzpicture}[overlay, remember picture]  
  \node [anchor=north west, inner sep=1pt,xshift=1.8em] at (current page.north west)
-  {\includegraphics[width=0.45\textwidth]{img/medfak.pdf}};
+  {\includegraphics[width=0.35\textwidth]{img/medfak.pdf}};
 \end{tikzpicture}
 }
 
 \newcommand{\imise}{
 \begin{tikzpicture}[overlay, remember picture]  
- \node [anchor=south west, inner sep=1pt,xshift=2.3em] at (current page.south west)
+ \node [anchor=north east, inner sep=1pt,xshift=-2.3em,yshift=-1em] at (current page.north east)
   {\includegraphics[width=0.3\textwidth]{img/imise-logo.pdf}};
 \end{tikzpicture}
 }
@@ -84,18 +84,24 @@
 \defbeamertemplate*{title page}{customized}[1][]
 {
 \setbeamertemplate{footline}{}
- \vspace{0.25\textheight}
-  {\usebeamerfont{subtitle}\insertsubtitle\par}
- \vspace{0.05\textheight}
+%  {\usebeamerfont{subtitle}\insertsubtitle\par}
+ \vspace{-0.038\textheight}
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+ \vspace{0.038\textheight}
+ \vspace{0.10\textheight}
+ \vspace{0.20\textheight}
 ~\\
+\usebeamercolor[white]{}
 \usebeamerfont{date}\insertdate\par
  \vspace{0.02\textheight}
-\usebeamerfont{author}\insertauthor\par
+ \vspace{1em}
  \vspace{0.05\textheight}
 \medfak{}
 \imise{}
 \triangles{}
+ \hspace{0.7\textwidth}
+ \vspace{-0.35\textheight}
+\usebeamerfont{author}\insertauthor\par
 }
 
 \makeatother
@@ -136,18 +142,31 @@
 \begin{frame}[plain]
 \medfak{}
 \triangles{}
-~\\~\\~\\~\\~\\~\\%vspace destroys the tikz drawing positions
-{\Large\bfseries \iflanguage{english}{THANKS!}{VIELEN DANK!}\\~\\}
+\imise{}
+~\\~\\~\\%vspace destroys the tikz drawing positions
+~\\~\\
+{\Large\bfseries \iflanguage{english}{Thanks for your attention!}{VIELEN DANK!}\\~\\}
+
+\textbf{SNIK}\\
+DFG Project, 2014--2019\\
+\url{https://www.snik.eu}\\
+~\\
 \textbf{\insertauthor{}}\\
-\iflanguage{english}{Institute for Medical Informatics, Statistics and Epidemiology (IMISE)}%
-{Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)}\\
-~\\
-\address{}\\
-~\\
-T \telephone{}\\
-~\\
 \url{\email}\\
-\url{www.imise.uni-leipzig.de}
+Management of Information Systems in Healthcare\\
+\iflanguage{english}{
+Institute for Medical Informatics, Statistics and Epidemiology (IMISE)\\
+Leipzig University
+}%
+{
+Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
+Universität Leipzig
+}\\
+\url{https://www.imise.uni-leipzig.de}
+
+%\address{}\\
+%T \telephone{}\\
+~\\
 
 
 \end{frame}
