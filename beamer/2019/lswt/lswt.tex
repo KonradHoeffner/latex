@@ -29,7 +29,8 @@
 {
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~#2}
-\centering\includegraphics[width=1.01\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
 \\#1
 \note{#4}
 \end{frame}
@@ -76,6 +77,23 @@
 \restoregeometry
 
 \imageslide{Lifecycle}{cycle.pdf}
+
+%\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Storage/Query, Author, Interlink \& Browse}
+\begin{columns}[t]
+\column{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{img/virtuoso.png}
+\includegraphics[width=\textwidth]{img/limes.png}
+\column{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{img/ontowiki.png}
+\includegraphics[width=\textwidth]{img/lodview.png}
+\end{columns}
+\end{frame}
+%\restoregeometry
+
+\imageslide{SNIK Quality Check}{img/qualitycheck.png}
 
 \imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}
 
