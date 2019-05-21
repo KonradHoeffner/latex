@@ -60,12 +60,13 @@
 \centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-he.jpg}
 \end{frame}
 \restoregeometry
+\imageslide{Vocabulary}{img/wordcloud-ob.png}{}{}
 
-\imageslide{Vocabulary}{img/wordcloud-ob.png}
+\imageslide{Synonyms}{img/wordcloud-synonym.png}{}{}
 
-\imageslide{Synonyms}{img/wordcloud-synonym.png}
+\imageslide{Meta Model}{img/metamodel9s.pdf}{}{}
 
-\imageslide{Meta Model}{img/metamodel9s.pdf}
+\imageslide{Modelling Example}{img/bb-cio.pdf}{}{}
 
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Transformation}
@@ -77,6 +78,8 @@
 \restoregeometry
 
 \imageslide{Lifecycle}{cycle.pdf}
+
+\imageslide{Setup}{img/architecture.png}
 
 %\newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Storage/Query, Author, Interlink \& Browse}
@@ -92,23 +95,20 @@
 \end{columns}
 \end{frame}
 %\restoregeometry
+\imageslide{SNIK Quality Check}{img/qualitycheck.png}{}{}
 
-\imageslide{SNIK Quality Check}{img/qualitycheck.png}
+\imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
 
-\imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}
+% Classes as Nodes
+% Triples as Edges
+% Force Directed Layout
+% Color Coding Based on Source
+\imageslide{SNIK Graph---Ontology Visualization}{img/graph-entitytype.png}{}{}
+\imageslide{SNIK-Graph---Class Use}{img/roleuse-wide.png}{}{}
 
-\begin{frame}{Search \& Exploration: SNIK Graph}
-\end{frame}
+\imageslide{SNIK-Graph---Spiderworm}{img/spider.png}{}{}
+\imageslide{SNIK-Graph---Explore}{img/snik-graph-star.png}{}{}
 
-
-
-\begin{frame}{Applications: Reused and Self-Developed}
-spiderworm
-snik bingo
-snik graph
-ontowiki
-lifecycle git tickets
-\end{frame}
 
 \iffalse
 Hospital Information System is a homonym:
@@ -133,9 +133,6 @@ select *
  filter(langMatches(lang(?l),"en"))
  filter(langMatches(lang(?al),"en"))
 }
-\fi
-
-
 
 \begin{frame}{Project Goals}
 \begin{enumerate}
@@ -203,7 +200,6 @@ select *
 \end{itemize}
 \end{frame}
 
-\iffalse 
 \begin{frame}{Tables}
 \begin{tabulary}{\textwidth}{lL}
 \toprule
@@ -386,6 +382,19 @@ Stichprobenartige Evaluation einzelner Ressourcen
 \item Ticketsystem 
 \end{itemize}
 }
+
+\iffalse
+\begin{frame}{Future Work}
+\begin{itemize}
+\item ontology assisted textbook creation
+\item editing in SNIK graph
+\item align meta model with General Formal Ontology  
+\item ontology matching
+\item reasoning
+\end{itemize}
+\end{frame}
+\fi
+
 
 \begin{frame}[fragile]{Fragen?}
 \begin{itemize}
