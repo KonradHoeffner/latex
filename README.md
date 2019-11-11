@@ -1,3 +1,3 @@
-Presentations for IMISE.
+Presentations for IMISE using different templates.
 
-The [IMISE beamer theme](https://github.com/IMISE/imise-beamertheme) is used, which needs Futura installed and XeLaTeX.
+The [new IMISE beamer theme](https://github.com/IMISE/imise-beamertheme) shall be used for future presentations.
