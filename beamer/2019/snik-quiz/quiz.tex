@@ -1,0 +1,65 @@
+%\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
+
+\usepackage[english]{babel}
+%\usepackage[ngerman]{babel} %use this for German presentations
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length 
+\usepackage{hyperref}
+
+\newcommand{\imageslide}[4][]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+\restoregeometry
+}
+
+\usetheme{imise2}
+\author{Konrad Höffner}
+\date{Leipzig, June 26, 2019}
+\title{The SNIK Web Quiz}
+\subtitle{\url{https://www.snik.eu/quiz}}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@imise.uni-leipzig.de} 
+\def\telephone{+49 341 97 16322}
+%\url{https://github.com/IMISE/imise-beamertheme/issues}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\imageslide{Example}{img/snik-quiz-screenshot.png}{}{}
+
+\begin{frame}
+\frametitle{How to Play SNIK Quiz}
+\begin{enumerate}
+\item Open your browser:\\ Chrome and Firefox work, Internet Explorer doesn't, others are untested\footnote{Please let us know at \url{https://github.com/imise/snik-quiz/issues}}.
+\item Go to \url{https://www.snik.eu/quiz}
+\item Answer the questions in time. 
+\item (optional) Submit your score. The highest score wins a prize! 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Scoring}
+\begin{itemize}
+\item Choosing the right answer on first try gives 23 points, 2nd try 11 points, 3rd 5 points and 4th no point. 
+\item Don't rush, the time does not influence the score as long as you don't use all of it.
+\item Be careful about subject and object!\\"What contains an Order Entry" $\neq$ "What does an Order Entry contain"!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Known Issues}
+\begin{itemize}
+\item Prototype, may contain bugs.
+\item The questions are automatically created using the ontology and may not sound intuitive.
+\item There may be identically looking answers to the same questions from different ontologies, you can only guess there.
+\end{itemize}
+\end{frame}
+
+\end{document}

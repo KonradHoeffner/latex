@@ -1,0 +1,154 @@
+% New version of the IMISE beamer theme, does not require Futura anymore.
+% This template could still be modified to use Futura but is not done at this moment due to all the problems this caused. 
+% Replaced the old one theme in November 2018.
+%\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\setbeamertemplate{headline}{}
+\usepackage[export]{adjustbox}
+\usepackage{xcolor}
+
+\mode<presentation>
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\newlength\leftsidebar
+\newlength\rightsidebar
+\makeatletter
+\setlength\leftsidebar{\beamer@leftsidebar}
+\setlength\rightsidebar{\beamer@rightsidebar}
+\makeatother
+
+\setbeamertemplate{navigation symbols}{}
+
+%\definecolor{imiseblue}{HTML}{005FB9}
+\definecolor{mediblue}{RGB}{0,138,201}
+\definecolor{mixblue}{RGB}{0,167,214}
+\definecolor{aquamarine}{RGB}{138,194,209}
+\definecolor{lowertriangle}{RGB}{9,65,81}
+%\setbeamercolor{footer}{fg=white, bg=imiseblue}
+\setbeamercolor{title}{fg=black, bg=white}
+
+\setbeamertemplate{itemize item}{\color{red}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{red}$\blacktriangleright$}
+\setbeamertemplate{section in toc}{\color{red}\inserttocsection}
+\setbeamercolor{local structure}{fg=red}
+
+%\setbeamerfont*{title}{family={\fontfamily{phv}},series=\bfseries,size=\LARGE}
+\setbeamerfont*{title}{family=\sffamily,series=\bfseries,size=\LARGE}
+\setbeamerfont*{subtitle}{series=\mdseries}% subtitle inherits from title, https://tex.stackexchange.com/questions/270188/beamer-separate-page-title-subtitle-author-date-fonts
+
+\let\origframetitle=\frametitle
+\renewcommand\frametitle[1]{\origframetitle
+{
+\setbeamertemplate{frametitle}[default][left] 
+#1
+}
+}
+
+\renewcommand\footnoterule{} % we have our own line in all the slides
+
+\newcommand{\triangles}{
+% upper triangle
+\begin{tikzpicture}[overlay, remember picture]
+\tikzset{shift={(current page.south east)}}
+\coordinate (s0) at (0,0);
+\coordinate (s1) at (0,\paperheight);% for unknown reasons, paperheight isn't enough
+\coordinate (s2) at (-0.1\paperwidth,0);
+\fill[mediblue] (s0) -- (s1) -- (s2) -- cycle;
+\end{tikzpicture}
+% lower triangle
+\begin{tikzpicture}[overlay, remember picture]
+\tikzset{shift={(current page.south east),yshift=0.1cm}}
+\coordinate (s0) at (0,0);
+\coordinate (s1) at (0,0.35\textheight);
+\coordinate (s2) at (-0.35\paperwidth,0);
+\fill[fill=lowertriangle,opacity=0.5] (s0) -- (s1) -- (s2) -- (s0);
+\end{tikzpicture}
+}
+
+\newcommand{\medfak}{
+\begin{tikzpicture}[overlay, remember picture]  
+ \node [anchor=north west, inner sep=1pt,xshift=1.8em] at (current page.north west)
+  {\includegraphics[width=0.45\textwidth]{img/medfak.pdf}};
+\end{tikzpicture}
+}
+
+\newcommand{\imise}{
+\begin{tikzpicture}[overlay, remember picture]  
+ \node [anchor=south west, inner sep=1pt,xshift=2.3em] at (current page.south west)
+  {\includegraphics[width=0.3\textwidth]{img/imise-logo.pdf}};
+\end{tikzpicture}
+}
+
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\setbeamertemplate{footline}{}
+ \vspace{0.25\textheight}
+  {\usebeamerfont{subtitle}\insertsubtitle\par}
+ \vspace{0.05\textheight}
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+~\\
+\usebeamerfont{date}\insertdate\par
+ \vspace{0.02\textheight}
+\usebeamerfont{author}\insertauthor\par
+ \vspace{0.05\textheight}
+\medfak{}
+\imise{}
+\triangles{}
+}
+
+\makeatother
+\setbeamertemplate{footline}
+{
+
+% \vspace{1.5em} % put footnotes higher, unfortunately also 
+ \ifnum\insertframenumber>1%
+\vspace{-5em} %ifnum somehow moves it too far below, workaround
+  \leavevmode%
+ \begin{center}
+ \color{aquamarine}\rule{0.9\textwidth}{0.2pt}\\[0.9pt]
+ \color{lightgray}\rule{0.9\textwidth}{0.2pt}
+ \end{center}
+  \hbox{%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=1.9ex,dp=2ex,colsep=0pt,center]{footer}%
+    Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=1.9ex,dp=2ex,colsep=0pt,right]{footer}%
+    \usebeamerfont{title in head/foot}\color{red}\insertframenumber{} %/ \inserttotalframenumber
+    \hspace*{1ex}
+  \end{beamercolorbox}
+}
+\begin{tikzpicture}[overlay, remember picture]  
+ \node [anchor=south west, inner sep=0pt,xshift=0.05\textwidth,yshift=0.01\textheight] at (current page.south west)
+  {\includegraphics[width=0.08\textwidth]{img/unileipzig-text.pdf}};
+\end{tikzpicture}
+%
+\fi%
+}
+\makeatletter
+
+\mode<all>
+
+\AtEndDocument{
+\setbeamertemplate{footline}{}
+
+\begin{frame}[plain]
+\medfak{}
+\triangles{}
+~\\~\\~\\~\\~\\~\\%vspace destroys the tikz drawing positions
+{\Large\bfseries \iflanguage{english}{THANKS!}{VIELEN DANK!}\\~\\}
+Please report bugs, feature requests or browser compatibility at \url{https://github.com/imise/snik-quiz/issues}.
+~\\
+~\\
+\textbf{\insertauthor{}}\\
+\iflanguage{english}{Institute for Medical Informatics, Statistics and Epidemiology (IMISE)}%
+{Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)}\\
+\address{}\\
+T \telephone{}\\
+\url{\email}\\
+
+
+\end{frame}
+}
+
