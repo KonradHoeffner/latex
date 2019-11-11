@@ -1,0 +1,78 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[]{kiesgrube}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+
+\usepackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
+
+\usepackage{blindtext}% remove for production
+
+% Select Font %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{helvet} % closest to arial
+\usepackage{bookman} % has some resemblance to Futura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\captionfont}{\footnotesize}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\begin{document}
+
+\begin{poster}% Set grid to false for final print
+{grid=false,headerheight=2.5em}{}{HITO Faceted Browsing}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
+Konrad Höffner\\
+Verena Dornauer (Evaluation Studies GUI sketch) 
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
+\begin{tabular}{ll}
+July 2	&publish at \url{https://hitontology.eu/search}\\
+June 7	&revised prototype\\
+June 5	&first prototype\\
+June 4	&GUI sketch by Verena Dornauer\\
+\end{tabular}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=event,below=progress]{Event Date Forecast}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=description,column=1,row=0]{Project Description (brief)}
+Faceted Browsing for each use case.\\
+Beginning with the Evaluation Studies.\\
+\url{https://hitontology.slack.com#gui}\\
+\url{https://github.com/hitontology/facetedbrowsing}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
+\begin{enumerate}
+\item wait for requirements for another use case
+\item implement
+\item goto 1 
+\end{enumerate}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+\begin{itemize}
+\item requirements need to be specified
+\item functionality restricted by \emph{sparql-faceter} library
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+\begin{itemize}
+\item exact facet and result attribute requirements for another use case needed 
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2019-07-15};}
+
+\end{poster}
+\end{document}
+
