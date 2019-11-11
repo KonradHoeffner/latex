@@ -1,18 +1,28 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %\usepackage[ngerman]{babel}
 \usepackage{microtype}
-%\usepackage{booktabs}
+\usepackage{booktabs}
 %\usepackage{cleveref}
 %\usepackage{hyperref}
-%\usepackage{tabulary}
+\usepackage{tabulary}
 %\usepackage{graphicx}
 %\usepackage{csquotes}
 %\usepackage{natbib}
 %\usepackage{siunitx}
 
+\author{Konrad Höffner \and Other Person} 
+\title{Title}
+
 \begin{document}
+\maketitle
+
+\begin{tabulary}{\textwidth}{ll}
+\toprule
+bla	&blubb\\
+\bottomrule
+\end{tabulary}
 
 %\bibliographystyle{authoryear}
 %\bibliography{...}
