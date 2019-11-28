@@ -92,8 +92,8 @@
 \begin{itemize}
 \item Kernservice, auf dem fast alle anderen aufbauen 
 \item SPARQL ist defacto-Standard-Abfragespache für Linked Data
-\item Experten können selbst abfragen stellen, andere greifen auf Services zu
-\item analog zu relationaler Datenbank
+\item Experten können selbst Abfragen stellen, andere greifen auf Services zu
+\item Analogien zu relationalen Datenbanken
 \end{itemize}
 \end{frame}
 
@@ -113,22 +113,23 @@
 \imageslide{SNIK-Graph---Begriffsnutzung}{img/roleuse-wide.png}{}{}
 
 \imageslide{SNIK-Graph---Spiderworm}{img/spider.png}{}{}
-\imageslide{SNIK-Graph---Exploration}{img/snik-graph-star.png}{}
-{
-\textit{Krankenhaus-Informations-System} ist ein Homonym:
+\imageslide{SNIK-Graph---Exploration}{img/snik-graph-star.png}{}{}
+\note{\textit{Krankenhaus-Informations-System} ist ein Homonym:
 1. Die Menge an Hardware, Software und deren Benutzer 
 2. Ein spezielles Software-Produkt im Krankenhaus
 
 Synonyme: Chief Information Officer (CIO) --- IT Manager
 }
+~\\
 \begin{itemize}
-\item large domain
-\item different textbooks and frameworks with different views
-\item different names for the same concept (synonyms)
-\item same name for different concepts  (homonyms)
-\item unclear relationship between sources
+\item große Domäne
+\item verschiedene Lehrbücher und Frameworks mit verschiedenen Sichten
+\item unterschiedliche Bezeichnungen für das selbe Konzept (Synonyme)
+\item gleiche Bezeichnungen für unterschiedliche Konzepte (Homonyme)
+\item unklare Beziehungen zwischen den Quellen
 \end{itemize}
-
+~\\~\\
+\note{
 select *
 {
  ?s a owl:Class.
@@ -137,17 +138,17 @@ select *
  filter(langMatches(lang(?l),"en"))
  filter(langMatches(lang(?al),"en"))
 }
-
+}
 \begin{frame}{Projektziele}
 \begin{enumerate}
-\item create a modular ontology of Information Management in Hospitals:
+	\item Eine modulare Ontologie vom \textit{Information Management im Krankenhaus} erstellen:
 \begin{itemize}
-\item develop a core vocabulary (meta model)
-\item transform textbooks to subontologies 
+	\item ein Grund-Vokabular entwickeln (Metamodell)
+\item Lehrbücher in Sub-Ontologien transformieren 
 \end{itemize}
-\item manage Linked Data Lifecycle 
-\item create teaching tools
-\item offer low-threshold self-learning tools to students
+\item Den Linked Data Lifecycle managen %verwalten, steuern 
+\item Werkzeuge für die Lehre entwickeln
+\item niederschwellige Selbst-Lern-Angebote für Studenten anbieten
 \end{enumerate}
 \end{frame}
 
@@ -155,35 +156,37 @@ select *
 
 
 \newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Example}
+\begin{frame}[plain]{~~~~Beispiel}
 ~\\~\\
 \begin{itemize}
-\item excerpt of \emph{Health Information Systems}, A. Winter et al.
-\item CIO is responsible for different functions and entity types
-\item functions read information from or write it to the Strategic Information Management Plan
+	\item Auszug aus \textbf{Health Information Systems}, A. Winter et al. \\
 \end{itemize}
+~\\
+\begin{quote}CIO is responsible for different functions and entity types %übersetzen?
+ functions read information from or write it to the Strategic Information Management Plan %übersetzen?
+\end{quote}
 ~\\~\\
 \centering\includegraphics[width=\textwidth,keepaspectratio]{img/snik-graph-cio.png}
 \end{frame}
 \restoregeometry
 
 
-\begin{frame}{Transformation Challenges}
+\begin{frame}{Herausforderungen in der Transformation}
 \begin{itemize}
-\item manual, time-consuming extraction
-\item not all extractors have Semantic Web skills 
+	\item Manuelle, zeit-aufwendige Extraktion (teilweise gelöst)
+\item nicht alle Extrahierenden haben Semantic Web Kenntnisse
 \begin{itemize}
-\item table as intermediate step
-\item "media discontinuity", loss of information
-\item inference of OWL restrictions from limited data 
+\item Tabelle als Zwischenschritt
+\item "Medien-Diskontinuität", Informationsverlust
+\item Inferenz der OWL Beschränkungen von begrenzten Daten 
 \end{itemize}
-\item modelling as classes vs. individuals
-\item detailed ontology modelling vs. large amounts of instances 
+\item Modellierung als Klassen vs. Individuen
+\item deteillierte Ontologie-Modellierung vs. große Anzahl an Instanzen 
 \end{itemize}
 \end{frame}
 
 \newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Applications}
+\begin{frame}[plain]{~~~~Anwendungen}
 % SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
 \centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
 \end{frame}
@@ -327,13 +330,13 @@ Stichprobenartige Evaluation einzelner Ressourcen
 
 \fi
 
-\begin{frame}{Future Work}
+\begin{frame}{Ein Blick in die Zukunft}
 \begin{itemize}
-\item ontology assisted textbook creation
-\item editing in SNIK graph
-\item align meta model with General Formal Ontology  
-\item ontology matching
-\item reasoning
+\item Ontologie-unterstütztes Schreiben von Lehrbüchern
+\item Bearbeitung im SNIK Graph
+\item Das Meta-Modell mit der \textit{General Formal Ontology} in Einklang bringen   
+\item Ontologie-Matching
+\item logisches Schließen, Argumentation
 \end{itemize}
 \end{frame}
 
