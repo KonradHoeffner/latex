@@ -67,6 +67,13 @@
 
 \imageslide{Synonyme}{img/wordcloud-synonym.png}{}{}
 % Überleitung ?
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Anwendungen}
+% SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
+\centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
+\end{frame}
+\restoregeometry
 \imageslide{Metamodell}{img/metamodel9s.pdf}{}{}
 % Welche Beispiele? für begriffe und für relationen
 \imageslide{Modellierungsbeispiel}{img/bb-cio.pdf}{}{}
@@ -120,28 +127,10 @@
 
 Synonyme: Chief Information Officer (CIO) --- IT Manager
 }
-~\\
-\begin{itemize}
-\item große Domäne
-\item verschiedene Lehrbücher und Frameworks mit verschiedenen Sichten
-\item unterschiedliche Bezeichnungen für das selbe Konzept (Synonyme)
-\item gleiche Bezeichnungen für unterschiedliche Konzepte (Homonyme)
-\item unklare Beziehungen zwischen den Quellen
-\end{itemize}
-~\\~\\
-\note{
-select *
-{
- ?s a owl:Class.
- ?s rdfs:label ?l.
- ?s skos:altLabel ?al.
- filter(langMatches(lang(?l),"en"))
- filter(langMatches(lang(?al),"en"))
-}
-}
+
 \begin{frame}{Projektziele}
 \begin{enumerate}
-	\item Eine modulare Ontologie vom \textit{Information Management im Krankenhaus} erstellen:
+	\item Eine modulare Ontologie des \textit{Informations-Managements im Krankenhaus} erstellen:
 \begin{itemize}
 	\item ein Grund-Vokabular entwickeln (Metamodell)
 \item Lehrbücher in Sub-Ontologien transformieren 
@@ -170,8 +159,28 @@ select *
 \end{frame}
 \restoregeometry
 
-
 \begin{frame}{Herausforderungen in der Transformation}
+
+\begin{itemize}
+\item große Domäne
+\item verschiedene Lehrbücher und Frameworks mit verschiedenen Sichten
+\item unterschiedliche Bezeichnungen für das selbe Konzept (Synonyme)
+\item gleiche Bezeichnungen für unterschiedliche Konzepte (Homonyme)
+\item unklare Beziehungen zwischen den Quellen
+\end{itemize}
+\note{
+select *
+{
+ ?s a owl:Class.
+ ?s rdfs:label ?l.
+ ?s skos:altLabel ?al.
+ filter(langMatches(lang(?l),"en"))
+ filter(langMatches(lang(?al),"en"))
+}
+}
+\end{frame}
+
+\begin{frame}{Herausforderungen in der Transformation (2)}
 \begin{itemize}
 	\item Manuelle, zeit-aufwendige Extraktion (teilweise gelöst)
 \item nicht alle Extrahierenden haben Semantic Web Kenntnisse
@@ -184,13 +193,6 @@ select *
 \item deteillierte Ontologie-Modellierung vs. große Anzahl an Instanzen 
 \end{itemize}
 \end{frame}
-
-\newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Anwendungen}
-% SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
-\centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
-\end{frame}
-\restoregeometry
 
 %\imageslide{RDF Browser LodView}{img/lodview.png}
 \imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}
