@@ -63,20 +63,63 @@
 \centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-he.jpg}
 \end{frame}
 \restoregeometry
-\imageslide{Vokabular}{img/wordcloud-ob.png}{}{}
 
+\begin{frame}{Projektziele}
+Projekt ist abgeschlossen, Projektziele waren:
+\begin{enumerate}
+ \item Eine modulare Ontologie des \textit{Informations-Managements im Krankenhaus} erstellen:
+ \begin{itemize}
+  \item ein Grund-Vokabular entwickeln (Metamodell)
+  \item Lehrbücher in strukturiertes Wissen transformieren 
+ \end{itemize}
+ \item Daten kontinuierlich weiterentwickeln 
+ \item Werkzeuge für die Lehre entwickeln
+ \item niederschwellige Selbst-Lern-Angebote für Studenten anbieten
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Zielgruppe}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Ziel}	&\textbf{Zielgruppe}\\
+\midrule
+Lehre			&Lehrer, Studenten und Autoren\\ 
+Datenintegration	&Krankenhausleitung, CIO\\
+Formalisierung		&Domänenexperten, Ontologen\\
+\bottomrule
+\end{tabular}
+\note{
+\begin{itemize}
+\item benötigte Tools hängen von Zielen und Zielgruppen ab 
+\item Lehre: Vermittlung des Fachwissens an Studenten. Für Vorteil gegenüber/zusätzlich zu Lesen der Bücher: kein Vorwissen, schnelle, simple und intuitive Wissensvermittlung.
+\item Datenintegration: Ontologie kann als Vokabular von verschiedenen Anwendungen benutzt werden
+\item Verbesserung des durch Studenten extrahierten formalisierten Fachwissens durch Ontologen und Domänenexperten
+\end{itemize}
+}
+\end{frame}
+
+\imageslide{Vokabular}{img/wordcloud-ob.png}{}{}
 \imageslide{Synonyme}{img/wordcloud-synonym.png}{}{}
+
 % Überleitung ?
 
 \newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Anwendungen}
+\begin{frame}[plain]{~~~~Semantisches Netz}
 % SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
 \centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
 \end{frame}
 \restoregeometry
+
+\imageslide{Semantisches Web, Web der Daten, Linked Open Data}{img/lodcloud-excerpt.png}{}{}
+\imageslide{Technologien}{img/semantic-web-stack-de.pdf}{}{}
+\imageslide{Einsatz in SNIK}{img/semantic-web-stack-snik-de.pdf}{}{}
+
 \imageslide{Metamodell}{img/metamodel9s.pdf}{}{}
 % Welche Beispiele? für begriffe und für relationen
 \imageslide{Modellierungsbeispiel}{img/bb-cio.pdf}{}{}
+
+%http://linkeddata.org/
 
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Transformation}
@@ -84,78 +127,6 @@
 \centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
 \centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
 \centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
-\end{frame}
-\restoregeometry
-
-\imageslide{Lifecycle}{cycle.pdf}
-
-\imageslide{Setup}{img/architecture.png}
-
-%\newgeometry{margin=0cm,top=1em}
-
-\imageslide{Speichern und Abfragen -- Virtuoso SPARQL Endpoint}{img/virtuoso.png}{}{}
-
-\begin{frame}{Speichern und Abfragen -- Virtuoso SPARQL Endpoint}
-\begin{itemize}
-\item Kernservice, auf dem fast alle anderen aufbauen 
-\item SPARQL ist defacto-Standard-Abfragespache für Linked Data
-\item Experten können selbst Abfragen stellen, andere greifen auf Services zu
-\item Analogien zu relationalen Datenbanken
-\end{itemize}
-\end{frame}
-
-\imageslide{Autorenwerkzeug OntoWiki}{img/ontowiki.png}{}{}
-\imageslide{Interlinks mit LIMES}{img/limes.png}{}{}
-\imageslide{Browsing}{img/lodview.png}{}{}
-
-\imageslide{SNIK Qualitätscheck}{img/qualitycheck.png}{}{}
-
-\imageslide{Suche \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
-
-% Classes as Nodes
-% Triples as Edges
-% Force Directed Layout
-% Color Coding Based on Source
-\imageslide{SNIK Graph --- Ontologievisualisierung}{img/graph-entitytype.png}{}{}
-\imageslide{SNIK Graph --- Begriffsnutzung}{img/roleuse-wide.png}{}{}
-
-\imageslide{SNIK Graph --- Spiderworm}{img/spider.png}{}{}
-\imageslide{SNIK Graph --- Exploration}{img/snik-graph-star.png}{}{}
-\note{\textit{Krankenhaus-Informations-System} ist ein Homonym:
-1. Die Menge an Hardware, Software und deren Benutzer 
-2. Ein spezielles Software-Produkt im Krankenhaus
-
-Synonyme: Chief Information Officer (CIO) --- IT Manager
-}
-
-\begin{frame}{Projektziele}
-\begin{enumerate}
-	\item Eine modulare Ontologie des \textit{Informations-Managements im Krankenhaus} erstellen:
-\begin{itemize}
-	\item ein Grund-Vokabular entwickeln (Metamodell)
-\item Lehrbücher in Sub-Ontologien transformieren 
-\end{itemize}
-\item Den Linked Data Lifecycle managen %verwalten, steuern 
-\item Werkzeuge für die Lehre entwickeln
-\item niederschwellige Selbst-Lern-Angebote für Studenten anbieten
-\end{enumerate}
-\end{frame}
-
-%\section{Ontology Creation}
-
-
-\newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Beispiel}
-~\\~\\
-\begin{itemize}
-	\item Auszug aus \textbf{Health Information Systems}, A. Winter et al. \\
-\end{itemize}
-~\\
-\begin{quote}CIO is responsible for different functions and entity types %übersetzen?
- functions read information from or write it to the Strategic Information Management Plan %übersetzen?
-\end{quote}
-~\\~\\
-\centering\includegraphics[width=\textwidth,keepaspectratio]{img/snik-graph-cio.png}
 \end{frame}
 \restoregeometry
 
@@ -190,12 +161,86 @@ select *
 \item Inferenz der OWL Beschränkungen von begrenzten Daten 
 \end{itemize}
 \item Modellierung als Klassen vs. Individuen
-\item deteillierte Ontologie-Modellierung vs. große Anzahl an Instanzen 
+\item detaillierte Ontologie-Modellierung vs. große Anzahl an Instanzen 
 \end{itemize}
 \end{frame}
 
+\imageslide{Lifecycle}{cycle.pdf}
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Anwendungen}
+% SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
+\centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
+\end{frame}
+\restoregeometry
+
+%\newgeometry{margin=0cm,top=1em}
+
+\imageslide{Speichern und Abfragen -- Virtuoso SPARQL Endpoint}{img/virtuoso.png}{}{}
+
+\begin{frame}{Speichern und Abfragen -- Virtuoso SPARQL Endpoint}
+\begin{itemize}
+\item SPARQL ist defacto-Standard-Abfragespache für Linked Data
+\item Experten können selbst Abfragen stellen, andere greifen auf Services zu
+\item Kernservice, auf dem fast alle anderen aufbauen
+\item Standardformat $\rightarrow$ Verwenden von existierenden Anwendungen
+\item Eigenentwicklungen nur wenn Bedarf nicht abgedeckt, Visualisierung
+\item Analogien zu relationalen Datenbanken
+\end{itemize}
+\end{frame}
+
+\imageslide{Autorenwerkzeug OntoWiki}{img/ontowiki.png}{}{}
+\imageslide{Interlinks mit LIMES}{img/limes.png}{}{}
+\imageslide{Browsing}{img/lodview.png}{}{}
+
+\imageslide{SNIK Qualitätscheck}{img/qualitycheck.png}{}{}
+
+\imageslide{Suche \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
+
+% Classes as Nodes
+% Triples as Edges
+% Force Directed Layout
+% Color Coding Based on Source
+\imageslide{SNIK Graph --- Ontologievisualisierung}{img/graph-entitytype.png}{}{}
+\imageslide{SNIK Graph --- Begriffsnutzung}{img/roleuse-wide.png}{}{}
+
+\imageslide{SNIK Graph --- Spiderworm}{img/spider.png}{}{}
+\imageslide{SNIK Graph --- Exploration}{img/snik-graph-star.png}{}{}
+
+\imageslide{Lifecycle}{cycle.pdf}
+
+\note{\textit{Krankenhaus-Informations-System} ist ein Homonym:
+1. Die Menge an Hardware, Software und deren Benutzer 
+2. Ein spezielles Software-Produkt im Krankenhaus
+
+Synonyme: Chief Information Officer (CIO) --- IT Manager
+}
+
+
+%\section{Ontology Creation}
+
+
+\iffalse
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Beispiel}
+~\\~\\
+%\begin{itemize}
+%	\item Auszug aus \textbf{Health Information Systems}, A. Winter et al. \\
+%\end{itemize}
+~\\
+\begin{quote}Der CIO is responsible for different functions and entity types %übersetzen?
+ functions read information from or write it to the Strategic Information Management Plan %übersetzen?
+\end{quote}
+~\\~\\
+\centering\includegraphics[width=\textwidth,keepaspectratio]{img/snik-graph-cio.png}
+\end{frame}
+\restoregeometry
+\fi
+
+
 %\imageslide{RDF Browser LodView}{img/lodview.png}
-\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}
+%\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}
+\iffalse
 {
 \begin{itemize}
 \item kurze Einführung SNIK-Projekt
@@ -216,27 +261,7 @@ select *
 \item Interlinks zwischen Büchern automatisch erstellt durch LIMES
 \end{enumerate}
 }
-
-\begin{frame}{Einsatz}
-\centering
-\begin{tabular}{ll}
-\toprule
-\textbf{Ziel}	&\textbf{Zielgruppe}\\
-\midrule
-Lehre			&Lehrer und Studenten\\ 
-Datenintegration	&Krankenhausleitung, CIO\\
-Formalisierung		&Domänenexperten, Ontologen\\
-\bottomrule
-\end{tabular}
-\note{
-\begin{itemize}
-\item benötigte Tools hängen von Zielen und Zielgruppen ab 
-\item Lehre: Vermittlung des Fachwissens an Studenten. Für Vorteil gegenüber/zusätzlich zu Lesen der Bücher: kein Vorwissen, schnelle, simple und intuitive Wissensvermittlung.
-\item Datenintegration: Ontologie kann als Vokabular von verschiedenen Anwendungen benutzt werden
-\item Verbesserung des durch Studenten extrahierten formalisierten Fachwissens durch Ontologen und Domänenexperten
-\end{itemize}
-}
-\end{frame}
+\fi
 
 %\imageslide[\url{https://github.com/IMISE/snik-ontology}]{Ausgangspunkt: RDF Dump}{img/rdfdump.png}{
 %\begin{itemize}
@@ -332,13 +357,16 @@ Stichprobenartige Evaluation einzelner Ressourcen
 
 \fi
 
+\imageslide{Setup}{img/architecture.png}
+
 \begin{frame}{Ein Blick in die Zukunft}
 \begin{itemize}
 \item Ontologie-unterstütztes Schreiben von Lehrbüchern
 \item Bearbeitung im SNIK Graph
-\item Das Meta-Modell mit der \textit{General Formal Ontology} in Einklang bringen   
+\item Visualisierung von anderen Ontologien
+\item Formale Untermauerung der Ontologie (\textit{General Formal Ontology})
 \item Ontologie-Matching
-\item logisches Schließen, Argumentation
+%\item logisches Schließen, Argumentation
 \end{itemize}
 \end{frame}
 
