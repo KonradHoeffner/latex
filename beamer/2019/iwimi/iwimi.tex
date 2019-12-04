@@ -13,6 +13,7 @@
 \usepackage{tabulary} % tables with auto column length 
 \usepackage{hyperref}
 \usepackage{siunitx}
+\usepackage{csquotes}
 
 \usetheme{imise2}
 \author{Konrad Höffner}%, Institute for Medical Informatics, Statistics and Epidemiology}
@@ -65,16 +66,16 @@
 \restoregeometry
 
 \begin{frame}{Projektziele}
-Projekt ist abgeschlossen, Projektziele waren:
+Abgeschlossenes DFG-Projekt. Projektziele: 
 \begin{enumerate}
- \item Eine modulare Ontologie des \textit{Informations-Managements im Krankenhaus} erstellen:
+ \item modulare Ontologie des \textit{Informationsmanagements im Krankenhaus}: 
  \begin{itemize}
-  \item ein Grund-Vokabular entwickeln (Metamodell)
-  \item Lehrbücher in strukturiertes Wissen transformieren 
+  \item Metamodell
+  \item \enquote{Unterontologien} für jedes Lehrbuch
  \end{itemize}
- \item Daten kontinuierlich weiterentwickeln 
- \item Werkzeuge für die Lehre entwickeln
- \item niederschwellige Selbst-Lern-Angebote für Studenten anbieten
+ \item Weiterentwicklung der Daten
+ \item Werkzeuge entwickeln
+ \item niedrigschwellige Selbstlernangebote anbieten
 \end{enumerate}
 \end{frame}
 
@@ -121,23 +122,14 @@ Formalisierung		&Domänenexperten, Ontologen\\
 
 %http://linkeddata.org/
 
-\newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Transformation}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
-\centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
-\end{frame}
-\restoregeometry
-
-\begin{frame}{Herausforderungen in der Transformation}
-
+\begin{frame}{Herausforderungen}
 \begin{itemize}
-\item große Domäne
-\item verschiedene Lehrbücher und Frameworks mit verschiedenen Sichten
+%\item große Domäne
+\item verschiedene Sichten
 \item unterschiedliche Bezeichnungen für das selbe Konzept (Synonyme)
 \item gleiche Bezeichnungen für unterschiedliche Konzepte (Homonyme)
 \item unklare Beziehungen zwischen den Quellen
+\item technisches Wissen vs Domänenwissen 
 \end{itemize}
 \note{
 select *
@@ -150,7 +142,7 @@ select *
 }
 }
 \end{frame}
-
+\iffalse
 \begin{frame}{Herausforderungen in der Transformation (2)}
 \begin{itemize}
 	\item Manuelle, zeit-aufwendige Extraktion (teilweise gelöst)
@@ -164,6 +156,16 @@ select *
 \item detaillierte Ontologie-Modellierung vs. große Anzahl an Instanzen 
 \end{itemize}
 \end{frame}
+\fi
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Transformation}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
+\centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
+\end{frame}
+\restoregeometry
 
 \imageslide{Lifecycle}{cycle.pdf}
 
@@ -361,11 +363,12 @@ Stichprobenartige Evaluation einzelner Ressourcen
 
 \begin{frame}{Ein Blick in die Zukunft}
 \begin{itemize}
+\item Visualisierung anderer Ontologien
+\item Basis für Systemanalyse
 \item Ontologie-unterstütztes Schreiben von Lehrbüchern
-\item Bearbeitung im SNIK Graph
-\item Visualisierung von anderen Ontologien
+\item Bearbeitung in SNIK Graph
 \item Formale Untermauerung der Ontologie (\textit{General Formal Ontology})
-\item Ontologie-Matching
+%\item Ontologie-Matching
 %\item logisches Schließen, Argumentation
 \end{itemize}
 \end{frame}
