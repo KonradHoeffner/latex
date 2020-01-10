@@ -28,53 +28,66 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
-Höffner, Pause
+Konrad Höffner, Thomas Pause
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
 %\small
 \begin{tabulary}{\textwidth}{lL}
-since Demember 12		&Ontology: ... issues closed
+\textbf{SNIK Ontology} \\
+since Dec 12	&7 issues closed\\
+\textbf{SNIK Graph} \\
+23.12.'19	&fix graph load query on SNIK SPARQL endpoint\\
+27.12.'19	&fix progress indicator\\
+27.12.'19	&fix daymode\\
+27.12.'19	&combine match options moves them nearby\\
+27.12.'19	&release v1.5 \\
+06.01.'20	&add instance star to legend\\
+06.01.'20	&fix language switch\\
+06.01.'20	&show instances in graph after loading\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=description,column=1,row=0]{Project Description}
 \small
-Maintenance of the SNIK Ontology 
+Maintenance of the SNIK Ontology and SNIK Graph
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
 \footnotesize
 \begin{itemize}
 \item Ontology: 47 open issues in milestone 0.9.3 (62 in total)
+\item SNIK Graph: 4 open issues in milestone 1.7 (28 in total)
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
 \begin{itemize}
-\item 
+\item SNIK Graph downtime due to network security changes 
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+\begin{posterbox}[name=escalation,column=0,below=progress]{Escalation / Decision Needs}
 \footnotesize
 \begin{itemize}
-\item 
+\item Thomas Pause's Bachelor Thesis topic (SNIK Graph)
+\item who implements SNIKT+ in SNIK Graph?
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=event,column=0,below=progress]{Event Date Forecast}
-\small
+\begin{posterbox}[name=event,column=1,below=risks]{Event Date Forecast}
+%\small
 \begin{tabulary}{\textwidth}{lL}
+2020-01-14 3:00 p.m.	&Meeting AW, TP, FJ, KH:\\
+			&Thomas' Bachelor Thesis topic\\
+
 February 11 and 13&	meeting about support for double lesson on IT Service management\\
 SNIK jour fixe	&every 3rd Tuesday at 9.00\\
 4 hours		&weekly maintainance\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | \date{}};}
-
 \end{poster}
 \end{document}
 
