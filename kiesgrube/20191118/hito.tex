@@ -1,0 +1,80 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[]{kiesgrube}
+\nofiles
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tabulary}
+\usepackage{graphicx}
+
+\usepackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
+
+\usepackage{blindtext}% remove for production
+
+% Select Font %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{helvet} % closest to arial
+\usepackage{bookman} % has some resemblance to Futura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\captionfont}{\footnotesize}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\begin{document}
+
+\begin{poster}% Set grid to false for final print
+{grid=false,headerheight=2.5em}{}{HITO}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
+A. Winter, E. Ammenwerth, K. Höffner, F. Jahn, (B. Schneider), M. Ghandalari, V. Dornauer, T. Pause
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
+\begin{tabulary}{\columnwidth}{lL}
+November 13	&Model WHO Digital Health Interventions Catalogues\\
+November	&Model BAHMNI in HITO with MG\\
+October 24	&medfloss.org data from Holger Streidl\\
+August--October	&Extend website with posters, ontology diagrams and more\\
+October 1	&Add use cases 1 and 2 to ontology\\
+September 30	&Add medfloss v1.91 diagram relations \\
+September 9	&Upload ontology to GitHub\\
+September 6	&Verena's ontology remodelling and more studies\\
+\end{tabulary}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=event,below=progress]{Event Date Forecast}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=description,column=1,row=0]{Project Description}
+A Health IT Ontology for systematically describing application systems and software products in health IT.\\
+\url{https://hitontology.slack.com#gui}\\
+\url{https://github.com/hitontology/facetedbrowsing}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
+\begin{itemize}
+\item GNU Health
+\item Orthanc
+\item 7 random medfloss software products
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2019-11-18};}
+
+\end{poster}
+\end{document}
+
