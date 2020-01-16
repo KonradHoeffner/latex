@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{tabulary}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 \usetheme{simple}
 \usecolortheme{whiteonblack}
 \title{Semantic MediaWiki}
@@ -86,10 +90,11 @@ Prot\'eg\`e	&\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{User Interface: Semantic Media Wiki}
+\begin{frame}{User Interface: Semantic MediaWiki}
 \centering
-\includegraphics[width=0.6\paperwidth]{img/swm-tokyo.png}
+\includegraphics[width=0.6\paperwidth]{img/smw-tokyo.png}
 \begin{enumerate}
+\item what is the core idea?
 \item can we use it to edit RDF?
 \item is it user friendly? does it have enough functionality?
 \item can it be integrated into our service infrastructure?
@@ -97,44 +102,73 @@ Prot\'eg\`e	&\\
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Semantic Media Wiki---Edit RDF}
+\begin{frame}{Semantic MediaWiki---Core Idea}
 \begin{itemize}
-\item 
-\item 
-\item 
+\item extension to MediaWiki (Wikipedia)
+\item "store and query data within the wiki's page" 
+\item hybrid between document and data
+\item great fit for documents with data, but does it make sense for just data?
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Semantic Media Wiki---Usability}
+\begin{frame}{Semantic MediaWiki---Edit RDF}
 \begin{itemize}
-\item 
-\item 
-\item 
+\item typed links between documents
+\item can be translated to RDF
+\item PageForms extension to generate web forms with templates for a category $\rightarrow$ user generation of instances
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Semantic Media Wiki---Integration}
+\begin{frame}[fragile]{Semantic MediaWiki---Usability}
+\begin{verbatim}
+{{#ask:
+[[Kategorie:Stadt]]
+[[Land::Schweiz]]
+|?Name
+|?Einwohner
+}}
+\end{verbatim}
+\begin{itemize}
+\item you need to check out for yourself whether it is usable for you
+\item users need to learn Semantic MediaWiki syntax
+\item we have a test account at an existing installation thanks to BITPlan
+\item ask Konrad for credentials
+\item be mindful, it is not our own instance
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Semantic MediaWiki---Integration}
 \begin{itemize}
 \item we use docker but all tested containers were broken
 \item we use a Virtuoso SPARQL endpoint but there is no out-of-the box option to use Virtuso as a backend
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Semantic Media Wiki---Community and Outlook}
+\begin{frame}{Semantic MediaWiki---Community and Outlook}
 \begin{itemize}
-\item  
-\item 
-\item 
+\item thanks to Wolfgang Fahl of BITPlan for an introduction
+\item 200-300 MediaWiki developers, focus on MediaWiki, rest of the world has to follow them
+\item Semantic MediaWiki lacks unified leadership, many different fractions
+\item usual data store are SQL databases and to a lesser extend wikiBase
+\item very few users of SPARQL enndpoints, no public example 
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Bla}
-\begin{itemize}
-\item blabla
-\item 
-\item 
-\item 
-\item 
-\end{itemize}
+\begin{frame}{Semantic MediaWiki---Summary}
+\centering
+\begin{tabulary}{\textwidth}{lL}
+\toprule
+Property		&Assessment\\
+\midrule
+Edit RDF		&~\\
+Usability		&your assessment\\
+Integration		&\xmark\\
+Outlook			&\xmark\\
+\midrule
+Fit for our purposes	&\xmark\\
+\bottomrule
+\end{tabulary}
 \end{frame}
+
 \end{document}
+
