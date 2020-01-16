@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{tabulary}
@@ -13,19 +13,19 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Situation: We generate and maintain Linked Data}
+\begin{frame}{Situation: We generate large amounts of Linked Data}
 \centering
-\includegraphics[width=0.8\textwidth]{cycle.pdf}
+\includegraphics[width=0.8\textwidth]{img/spider.png}
 \end{frame}
 
 \begin{frame}{Our data constantly changes}
 \centering
-\includegraphics[width=0.8\textwidth]{cycle.pdf}
+\includegraphics[height=0.9\textheight]{cycle.pdf}
 \end{frame}
 
 \begin{frame}{Problem: How to add, delete and modify Linked Data?}
 \centering
-\includegraphics[width=0.8\textwidth]{cycle-red.pdf}
+\includegraphics[height=0.9\textheight]{cycle-red.pdf}
 \end{frame}
 
 \begin{frame}{Native Tools}
@@ -42,14 +42,15 @@ SPARUL		&many changes at once, immediately available\\
 
 \begin{frame}{Problem solved?}
 \centering
-\includegraphics[width=\textwidth]{img/texteditorsparul.png}
+\includegraphics[width=0.9\paperwidth]{img/texteditorsparul.png}
 \end{frame}
 
-\begin{frame}{Unforunately not}
+\begin{frame}{Unfortunately not}
 \centering
-\includegraphics[width=\textwidth]{img/complicated.png}
+\includegraphics[width=0.9\paperwidth]{img/complicated.png}
 \end{frame}
 
+\iffalse
 \begin{frame}{Problem: Authoring isn't easy}
 \centering
 \begin{tabulary}{\textwidth}{lLL}
@@ -62,64 +63,70 @@ Prot\'eg\`e	&\\
 \bottomrule
 \end{tabulary}
 \end{frame}
+\fi
 
-\begin{frame}{Problem: Authoring isn't easy}
+\begin{frame}{User Interface: Prot\'eg\'e}
 \centering
-\begin{tabulary}{\textwidth}{lLL}
-\toprule
-Tool		&Pros						&Cons\\
-\midrule
-Text Editor	&speed, version control, close to the metal	&requires Turtle \& Git skills\\
-SPARUL		&many changes at once 				&requires SPARUL syntax\\
-Prot\'eg\`e	&\\
-\bottomrule
-\end{tabulary}
+\includegraphics[width=0.6\paperwidth]{img/protege.png}
+\begin{itemize}
+\item large community
+\item cannot use Virtuoso backend, even with WebProt\'eg\'e
+\item optimized for OWL, not RDF
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Problem}
+\begin{frame}{User Interface: OntoWiki}
+\centering
+\includegraphics[height=0.7\textheight]{img/ontowiki.png}
 \begin{itemize}
-\item we have a bunch of Linked Data
-\item technical users can use SPARUL queries or edit TURTLE syntax
-\item 
+\item optimized for RDF, history, accounts
+\item can use Virtuoso backend
+\item productively used at IMISE
+\item slow, cumbersome, not maintained anymore
+\end{itemize}
+\end{frame}
+
+\begin{frame}{User Interface: Semantic Media Wiki}
+\centering
+\includegraphics[width=0.6\paperwidth]{img/swm-tokyo.png}
+\begin{enumerate}
+\item can we use it to edit RDF?
+\item is it user friendly? does it have enough functionality?
+\item can it be integrated into our service infrastructure?
+\item what is the environment, community and outlook?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Semantic Media Wiki---Edit RDF}
+\begin{itemize}
 \item 
 \item 
 \item 
 \end{itemize}
 \end{frame}
-\end{document}
 
-\begin{frame}{Bla}
+\begin{frame}{Semantic Media Wiki---Usability}
 \begin{itemize}
-\item blabla
-\item 
 \item 
 \item 
 \item 
 \end{itemize}
 \end{frame}
-\end{document}
 
-\begin{frame}{Bla}
+\begin{frame}{Semantic Media Wiki---Integration}
 \begin{itemize}
-\item blabla
-\item 
-\item 
+\item we use docker but all tested containers were broken
+\item we use a Virtuoso SPARQL endpoint but there is no out-of-the box option to use Virtuso as a backend
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Semantic Media Wiki---Community and Outlook}
+\begin{itemize}
+\item  
 \item 
 \item 
 \end{itemize}
 \end{frame}
-\end{document}
-
-\begin{frame}{Bla}
-\begin{itemize}
-\item blabla
-\item 
-\item 
-\item 
-\item 
-\end{itemize}
-\end{frame}
-\end{document}
 
 \begin{frame}{Bla}
 \begin{itemize}
