@@ -3,7 +3,7 @@
 \definecolor{mygray}{RGB}{208,208,208}
 \definecolor{mymagenta}{RGB}{226,0,116}
 \newcommand*{\mytextstyle}{\sffamily\normalfont\bfseries\color{black!85}}
-\newcommand{\arcarrow}[3]{%
+\newcommand{\arcarrow}[4]{%
    % inner radius, middle radius, outer radius, start angle,
    % end angle, tip protusion angle, options, text
    \pgfmathsetmacro{\rin}{2.5}
@@ -12,7 +12,7 @@
    \pgfmathsetmacro{\astart}{#1}
    \pgfmathsetmacro{\aend}{#2}
    \pgfmathsetmacro{\atip}{5}
-   \fill[mygray, very thick] (\astart+\atip:\rin)
+   \fill[#4, very thick] (\astart+\atip:\rin)
                          arc (\astart+\atip:\aend:\rin)
       -- (\aend-\atip:\rmid)
       -- (\aend:\rout)   arc (\aend:\astart+\atip:\rout)
@@ -66,21 +66,21 @@
 %   \arcarrow{ 85}{  3}{ Classification}
 %   \arcarrow{ 85}{  3}{ Extraction}
 %   \arcarrow{ 85}{  3}{ Transformation}
-   \arcarrow{-120}{ -180}{~~~Storage/Query}
-   \arcarrow{-190}{-220}{~~~Author}
-   \arcarrow{-230}{-270}{~~~Interlink}
+   \arcarrow{-120}{ -180}{~~~Storage/Query}{mygray}
+   \arcarrow{-190}{-220}{~~~Author}{red}
+   \arcarrow{-230}{-270}{~~~Interlink}{mygray}
 
-   \arcarrow{-280}{-310 }{~~~Browse}
-   \arcarrow{-320}{-380 }{~~~Search/Explore}
-   \arcarrow{-435}{-385 }{Quality~~~~}
+   \arcarrow{-280}{-310 }{~~~Browse}{mygray}
+   \arcarrow{-320}{-380 }{~~~Search/Explore}{mygray}
+   \arcarrow{-435}{-385 }{Quality~~~~}{mygray}
  
-  \arcarrow{-475}{-435}{Repair~~~~}
+  \arcarrow{-475}{-435}{Repair~~~~}{mygray}
 
 %   \arcarrow{ 85}{  3}{ Meta Model}
 %   \arcarrow{ 85}{  3}{ Textbook Analysis}
 %   \arcarrow{ 85}{  3}{ TARQL }
    \barcarrow{-120}{ -180}{Virtuoso}{mygray}
-   \barcarrow{-190}{-220}{~~~OntoWiki}{red}
+   \barcarrow{-190}{-220}{~~~?}{red}
    \barcarrow{-230}{-270}{LIMES}{mygray}
   
    \barcarrow{-280}{-310}{~~~LodView}{mygray}
