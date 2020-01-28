@@ -8,8 +8,8 @@
 \newcommand{\xmark}{\ding{55}}%
 \usetheme{simple}
 \usecolortheme{whiteonblack}
-\title{Semantic MediaWiki}
-\subtitle{Good for authoring Linked Data?}
+\title{State of the Art in Linked Data Editors}
+%\subtitle{Semantic MediaWiki}
 \author{Konrad Höffner}
 
 \begin{document}
@@ -22,9 +22,34 @@
 \includegraphics[width=0.8\textwidth]{img/spider.png}
 \end{frame}
 
-\begin{frame}{Our data constantly changes}
+\begin{frame}{Linked Data Lifecycle}
 \centering
 \includegraphics[height=0.9\textheight]{cycle.pdf}
+\end{frame}
+
+\begin{frame}{Storage---Virtuoso SPARQL Endpoint}
+\centering
+\includegraphics[width=\textwidth]{img/sparqlresult.png}
+\end{frame}
+
+\begin{frame}{Browse---LodView}
+\centering
+\includegraphics[width=\textwidth]{img/lodview.png}
+\end{frame}
+
+\begin{frame}{Explore---SNIK Graph}
+\centering
+\includegraphics[width=\textwidth]{img/snik-graph-full.png}
+\end{frame}
+
+\begin{frame}{Search---Facete 2}
+\centering
+\includegraphics[width=\textwidth]{img/facete2.png}
+\end{frame}
+
+\begin{frame}{Search---Facete 3}
+\centering
+\includegraphics[width=\textwidth]{img/facete3.png}
 \end{frame}
 
 \begin{frame}{Problem: How to add, delete and modify Linked Data?}
@@ -49,7 +74,7 @@ SPARUL		&many changes at once, immediately available\\
 \includegraphics[width=0.9\paperwidth]{img/texteditorsparul.png}
 \end{frame}
 
-\begin{frame}{Unfortunately not}
+\begin{frame}{Not for everyone}
 \centering
 \includegraphics[width=0.9\paperwidth]{img/complicated.png}
 \end{frame}
@@ -69,24 +94,47 @@ Prot\'eg\`e	&\\
 \end{frame}
 \fi
 
-\begin{frame}{User Interface: Prot\'eg\'e}
+\begin{frame}{What are we looking for?}
 \centering
-\includegraphics[width=0.6\paperwidth]{img/protege.png}
+\textbf{Must-Have}
 \begin{itemize}
-\item large community
-\item cannot use Virtuoso backend, even with WebProt\'eg\'e
-\item optimized for OWL, not RDF
+\item graphical user interface
+\item web application
+\item docker container 
+\item add, delete and modify triples 
+\item Virtuoso backend
+\item intuitive 
+\item fast
+\end{itemize}
+\textbf{Nice-To-Have}
+\begin{itemize}
+\item forms and templates for instances 
+\item version control
+\item accounts
+\item easy to setup and maintain
+\item large community, positive outlook
 \end{itemize}
 \end{frame}
 
-\begin{frame}{User Interface: OntoWiki}
+\begin{frame}{SNIK---OntoWiki}
 \centering
 \includegraphics[height=0.7\textheight]{img/ontowiki.png}
 \begin{itemize}
-\item optimized for RDF, history, accounts
-\item can use Virtuoso backend
-\item productively used at IMISE
-\item slow, cumbersome, not maintained anymore
+\item fulfills most requirements but...
+\item slow on medium to large amounts of triples
+\item only somewhat intuitive
+\item not maintained anymore
+\end{itemize}
+\end{frame}
+
+\begin{frame}{User Interface: Prot\'eg\'e, WebProt\'eg\'e}
+\centering
+\includegraphics[width=0.6\paperwidth]{img/protege.png}
+\begin{itemize}
+\item optimized for OWL ontologies, not triples
+\item reasoning
+\item cannot use Virtuoso backend
+\item 
 \end{itemize}
 \end{frame}
 
@@ -160,7 +208,7 @@ Prot\'eg\`e	&\\
 \toprule
 Property		&Assessment\\
 \midrule
-Edit RDF		&~\\
+Edit RDF		&\cmark\\
 Usability		&your assessment\\
 Integration		&\xmark\\
 Outlook			&\xmark\\
