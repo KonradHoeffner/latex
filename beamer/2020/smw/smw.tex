@@ -12,15 +12,33 @@
 %\subtitle{Semantic MediaWiki}
 \author{Konrad Höffner}
 
+\newcommand{\imageslide}[4][]
+{
+%\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+%\restoregeometry
+}
+
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\begin{frame}{Situation: We generate large amounts of Linked Data}
+\begin{frame}{What is Linked (Open) Data?}
 \centering
-\includegraphics[width=0.8\textwidth]{img/spider.png}
+\includegraphics[height=0.5\textheight]{img/linked-data-mug.jpg}
 \end{frame}
+
+\imageslide{What is RDF}{img/spider.png}{}{}
+
+\imageslide{Ontologies}{img/hitontology.pdf}{}{}
+
+\imageslide{Linked Data Cloud}{img/lodcloud-excerpt-inverted.png}{}{}
 
 \begin{frame}{Linked Data Lifecycle}
 \centering
@@ -56,6 +74,26 @@
 \centering
 \includegraphics[height=0.9\textheight]{cycle-red.pdf}
 \end{frame}
+
+\begin{frame}[fragile]{Problem: How to add, delete and modify Linked Data?}
+\begin{verbatim}
+:HNA_Millenium rdf:type owl:NamedIndividual, :SoftwareProduct ;
+ :offersFeature
+   :allowing_to_reuse_earlier_anamnestic_data ,
+   :automatic_creation_of_a_nursing_transfer_report ,
+   :comprising_a_set_of_nursing_care_standards ,
+   :nursing_anamnesis ,
+   :nursing_care_planning_supported_by_pre-defined_nursing_care_standards ,
+   :nursing_diagnosis_based_on_the_NANDA_taxonomy ,
+   :reminding_and_documentation_of_nursing_tasks ,
+   :scheduling ,
+   :support_nursing_care_planning_for_certain_patient_cases ,
+   :use_of_clinical_pathways ;
+   rdfs:label "HNA Millenium"@en .
+\end{verbatim}
+\end{frame}
+
+
 
 \begin{frame}{Native Tools}
 \centering
@@ -123,19 +161,24 @@ Prot\'eg\`e	&\\
 
 \begin{frame}{Relational Databases: Oracle Forms}
 \centering
-\includegraphics[width=0.9\paperwidth]{img/oracleforms.png}
+\includegraphics[width=0.7\paperwidth]{img/oracleforms.png}
 \end{frame}
 
-\begin{frame}{SNIK---OntoWiki}
-\centering
-\includegraphics[height=0.7\textheight]{img/ontowiki.png}
-\begin{itemize}
-\item fulfills most requirements but...
-\item slow on medium to large amounts of triples
-\item only somewhat intuitive
-\item not maintained anymore
-\end{itemize}
-\end{frame}
+%\begin{frame}{OntoWiki}
+%\centering
+%\includegraphics[height=0.8\textheight]{img/ontowiki.png}
+%\begin{itemize}
+%\item fulfills most requirements but...
+%\item slow on large amounts (millions) of triples
+%\item only somewhat intuitive
+%\item not maintained anymore
+%\end{itemize}
+%\end{frame}
+%\end{frame}
+
+\imageslide{OntoWiki}{img/ontowiki.png}{}{}
+\imageslide{OntoWiki}{img/ontowiki-ceo.png}{}{}
+\imageslide{OntoWiki}{img/ontowiki-ceo-edit.png}{}{}
 
 \begin{frame}{User Interface: Prot\'eg\'e, WebProt\'eg\'e}
 \centering
