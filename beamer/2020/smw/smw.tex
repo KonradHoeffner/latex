@@ -8,7 +8,7 @@
 \newcommand{\xmark}{\ding{55}}%
 \usetheme{simple}
 \usecolortheme{whiteonblack}
-\title{State of the Art in Linked Data Editors: Semantic Media Wiki and Alternatives}
+\title{State of the Art in Linked Data Editors:\\Semantic Media Wiki and Alternatives}
 %\subtitle{Semantic MediaWiki}
 \author{Konrad Höffner}
 
@@ -164,34 +164,37 @@ Prot\'eg\`e	&\\
 \includegraphics[width=0.7\paperwidth]{img/oracleforms.png}
 \end{frame}
 
-%\begin{frame}{OntoWiki}
-%\centering
-%\includegraphics[height=0.8\textheight]{img/ontowiki.png}
-%\begin{itemize}
-%\item fulfills most requirements but...
-%\item slow on large amounts (millions) of triples
-%\item only somewhat intuitive
-%\item not maintained anymore
-%\end{itemize}
-%\end{frame}
-%\end{frame}
-
 \imageslide{OntoWiki}{img/ontowiki.png}{}{}
-\imageslide{OntoWiki}{img/ontowiki-ceo.png}{}{}
-\imageslide{OntoWiki}{img/ontowiki-ceo-edit.png}{}{}
+\imageslide{OntoWiki Resource View}{img/ontowiki-ceo.png}{}{}
+\imageslide{OntoWiki Editing}{img/ontowiki-ceo-edit.png}{}{}
 
-\begin{frame}{User Interface: Prot\'eg\'e, WebProt\'eg\'e}
+\begin{frame}{OntoWiki Conclusions}
 \centering
-\includegraphics[width=0.6\paperwidth]{img/protege.png}
 \begin{itemize}
-\item optimized for OWL ontologies, not triples
-\item reasoning
-\item cannot use Virtuoso backend
-\item 
+\item user management
+\item history
+\item docker container
+\item multiple knowledge bases
+\item well suited for editing instances 
+\item not maintained anymore
+\item slow on large amounts (millions) of triples
 \end{itemize}
 \end{frame}
 
-\begin{frame}{User Interface: Semantic MediaWiki}
+\imageslide{Prot\'eg\'e, WebProt\'eg\'e}{img/protege.png}{}{}
+
+\begin{frame}{Prot\'eg\'e, WebProt\'eg\'e Conclusions}
+\centering
+\includegraphics[width=0.4\paperwidth]{img/protege.png}
+\begin{itemize}
+\item reasoning
+\item active community
+\item cannot use Virtuoso backend
+\item useful for ontology creation, not instances
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Semantic MediaWiki}
 \centering
 \includegraphics[width=0.6\paperwidth]{img/smw-tokyo.png}
 \begin{enumerate}
@@ -220,7 +223,7 @@ Prot\'eg\`e	&\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Semantic MediaWiki---Usability}
+\begin{frame}[fragile]{Semantic MediaWiki---Usability without Forms}
 \begin{verbatim}
 {{#ask:
 [[Kategorie:Stadt]]
@@ -238,10 +241,18 @@ Prot\'eg\`e	&\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Semantic MediaWiki---Integration}
+\imageslide{Semantic MediaWiki---Create Form}{img/smw-create-form.png}{}{}
+\imageslide{Semantic MediaWiki---Create Class}{img/smw-create-class.png}{}{}
+%\imageslide{Semantic MediaWiki---}{img/smw-create-product-error.png}{}{}
+
+\begin{frame}{Semantic MediaWiki---Problems}
+\centering
+\includegraphics[width=0.7\paperwidth]{img/smw-create-product-error.png}
 \begin{itemize}
-\item we use docker but all tested containers were broken
-\item we use a Virtuoso SPARQL endpoint but there is no out-of-the box option to use Virtuso as a backend
+\item forms do not work with links to external knowledge bases
+\item forms are static, need to be manually synchronized to  ontology changes
+\item but all tested containers were broken
+\item there is no out-of-the box option to use Virtuso as a backend
 \end{itemize}
 \end{frame}
 
@@ -264,11 +275,26 @@ Property		&Assessment\\
 Edit RDF		&\cmark\\
 Usability		&your assessment\\
 Integration		&\xmark\\
-Outlook			&\xmark\\
+Outlook			&unclear\\
 \midrule
-Fit for our purposes	&\xmark\\
+Fit for our purposes	&not quite\\
 \bottomrule
 \end{tabulary}
+\end{frame}
+
+\imageslide{InstanceGenerator---HITO Prototype}{img/instancegenerator.png}{}{}
+
+\begin{frame}{Conclusions and Recommendation}
+\begin{itemize}
+\item there is no perfect solution, lack of tool projects
+\item SemanticMediaWiki not a good fit for HITO in my opinion
+\item keep using the OntoWiki for SNIK
+\item put some time into fixing the OntoWiki connection to the newest Virtuoso version
+\item discuss OntoWiki for HITO
+\item use Prot\'eg\`e for ontologies like the HITO ontology
+\item don't dismiss the manual approach! Git + text editor + SPARUL
+\item use the instancegenerator for appropriate tasks
+\end{itemize}
 \end{frame}
 
 \end{document}
