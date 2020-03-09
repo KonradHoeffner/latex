@@ -1,0 +1,74 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[]{kiesgrube}
+\nofiles
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{tabulary}
+
+\usepackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
+
+\usepackage{blindtext}% remove for production
+
+% Select Font %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{helvet} % closest to arial
+\usepackage{bookman} % has some resemblance to Futura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\captionfont}{\footnotesize}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\begin{document}
+
+\begin{poster}% Set grid to false for final print
+{grid=false,headerheight=2.5em}{}{Teaching}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=person,column=0,row=0]{Besondere Lernleistung (BeLL) school year 2019/20}
+Max Niclas Wächtler, 11th grade@Wilhelm-Ostwald, biweekly.
+\emph{Automatic Generation of Multiple Choice Questions based on an Ontology of Hospital Information Management}
+\begin{itemize}
+\item February 3--6 \enquote{Bellwoche} + March 10: finish preliminaries and introduction.
+\item next steps: write \enquote{approach} section.
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=risks,column=1,row=0]{IMISE LaTeX Templates}
+%\begin{itemize}
+%\item
+New beautiful classicthesis template at \url{https://github.com/IMISE/imise-classicthesis}:
+\begin{center}
+\includegraphics[width=0.6\textwidth,trim=5.5cm 8cm 2.5cm 6cm,clip]{img/tp_ba_s1.pdf}
+\end{center}
+%\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=thomasba,column=0,below=person]{Thomas Pause's Bachelorarbeit}
+\begin{tabulary}{\textwidth}{lL}
+January 14		&Meeting AW, TP, FJ, KH:\\
+			&Thomas' Bachelor Thesis topic\\
+March ?			&Ask for introduction approval from AW\\
+%ebruary 11 and 13&	meeting about support for double lesson on IT Service management\\
+\end{tabulary}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=scienceseminar,column=0,below=thomasba]{Seminars}
+\begin{tabulary}{\textwidth}{lL}
+January ? 			&New plan: Transfer 25\% from SK to KH in beginning of May. Includes responsibility for Bachelor and Master Seminar. Also includes system analysis seminar WS 20/21.\\
+January 30			&Knowledge transfer from SK to KH.\\
+\end{tabulary}
+Risks: Missing experience, skills and knowledge.
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-03-16};}
+
+\end{poster}
+\end{document}
+
