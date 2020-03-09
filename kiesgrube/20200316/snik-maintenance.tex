@@ -1,0 +1,84 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[]{kiesgrube}
+\nofiles
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{tabulary}
+
+\usepackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
+
+\usepackage{blindtext}% remove for production
+
+% Select Font %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{helvet} % closest to arial
+\usepackage{bookman} % has some resemblance to Futura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\captionfont}{\footnotesize}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\begin{document}
+
+\begin{poster}% Set grid to false for final print
+{grid=false,headerheight=2.5em}{}{MP 166 SNIK Maintenance}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
+Konrad Höffner, Thomas Pause
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation (Jan 13)}
+\textbf{SNIK Ontology}: 6 issues resolved\\
+\textbf{SNIK Graph New Features}
+\begin{itemize}
+\item release v1.6 
+\item hide meta by default for less clutter
+\item show progress indicator on search
+\end{itemize}
+\textbf{SNIK Graph Bugfixes}
+\begin{itemize}
+\item unusable star
+\item star on compound node in subgraph
+\item unusuable hide operation
+\item failing tests
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=description,column=1,row=0]{Project Description}
+Maintenance of the SNIK Ontology and SNIK Graph
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
+\begin{itemize}
+\item Ontology: 36 open issues in milestone 0.9.3 (53 in total)
+\item SNIK Graph: 3 open issues in milestone 1.7 (29 in total)
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+%\begin{itemize}
+%\item SNIK Graph downtime due to network security changes 
+%\end{itemize}
+%\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=event,column=1,below=open]{Event Date Forecast}
+%\small
+\begin{tabulary}{\textwidth}{lL}
+SNIK jour fixe	&every 3rd Tuesday at 9.00\\
+4 hours		&weekly maintainance\\
+\end{tabulary}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=escalation,column=1,below=event]{Escalation / Decision Needs}
+%\begin{itemize}
+%\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-03-16};}
+\end{poster}
+\end{document}
+
