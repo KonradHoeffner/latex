@@ -1,0 +1,48 @@
+\documentclass[aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+\title{The HITO Instance Generator}
+\subtitle{HITO Skype Meeting}
+\author{Konrad Höffner}
+
+\newcommand{\imageslide}[4][]
+{
+%\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+%\restoregeometry
+}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{The Instance Generator is an authoring tool}
+\centering
+\includegraphics[height=0.9\textheight]{cycle-red.pdf}
+\end{frame}
+
+\begin{frame}{Details}
+\begin{itemize}
+\item Alpha version published at \url{https://hitontology.github.io/instancegenerator/}
+\item May require changing some browser settings, see README
+\item Repository \url{https://github.com/hitontology/instancegenerator/}\\with README and issues
+\item Intended audience: Medical informatics experts of the HITO project.
+\item Video: \url{https://www.youtube.com/watch?v=smvH5dEwSHE}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
