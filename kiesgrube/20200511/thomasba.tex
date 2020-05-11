@@ -1,0 +1,59 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[]{kiesgrube}
+\usepackage[utf8]{inputenc}
+\begin{document}
+
+\begin{poster}% Set grid to false for final print
+{grid=false,headerheight=2.5em}{}{M1d5/106 Pause, Thomas (Bachelor-Arbeit)}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
+Thomas Pause, Konrad Höffner
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
+\begin{itemize}
+\item finish chapter 2: Grundlagen (Preliminaries)
+\item finish chapter 3: Stand der Forschung (State of the Art)
+\item first presentation at science seminar
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=event,below=progress]{Event Date Forecast}
+\begin{tabulary}{\textwidth}{lL}
+June 12 	&second presentation about Lösungsansatz (Solution Approach, the method to use)\\
+\end{tabulary}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=description,column=1,row=0]{Project Description (brief)}
+\begin{center}
+Organisation von Teilgraphen semantischer Netze\\
+zur ontologiegestützten Wissensvermittlung
+\end{center}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
+\begin{itemize}
+\item course correction: less Semantic Web, more focus on the layout 
+\item finish chapter 4: Lösungsansatz (Solution Approach)
+\item prepare presentation
+\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=other,column=1,below=escalation]{Other}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-05-11};}
+\end{poster}
+
+\end{document}
+

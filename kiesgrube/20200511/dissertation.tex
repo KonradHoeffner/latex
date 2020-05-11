@@ -1,14 +1,10 @@
 \PassOptionsToPackage{table}{xcolor}
 \documentclass[]{kiesgrube}
-\nofiles
-\usepackage{silence}
-
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{csquotes}
+
 \usepackage{graphicx}
-\usepackage{tabulary}
 
 \usepackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
 
@@ -26,53 +22,35 @@
 \begin{document}
 
 \begin{poster}% Set grid to false for final print
-{grid=false,headerheight=2.5em}{}{MP 164 OLIM Proposal}{}
+{grid=false,headerheight=2.5em}{}{Dissertation}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=person,column=0,row=0]{Person in charge / Employee}
-Höffner, Winter, Jahn
+Konrad Höffner
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
-\begin{tabulary}{\textwidth}{lL}
-\end{tabulary}
+March 24: Submitted, "Verfahren eröffnet"
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=description,column=1,row=0]{Project Description}
-\emph{Ontologiegestützte Lehre am Beispiel des Informationsmanagements im Gesundheitswesen}\\
-\emph{Ontology supported teaching at the example of information management in health care}\\
-\url{https://drive.google.com/drive/folders/1JKiLKORlnIRL-6QJQgp9aN1zNyZTqa2m}\\
-\url{olimproject.slack.com}
-%\url{https://denethor.imise.uni-leipzig.de/index.php/apps/files/?dir=/Shared/SNIK/Fortsetzungsantrag}
+\begin{posterbox}[name=event,below=progress]{Event Date Forecast}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=description,column=1,row=0]{Project Description (brief)}
+Questions Answering on RDF Data Cubes
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
-%\begin{enumerate}
-%\item
-write the rest of the proposal
-%\end{enumerate}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
-\begin{posterbox}[name=escalation,column=1,below=open]{Escalation / Decision Needs}
-%\begin{itemize}
-%\item 
-%\end{itemize}
-\end{posterbox}
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=event,below=progress,]{Event Date Forecast}
-\begin{tabulary}{\textwidth}{lL}
-\end{tabulary}
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=event,below=event]{Risks / Obstacles}
-lack of time due to HITO
+\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-05-07};}
-
+\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-05-11};}
 \end{poster}
+
 \end{document}
 
