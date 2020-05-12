@@ -44,6 +44,7 @@
 \RequirePackage{calc}
 %\RequirePackage[cmyk]{xcolor}
 \RequirePackage{tikz}
+\RequirePackage{babel}
 \RequirePackage{pgf}
 \RequirePackage{ifthen}
 \RequirePackage[T1]{fontenc}
