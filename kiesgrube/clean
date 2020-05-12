@@ -1,1 +1,1 @@
-rm *.{log,aux,pdf}
+rm *.{log,aux}
