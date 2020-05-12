@@ -1,0 +1,91 @@
+%\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[english]{babel}
+%\usepackage[ngerman]{babel} %use this for German presentations
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length
+\usepackage{hyperref}
+
+\usetheme{imise2}
+\author{Konrad Höffner}
+\date{Leipzig, November 2018}
+\title{IMISE Student \LaTeX{} Beamer Theme Version 2. The title can use three lines but doesn't have to.}
+\subtitle{Subtitle. Report issues and suggestions at \url{https://github.com/IMISE/imise-beamertheme/issues}.}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@imise.uni-leipzig.de}
+\def\telephone{+49 341 97 16322}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{How to use this Template}
+\begin{enumerate}
+\item Clone or download the complete directory from \url{https://github.com/IMISE/imise-beamertheme}
+\item Rename template.tex, replace title, subtitle, author, date, address, email address and telephone number.
+\item If you know that your target display has an aspect ratio other than 16:10, uncomment a different line at the top of imisetest.tex.
+\item If your presentation is in German, change \texttt{\textbackslash{}usepackage[english]\{babel\}} to \texttt{\textbackslash{}usepackage[ngerman]\{babel\}}.
+\item Fill with your presentation.
+\item Compile with pdflatex.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Example Slide}
+\begin{itemize}
+\item this is a bullet point 
+\item this is a clickable link: \url{http://www.imise.de}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tables}
+\begin{tabulary}{\textwidth}{lL}
+\toprule
+advice number    &advice\\
+\midrule
+1   &Use the booktabs package to get nice horizontal lines.\\
+2   &Never use vertical lines in tables.\\
+3   &Use tabulary if your content is so long that it fills the whole width and maybe even needs line breaks.\\
+\bottomrule
+\end{tabulary}
+\end{frame}
+
+\begin{frame}{Colors}
+The following colors can be used for diagrams, tables and emphasis.
+You may use shades of the colors in $20 \%$ steps for purposes like diagrams.\\
+~\\
+\centering
+\scalebox{1.5}
+{
+\begin{tabulary}{\textwidth}{llll}
+\toprule
+Identifier	&Color					&Shades																		&RGB\\
+\midrule
+mediblue   	&\Huge\color{mediblue}$\blacksquare$	&\Huge\color{mediblue!80}$\blacksquare$\color{mediblue!60}$\blacksquare$\color{mediblue!40}$\blacksquare$\color{mediblue!20}$\blacksquare$	&$(0,138,201)$\\
+mixblue   	&\Huge\color{mixblue}$\blacksquare$	&\Huge\color{mixblue!80}$\blacksquare$\color{mixblue!60}$\blacksquare$\color{mixblue!40}$\blacksquare$\color{mixblue!20}$\blacksquare$	&$(0,167,214)$\\
+aquamarine	&\Huge\color{aquamarine}$\blacksquare$	&\Huge\color{aquamarine!80}$\blacksquare$\color{aquamarine!60}$\blacksquare$\color{aquamarine!40}$\blacksquare$\color{aquamarine!20}$\blacksquare$	&$(0,194,209)$\\
+black		&\Huge\color{black}$\blacksquare$	&\Huge\color{black!80}$\blacksquare$\color{black!60}$\blacksquare$\color{black!40}$\blacksquare$\color{black!20}$\blacksquare$	&$(0,0,0)$\\
+\bottomrule
+\end{tabulary}
+}
+\end{frame}
+
+
+\begin{frame}{IMISE Presentation Rules}
+\begin{itemize}
+\item you can usually choose between English and German
+\item don't go over the allotted time
+\begin{itemize}
+\item practise beforehand to estimate your presentation duration 
+\item advice: use a stopwatch or have someone signal you when you have 10, 5, 1 minutes left
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}
