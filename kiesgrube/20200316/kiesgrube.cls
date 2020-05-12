@@ -1,1 +1,0 @@
-/home/konrad/projekte/latex/kiesgrube/kiesgrube.cls

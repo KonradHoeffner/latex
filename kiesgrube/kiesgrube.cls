@@ -44,10 +44,19 @@
 \RequirePackage{calc}
 %\RequirePackage[cmyk]{xcolor}
 \RequirePackage{tikz}
+\RequirePackage{babel}
 \RequirePackage{pgf}
 \RequirePackage{ifthen}
 \RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{tabulary}
+\RequirePackage{url}% do not use hyperref as its links are displaced with baposter because of the font scale 
+\RequirePackage{bookman} % has some resemblance to Futura
+\PassOptionsToPackage{table}{xcolor}
 %\RequirePackage[l2tabu, orthodox]{nag}
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\captionfont}{\footnotesize}
+\usepackage[font=small,labelfont=bf]{caption}
 \usetikzlibrary{decorations}
 \usetikzlibrary{fadings}
 \usetikzlibrary{snakes}
