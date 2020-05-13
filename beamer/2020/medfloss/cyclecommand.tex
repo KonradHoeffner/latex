@@ -1,0 +1,31 @@
+# 6 arguments with 6 colors for 6 rings
+# order: model, storage, query, browse, search, quality
+\newcommand{\cycle}[6]{%
+\begin{tikzpicture}
+   \fill[even odd rule,myred] circle (1.5);
+
+   \node at (0,0) [
+      font  = \mytextstyle,
+      color = white,
+      align = center
+   ]{
+      HITO \\Lifecycle
+   };
+   \arcarrow{110}{50}{~~~Model}{#1}
+   \arcarrow{40}{0}{~~~Storage}{#2}
+   \arcarrow{-60}{-5}{Query~~}{#3}
+
+   \arcarrow{-115}{-60}{Browse~~}{#4}
+   \arcarrow{-120}{-200}{~~~Search/Explore}{#5}
+   \arcarrow{-210}{-240}{~~~~Quality~}{#6}
+
+   \barcarrow{110}{50}{~~~~~~Instance Generator~~}{#1}
+   \barcarrow{40}{0}{~~~~GitHub}{#2}
+   \barcarrow{-60}{-5}{Virtuoso~~}{#3}
+
+   \barcarrow{-110}{-60}{LodView~~}{#4}
+   \barcarrow{-115}{-190}{~~~~~Faceted Search, SNIK Graph~}{#5}
+   \barcarrow{-200}{-240}{~~~~~HITO Quality}{#6}
+
+\end{tikzpicture}
+}
