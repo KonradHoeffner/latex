@@ -10,31 +10,37 @@
 \usepackage{booktabs} % fancy tables
 \usepackage{tabulary} % tables with auto column length
 \usepackage{hyperref}
+\newcommand{\enquote}[1]{{\glqq#1\grqq{}}}
 
 \usetheme{imise2}
-\author{Maryam Ghalandari \& Konrad Höffner \& Thomas Pause}
+\author{Franziska Jahn, Maryam Ghalandari, Konrad Höffner \& Thomas Pause}
 \date{Leipzig, 15.Mai 2020}
-\title{Instance Generator}
-\subtitle{How to model and software products with}
-\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
-\def\email{maryam.ghalandari@imise.uni-leipzig.de}
+\title{HITO}
+\subtitle{MEDFLOSS Workshop}
+\def\address{Härtelstraße 16-18, 04107 Leipzig}
+\def\email{vorname.nachname@imise.uni-leipzig.de}
 \def\telephone{~}
 
 \usepackage{setspace}
-
 \begin{document}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\begin{frame}{Überblick}
+\begin{frame}{Einleitung und Status von HITO}
+  \centering
+  \huge Franziska's Teil
+\end{frame}
+
+\begin{frame}{Agenda}
 \begin{spacing}{1.25}
 \begin{enumerate}
-\item Die HITO Ontologie
-\item Instance Generator
-~\\ ~\\
-\item Catalogues and citations
-\item Examples
+\item Einleitung und Status von HITO
+\item Instance Generator: Eingabewerkzeug für MEDFLOSS Produkte in HITO
+\item Kataloge und Zitate
+\item Werkzeuge für die Navigation durch HITO
+\item Szenarien für die Integration von medfloss.org und HITO
+\item Diskussion
 \end{enumerate}
 \end{spacing}
 \end{frame}
@@ -49,12 +55,23 @@
 \includegraphics[height=.8\textheight]{img/excerpt2.pdf}
 \end{frame}
 
+\begin{frame}{Fragen?}
+  \centering
+  \vspace{-0.5cm}
+  \includegraphics[width=\textwidth]{img/fragen.png}
+\end{frame}
+
+\begin{frame}{Instance Generator}
+  \centering
+  \huge Thomas' Teil
+\end{frame}
+%startcircle
 \begin{frame}{HITO Linked Data Lifecycle}
   \centering
   \vspace{-0.5cm}
   \includegraphics[height=0.85\textheight]{hitocyclestart.pdf}
 \end{frame}
-
+%IG circle
 \begin{frame}{HITO Lifecycle Model}
   \centering
   \vspace{-0.5cm}
@@ -71,7 +88,7 @@
 \item Werkzeug zum Erzeugen neuer Instanzen der Ontologie
 \item Produkte werden mit zahlreichen Attributen modelliert
 \item Nutzung von individuellen Katalogen
-\item Video-Demonstration:
+\item Video-Demonstration auf dem HITO YouTube-Kanal:
 \begin{itemize}
 \item \url{https://youtu.be/EWvEaSCo3Vg}
 \end{itemize}
@@ -79,9 +96,20 @@
 \end{spacing}
 \end{frame}
 
-% \begin{frame}{Maryams part}
-% from now on Maryam is speaking
-% \end{frame}
+\begin{frame}{Anwendung am Beispiel}
+
+\end{frame}
+
+\begin{frame}{Fragen?}
+  \centering
+  \vspace{-0.5cm}
+  \includegraphics[width=\textwidth]{img/fragen.png}
+\end{frame}
+
+\begin{frame}{Kataloge und Zitate}
+  \centering
+  \huge Maryam's Teil
+\end{frame}
 
 \begin{frame}{Catalogues and citations}
 \pause
@@ -111,6 +139,81 @@
 \end{columns}
 \end{frame}
 
+\begin{frame}{Catalogue Sources}
+  \begin{itemize}
+    \item WHO-DHI
+    \item \enquote{Blue Book}
+    \item SNOMED CT
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Application System Catalogues}
+  Application System Catalogues:
+  \begin{itemize}
+    \item WHO-DHI System Category
+    \item BB Application Component
+    \item BB Architecture
+    \item Unknown Application System
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Enterprise Function Catalogues}
+  Enterprise Function Catalogues:
+  \begin{itemize}
+    \item BB Architecture
+    \item BB Reference Model
+    \item Unknown Enterprise Function
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Feature Catalogues}
+  Feature Catalogues:
+  \begin{itemize}
+    \item WHO-DHI Health System Managers
+    \item WHO-DHI Healthcare Provider Feature Catalogue
+    \item WHO-DHI Client Feature Catalogue
+    \item WHO-DHI Data Service
+    \item BB Architecture
+    \item Unknown Feature
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{User Group Catalogues}
+  User Group Catalogues:
+  \begin{itemize}
+    \item SNOMED CT
+    \item Unknown User Group
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Organizational Unit Catalogues}
+  Organizational Unit Catalogues:
+  \begin{itemize}
+    \item SNOMED CT
+    \item Unknown Organizational Unit
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fragen?}
+  \centering
+  \vspace{-0.5cm}
+  \includegraphics[width=\textwidth]{img/fragen.png}
+\end{frame}
+
+\begin{frame}{Werkzeuge für die Navigation durch HITO}
+  \centering
+  \huge Konrad's Teil
+\end{frame}
+%circle github, virtuoso
+\begin{frame}{Wie geht es weiter?}
+  Was passiert mit den Daten, die mittels des Instance Generators modelliert wurden?
+  \begin{itemize}
+    \item Manuelle Überprüfung der GitHub Issues
+    \item Übetragung in Turtle-File
+    \item Upload auf den SPARQL-Endpoint
+  \end{itemize}
+\end{frame}
+%circle browse
 \begin{frame}{HITO Lifecycle Browse}
   \centering
   \vspace{-0.5cm}
@@ -122,35 +225,40 @@
 \includegraphics[width=\textwidth]{img/softwareproduct.png}
 \end{frame}
 
-
-\begin{frame}{Example I: GNU Health in LODView}
+\begin{frame}{Beispiel I: GNU Health in LODView}
 \vspace{-0.3cm}
 \centering
 \includegraphics[width=.95\textwidth]{img/GnuHealth.png}
 \footnotesize{\url{https://hitontology.eu/ontology/GnuHealth}}
 \end{frame}
 
-\begin{frame}{Example II: Bahmni in LODView}
+\begin{frame}{Beispiel II: Bahmni in LODView}
 \vspace{-0.3cm}
 \centering
 \includegraphics[width=.95\textwidth]{img/bahmni.png}
 \footnotesize{\url{https://hitontology.eu/ontology/Bahmni}}
 \end{frame}
-
-\begin{frame}{Example II: Bahmni as graph (excerpt)}
-\includegraphics[width=\textwidth, height=.65\textheight]{img/bahmni_star.png}
-\end{frame}
-
-\begin{frame}{Catalogue connection of Supply Chain Management}
-\includegraphics[width=\textwidth]{img/supplychainmanagement.png}
-\end{frame}
-
+%circle explore
 \begin{frame}{HITO Lifecycle Search/Explore}
   \centering
   \vspace{-0.5cm}
   \includegraphics[height=0.85\textheight]{hitocyclesearch.pdf}
 \end{frame}
 
+\begin{frame}{Beispiel II: Bahmni als Graph (Ausschnitt)}
+  \includegraphics[width=\textwidth, height=.65\textheight]{img/bahmni_star.png}
+\end{frame}
+
+% hier reißt das ganze ein wenig auseinander
+\begin{frame}{Catalogue connection of Supply Chain Management}
+  \includegraphics[width=\textwidth]{img/supplychainmanagement.png}
+\end{frame}
+%circle Quality
+
+\begin{frame}{Szenarien für die Integration von medfloss.org und HITO}
+  \centering
+  \huge Konrad's Teil
+\end{frame}
 
 \begin{frame}{Hito Bahmni}
   \includegraphics[width=\textwidth]{img/hito-bahmni.png}
@@ -164,11 +272,16 @@
   \includegraphics[width=\textwidth]{img/medfloss-bahmni-link.png}
 \end{frame}
 
-\begin{frame}{HITO Lifecycle}
+\begin{frame}{Fragen?}
   \centering
   \vspace{-0.5cm}
-  \includegraphics[height=0.85\textheight]{hitocyclerest.pdf}
+  \includegraphics[width=\textwidth]{img/fragen.png}
 \end{frame}
 
+\begin{frame}{Diskussion}
+  \centering
+  \vspace{-0.5cm}
+  \includegraphics[width=\textwidth]{img/discussion.png}
+\end{frame}
 
 \end{document}
