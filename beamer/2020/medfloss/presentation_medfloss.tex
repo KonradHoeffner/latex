@@ -12,6 +12,9 @@
 \usepackage{hyperref}
 \newcommand{\enquote}[1]{{\glqq#1\grqq{}}}
 
+\usepackage{tikz}
+\input{cycleheader.tex}
+\input{cyclecommand.tex}
 \usetheme{imise2}
 \author{Franziska Jahn, Maryam Ghalandari, Konrad Höffner \& Thomas Pause}
 \date{Leipzig, 15.Mai 2020}
@@ -65,17 +68,16 @@
   \centering
   \huge Thomas' Teil
 \end{frame}
-%startcircle
 \begin{frame}{HITO Linked Data Lifecycle}
   \centering
   \vspace{-0.5cm}
-  \includegraphics[height=0.85\textheight]{hitocyclestart.pdf}
+  \cycle{mygray}{mygray}{mygray}{mygray}{mygray}{mygray}
 \end{frame}
-%IG circle
+
 \begin{frame}{HITO Lifecycle Model}
-  \centering
+ \centering
   \vspace{-0.5cm}
-  \includegraphics[height=0.85\textheight]{hitocyclemodel.pdf}
+  \cycle{mypink}{mygray}{mygray}{mygray}{mygray}{mygray}
 \end{frame}
 
 \begin{frame}{Instance Generator}
@@ -204,6 +206,13 @@
   \centering
   \huge Konrad's Teil
 \end{frame}
+
+\begin{frame}{HITO Lifecycle Storage \& Query}
+ \centering
+  \vspace{-0.5cm}
+  \cycle{mygreen}{mypink}{mypink}{mygray}{mygray}{mygray}
+\end{frame}
+
 %circle github, virtuoso
 \begin{frame}{Wie geht es weiter?}
   Was passiert mit den Daten, die mittels des Instance Generators modelliert wurden?
@@ -213,11 +222,11 @@
     \item Upload auf den SPARQL-Endpoint
   \end{itemize}
 \end{frame}
-%circle browse
+
 \begin{frame}{HITO Lifecycle Browse}
   \centering
   \vspace{-0.5cm}
-  \includegraphics[height=0.85\textheight]{hitocyclebrowse.pdf}
+  \cycle{mygreen}{mygreen}{mygreen}{mypink}{mygray}{mygray}
 \end{frame}
 
 \begin{frame}{Software Products in HITO Ontology (with LODView)}
@@ -238,11 +247,11 @@
 \includegraphics[width=.95\textwidth]{img/bahmni.png}
 \footnotesize{\url{https://hitontology.eu/ontology/Bahmni}}
 \end{frame}
-%circle explore
+
 \begin{frame}{HITO Lifecycle Search/Explore}
   \centering
   \vspace{-0.5cm}
-  \includegraphics[height=0.85\textheight]{hitocyclesearch.pdf}
+  \cycle{mygreen}{mygreen}{mygreen}{mygreen}{mypink}{mygray}
 \end{frame}
 
 \begin{frame}{Beispiel II: Bahmni als Graph (Ausschnitt)}
@@ -253,7 +262,13 @@
 \begin{frame}{Catalogue connection of Supply Chain Management}
   \includegraphics[width=\textwidth]{img/supplychainmanagement.png}
 \end{frame}
-%circle Quality
+
+\begin{frame}{HITO Lifecycle Quality}
+  \centering
+  \vspace{-0.5cm}
+  \cycle{mygreen}{mygreen}{mygreen}{mygreen}{mygreen}{mypink}
+\end{frame}
+
 
 \begin{frame}{Szenarien für die Integration von medfloss.org und HITO}
   \centering
