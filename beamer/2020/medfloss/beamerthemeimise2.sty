@@ -1,5 +1,5 @@
 % New version of the IMISE beamer theme, does not require Futura anymore.
-% This template could still be modified to use Futura but is not done at this moment due to all the problems this caused. 
+% This template could still be modified to use Futura but is not done at this moment due to all the problems this caused.
 % Replaced the old one theme in November 2018.
 %\usetheme{CambridgeUS}
 \usecolortheme{dolphin}
@@ -40,7 +40,7 @@
 \let\origframetitle=\frametitle
 \renewcommand\frametitle[1]{\origframetitle
 {
-\setbeamertemplate{frametitle}[default][left] 
+\setbeamertemplate{frametitle}[default][left]
 #1
 }
 }
@@ -67,14 +67,14 @@
 }
 
 \newcommand{\medfak}{
-\begin{tikzpicture}[overlay, remember picture]  
+\begin{tikzpicture}[overlay, remember picture]
  \node [anchor=north west, inner sep=1pt,xshift=1.8em] at (current page.north west)
   {\includegraphics[width=0.45\textwidth]{img/medfak.pdf}};
 \end{tikzpicture}
 }
 
 \newcommand{\imise}{
-\begin{tikzpicture}[overlay, remember picture]  
+\begin{tikzpicture}[overlay, remember picture]
  \node [anchor=south west, inner sep=1pt,xshift=2.3em] at (current page.south west)
   {\includegraphics[width=0.3\textwidth]{img/imise-logo.pdf}};
 \end{tikzpicture}
@@ -102,7 +102,7 @@
 \setbeamertemplate{footline}
 {
 
-% \vspace{1.5em} % put footnotes higher, unfortunately also 
+% \vspace{1.5em} % put footnotes higher, unfortunately also
  \ifnum\insertframenumber>1%
 \vspace{-5em} %ifnum somehow moves it too far below, workaround
   \leavevmode%
@@ -119,7 +119,7 @@
     \hspace*{1ex}
   \end{beamercolorbox}
 }
-\begin{tikzpicture}[overlay, remember picture]  
+\begin{tikzpicture}[overlay, remember picture]
  \node [anchor=south west, inner sep=0pt,xshift=0.05\textwidth,yshift=0.01\textheight] at (current page.south west)
   {\includegraphics[width=0.08\textwidth]{img/unileipzig-text.pdf}};
 \end{tikzpicture}
@@ -144,7 +144,7 @@
 ~\\
 \address{}\\
 ~\\
-T \telephone{}\\
+%T \telephone{}\\
 ~\\
 \url{\email}\\
 \url{www.imise.uni-leipzig.de}
@@ -152,4 +152,3 @@ T \telephone{}\\
 
 \end{frame}
 }
-
