@@ -38,8 +38,8 @@
 \begin{frame}{Agenda}
 \begin{spacing}{1.25}
 \begin{enumerate}
-\item Einleitung und Status von HITO
-\item Instance Generator: Eingabewerkzeug für MEDFLOSS Produkte in HITO
+\item Einleitung und Projektstatus
+\item Instance Generator: ein Eingabewerkzeug für MEDFLOSS Produkte
 \item Kataloge und Zitate
 \item Werkzeuge für die Navigation durch HITO
 \item Szenarien für die Integration von medfloss.org und HITO
@@ -68,6 +68,7 @@
   \centering
   \huge Thomas' Teil
 \end{frame}
+
 \begin{frame}{HITO Linked Data Lifecycle}
   \centering
   \vspace{-0.5cm}
@@ -98,10 +99,6 @@
 \end{spacing}
 \end{frame}
 
-\begin{frame}{Anwendung am Beispiel}
-% hier muss noch das Beispiel rein
-\end{frame}
-
 \begin{frame}{Fragen?}
   \centering
   \vspace{-0.5cm}
@@ -121,7 +118,7 @@
 
 \begin{frame}{Catalogues and citations}
 \begin{columns}
-  \column{0.35\linewidth}
+  \column{.4\linewidth}
   \vspace{-1cm}
   \begin{spacing}{1.25}
     \begin{itemize}
@@ -135,7 +132,7 @@
       \end{itemize}
     \end{itemize}
   \end{spacing}
-  \column{.6\linewidth}
+  \column{.5\linewidth}
   \centering
   \includegraphics[width=\textwidth]{img/iglook.png}
 \end{columns}
@@ -214,14 +211,15 @@
   \cycle{mygreen}{mypink}{mypink}{mygray}{mygray}{mygray}
 \end{frame}
 
-%circle github, virtuoso
 \begin{frame}{Wie geht es weiter?}
-  Was passiert mit den Daten, die mittels des Instance Generators modelliert wurden?
+  \begin{spacing}{1.5}
+    Was passiert mit den Daten, die mittels des Instance Generators modelliert wurden?
   \begin{itemize}
     \item Manuelle Überprüfung der GitHub Issues
     \item Übetragung in Turtle-File
     \item Upload auf den SPARQL-Endpoint
   \end{itemize}
+\end{spacing}
 \end{frame}
 
 \begin{frame}{HITO Lifecycle Browse}
@@ -269,28 +267,41 @@
   \cycle{mygreen}{mygreen}{mygreen}{mygreen}{mygreen}{mypink}
 \end{frame}
 
-\begin{frame}{Ausblick}
-TP: eine folie mit 4 bildern:
-Fenfire
-RDF Graph Visualizer
-ResXPlorer
-LOD Vizsuite
-\end{frame}
-
 \begin{frame}{Quality}
   Bild vom quality checker
 \end{frame}
 
-\begin{frame}{Szenarien für die Integration von medfloss.org und HITO}
+\begin{frame}{Ausblick}
+\begin{spacing}{1.5}
+\begin{itemize}
+  \item Visualisierung mithilfe anderer Werkzeuge
+  \begin{itemize}
+    \item Web VOWL
+    \item RelFinder
+    \item LodLive
+  \end{itemize}
+\end{itemize}
+\end{spacing}
+\end{frame}
+
+\begin{frame}{Ansicht von HITO in WebVOWL}
+  \vspace{-0.3cm}
   \centering
-  \huge Konrad's 2.Teil
+  \includegraphics[width=.95\textwidth]{img/webvowl.png}
+  \footnotesize{\url{http://www.visualdataweb.de/webvowl/\#iri=https://raw.githubusercontent.com/hitontology/ontology/master/hito.ttl}}
+\end{frame}
+
+\begin{frame}{Fragen?}
+  \centering
+  \vspace{-0.5cm}
+  \includegraphics[width=\textwidth]{img/fragen.png}
 \end{frame}
 
 \begin{frame}{Szenario 1: Medfloss.org vollständig ersetzen}
 \begin{itemize}
 \item Nicht möglich für uns.
 \item Begrenzte Projektlaufzeit aber unbegrenzte Wartung nötig.
-\item Wir haben keine Alternative für Community-Werkzeuge für Diskussionen, Ereignisse und Publikationen.
+\item Wir haben keine Alternative zu Community-Werkzeugen für Diskussionen, Ereignisse und Publikationen.
 \item Datenbank vs Linked Open Data: siehe Szenario 2
 \end{itemize}
 \end{frame}
@@ -298,12 +309,14 @@ LOD Vizsuite
 \begin{frame}{Szenario 2: Medfloss.org-Datenbank zu Linked Data konvertieren}
 \begin{itemize}
 \item Datenbankschema zu Ontologie erweitern
-\item Datenbankinhalt zu Instanzdaten konvertieren 
+\item Datenbankinhalt zu Instanzdaten konvertieren
 \item Problem: Vorteil von Linked Data benötigt zusätzliche Arbeit:
-\item - Ressourcen statt Strings - Problem: kein match für manches oder merged
-\item - Links zu externen Wissensbasen
+\begin{itemize}
+\item Ressourcen statt Strings - Problem: kein match für manches (oder merged)
+\item Links zu externen Wissensbasen
 \item $\rightarrow$ manuelle Nacharbeit nötig
 \item mehrere in einem typ: Programming Language vs Library
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -316,8 +329,10 @@ LOD Vizsuite
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Hito Bahmni}
-  \includegraphics[width=\textwidth]{img/hito-bahmni.png}
+\begin{frame}{HITO Bahmni}
+  \vspace{-0.5cm}
+  \centering
+  \includegraphics[height=.8\textheight]{img/hito-bahmni.png}
 \end{frame}
 
 \begin{frame}{Medfloss Bahmni}
@@ -332,11 +347,11 @@ LOD Vizsuite
   Sachen für die Zukunft
 \end{frame}
 
-\begin{frame}{Fragen?}
-  \centering
-  \vspace{-0.5cm}
-  \includegraphics[width=\textwidth]{img/fragen.png}
-\end{frame}
+% \begin{frame}{Fragen?}
+%   \centering
+%   \vspace{-0.5cm}
+%   \includegraphics[width=\textwidth]{img/fragen.png}
+% \end{frame}
 
 \begin{frame}{Diskussion}
   \centering
