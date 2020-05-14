@@ -30,11 +30,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Einleitung und Status von HITO}
-  \centering
-  \huge Franziska's Teil
-\end{frame}
-
 \begin{frame}{Agenda}
 \begin{spacing}{1.25}
 \begin{enumerate}
@@ -48,14 +43,72 @@
 \end{spacing}
 \end{frame}
 
-\begin{frame}{Das O in HITO -- Die Ontologie}
+\begin{frame}{Ziele des Workshops}
+\begin{spacing}{1.5}
+  \begin{enumerate}
+    \item Möglichkeiten der Beschreibung von MEDFLOSS durch HITO und zugehörige Tools aufzeigen
+    \item Eine gemeinsame Strategie für die Verknüpfung von medfloss.org und HITO entwickeln
+  \end{enumerate}
+\end{spacing}
+\end{frame}
+
+
+\begin{frame}{HEALTH IT ONTOLOGY: ÜBERBLICK}
 \centering
 \includegraphics[width=.95\textwidth]{img/HITontology.pdf}
 \end{frame}
 
-\begin{frame}{Software Products in HITO}
+\begin{frame}{HITO: Merkmale von Softwareprodukten}
+\begin{columns}
+  \column{0.45\linewidth}
+  \begin{itemize}
+    \item stimmen größtenteils überein mit Merkmalen, die auf Medfloss.org beschrieben werden
+    \item Unterschied: Nutzung von Dbpedia-Einträgen als „Kataloge“ für Klassen, z.B.
+    \begin{itemize}
+      \item Operating System
+      \item Language
+      \item Programming Language
+    \end{itemize}
+  \end{itemize}
+  \column{0.6\linewidth}
+\includegraphics[width=\textwidth]{img/excerpt2.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{HITO: Unternehmensaufgaben und Features}
+\begin{columns}
+  \column{0.6\linewidth}
+  Softwareprodukte
+  \begin{itemize}
+    \item unterstützen Unternehmensaufgaben (enterprise functions) im Gesundheitswesen, z.B. \enquote{Patientenverwaltung}, \enquote{Pflegerische Entlassung}
+    \item haben Features, z.B. \enquote{Kalenderfunktion}, \enquote{Templates für Berichte}
+  \end{itemize}
+  \column{0.4\linewidth}
+\includegraphics[width=\textwidth]{img/excerpt3.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Softwareprodukte und Anwendungssysteme}
+\begin{columns}
+  \column{0.65\linewidth}
+  \begin{itemize}
+    \item Softwareprodukte werden durch Adaptation in der Gesundheitseinrichtung zum Anwendungssystem (LIS, RIS, PACS, EPR, ...)
+    \item Nutzergruppen sind z.B. Ärzte, Pflegekräfte, Labortechniker
+    \item Organisationseinheiten sind z.B. Krankenhaus, Radiologieabteilung, Arztpraxis
+  \end{itemize}
+  \column{0.4\linewidth}
+\includegraphics[width=\textwidth]{img/excerpt4.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Softwareprodukte \& Evaluationsstudien}
 \centering
-\includegraphics[height=.8\textheight]{img/excerpt2.pdf}
+\includegraphics[width=.95\textwidth]{img/excerpt5.pdf}
+\end{frame}
+
+\begin{frame}{Reference model for the domain layer of hospital information systems (Enterprise functions)}
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/rmdl.png}
 \end{frame}
 
 \begin{frame}{Fragen?}
@@ -145,8 +198,14 @@ Begin with an example
 \end{frame}
 
 \begin{frame}{Catalogue Sources}
-  \centering
-  \huge{Catalogue Sources:}
+  % \centering
+  % \huge{Catalogue Sources:}
+  \begin{columns}
+    \column{0.3\linewidth}
+    \includegraphics[width=\textwidth]{img/WHOLogo.pdf}
+    \column{0.6\linewidth}
+    \includegraphics[width=\textwidth]{img/dhi.png}
+\end{columns}
   % \begin{itemize}
   %   \item World Health Organization -- DHI
   %   \item Health Information Systems (A.Winter et al.) (\enquote{Blue Book})
@@ -154,7 +213,39 @@ Begin with an example
   % \end{itemize}
 \end{frame}
 
+\begin{frame}{WHO -- DHI}
+\begin{columns}
+  \column{0.5\linewidth}
+  \vspace{0.5cm}
+  \centering
+  \includegraphics[height=.8\textheight]{img/whodhi-providers.pdf}
+  \column{0.5\linewidth}
+  \vspace{0.5cm}
+  \centering
+  \includegraphics[height=.8\textheight]{img/whodhi-managers.pdf}
+\end{columns}
+\end{frame}
 
+\begin{frame}{Catalogue Sources}
+  \centering
+  \large Health Information Systems (A.Winter et al.) (\enquote{Blue Book})
+  \includegraphics[height=.7\textheight]{img/bb-table.png}
+\end{frame}
+
+\begin{frame}{BB Reference Model}
+  \centering
+  \includegraphics[width=\textwidth]{img/rmdl.png}
+\end{frame}
+
+\begin{frame}{Catalogue Sources}
+\begin{spacing}{1.5}
+  Other Catalogue Sources
+  \begin{itemize}
+    \item SNOMED CT for User Groups and ..
+    \item HL7 EHR-S Functional Model
+  \end{itemize}
+\end{spacing}
+\end{frame}
 
 \begin{frame}{Fragen?}
   \centering
