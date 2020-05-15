@@ -16,7 +16,7 @@
 \input{cycleheader.tex}
 \input{cyclecommand.tex}
 \usetheme{imise2}
-\author{Franziska Jahn, Maryam Ghalandari, Konrad Höffner \& Thomas Pause}
+\author{Prof. Alfred Winter, Franziska Jahn, Maryam Ghalandari, \\Konrad Höffner \& Thomas Pause}
 \date{Leipzig, 15.Mai 2020}
 \title{HITO}
 \subtitle{MEDFLOSS Workshop}
@@ -52,9 +52,10 @@
   \end{spacing}
 \end{frame}
 
-\begin{frame}{HEALTH IT ONTOLOGY: ÜBERBLICK}
+\begin{frame}{Health IT Ontology: Überblick}
+\vspace{-0.5cm}
 \centering
-\includegraphics[width=.95\textwidth]{img/HITontology.pdf}
+\includegraphics[width=\textwidth]{img/HITontology.pdf}
 \end{frame}
 
 \begin{frame}{HITO: Merkmale von Softwareprodukten}
@@ -69,8 +70,8 @@
       \item Programming Language
     \end{itemize}
   \end{itemize}
-  \column{0.6\linewidth}
-\includegraphics[width=\textwidth]{img/excerpt2.pdf}
+  \column{0.65\linewidth}
+\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{img/excerpt2.pdf}
 \end{columns}
 \end{frame}
 
@@ -124,17 +125,17 @@
 \end{frame}
 
 \begin{frame}{Eingabemaske für Softwareprodukte: Instance Generator}
-\begin{spacing}{1.25}
+\begin{spacing}{1.5}
 \begin{itemize}
-\item praktische Eingabemaske für MEDFLOSS Softwareprodukte
+\item benutzerfreundliche Eingabemaske für MEDFLOSS Softwareprodukte
 \item keine Linked Data Vorkenntnisse nötig
-\item verfügbar als GitHub Page unter:
+\item Modellierung von Softwareprodukten mit ihren Eigenschaften
+\item Nutzung von externen Wissensbasen und Katalogen
+\item frei verfügbar unter:
 \begin{itemize}
-\item \url{https://hitontology.github.io/instancegenerator/}
+  \item \url{https://hitontology.github.io/instancegenerator/}
 \end{itemize}
-\item Modellierung detaillierter Charakteristika
-\item Softwareprodukte werden mit allen Eigenschaften in die Ontologie übertragen
-\item Nutzung von externen Wissensbasen und individuellen Katalogen
+\pause
 \item Video-Demonstration auf dem HITO YouTube-Kanal:
 \begin{itemize}
 \item \url{https://youtu.be/EWvEaSCo3Vg}
@@ -202,7 +203,7 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{WHO -- DHI}
+\begin{frame}{WHO -- Digital Health Interventions (DHI)}
 \begin{columns}
   \column{0.5\linewidth}
   \vspace{0.5cm}
@@ -223,14 +224,14 @@
   \includegraphics[height=.8\textheight]{img/bb-cover.jpg}
   \column{0.5\linewidth}
   \vspace{0.5cm}
-  \centering
+  \hspace{-0.5cm}
   \includegraphics[width=.9\textwidth,height=.8\textheight]{img/bb-content.png}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Catalogue Sources}
   \centering
-  \large Health Information Systems (A.Winter et al.) (\enquote{Blue Book})
+  \large Health Information Systems (A.Winter et al.)
   \includegraphics[height=.7\textheight]{img/bb-table.png}
 \end{frame}
 
@@ -255,8 +256,8 @@
   \emph{Application System Catalogues:}
   \begin{itemize}
     \item WHO-DHI System Category
-    \item BB Application Component
-    \item BB Architecture
+    \item Blue Book Application Component
+    \item Blue Book Architecture
   \end{itemize}
 \end{spacing}
 \end{frame}
@@ -265,8 +266,10 @@
 \begin{spacing}{1.5}
   \emph{Enterprise Function Catalogues:}
   \begin{itemize}
-    \item BB Architecture
-    \item BB Reference Model
+    \item WHO-DHI Health System Managers
+    \item WHO-DHI Healthcare Provider
+    \item Blue Book Architecture
+    \item Blue Book Reference Model
   \end{itemize}
   \end{spacing}
 \end{frame}
@@ -276,10 +279,10 @@
   \emph{Feature Catalogues:}
   \begin{itemize}
     \item WHO-DHI Health System Managers
-    \item WHO-DHI Healthcare Provider Feature Catalogue
-    \item WHO-DHI Client Feature Catalogue
+    \item WHO-DHI Healthcare Provider
+    \item WHO-DHI Client
     \item WHO-DHI Data Service
-    \item BB Architecture
+    \item Blue Book Architecture
   \end{itemize}
   \end{spacing}
 \end{frame}
@@ -309,8 +312,10 @@
   \begin{spacing}{1.5}
     Was passiert mit den Daten, die mittels des Instance Generators modelliert wurden?
   \begin{itemize}
+    \item manuelle Qualitätskontrolle
     \item Speicherung und Versionskontrolle durch GitHub Repository
-    \item Datenbestand in SPARQL-Endpoint, Äquivalent zur Datenbank
+    \item Datenbestand in Virtuoso SPARQL-Endpoint
+    \item Äquivalent zur relationalen Datenbank
   \end{itemize}
 \end{spacing}
 \end{frame}
@@ -334,10 +339,10 @@
 \end{frame}
 
 \begin{frame}{Beispiel II: Bahmni in LODView}
-\vspace{-0.3cm}
-\centering
-\includegraphics[width=.95\textwidth]{img/bahmni.png}
-\footnotesize{\url{https://hitontology.eu/ontology/Bahmni}}
+  \vspace{-0.3cm}
+  \centering
+  \includegraphics[width=.95\textwidth]{img/bahmni.png}
+  \footnotesize{\url{https://hitontology.eu/ontology/Bahmni}}
 \end{frame}
 
 \begin{frame}{HITO Lifecycle Search/Explore}
@@ -346,13 +351,21 @@
   \cycle{mygreen}{mygreen}{mygreen}{mygreen}{mypink}{mygray}
 \end{frame}
 
-\begin{frame}{Kriteriensuche nach Studien -- Faceted Search}
-\centering
-\vspace{-0.3cm}
-\includegraphics[height=.8\textheight]{img/facetedsearch.png}
-\vspace{0.3cm}
-\footnotesize{\url{https://hitontology.eu/search/}}
-\end{frame}
+% \begin{frame}{Kriteriensuche nach Softwareprodukten -- Faceted Search}
+% \centering
+% \vspace{-0.3cm}
+% \includegraphics[height=.8\textheight]{img/facetedsearchSW.png}
+% \vspace{0.3cm}
+% \footnotesize{\url{https://hitontology.eu/search/}}
+% \end{frame}
+%
+% \begin{frame}{Kriteriensuche nach Studien -- Faceted Search}
+% \centering
+% \vspace{-0.3cm}
+% \includegraphics[height=.8\textheight]{img/facetedsearchES.png}
+% \vspace{0.3cm}
+% \footnotesize{\url{https://hitontology.eu/search/}}
+% \end{frame}
 
 \begin{frame}{Beispiel II: Bahmni als Graph (Ausschnitt)}
   \includegraphics[width=\textwidth, height=.65\textheight]{img/bahmni_star.png}
@@ -428,7 +441,7 @@
 \item Synonyme, Homonyme
 \item Ressourcen statt Strings
 \item $\rightarrow$ manuelle Nacharbeit nötig
-\item mehrere in einem Typ: Programming Language vs Library
+\item Separierung von Sammelbegriff Programming Language/Toolkit
 \end{itemize}
 \end{spacing}
 \end{frame}
@@ -447,7 +460,9 @@
 
 \begin{frame}{Szenario 2: Ontologie von HITO -- Enterprise Function}
 \centering
-\includegraphics[height=.8\textheight]{img/function.pdf}
+\vspace{-.5cm}
+\includegraphics[height=0.55\textheight]{img/excerpt3.pdf}
+\includegraphics[width=\textwidth]{img/excerpt1.pdf}
 \end{frame}
 
 
@@ -456,23 +471,24 @@
 \begin{itemize}
 \item HITO bildet ausgewählten Teil der Medflossprodukte ab
 \item dafür mehr Struktur, Qualität und Details
-\item Link von jedem Produkt in LodView zu HITO
+\item Link von jedem Produkt in HITO zu Medfloss
 \item Link von jedem Produkt in Medfloss zu HITO, falls letzteres existiert
 \end{itemize}
 \end{spacing}
 \end{frame}
 
-\begin{frame}{HITO Bahmni}
-  \vspace{-0.5cm}
+\begin{frame}{Link von HITO zu Medfloss}
+  \vspace{-0.2cm}
   \centering
-  \includegraphics[height=.8\textheight]{img/hito-bahmni.png}
+  \includegraphics[height=.75\textheight]{img/hito-bahmni.png}
+    \footnotesize{\url{https://hitontology.eu/ontology/Bahmni}}
 \end{frame}
 
-\begin{frame}{Medfloss Bahmni}
+\begin{frame}{Link von Medfloss zu HITO?}
   \includegraphics[width=\textwidth]{img/medfloss-bahmni.png}
 \end{frame}
 
-\begin{frame}{Medfloss Bahmni Link}
+\begin{frame}{Link von Medfloss zu HITO -- Vorschlag}
   \includegraphics[width=\textwidth]{img/medfloss-bahmni-link.png}
 \end{frame}
 
