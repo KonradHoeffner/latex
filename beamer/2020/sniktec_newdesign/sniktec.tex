@@ -1,9 +1,8 @@
-\documentclass[aspectratio=43]{beamer}
-%\documentclass[aspectratio=169]{beamer}
-%\documentclass[aspectratio=1610,12pt]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{geometry}
 
 \usepackage[ngerman]{babel}
 %\usepackage[ngerman]{babel} %use this for German presentations
@@ -16,22 +15,23 @@
 \usetheme{imise2}
 \author{Konrad Höffner}
 \date{2020-05-28, FvSL}
-\title{Werkzeuge der SNIK Ontologie}
+\title{SNIK---Technischer Hintergrund}
 %\institute{IMISE Institutskolloquium}
 %\subtitle{\url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}}
 \def\address{Härtelstraße 16-18, 04107 Leipzig}
 \def\email{konrad.hoeffner@imise.uni-leipzig.de}
 \def\telephone{~}
 \newcommand{\todo}[1]{TODO: #1}
-\newcommand{\imageslide}[3][]
+\newcommand{\imageslide}[4][]                                                                                                                                                                                                                                                                                                 
 {
-%\usebackgroundtemplate{\includegraphics[height=1.05\textheight]{#1}}
-%\usebackgroundtemplate{\includegraphics[width=1.07\textwidth]{#1}}
-\begin{frame}{#2}
-\centering\includegraphics[width=1\textwidth,height=0.8\textheight,keepaspectratio]{#3}
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
 \\#1
+\note{#4}
 \end{frame}
-%\usebackgroundtemplate{}
+\restoregeometry
 }
 
 \AtBeginSection[]{
@@ -50,23 +50,23 @@
 \titlepage
 \end{frame}
 
-\section{Einführung}
+\imageslide{Vokabular}{img/wordcloud-ob.png}{}{}
+\imageslide{Synonyme}{img/wordcloud-synonym.png}{}{}
 
-\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}
-
-\begin{frame}{Einsatz}
-\centering
-\begin{tabular}{ll}
-\toprule
-\textbf{Ziel}	&\textbf{Zielgruppe}\\
-\midrule
-Lehre			&Lehrer und Studenten\\
-Datenintegration	&Krankenhausleitung, CIO\\
-Formalisierung		&Domänenexperten, Ontologen\\
-\bottomrule
-\end{tabular}
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Semantisches Netz}
+% SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
+\centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
 \end{frame}
+\restoregeometry
 
+\imageslide{Semantisches Web, Web der Daten, Linked Open Data}{img/lodcloud-excerpt.png}{}{}                                                                                                                                                                                                                                  
+\imageslide{Technologien}{img/semantic-web-stack-de.pdf}{}{}
+\imageslide{Einsatz in SNIK}{img/semantic-web-stack-snik-de.pdf}{}{}
+\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}{}{}
+\imageslide{Oberklassen und Unterklassen}{img/bb-cio.pdf}{}{}
+
+\iffalse
 \begin{frame}{Ziele}
 \begin{enumerate}
 \item Publizieren
@@ -75,41 +75,42 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \item Integrieren
 \end{enumerate}
 \end{frame}
+\fi
 
-\section{Publizieren}
+%\section{Publizieren}
 
-\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{img/rdfdump.png}
-\imageslide[\url{https://protegewiki.stanford.edu/}]{RDF Dump in Protégé}{img/protege.png}
-\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}
+\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{img/rdfdump.png}{}{}
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}{}
 
 \section{Visualisieren}
+%
+\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{}{}
 
-\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph I}{img/graph-entitytype.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph II}{img/graph-erf.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Kürzester Weg}{img/shortestpath.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Spiderworm}{img/spiderworm.png}{}{}
 
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung I}{img/graph-entitytype.png}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung II}{img/graph-erf.png}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Kürzester Weg}{img/shortestpath.png}
-\imageslide[\url{http://www.snik.eu/graph}]{Graphvisualisierung---Spiderworm}{img/spiderworm.png}
-
-
+\iffalse
 \begin{frame}{LodLive \& Relfinder}
 \centering
 \includegraphics[width=0.95\textwidth]{img/lodlive.png}\\
 \includegraphics[width=0.95\textwidth]{img/relfinder.png}
 \end{frame}
-
+\fi
+\iffalse
 \section{Evaluieren}
 
-\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{img/dashboard-medley.png}
-\imageslide[\url{https://github.com/IMISE/snik-ontology/issues}]{Ticketsystem}{img/gitissue.png}
-\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}
+\imageslide[https://imise.github.io/snik-ontology/2017/04/12/dashboard]{Statistiken}{img/dashboard-medley.png}{}{}
+\imageslide[\url{https://github.com/IMISE/snik-ontology/issues}]{Ticketsystem}{img/gitissue.png}{}{}
+\imageslide[\url{http://www.snik.eu/evaluation}]{TripleCheckMate}{img/triplecheckmate.png}{}{}
 
 \section{Integrieren}
 
-\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}{}
 
-\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}
-
+\imageslide[http://aksw.org/Projects/LIMES]{LIMES}{img/limes.png}{}{}
+\fi
 \iffalse
 \begin{frame}{Interlinking}
 \begin{itemize}
@@ -120,7 +121,7 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \end{frame}
 \fi
 
-\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}
+\imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{}{}
 
 \section{Überblick}
 
@@ -130,7 +131,7 @@ Formalisierung		&Domänenexperten, Ontologen\\
 
 \begin{frame}[fragile]{Fragen?}
 \begin{itemize}
-\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+%\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
 \vspace{0.5em}%here it works as intended
 \item Überblick \url{http://www.snik.eu}
 \item Visualisierung \url{http://www.snik.eu/graph}
@@ -140,15 +141,6 @@ Formalisierung		&Domänenexperten, Ontologen\\
 \item Twitter \url{https://twitter.com/snik\_proj}
 \item Technisches Blog \url{https://imise.github.io/snik-ontology}
 \item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Externe Tools und Bibliotheken}
-\begin{itemize}
-\item LIMES Interlinker \url{http://aksw.org/Projects/LIMES}
-\item Tarql Konvertierungstool \url{https://tarql.github.io/}
-\item Cytoscape.js Graphbibliothek \url{http://js.cytoscape.org/}
-\item Cytoscape Desktopvisualisierung \url{http://www.cytoscape.org/}
 \end{itemize}
 \end{frame}
 
