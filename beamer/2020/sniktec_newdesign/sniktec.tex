@@ -27,7 +27,7 @@
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
-\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\centering\includegraphics[width=1.0\textwidth,height=0.85\textheight,keepaspectratio]{#3}
 \\#1
 \note{#4}
 \end{frame}
@@ -61,10 +61,20 @@
 \restoregeometry
 
 \imageslide{Semantisches Web, Web der Daten, Linked Open Data}{img/lodcloud-excerpt.png}{}{}                                                                                                                                                                                                                                  
-\imageslide{Technologien}{img/semantic-web-stack-de.pdf}{}{}
-\imageslide{Einsatz in SNIK}{img/semantic-web-stack-snik-de.pdf}{}{}
-\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{SNIK Projekt}{img/5star.png}{}{}
+\imageslide{Semantic Web Stack}{img/semantic-web-stack-de.pdf}{}{}
+\imageslide{Semantic Web Stack---URIs und URLs}{img/semantic-web-stack-snik-de.pdf}{}{}
+\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{}{}
+
+\imageslide{Semantic Web Stack---XML}{img/semantic-web-stack-snik-de.pdf}{}{}
+\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{img/rdfdump.png}{}{}
+
+\imageslide{Semantic Web Stack---Taxonomien}{img/semantic-web-stack-snik-de.pdf}{}{}
 \imageslide{Oberklassen und Unterklassen}{img/bb-cio.pdf}{}{}
+
+\imageslide{Semantic Web Stack---Virtuoso}{img/semantic-web-stack-snik-de.pdf}{}{}
+\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}{}
+
+\imageslide[\url{http://www.snik.eu} \url{http://5stardata.info}]{Konvertierung}{img/5star.png}{}{}
 
 \iffalse
 \begin{frame}{Ziele}
@@ -79,17 +89,17 @@
 
 %\section{Publizieren}
 
-\imageslide[\url{https://github.com/IMISE/snik-ontology}]{RDF Dump}{img/rdfdump.png}{}{}
-\imageslide[\url{http://www.snik.eu/sparql}]{SPARQL Endpoint}{img/sparqlresult.png}{}{}
 
-\section{Visualisieren}
+%\section{Visualisieren}
 %
-\imageslide[\url{http://www.snik.eu/ontology}]{RDF Browser---LodView}{img/browse-cio.png}{}{}
 
-\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph I}{img/graph-entitytype.png}{}{}
-\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph II}{img/graph-erf.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Overview}{img/snik-graph-all.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Zoom}{img/snik-graph-zoom.png}{}{}
+\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Star}{img/snik-graph-star.png}{}{}
 \imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Kürzester Weg}{img/shortestpath.png}{}{}
 \imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph---Spiderworm}{img/spiderworm.png}{}{}
+%\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph I}{img/graph-entitytype.png}{}{}
+%\imageslide[\url{http://www.snik.eu/graph}]{SNIK Graph II}{img/graph-erf.png}{}{}
 
 \iffalse
 \begin{frame}{LodLive \& Relfinder}
@@ -123,11 +133,9 @@
 
 \imageslide[https://github.com/IMISE]{Öffentliche Softwarerepositories}{img/github.png}{}{}
 
-\section{Überblick}
+%\section{Überblick}
 
-\begin{frame}
-\includegraphics[width=\textwidth]{img/architecture.png}
-\end{frame}
+\imageslide{Architektur}{img/architecture.png}{}{}
 
 \begin{frame}[fragile]{Fragen?}
 \begin{itemize}
