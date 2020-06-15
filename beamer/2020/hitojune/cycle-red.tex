@@ -1,0 +1,94 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usetikzlibrary{decorations.text}
+\definecolor{mygray}{RGB}{208,208,208}
+\definecolor{mymagenta}{RGB}{226,0,116}
+\newcommand*{\mytextstyle}{\sffamily\normalfont\bfseries\color{black!85}}
+\newcommand{\arcarrow}[4]{%
+   % inner radius, middle radius, outer radius, start angle,
+   % end angle, tip protusion angle, options, text
+   \pgfmathsetmacro{\rin}{2.5}
+   \pgfmathsetmacro{\rmid}{3.0}
+   \pgfmathsetmacro{\rout}{3.5}
+   \pgfmathsetmacro{\astart}{#1}
+   \pgfmathsetmacro{\aend}{#2}
+   \pgfmathsetmacro{\atip}{5}
+   \fill[#4, very thick] (\astart+\atip:\rin)
+                         arc (\astart+\atip:\aend:\rin)
+      -- (\aend-\atip:\rmid)
+      -- (\aend:\rout)   arc (\aend:\astart+\atip:\rout)
+      -- (\astart:\rmid) -- cycle;
+   \path[
+      decoration = {
+         text along path,
+         text = {|\mytextstyle|#3},
+         text align = {align = center},
+         raise = -1.0ex
+      },
+      decorate
+   ](\astart+\atip:\rmid) arc (\astart+\atip:\aend+\atip:\rmid);
+}
+\newcommand{\barcarrow}[4]{%
+   % inner radius, middle radius, outer radius, start angle,
+   % end angle, tip protusion angle, options, text
+   \pgfmathsetmacro{\rin}{3.9}
+   \pgfmathsetmacro{\rmid}{4.4}
+   \pgfmathsetmacro{\rout}{4.9}
+   \pgfmathsetmacro{\astart}{#1}
+   \pgfmathsetmacro{\aend}{#2}
+   \pgfmathsetmacro{\atip}{5}
+   \fill[#4, very thick] (\astart+\atip:\rin)
+                         arc (\astart+\atip:\aend:\rin)
+      -- (\aend-\atip:\rmid)
+      -- (\aend:\rout)   arc (\aend:\astart+\atip:\rout)
+      -- (\astart:\rmid) -- cycle;
+   \path[
+      decoration = {
+         text along path,
+         text = {|\mytextstyle|#3},
+         text align = {align = center},
+         raise = -1.0ex
+      },
+      decorate
+   ](\astart+\atip:\rmid) arc (\astart+\atip:\aend+\atip:\rmid);
+}
+
+\begin{document}
+\begin{tikzpicture}
+   \fill[even odd rule,mymagenta] circle (1.5);
+
+   \node at (0,0) [
+      font  = \mytextstyle,
+      color = white,
+      align = center
+   ]{
+      SNIK Ontology\\Lifecycle
+   };
+%   \arcarrow{ 85}{  3}{ Classification}
+%   \arcarrow{ 85}{  3}{ Extraction}
+%   \arcarrow{ 85}{  3}{ Transformation}
+   \arcarrow{-120}{ -180}{~~~Storage/Query}{mygray}
+   \arcarrow{-190}{-270}{~~~Author}{red}
+
+   \arcarrow{-280}{-310 }{~~~Browse}{mygray}
+   \arcarrow{-320}{-425 }{~~~Search/Explore}{mygray}
+ 
+  \arcarrow{-475}{-435}{Repair~~~~}{mygray}
+
+%   \arcarrow{ 85}{  3}{ Meta Model}
+%   \arcarrow{ 85}{  3}{ Textbook Analysis}
+%   \arcarrow{ 85}{  3}{ TARQL }
+   \barcarrow{-120}{ -180}{Virtuoso}{mygray}
+   \barcarrow{-190}{-270}{Editor+Protege+Instancegenerator}{red}
+  
+   \barcarrow{-280}{-310}{~~~LodView}{mygray}
+   \barcarrow{-320}{-425}{SNIK Graph, Facetted Browsing,...}{mygray}
+   %\barcarrow{-435}{-385}{Validation Queries~~~~~~~}
+
+  \barcarrow{-475}{-435}{Editor~~~~~}{mygray}
+
+\end{tikzpicture}
+
+\end{document}
+
