@@ -6,6 +6,7 @@
 \usepackage{tabulary}
 \usepackage{amssymb}% http://ctan.org/pkg/amssymb
 \usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{csquotes}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \usetheme{simple}
@@ -15,6 +16,7 @@
 \subtitle{HITO Big Blue Button Meeting}
 \author{Konrad Höffner \& Thomas Pause}
 
+% Parameters: body text, frame title, image path, (optional) note
 \newcommand{\imageslide}[4][]
 {
 %\newgeometry{margin=0cm,top=1em}
@@ -54,6 +56,53 @@
 	at (10*rnd,8*rnd) {\scalebox{\pgfmathresult}{\word}};
     };
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{HITO---The Early Days}
+\begin{itemize}
+  \item at the beginning, all was well
+  \item Verena modelled the HITO ontology in Protégé, and also some instance data
+  \item HITO was living in a single file
+  \item this single file was placed in a GitHub repository~\footnote{\url{https://github.com/hitontology/ontology}}, so that we have version control (backups, history and multi user editing)
+  \item Verena: Protégé, Konrad: text editor (both on the GitHub repository), Franziska: yed diagram
+\begin{itemize}
+  \item Konrad and Verena are always synchronous through GitHub, but Franziska's diagram is \emph{not} synchronous! \emph{Problem:} some people think HITO "is" the diagram. But "the real HITO" is the file! (at this point). This problem can be solved by clarification.
+  \item small diffs can be achieved by Konrad by editing in the Protégé way
+\end{itemize}
+  \item problems are solved, everything is great in ontology land!
+  \item HITO is uploaded to a SPARQL endpoint, but it is not the master! Changes are not persistent there.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{HITO---Adolescence}
+\begin{itemize}
+  \item Problems are solved, everything is great in one file land?
+  \item We don't only want ontology, we also want instances!
+  \item Where do the instances come from? They come from software products and catalogues.
+  \item How do we create \enquote{instances} in SNIK? From tables using Tarql.
+  \item We don't have to reinvent the wheel, use reliable technology, save time and increase quality. 
+  \item We did exactly that. Maryam supplied data and we transformed it to tables and then transformed the CSV tables to RDF using Tarql
+  \item Each software product and each catalogue is stored as a separate file.
+  \item $\Rightarrow$ \url{https://github.com/hitontology/csv2rdf} 
+\end{itemize}
+\end{frame}
+
+\imageslide{}{Software Product I---Product Page}{img/productpage.png}
+\imageslide{}{Software Product II---Extracted Attributes}{img/productpage.png}
+\imageslide{}{Software Product III---Schematized Table}{img/productpage.png}
+\imageslide{}{Software Product IV---Tarql}{img/productpage.png}
+\imageslide{}{Software Product V---Repository}{img/productpage.png}
+\imageslide{}{Software Product VI---SPARQL Upload}{img/productpage.png}
+\imageslide{}{Software Product VII---Applications}{img/productpage.png}
+
+
+\begin{frame}{HITO---CSV2RDF}
+\begin{itemize}
+  \item 
+  \item 
+  \item 
+  \item 
+\end{itemize}
 \end{frame}
 
 %\begin{frame}{Place in the Lifecycle}
