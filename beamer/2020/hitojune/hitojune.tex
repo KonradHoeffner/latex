@@ -16,10 +16,10 @@
 \subtitle{HITO Big Blue Button Meeting}
 \author{Konrad Höffner \& Thomas Pause}
 
-% Parameters: body text, frame title, image path, (optional) note
+% Parameters: frame title, image path, (optional) note
 \newcommand{\imageslide}[4][]
 {
-%\newgeometry{margin=0cm,top=1em}
+%\newgeometry{margin=0.0cm,top=1em}
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
 \centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
@@ -34,17 +34,7 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Goal: better Data Quality}
-\begin{itemize}
-  \item No defined way for the preparation of Data
-  \item many approaches and suboptimal solutions
-  \item no one knows exactly what to do and how to manage Data
-  \item $\Rightarrow$ a universal solution is needed to handle the authoring pipeline in HITO
-  \item $\Rightarrow$ we can achieve much better data quality!!
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Goal: Lift the Confusion}
+\begin{frame}{Lifting the Confusion}
 \begin{tikzpicture}
 %    \foreach \i in {1,...,30} {
 \foreach [count=\count] \word in {Instance Generator, Ontology, Diagram, CSV2RDF, Tarql, Turtle, Catalogue, Classified, Citation, Issue, Protégé , ?, ?, ?, ?, ?, ?, ?, ?, ?} {
@@ -56,6 +46,17 @@
 	at (10*rnd,8*rnd) {\scalebox{\pgfmathresult}{\word}};
     };
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Questions}
+\begin{itemize}
+\item How is a \emph{new} software product best prepared to be included?
+\item Why can I not find software product X?
+\item I created a software product, why is it not in the endpoint?
+\item Who is responsible for Y?
+\item How do I edit an instance and what happens then?
+\item At which places are software products stored?
+\end{itemize}
 \end{frame}
 
 \begin{frame}{HITO---The Early Days}
@@ -87,78 +88,51 @@
 \end{itemize}
 \end{frame}
 
-\imageslide{}{Software Product I---Product Page}{img/productpage.png}
-\imageslide{}{Software Product II---Extracted Attributes}{img/productpage.png}
-\imageslide{}{Software Product III---Schematized Table}{img/productpage.png}
-\imageslide{}{Software Product IV---Tarql}{img/productpage.png}
-\imageslide{}{Software Product V---Repository}{img/productpage.png}
-\imageslide{}{Software Product VI---SPARQL Upload}{img/productpage.png}
-\imageslide{}{Software Product VII---Applications}{img/productpage.png}
+\imageslide{Software Product I---Product Page}{img/bahmni-example2.png}{}
+\imageslide{Software Product II---Supplied Table}{img/bahmni-xslx.png}{}
+\imageslide{Software Product III---Polished Table}{img/bahmni-polished.png}{}
+\imageslide{Software Product IV---Polished Table of Catalogue}{img/whodhi-single.png}{}
+\imageslide{Software Product V---Polished Table of Catalogue}{img/whodhi-all.png}{}
+\imageslide{Software Product VI---Tarql Mapping}{img/hitocsv2rdf.png}{}
+\imageslide{Software Product VII---Repository}{img/hitogithub.png}{}
+\imageslide{Software Product VIII---SPARQL Upload}{img/hitosparql.png}{}
+\imageslide{Software Product IX---Applications}{img/lodview.png}{}
 
-
-\begin{frame}{HITO---CSV2RDF}
+\begin{frame}{HITO---Adolescence Problems}
 \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
+  \item developer point of view: everything works perfectly
+  \item successfully used for several catalogues and three test cases: Bahmni, Orthanc and GnuHealth
+  \item domain expert point of view: large number of catalogues and entries, hard to find the correct ones for a certain citation
+  \item domain experts: please tell us more problems from your perspective
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Place in the Lifecycle}
-%\centering
-%\includegraphics[height=0.9\textheight]{cycle-red.pdf}
-%\end{frame}
-
-\begin{frame}{Questions}
+\begin{frame}{HITO---Instance Generator Phase}
 \begin{itemize}
-\item How is a \emph{new} software product best prepared to be included?
-\item Why can I not find software product X?
-\item I created a software product, why is it not in the endpoint?
-\item Who is responsible for Y?
-\item How do I edit an instance and what happens then?
-\item At which places are software products stored?
+  \item was intended as a small tool to aid catalogue selection
+  \item very limited scope on purpose---OntoWiki took 10 years to develop, for example \emph{no} direct export to SPARQL endpoint
+  \item we are only 2 people and we don't have 10 years
+  \item problem: increasing amount of requested features, large development effort
+  \item problem: exported triples clash with existing workflow
+  \item better fit with workflow would be to export table rows instead of triples and users need to put table rows in HITO medfloss tables
+  \item still we think we have an intuitive interface to view and edit catalogue entries
+  \item but different technologies to combine, needs to adhere to the right schema
+  \item former consensus: Thomas gets the data as tables and uses whatever tools necessary to put instances into HITO
+  \item then where is the data the domain experts provided?
 \end{itemize}
 \end{frame}
 
-\begin{frame}{SPARQL Endpoint}
-\centering
+\begin{frame}{Where is the Roadblock---Data Quality}
 \begin{itemize}
-\item \url{https://hitontology.eu/sparql}
-\item like SNIK: powers all our applications
-\item unlike SNIK: no permanent changes! everything you change there will be lost
+  \item domain experts use different approaches and suboptimal solutions to prepare data, e.g. different ways to express citation to catalogue entry mappings
+  \item solution: domain experts should use the predefined schema of the HITO tables
+  \item then Thomas can create new tables using the existing scheme and use CSV2RDF with Konrad to add new instances to the ontology
+  \item note: Many of the tables given to Thomas don't contain classified entries mapped to the citations. Thomas has no way to enter citations with missing classified catalogue entries (except unknown). So Thomas can only start when he is given a complete mapping between citations and classified entries.
+  \item then the domain experts should evaluate the finished instances using the yet to be developed integrated viewer and propose changes
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Ontology Repository}
-\centering
-\begin{itemize}
-\item \url{https://github.com/hitontology/ontology}
-\item this is where the data is stored permanently
-\item we regularly overwrite the SPARQL endpoint with the repostory contents
-\item combine script packs all turtle files into a single file that gets uploaded
-\end{itemize}
-\end{frame}
-
-\begin{frame}{CSV2RDF: Tarql}
-\centering
-\begin{itemize}
-\item
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\centering
-\begin{itemize}
-\item
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\centering
-\begin{itemize}
-\item
-\end{itemize}
+\begin{frame}{Discussion}
 \end{frame}
 
 \end{document}
