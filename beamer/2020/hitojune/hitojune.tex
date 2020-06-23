@@ -1,6 +1,4 @@
-\PassOptionsToPackage{rgb}{xcolor}
 \documentclass[aspectratio=1610]{beamer}
-\usepackage{tikz}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{tabulary}
@@ -22,8 +20,10 @@
 %\newgeometry{margin=0.0cm,top=1em}
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
+\begin{center}
 \centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
-\\#1
+\end{center}
+#1
 \note{#4}
 \end{frame}
 %\restoregeometry
@@ -34,32 +34,25 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Lifting the Confusion}
-\begin{tikzpicture}
-%    \foreach \i in {1,...,30} {
-\foreach [count=\count] \word in {Instance Generator, Ontology, Diagram, CSV2RDF, Tarql, Turtle, Catalogue, Classified, Citation, Issue, Protégé , ?, ?, ?, ?, ?, ?, ?, ?, ?} {
-      \pgfmathparse{rnd}
-      \definecolor{MyColor}{hsb}{\pgfmathresult,1,1}
-      \pgfmathparse{3.0*rnd+1.0}
-      \node[text=MyColor,
-	rotate=rand*25]
-	at (10*rnd,8*rnd) {\scalebox{\pgfmathresult}{\word}};
-    };
-  \end{tikzpicture}
-\end{frame}
+\imageslide{Lifting the Confusion}{confusion.pdf}{}
 
-\begin{frame}{Questions}
+\begin{frame}{Why this presentation?}
 \begin{itemize}
-\item How is a \emph{new} software product best prepared to be included?
-\item Why can I not find software product X?
-\item I created a software product, why is it not in the endpoint?
-\item Who is responsible for Y?
-\item How do I edit an instance and what happens then?
-\item At which places are software products stored?
+\item We think there is some confusion and missing communication between the domain experts and the developers.
+\item We want to remove roadblocks to generate instances.
+\item We want to discuss the workflow and provide necessary technical background of the existing pipeline.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{HITO---The Early Days}
+\begin{frame}{HITO---A History}
+\begin{enumerate}
+\item GitHub \& Protégé
+\item CSV2RDF
+\item Instance Generator
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{History 1---GitHub \& Protégé}
 \begin{itemize}
   \item at the beginning, all was well
   \item Verena modelled the HITO ontology in Protégé, and also some instance data
@@ -75,7 +68,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{HITO---Adolescence}
+\begin{frame}{History 2---CSV2RDF}
 \begin{itemize}
   \item Problems are solved, everything is great in one file land?
   \item We don't only want ontology, we also want instances!
@@ -98,7 +91,7 @@
 \imageslide{Software Product VIII---SPARQL Upload}{img/hitosparql.png}{}
 \imageslide{Software Product IX---Applications}{img/lodview.png}{}
 
-\begin{frame}{HITO---Adolescence Problems}
+\begin{frame}{History 2---CSV2RDF: Problems}
 \begin{itemize}
   \item developer point of view: everything works perfectly
   \item successfully used for several catalogues and three test cases: Bahmni, Orthanc and GnuHealth
@@ -107,13 +100,18 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{HITO---Instance Generator Phase}
+\begin{frame}{History 3---Instance Generator}
 \begin{itemize}
   \item was intended as a small tool to aid catalogue selection
   \item very limited scope on purpose---OntoWiki took 10 years to develop, for example \emph{no} direct export to SPARQL endpoint
   \item we are only 2 people and we don't have 10 years
   \item problem: increasing amount of requested features, large development effort
   \item problem: exported triples clash with existing workflow
+\end{itemize}
+\end{frame}
+
+\begin{frame}{History 3---Instance Generator}
+\begin{itemize}
   \item better fit with workflow would be to export table rows instead of triples and users need to put table rows in HITO medfloss tables
   \item still we think we have an intuitive interface to view and edit catalogue entries
   \item but different technologies to combine, needs to adhere to the right schema
@@ -122,15 +120,16 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Where is the Roadblock---Data Quality}
+\begin{frame}{Another Roadblock---Data Quality}
 \begin{itemize}
   \item domain experts use different approaches and suboptimal solutions to prepare data, e.g. different ways to express citation to catalogue entry mappings
   \item solution: domain experts should use the predefined schema of the HITO tables
   \item then Thomas can create new tables using the existing scheme and use CSV2RDF with Konrad to add new instances to the ontology
-  \item note: Many of the tables given to Thomas don't contain classified entries mapped to the citations. Thomas has no way to enter citations with missing classified catalogue entries (except unknown). So Thomas can only start when he is given a complete mapping between citations and classified entries.
   \item then the domain experts should evaluate the finished instances using the yet to be developed integrated viewer and propose changes
 \end{itemize}
 \end{frame}
+
+\imageslide[Many of the tables given to Thomas don't contain classified entries mapped to the citations. Thomas has no way to enter citations with missing classified catalogue entries (except unknown). So Thomas can only start when he is given a complete mapping between citations and classified entries.]{Another Roadblock---Data Quality}{img/missing-mappings.png}{}
 
 \begin{frame}{Discussion}
 \end{frame}
