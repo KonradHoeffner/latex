@@ -1,0 +1,15 @@
+\PassOptionsToPackage{rgb}{xcolor}
+\documentclass[crop,tikz]{standalone}
+\usetikzlibrary{backgrounds}
+\begin{document}
+\begin{tikzpicture}[background rectangle/.style={fill=black}, show background rectangle]
+\foreach [count=\count] \word in {Instance Generator, Ontology, Diagram, CSV2RDF, Tarql, Turtle, Catalogue, Classified, Citation, Issue, Protégé, GitHub, RDF, Triples, LodView, Bahmni, Orthanc, Medfloss, Spreadsheet, ?, ?, ?, ?, ?, ?, ?, ?, ?} {
+      \pgfmathparse{rnd}
+      \definecolor{MyColor}{hsb}{\pgfmathresult,1,1}
+      \pgfmathparse{3.0*rnd+1.0}
+      \node[text=MyColor,
+	rotate=rand*35]
+	at (11*rnd,8*rnd) {\scalebox{\pgfmathresult}{\word}};
+    };
+\end{tikzpicture}
+\end{document}
