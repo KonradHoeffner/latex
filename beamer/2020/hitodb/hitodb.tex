@@ -1,0 +1,102 @@
+%\documentclass[aspectratio=43]{beamer}
+\documentclass[aspectratio=169]{beamer}
+%\documentclass[aspectratio=1610,12pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%\usepackage[english]{babel}
+\usepackage[ngerman]{babel} %use this for German presentations
+\usepackage{booktabs} % fancy tables
+\usepackage{csquotes}
+\usepackage{tabulary} % tables with auto column length
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\usetheme{imise2}
+\author{Konrad Höffner}
+\date{Leipzig, 12. Juni 2020}
+\title{HITO Datenbankprojekt}
+\subtitle{}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@imise.uni-leipzig.de}
+\def\telephone{+49 341 97 16322}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Gegenstand}
+\begin{itemize}
+\item Ein Teil von HITO befasst sich mit Softwareprodukten
+\item Domänenexperten müssen Softwareprodukte anzeigen, hinzufügen und editieren.
+\item Dafür soll eine Datenbank genutzt werden.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problemstellung}
+\begin{itemize}
+\item Derzeit werden Semantic Web Tools eingesetzt.
+\item Ohne die Kataloge könnte man einfach OntoWiki nehmen aber die Citation-Classified-Catalogue Struktur wird nicht gut abgebildet.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+\item Oracle Forms und co. versprechen intuitive Bearbeitung von Softwareprodukten 
+\item Datenbanken gibt es schon länger als das Semantic Web, wir nehmen an, dass es dort besser ausgereifte Werkzeuge gibt
+\item Resultat ist sofort vorhanden bzw. aktualisiert, wesentlich intuitiverer Arbeitsablauf als mit Instancegenerator \& GitHub Issues.
+\end{itemize}
+\end{frame}
+\begin{frame}{Ziele}
+\begin{itemize}
+\item Z1 Datenbank aufsetzen \checkmark
+\item Z2 RDF zu Datenbank konvertieren
+\item Z3 Werkzeuge bereitstellen
+\item Z4 DB zurück zu RDF konvertieren
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aufgaben Z1 Datenbank aufsetzen}
+\begin{itemize}
+\item A1.1 Datenbanksystemanalyse, -bewertung und -auswahl -> PostgreSQL \checkmark 
+\item A1.2 Datenbanksystemeinführung\\-> Installation als Docker container auf Bruchtal \checkmark  
+\item A1.3 Schema erstellen (July 1--July 8) \checkmark
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aufgaben Z2 RDF zu Datenbank konvertieren}
+\begin{itemize}
+\item A2.1 externe Instanzlisten laden (DBpedia Language, SWO License, $\ldots$) \checkmark
+\item A2.2 interne Instanzlisten laden () \checkmark
+\item A2.3 Katalogtabellen von Google Sheets als CSV laden \checkmark
+\item A2.4 Softwareprodukte von Google Sheets laden
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aufgaben Z3 Werkzeuge bereitstellen}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aufgaben Z4 DB zurück zu RDF konvertieren}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Arbeitspakete und Meilensteine}
+\begin{itemize}
+\item 
+\item 
+\item Z2.1 Schema in GitHub Repository als SQL Datei erstellen \checkmark
+\item Z2.2 Schema einspielen  \checkmark
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\end{document}
