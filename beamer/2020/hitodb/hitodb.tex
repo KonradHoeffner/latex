@@ -13,8 +13,20 @@
 \usepackage{hyperref}
 \usepackage{amssymb}
 
+\newcommand{\imageslide}[4][]
+{
+%\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+%\restoregeometry
+}
+
 \usetheme{imise2}
-\author{Konrad Höffner}
+\author{Konrad Höffner \& Thomas Pause}
 \date{Leipzig, 12. Juni 2020}
 \title{HITO Datenbankprojekt}
 \subtitle{}
@@ -44,7 +56,7 @@
 
 \begin{frame}{Motivation}
 \begin{itemize}
-\item Oracle Forms und co. versprechen intuitive Bearbeitung von Softwareprodukten 
+\item Oracle Forms und co. versprechen intuitive Bearbeitung von Softwareprodukten
 \item Datenbanken gibt es schon länger als das Semantic Web, wir nehmen an, dass es dort besser ausgereifte Werkzeuge gibt
 \item Resultat ist sofort vorhanden bzw. aktualisiert, wesentlich intuitiverer Arbeitsablauf als mit Instancegenerator \& GitHub Issues.
 \end{itemize}
@@ -60,8 +72,8 @@
 
 \begin{frame}{Aufgaben Z1 Datenbank aufsetzen}
 \begin{itemize}
-\item A1.1 Datenbanksystemanalyse, -bewertung und -auswahl -> PostgreSQL \checkmark 
-\item A1.2 Datenbanksystemeinführung\\-> Installation als Docker container auf Bruchtal \checkmark  
+\item A1.1 Datenbanksystemanalyse, -bewertung und -auswahl -> PostgreSQL \checkmark
+\item A1.2 Datenbanksystemeinführung\\-> Installation als Docker container auf Bruchtal \checkmark
 \item A1.3 Schema erstellen (July 1--July 8) \checkmark
 \end{itemize}
 \end{frame}
@@ -75,11 +87,11 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Aufgaben Z3 Werkzeuge bereitstellen}
+\begin{frame}{Aufgaben Z3 Werkzeuge (Frontend) bereitstellen}
 \begin{itemize}
 \item A3.1 Analyse und Bewertung existierender Form-Generatoren
 \item A3.2 Einführung Form-Generator
-\item A3.3 ?
+\item A3.3 Evaluierung des neuen Werkzeugs
 \end{itemize}
 \end{frame}
 
@@ -92,16 +104,26 @@
 
 \begin{frame}{Arbeitspakete und Meilensteine A3.1 Form-Generatoren}
 \begin{itemize}
-\item TODO Thomas add here please
-\item 
+\item noch in der Findungsphase
+\item es gibt wenig bis keine geeignete Auswahl an kostenfreien Lösungen
+\item Kandidat zur Diskussion: \emph{LibreOffice Base}
+\begin{itemize}
+  \item Nutzerfreundliche Darstellung
+  \item direkte Verbindung zur Datenbank
+  \item Nachteil: separat zu installierendes Programm
+\end{itemize}
 \end{itemize}
 \end{frame}
+
+\imageslide{LibreOffice Base -- Tabellenansicht}{img_neu/base-tables.png}{}
+\imageslide{LibreOffice Base -- Beispiel-Form}{img_neu/base-form.png}{}
+\imageslide{LibreOffice Base -- Query-Ansicht}{img_neu/base-query.png}{}
 
 \iffalse
 \begin{frame}{Arbeitspakete und Meilensteine}
 \begin{itemize}
-\item 
-\item 
+\item
+\item
 \end{itemize}
 \end{frame}
 \fi
