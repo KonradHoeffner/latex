@@ -2,7 +2,7 @@
 \usepackage{csquotes}
 
 \begin{document}
-\newcommand{\footer}[0]{\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-??-??};}}
+\newcommand{\footer}[0]{\tikz{\draw (image.south west) node[anchor=west]{IMISE | MIG | Konrad Höffner | 2020-08-24};}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{poster}{grid=false,headerheight=2.5em}{}{Dissertation}{}{}
@@ -12,7 +12,7 @@ Konrad Höffner
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
-%reports finished?
+report deadline has expired but supervisor broke his hand, delay for several weeks
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=event,below=progress]{Event Date Forecast}
@@ -24,7 +24,11 @@ Questions Answering on RDF Data Cubes
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
-%waiting for reports
+\begin{itemize}
+\item wait for reports
+\item schedule defense
+\item hold defense
+\end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
@@ -49,16 +53,15 @@ Max Niclas Wächtler, Konrad Höffner
 \begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
 % plan:
 \begin{tabulary}{\textwidth}{lL}
-2020-06-30	&\enquote{Ausführung der Lösung}, last official BeLL day\\
-2020-07-14	&Execution of the Solution\\
-2020-07-21	&finish Execution of the Solution\\
-2020-08-21	&Discussion and Future Work\\
-2020-08-31	&submission deadline\\
+June--August 2020	&\enquote{Ausführung der Lösung}\\
+%August 18	&finish \enquote{Ausführung der Lösung}\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=event,below=progress]{Event Date Forecast}
 \begin{tabulary}{\textwidth}{lL}
+2020-08-31	&presentation of state at that time\\
+end of 2020	&submission of final version\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -69,21 +72,22 @@ Besondere LernLeistung at Wilhelm-Ostwald-Gymnasium Leipzig
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
-%\begin{itemize}
-%\end{itemize}
-\end{posterbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
 \begin{itemize}
-\item complex topic 
-\item slow progress
+\item Results
+\item Discussion and Future Work
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
 %\begin{itemize}
-%\item 
 %\end{itemize}
+\end{posterbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+\begin{itemize}
+\item presentation at IMISE when finished?
+\item paper?
+\end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=other,column=1,below=escalation]{Other}
@@ -119,9 +123,9 @@ Höffner, Winter, Jahn
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
+meeting with Franziska and continuation
 %\begin{enumerate}
 %\item
-write the rest of the proposal
 %\end{enumerate}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,15 +156,27 @@ write the rest of the proposal
 Konrad Höffner, Thomas Pause
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation (Mai 11)}
+\begin{posterbox}[name=progress,below=person]{Progress compared to last presentation (June 29)}
+\small
 \textbf{SNIK Ontology}:
 \begin{itemize}
-\item ? ? release 1.0 (? commits, ? issues)
+\item 2020-06-30 release 1.0.0 (14 issues)
 \item added to LOD cloud \url{https://lod-cloud.net/dataset/snik}
 \end{itemize}
 \textbf{SNIK Graph}
 \begin{itemize}
-\item 
+\item 35 open issues: 9 SNIKT+, 9 Multiview, 17 other
+\item master branch
+\begin{itemize}
+\item 2020-08-17 release 1.7 (last 4 of 11 issues), 15 commits
+\end{itemize}
+\item feature-multiview branch
+\begin{itemize}
+\item practical part of Thomas' bachelor thesis
+\item $3 \rightarrow 6 / 12$ issues in milestone tp-must
+\item $0 \rightarrow 1 / 4$ issues in milestone tp-optional
+\item 26 commits
+\end{itemize}
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,26 +185,35 @@ Maintenance of the SNIK Ontology and SNIK Graph
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
-%\begin{itemize}
-%\end{itemize}
+\begin{itemize}
+\item finish tp-must milestone
+\item if possible finish tp-optional milestone
+\item filtered star
+\item SNIK Graph poster
+\end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
-%\begin{itemize}
-%\item SNIK Graph downtime due to network security changes 
-%\end{itemize}
-%\end{posterbox}
+\begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+\begin{itemize}
+\item Thomas has a new Job and quits soon, less time for SNIK Graph Multiview
+\end{itemize}
+\end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=event,column=1,below=open]{Event Date Forecast}
 %\small
 \begin{tabulary}{\textwidth}{lL}
-? ?		&SNIK jour fixe	(every 3rd Tuesday at 9.00)\\
+2020-08-25	&SNIK jour fixe	(every 3rd Tuesday at 9.00)\\
 4 hours		&weekly maintainance\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{posterbox}[name=escalation,column=1,below=event]{Escalation / Decision Needs}
-%\end{posterbox}
+\begin{posterbox}[name=escalation,column=1,below=event]{Escalation / Decision Needs}
+\begin{itemize}
+\item Thomas has a new Job and quits soon, less time for SNIK Graph Multiview
+\item rehire Thomas so that among other tasks he can finish and maintain Multiview?
+\item how much time should Konrad spend on Multiview?
+\end{itemize}
+\end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footer
 \end{poster}
@@ -216,6 +241,7 @@ Semantic Web Journal SNIK paper
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
 \begin{itemize}
+\item Paper week
 \item write about new connection with HITO
 \item usage by Braunschweig and Amsterdam
 \item discuss usage by target audiences for use cases
@@ -223,19 +249,19 @@ Semantic Web Journal SNIK paper
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+Paper week planned for July 6--10 keeps getting delayed because of daily work, mostly database
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+%\begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
 %\begin{itemize}
 %\item how to reference existing material from poster paper
 %\end{itemize}
-\end{posterbox}
+%\end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{posterbox}[name=event,column=0,below=progress]{Event Date Forecast}
-\begin{tabulary}{\textwidth}{lL}
-July 6--10	&Paper week\\
-\end{tabulary}
-\end{posterbox}
+%\begin{posterbox}[name=event,column=0,below=progress]{Event Date Forecast}
+%\begin{tabulary}{\textwidth}{lL}
+%\end{tabulary}
+%\end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footer
 \end{poster}
@@ -263,20 +289,22 @@ Authoring tool for annotating ontologies while writing books.
 \begin{posterbox}[name=open,column=1,below=description]{Open Points / Next Planned Steps}
 \begin{itemize}
 \item various enhancements
-\item test by Ken Kretschmar
-\item usage by Ken Kretschmar
+\item test by Ken K
+\item usage by Ken K
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
 \begin{itemize}
-\item  
+\item Ken K BA thesis deadline expired
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
 \begin{itemize}
-\item 
+\item how to proceed with Ken K's BA thesis?
+\item does anyone else use SNIK Tag?
+\item continue SNIK Tag or finish?
 \end{itemize}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,16 +328,16 @@ Thomas Pause, Konrad Höffner
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=progress,below=person]{Progress compared to last presentation}
 \begin{tabulary}{\textwidth}{lL}
-July 24	&3rd presentation\\
-%execution of the solution
-%implementation
+July--August 2020	&execution of the solution\\
+since July		&start of the implementation\\
 %submission
 %grading
 \end{tabulary}
 \end{posterbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=event,below=progress]{Event Date Forecast}
 \begin{tabulary}{\textwidth}{lL}
+August 28	&3rd presentation\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -326,9 +354,11 @@ zur ontologiegestützten Wissensvermittlung
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=risks,column=1,below=open]{Risks / Obstacles}
+missing time for finishing and maintaining the implementation of the thesis as contract runs out in September
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=escalation,column=1,below=risks]{Escalation / Decision Needs}
+transfer of practical part finish and maintenance to Konrad?
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=other,column=1,below=escalation]{Other}
@@ -354,14 +384,22 @@ Konrad Höffner
 \small
 \begin{tabulary}{\textwidth}{lllllL}
 July 10	&Clemens Morgenstern		&Bachelor	&I		&ST	&\emph{3LGM² on FHIR}\\
-July 10	&Samuel Silo			&Bachelor	&I		&ML	&\emph{Unterstützung von Provenance-Informationen bei der Modellierung von Datenflüssen in klinischen Informationssystemen}\\
 July 10	&Paul Pfütze			&Bachelor	&I		&FJ	&\emph{Vom Ist-Prozess zum Soll-Prozess: Optimierung der Dokumentation in der Klinik für Orthopädie, Unfallchirurgie und plastische Chirurgie im Universitätsklinikum Leipzig}\\
-July 24 &Thomas Pause			&Bachelor	&III		&KH	&\emph{Organisation von Teilgraphen semantischer Netze zur ontologiegestützten Wissensvermittlung}\\
-July 24 &Martin Schöbel			&?		&II		&ML	&\emph{Konzeption und Umsetzung des Erweiterungsmoduls "Strukturdaten" des Kerndatensatzes der Medizininformatik-Initiative}\\
+July 24	&Fabian Winkler			&Diplom		&II		&Prof. Kirsten	&\emph{Semiautomatische Metadatenerzeugung für Studiendaten auf Basis des LIFE-Metadatenkatalogs}\\
+%July 24 &Martin Schöbel			&?		&II		&ML	&\emph{Konzeption und Umsetzung des Erweiterungsmoduls "Strukturdaten" des Kerndatensatzes der Medizininformatik-Initiative}\\
 \end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=event,below=progress,span=2]{Event Date Forecast}
+\small
+\begin{tabulary}{\textwidth}{lllllL}
+August 28	&Thomas Pause			&Bachelor	&III		&KH	&\emph{Organisation von Teilgraphen semantischer Netze zur ontologiegestützten Wissensvermittlung}\\
+August 28	&Clemens Morgenstern		&Bachelor	&II		&ST	&\emph{3LGM² on FHIR}\\
+August 28	&Samuel Silo			&Bachelor	&I		&ML	&\emph{Unterstützung von Provenance-Informationen bei der Modellierung von Datenflüssen in klinischen Informationssystemen}\\
+September 11	&Anna Lörke			&Master		&I		&2BS	&\emph{Analyse und Formalisierung von Rehabilitationsprozessen am Beispiel der Frozen Shoulder}\\
+September 11	&Marcus Rudolph			&Bachelor	&II		&FM	&\emph{Synthetische Daten in der Medizin -- Erzeugung künstlicher Patientendaten zur Unterstützung der klinischen Forschung in Deutschland}\\
+September 11	&Paul Pfütze			&Bachelor	&II		&FJ	&\emph{Vom Ist-Prozess zum Soll-Prozess: Optimierung der Dokumentation in der Klinik für Orthopädie, Unfallchirurgie und plastische Chirurgie im Universitätsklinikum Leipzig}\\
+\end{tabulary}
 \end{posterbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{posterbox}[name=description,column=1,row=0]{Project Description (brief)}
