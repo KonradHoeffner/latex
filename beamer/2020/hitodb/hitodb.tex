@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage[normalem]{ulem} % provides the \sout{} command to strike out text
 
 %\usepackage[english]{babel}
 \usepackage[ngerman]{babel} %use this for German presentations
@@ -27,7 +28,7 @@
 
 \usetheme{imise2}
 \author{Konrad Höffner \& Thomas Pause}
-\date{Leipzig, 12. Juni 2020}
+\date{Leipzig, 24. August 2020}
 \title{HITO Datenbankprojekt}
 \subtitle{}
 \def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
@@ -56,11 +57,11 @@
 
 \begin{frame}{Motivation}
 \begin{itemize}
-\item Oracle Forms und co. versprechen intuitive Bearbeitung von Softwareprodukten
-\item Datenbanken gibt es schon länger als das Semantic Web, wir nehmen an, dass es dort besser ausgereifte Werkzeuge gibt
+\item Datenbanken gibt es schon länger als das Semantic Web, wir nehmen an, dass es dort besser ausgereifte Werkzeuge gibt, ohne dass wir selbst etwas programmieren müssen
 \item Resultat ist sofort vorhanden bzw. aktualisiert, wesentlich intuitiverer Arbeitsablauf als mit Instancegenerator \& GitHub Issues.
 \end{itemize}
 \end{frame}
+
 \begin{frame}{Ziele}
 \begin{itemize}
 \item Z1 Datenbank aufsetzen \checkmark
@@ -82,16 +83,18 @@
 \begin{itemize}
 \item A2.1 externe Instanzlisten laden (DBpedia Language, Programming Language, SWO License) \checkmark
 \item A2.2 interne Instanzlisten laden (Interoperability Standard) \checkmark
-\item A2.3 Katalogtabellen von Google Sheets als CSV laden \checkmark
-\item A2.4 Softwareprodukte von Google Sheets laden
+\item \sout{A2.3 Katalogtabellen von Google Sheets als CSV laden}
+\item \sout{A2.4 Softwareprodukte von Google Sheets laden}
+\item A2.3 Katalogtabellen laden
+\item A2.4 Softwareprodukte laden
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Aufgaben Z3 Werkzeuge (Frontend) bereitstellen}
 \begin{itemize}
-\item A3.1 Analyse und Bewertung existierender Form-Generatoren
-\item A3.2 Einführung Form-Generator
-\item A3.3 Evaluierung des neuen Werkzeugs
+\item A3.1 Analyse und Bewertung existierender CRUD-Frontends
+\item A3.2 Einführung CRUD-Frontend
+\item A3.3 Evaluierung des neuen CRUD-Frontends
 \end{itemize}
 \end{frame}
 
@@ -102,6 +105,46 @@
 \end{itemize}
 \end{frame}
 
+\section{Ergebnisse}
+
+\begin{frame}{Z1 Datenbank aufsetzen--erreicht}
+Eine PostgreSQL Datenbank für HITO läuft auf dem Server bruchtal.\\
+~\\
+\begin{tabulary}{\textwidth}{lL}
+Admin-Interface	&\url{https://hitontology.eu/phppgadmin/}\\
+Schema		&\url{https://github.com/hitontology/database/releases/latest/download/HITOdatabaseUML.pdf}\\
+Links		&\url{https://hitontology.eu/internal/}\\
+\end{tabulary}
+\end{frame}
+
+\begin{frame}{Z2 RDF zu Datenbank konvertieren--erreicht}
+\url{}
+Python script queries the SPARQL endpoint, writes .sql files, clears the database and imports the files into HITO.\\
+~\\
+\centering\url{https://github.com/hitontology/database}
+\end{frame}
+
+\begin{frame}{Z3 Werkzeuge (Frontend) bereitstellen}
+A3.1 Analyse und Bewertung existierender Form-Generatoren: Kein benutzerfreundliches CRUD-Frontend gefunden.
+CRUD über Admin-Interface möglich aber Benutzerfreundlichkeit eingeschränkt.\\
+~\\
+Telefonat mit Siegrid Haupt vom IMISE Database Development:\\
+\begin{itemize}
+\item fertige benutzerfreundliche CRUD-Frontends existieren nicht
+\item für jeden Datenbank muss eine Einzellösung programmiert werden
+\item es gibt aber je nach Programmiersprache Entwicklungsfrontends, die mehr oder weniger Arbeit abnehmen
+\item ZKS benutzt momentan Oracle Forms aber veraltet und teuer, sucht momentan Neues hat aber auch noch nichts für alle Zwecke gefunden
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Entscheidungsmöglichkeiten}
+\begin{enumerate}
+\item Admin-Interface nutzen: weniger benutzerfreundlich aber sofort verfügbar
+\item eigene Lösung programmieren: benutzerfreundlich aber zeitaufwändig
+\end{enumerate}
+\end{frame}
+
+\iffalse
 \begin{frame}{Arbeitspakete und Meilensteine A3.1 Form-Generatoren}
 \begin{itemize}
 \item noch in der Findungsphase
@@ -119,7 +162,6 @@
 \imageslide{LibreOffice Base -- Beispiel-Form}{img_neu/base-form.png}{}
 \imageslide{LibreOffice Base -- Query-Ansicht}{img_neu/base-query.png}{}
 
-\iffalse
 \begin{frame}{Arbeitspakete und Meilensteine}
 \begin{itemize}
 \item
