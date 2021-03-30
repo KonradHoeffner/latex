@@ -1,0 +1,102 @@
+\documentclass[aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{csquotes}
+\usepackage{aurl}
+\daurl{hito}{http://hitontology.eu/ontology/}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+
+\title{HITO Standards und Kataloge}
+%\subtitle{Überblick}
+%\author{Konrad Höffner}
+\date{2021-03-30}
+
+% Parameters: frame title, image path, (optional) note
+\newcommand{\imageslide}[4][]
+{
+%\newgeometry{margin=0.0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\begin{center}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\end{center}
+#1
+\note{#4}
+\end{frame}
+%\restoregeometry
+}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Interoperabilitätsstandards}
+\imageslide{Updated Interoperability Standards (FJ, MB)}{img/interoperability.pdf}{}
+\imageslide{Updated Interoperability Standards (FJ, MB)}{img/interoperability-marked.png}{}
+
+\begin{frame}{Mehr Informationen über Interoperabilitätsstandards}
+\begin{itemize}
+\item 103 Standards, von Arden Syntax bis YAML
+\item \url{http://hitontology.eu/ontology/Interoperability}
+\item \url{https://www.snik.eu/graph/?sparql=https://hitontology.eu/sparql&instances}
+\item \url{https://github.com/hitontology/ontology/issues/49}
+\item Google Drive \enquote{MP131 HITO} $\rightarrow$ \enquote{ontology}\\
+      \url{https://docs.google.com/spreadsheets/d/170b3u\_5k3ilvuVnyVFSRY-oN\_tD-sY10qzkIRLVBjKU}
+\end{itemize}
+\end{frame}
+
+\section{Kataloge}
+
+\begin{frame}{Katalogtypen}
+\begin{itemize}
+\item \aurl{hito}{FeatureCatalogue} (8)
+\item \aurl{hito}{EnterpriseFunctionCatalogue} (3)
+\item \aurl{hito}{UserGroupCatalogue} (1, SNOMED CT)
+\item \aurl{hito}{OrganizationalUnitCatalogue} (1, SNOMED CT)
+\item \aurl{hito}{ApplicationSystemCatalogue} (2)
+\item + UnknownXCatalogue (je einer)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Explorieren}
+\begin{enumerate}
+\item \url{http://hitontology.eu/Catalogue} im Browser öffnen
+\item Katalogtyp auswählen, \aurl{hito}{FeatureCatalogue}
+\item \enquote{Inverse Relations} $\rightarrow$ \enquote{is rdf:type of} $\rightarrow$ Katalog auswählen
+\end{enumerate}
+\begin{itemize}
+\item Kataloge können über \aurl{rdfs}{member} mit einer Instanz von \aurl{hito}{Classification} verbunden sein
+\item \aurl{hito}{Classification} gruppiert Katalogue unterschiedlicher Typen mit der selben Quelle\\
+Bsp.: \aurl{hito}{WhoDhi1-0} enthält \aurl{hito}{WhoDhiClientFeatureCatalogue}, \aurl{hito}{WhoDhiHealthcareProviderFunctionCatalogue}, \ldots
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Insgesamt 15 Kataloge (ohne UnknownX)}
+\begin{itemize}
+\item \aurl{hito}{WhoDhiClientFeatureCatalogue}
+\item \aurl{hito}{WhoDhiDataServiceFeatureCatalogue}
+\item \aurl{hito}{WhoDhiHealthSystemManagerFeatureCatalogue}
+\item \aurl{hito}{WhoDhiHealthcareProviderFeatureCatalogue}
+\item \aurl{hito}{WhoDhiSystemCategoryApplicationSystemCatalogue}
+\item \aurl{hito}{BbFeatureCatalogue}
+\item \aurl{hito}{EhrSfmFeatureCatalogue}
+\item \aurl{hito}{JoshiPacsFeatureCatalogue}
+\item \aurl{hito}{Dickinson}
+\item \aurl{hito}{BbApplicationSystemCatalogue}
+\item \aurl{hito}{WhoDhiHealthSystemManagerFunctionCatalogue}
+\item \aurl{hito}{WhoDhiHealthcareProviderFunctionCatalogue}
+\item \aurl{hito}{BbFunctionCatalogue}
+\item \aurl{hito}{SnomedEnvironmentOrganizationalUnitCatalogue}
+\item \aurl{hito}{SnomedUserGroupCatalogue}
+\end{itemize}
+\end{frame}
+
+
+\end{document}
