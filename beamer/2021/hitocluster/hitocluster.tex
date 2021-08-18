@@ -1,0 +1,137 @@
+\documentclass[aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{csquotes}
+\usepackage{aurl}
+\daurl{hito}{http://hitontology.eu/ontology/}
+\daurl{}{http://hitontology.eu/ontology/}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+
+\title{Clustering auf HITO Softwareprodukten}
+\subtitle{Automatisches Finden von Gemeinsamkeiten}
+%\author{Konrad Höffner}
+\date{2021-9-9}
+
+% Parameters: frame title, image path, (optional) note
+\newcommand{\imageslide}[4][]
+{
+%\newgeometry{margin=0.0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\begin{center}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\end{center}
+#1
+\note{#4}
+\end{frame}
+%\restoregeometry
+}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\section{}
+
+\imageslide{51 Softwareprodukte und Umgebung}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
+
+\begin{frame}{Finden von Gemeinsamkeiten}
+\begin{itemize}
+\item Abbildung von Softwareprodukte auf Teilmenge der Eigenschaften
+\item Operating System, Interoperability Standard, $\ldots$ direkt
+\item Citations sind einzigartig und daher für Vergleich nutzlos $\rightarrow$ überspringen und auf Classifieds abbilden
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Beispiel}
+\textbf{\aurl{}{TeleDicom}}\\
+\aurl{}{EhrSfmManageResults}\\
+\aurl{}{EhrSfmManageResultsOfDiagnosticTests}
+\aurl{}{EhrSfmSupportForCommunicationsBetweenOrganizations}
+\aurl{}{EhrSfmSupportRemoteHealthcareServices}
+~\\~\\
+\textbf{\aurl{}{CernerFirstNet}}\\
+\aurl{}{EhrSfmManageCareCoordinationReporting}
+\aurl{}{EhrSfmManageClinicalDocumentation}
+\aurl{}{EhrSfmManageHealthcareResourceScheduling}
+\aurl{}{EhrSfmProduceASummaryRecordOfCare}
+\aurl{}{EhrSfmSupportCareCoordinationReporting}
+\aurl{}{EhrSfmSupportTriageCategorization}\\
+~\\
+Keine Gemeinsamkeiten
+\end{frame}
+
+\begin{frame}{Ris1}
+BbAdministrativeDischargeAndBilling
+BbArchivingOfPatientInformation
+BbControlling
+BbInformationManagement
+BbLongTermArchiving
+BbOrderEntry
+BbPatientAdministration
+BbPatientAdmission
+BbQualityManagement
+BbSchedulingAndResourceAllocation
+BbSupplyAndDisposalManagement
+C++
+C\_Sharp
+DICOM
+English
+GDT
+German
+HL7
+Linux
+Macintosh
+Microsoft\_Windows
+Unix
+WebBased
+WhoDhiAutomatedAnalysisOfDataToGenerateNewInformationOrPredictionsOnFutureEvents
+WhoDhiDataExchangeAcrossSystems
+WhoDhiDataExchangeAndInteroperability
+WhoDhiDataStorageAndAggregation
+WhoDhiDataSynthesisAndVisualization
+WhoDhiEnrolClientForHealthServicesclinicalCarePlan
+WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices
+WhoDhiManageBudgetAndExpenditures
+WhoDhiManageInventoryAndDistributionOfHealthCommoditiesStockLevelsOf
+WhoDhiMapLocationOfHealthFacilitiesstructures
+WhoDhiNonRoutineDataCollectionAndManagement
+WhoDhiTrackAndManageInsuranceReimbursement
+WhoDhiTransmitDiagnosticOrdersDiagnosticResults
+\end{frame}
+
+\begin{frame}{Ris2}
+\textbf{BbAdministrativeDischargeAndBilling}
+\textbf{BbArchivingOfPatientInformation}
+\textbf{BbControlling}
+\textbf{BbPatientAdministration}
+\textbf{BbPatientAdmission}
+\textbf{BbQualityManagement}
+\textbf{BbSchedulingAndResourceAllocation}
+\textbf{DICOM}
+\textbf{German}
+\textbf{HL7}
+Java
+JHTML
+\textbf{WebBased}
+\textbf{WhoDhiDataExchangeAcrossSystems}
+\textbf{WhoDhiEnrolClientForHealthServicesclinicalCarePlan}
+\textbf{WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices}
+\textbf{WhoDhiManageBudgetAndExpenditures}
+\textbf{WhoDhiTrackAndManageInsuranceReimbursement}
+Windows\_7
+Windows\_Vista
+\end{frame}
+
+\iffalse
+
+\fi
+
+\end{document}
