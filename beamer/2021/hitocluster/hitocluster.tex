@@ -5,11 +5,14 @@
 \usepackage{amssymb}% http://ctan.org/pkg/amssymb
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \usepackage{csquotes}
+\usepackage{tikz}
+\definecolor{darkred}{RGB}{200,50,50}
 \usepackage{aurl}
 \daurl{hito}{http://hitontology.eu/ontology/}
 \daurl{}{http://hitontology.eu/ontology/}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
+\newcommand{\both}[1]{{\color[rgb]{0.8,1,0.8}\textbf{#1}}}
 \usetheme{simple}
 \usecolortheme{whiteonblack}
 
@@ -33,6 +36,31 @@
 %\restoregeometry
 }
 
+% https://tex.stackexchange.com/questions/9681/how-to-draw-venn-diagrams-especially-complements-in-latex
+\newcommand{\intersection}[1]
+{
+\begin{tikzpicture}[fill=darkred]
+% left hand
+\scope
+\clip (-2,-2) rectangle (3,2)
+      (#1,0) circle (1);
+\fill (0,0) circle (1);
+\endscope
+% right hand
+\scope
+\clip (-2,-2) rectangle (3,2)
+      (0,0) circle (1);
+\fill (#1,0) circle (1);
+\fill (#1,0) circle (1);
+\endscope
+% outline
+\draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+      (#1,0) circle (1) (#1,1)  node [text=black,above] {$B$}
+      (-2,-2) rectangle (3,2) node [text=black,above] {$H$};
+\end{tikzpicture}
+}
+
+
 \begin{document}
 \begin{frame}
 \titlepage
@@ -40,14 +68,18 @@
 
 %\section{}
 
-\imageslide{51 Softwareprodukte und Umgebung}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
+\imageslide{Softwareprodukte und Umgebung}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
 
 \begin{frame}{Finden von Gemeinsamkeiten}
 \begin{itemize}
-\item Abbildung von Softwareprodukte auf Teilmenge der Eigenschaften
-\item Operating System, Interoperability Standard, $\ldots$ direkt
-\item Citations sind einzigartig und daher für Vergleich nutzlos $\rightarrow$ überspringen und auf Classifieds abbilden
+\item Repräsentieren von Softwareprodukte als Menge von Eigenschaften
+%\item Operating System, Interoperability Standard, $\ldots$ direkt
+%\item Citations sind einzigartig und daher für Vergleich nutzlos $\rightarrow$ überspringen und auf Classifieds abbilden
 \end{itemize}
+
+\intersection{0.5}
+\intersection{1.5}
+
 \end{frame}
 
 \begin{frame}{Beispiel}
@@ -65,7 +97,7 @@
 \aurl{}{EhrSfmSupportCareCoordinationReporting}
 \aurl{}{EhrSfmSupportTriageCategorization}\\
 ~\\
-Keine Gemeinsamkeiten
+Keine gemeinsamen Eigenschaften, sehr unterschiedlich?
 \end{frame}
 
 \begin{frame}{Ris1}
@@ -108,26 +140,41 @@ WhoDhiTransmitDiagnosticOrdersDiagnosticResults
 \end{frame}
 
 \begin{frame}{Ris2}
-\textbf{BbAdministrativeDischargeAndBilling}
-\textbf{BbArchivingOfPatientInformation}
-\textbf{BbControlling}
-\textbf{BbPatientAdministration}
-\textbf{BbPatientAdmission}
-\textbf{BbQualityManagement}
-\textbf{BbSchedulingAndResourceAllocation}
-\textbf{DICOM}
-\textbf{German}
-\textbf{HL7}
+\both{BbAdministrativeDischargeAndBilling}
+\both{BbArchivingOfPatientInformation}
+\both{BbControlling}
+\both{BbPatientAdministration}
+\both{BbPatientAdmission}
+\both{BbQualityManagement}
+\both{BbSchedulingAndResourceAllocation}
+\both{DICOM}
+\both{German}
+\both{HL7}
 Java
 JHTML
-\textbf{WebBased}
-\textbf{WhoDhiDataExchangeAcrossSystems}
-\textbf{WhoDhiEnrolClientForHealthServicesclinicalCarePlan}
-\textbf{WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices}
-\textbf{WhoDhiManageBudgetAndExpenditures}
-\textbf{WhoDhiTrackAndManageInsuranceReimbursement}
+\both{WebBased}
+\both{WhoDhiDataExchangeAcrossSystems}
+\both{WhoDhiEnrolClientForHealthServicesclinicalCarePlan}
+\both{WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices}
+\both{WhoDhiManageBudgetAndExpenditures}
+\both{WhoDhiTrackAndManageInsuranceReimbursement}
 Windows\_7
 Windows\_Vista
+\end{frame}
+
+\begin{frame}{Übereinstimmung berechnen}
+\begin{itemize}
+\item gesucht: $s: S \times S \rightarrow  \mathbb{R}$
+\item Ähnlichkeit vs Distanz
+\pause
+\item Softwareprodukte als Mengen von Eigenschaften: Jaccard-Koeffizient \[J(A,B) = \frac{|A \cap B|}{|A \cup B|}\]
+\pause
+\item Sind alle Elemente gleich wichtig? Programmiersprache
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Übereinstimmung darstellen}
+
 \end{frame}
 
 \iffalse
