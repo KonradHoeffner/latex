@@ -222,11 +222,10 @@ $\Sigma$					&			&403\\
 \end{tabular}
 ~\\~\\
 Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimension.\\
-1: vorhanden, 0: nicht vorhanden.\\
 \end{frame}
 
 \begin{frame}{Modellierung als Vektor---Fiktives Beispiel}
-
+Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Daten mit scikit learn DictVectorizer: one-hot encoding
 \begin{columns}
  
  \begin{column}{.4\textwidth}
@@ -244,11 +243,10 @@ Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimen
 
 \end{frame}
 
-
 \begin{frame}{Dimensionsreduzierung und Clustering}
 \begin{itemize}
 \item Principal Component Analysis (PCA)
-\item k-means clustering
+\item Affinity Propagation clustering
 \end{itemize}
 \end{frame}
 
@@ -259,14 +257,38 @@ Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimen
 \imageslide{HITO max norm}{img/cluster-max.pdf}{}
 \imageslide{HITO max norm classified only}{img/cluster-classifiedonly-max.pdf}{}
 
-\imageslide{HITO bow max norm classified only UMAP neighbours=5}{img/cluster-bagofwords-classifiedonly-umap-n5-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=6}{img/cluster-bagofwords-classifiedonly-umap-n6-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=7}{img/cluster-bagofwords-classifiedonly-umap-n7-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=8}{img/cluster-bagofwords-classifiedonly-umap-n8-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=9}{img/cluster-bagofwords-classifiedonly-umap-n9-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=10}{img/cluster-bagofwords-classifiedonly-umap-n10-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=15}{img/cluster-bagofwords-classifiedonly-umap-max.pdf}{}
-\imageslide{HITO bow max norm classified only UMAP neighbours=100}{img/cluster-bagofwords-classifiedonly-umap-n100-max.pdf}{}
+
+\begin{frame}{Alternative: Bag of Words}
+\begin{itemize}
+\item bag: Menge mit Mehrfachvorkommen
+\item Zusammenfügen der Labels aller Eigenschaften
+\item CountVectorizer
+\item PCA, Affinity Propagation Clustering
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bag of Words---Beispiel, classified only}
+\small
+\textbf{Ris1} Administrative discharge and billing Archiving of patient information Automated analysis of data to generate new information or predictions on future events Controlling Data exchange across systems Data exchange and interoperability Data storage and aggregation Data synthesis and visualization Enrol client for health services/clinical care plan Longitudinal tracking of client’s health status and services received Manage budget and expenditures Manage inventory and distribution of health commodities Map location of health facilities/structures Non routine data collection and management Order entry Quality management Scheduling and resource allocation Supply and disposal management Track and manage insurance reimbursement Transmit and track diagnostic orders information management long term archiving patient administration patient admission
+\\~\\
+\textbf{Ris2} Administrative discharge and billing Archiving of patient information Controlling Data exchange across systems Enrol client for health services/clinical care plan Longitudinal tracking of client’s health status and services received Manage budget and expenditures Quality management Scheduling and resource allocation Track and manage insurance reimbursement patient administration patient admission
+\end{frame}
+
+\imageslide{HITO BOW l1 norm}{img/cluster-bagofwords-l1.pdf}{}
+\imageslide{HITO BOW l1 norm classified only}{img/cluster-bagofwords-classifiedonly-l1.pdf}{}
+\imageslide{HITO BOW l2 norm}{img/cluster-bagofwords-l2.pdf}{}
+\imageslide{HITO BOW l2 norm classified only}{img/cluster-bagofwords-classifiedonly-l2.pdf}{}
+\imageslide{HITO BOW max norm}{img/cluster-bagofwords-max.pdf}{}
+\imageslide{HITO BOW max norm classified only}{img/cluster-bagofwords-classifiedonly-max.pdf}{}
+
+\imageslide{HITO BOW max norm classified only UMAP neighbours=5}{img/cluster-bagofwords-classifiedonly-umap-n5-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=6}{img/cluster-bagofwords-classifiedonly-umap-n6-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=7}{img/cluster-bagofwords-classifiedonly-umap-n7-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=8}{img/cluster-bagofwords-classifiedonly-umap-n8-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=9}{img/cluster-bagofwords-classifiedonly-umap-n9-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=10}{img/cluster-bagofwords-classifiedonly-umap-n10-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=15}{img/cluster-bagofwords-classifiedonly-umap-max.pdf}{}
+\imageslide{HITO BOW max norm classified only UMAP neighbours=100}{img/cluster-bagofwords-classifiedonly-umap-n100-max.pdf}{}
 
 \begin{frame}{Future Work}
 \begin{itemize}
@@ -274,8 +296,6 @@ Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimen
 \item Interpretieren und Bewerten der Resultate
 \pause
 \item Optimieren der Methoden für Dimensionsreduktion und Clustering
-\pause
-\item NLP, Textähnlichkeit
 \pause
 \item Welche Eigenschaften interessieren wen wie stark? Programmiersprache vs Feature.
 \pause
