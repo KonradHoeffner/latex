@@ -5,6 +5,7 @@
 \usepackage{amssymb}% http://ctan.org/pkg/amssymb
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \usepackage{csquotes}
+\usepackage{booktabs}
 \usepackage{tikz}
 \definecolor{darkred}{RGB}{200,50,50}
 \usepackage{aurl}
@@ -13,6 +14,7 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \newcommand{\both}[1]{{\color[rgb]{0.8,1,0.8}\textbf{#1}}}
+\newcommand{\onlyone}[1]{{\color[rgb]{1,0.4,0.4}\textbf{#1}}}
 \usetheme{simple}
 \usecolortheme{whiteonblack}
 
@@ -28,7 +30,7 @@
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
 \begin{center}
-\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\centering\includegraphics[width=1.0\textwidth,height=0.9\textheight,keepaspectratio]{#3}
 \end{center}
 #1
 \note{#4}
@@ -72,9 +74,10 @@
 
 \begin{frame}{Finden von Gemeinsamkeiten}
 \begin{itemize}
-\item Repräsentieren von Softwareprodukte als Menge von Eigenschaften
+\item Repräsentieren von Softwareprodukte durch ihre Eigenschaften
+\item Citations einzigartig, durch Classifieds ersetzen
+\item Darstellen als Mengen und Bilden der Schnittmenge
 %\item Operating System, Interoperability Standard, $\ldots$ direkt
-%\item Citations sind einzigartig und daher für Vergleich nutzlos $\rightarrow$ überspringen und auf Classifieds abbilden
 \end{itemize}
 
 \intersection{0.5}
@@ -82,64 +85,84 @@
 
 \end{frame}
 
-\begin{frame}{Beispiel}
+\begin{frame}{Tele DICOM vs Cerner FirstNet}
 \textbf{\aurl{}{TeleDicom}}\\
+\onlyone{
 \aurl{}{EhrSfmManageResults}\\
 \aurl{}{EhrSfmManageResultsOfDiagnosticTests}
 \aurl{}{EhrSfmSupportForCommunicationsBetweenOrganizations}
 \aurl{}{EhrSfmSupportRemoteHealthcareServices}
+}
 ~\\~\\
 \textbf{\aurl{}{CernerFirstNet}}\\
+\onlyone{
 \aurl{}{EhrSfmManageCareCoordinationReporting}
 \aurl{}{EhrSfmManageClinicalDocumentation}
 \aurl{}{EhrSfmManageHealthcareResourceScheduling}
 \aurl{}{EhrSfmProduceASummaryRecordOfCare}
 \aurl{}{EhrSfmSupportCareCoordinationReporting}
 \aurl{}{EhrSfmSupportTriageCategorization}\\
+}
 ~\\
 Keine gemeinsamen Eigenschaften, sehr unterschiedlich?
 \end{frame}
 
-\begin{frame}{Ris1}
+\begin{frame}{Ris1 vs Ris2---Ris1}
+\both{
 BbAdministrativeDischargeAndBilling
 BbArchivingOfPatientInformation
-BbControlling
+BbControlling}
+\onlyone{
 BbInformationManagement
 BbLongTermArchiving
-BbOrderEntry
+BbOrderEntry}
+\both{
 BbPatientAdministration
 BbPatientAdmission
 BbQualityManagement
 BbSchedulingAndResourceAllocation
+}
+\onlyone{
 BbSupplyAndDisposalManagement
 C++
-C\_Sharp
+C\_Sharp}
+\both{
 DICOM
+}
+\onlyone{
 English
 GDT
+}
+\both{
 German
 HL7
+}
+\onlyone{
 Linux
 Macintosh
 Microsoft\_Windows
 Unix
 WebBased
-WhoDhiAutomatedAnalysisOfDataToGenerateNewInformationOrPredictionsOnFutureEvents
-WhoDhiDataExchangeAcrossSystems
-WhoDhiDataExchangeAndInteroperability
+}
+\onlyone{WhoDhiAutomatedAnalysisOfDataToGenerateNewInformationOrPredictionsOnFutureEvents}
+\both{WhoDhiDataExchangeAcrossSystems}
+\onlyone{WhoDhiDataExchangeAndInteroperability
 WhoDhiDataStorageAndAggregation
-WhoDhiDataSynthesisAndVisualization
+WhoDhiDataSynthesisAndVisualization}
+\both{
 WhoDhiEnrolClientForHealthServicesclinicalCarePlan
 WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices
-WhoDhiManageBudgetAndExpenditures
+WhoDhiManageBudgetAndExpenditures}
+\onlyone{
 WhoDhiManageInventoryAndDistributionOfHealthCommoditiesStockLevelsOf
 WhoDhiMapLocationOfHealthFacilitiesstructures
 WhoDhiNonRoutineDataCollectionAndManagement
-WhoDhiTrackAndManageInsuranceReimbursement
-WhoDhiTransmitDiagnosticOrdersDiagnosticResults
+}
+\both{WhoDhiTrackAndManageInsuranceReimbursement}
+\onlyone{WhoDhiTransmitDiagnosticOrdersDiagnosticResults}
 \end{frame}
 
-\begin{frame}{Ris2}
+\begin{frame}{Ris1 vs Ris2---Ris2}
 \both{BbAdministrativeDischargeAndBilling}
 \both{BbArchivingOfPatientInformation}
 \both{BbControlling}
@@ -150,35 +173,114 @@ WhoDhiTransmitDiagnosticOrdersDiagnosticResults
 \both{DICOM}
 \both{German}
 \both{HL7}
-Java
-JHTML
+\onlyone{Java}
+\onlyone{JHTML}
 \both{WebBased}
 \both{WhoDhiDataExchangeAcrossSystems}
 \both{WhoDhiEnrolClientForHealthServicesclinicalCarePlan}
 \both{WhoDhiLongitudinalTrackingOfClientsHealthStatusAndServices}
 \both{WhoDhiManageBudgetAndExpenditures}
 \both{WhoDhiTrackAndManageInsuranceReimbursement}
-Windows\_7
-Windows\_Vista
+\onlyone{Windows\_7}
+\onlyone{Windows\_Vista}
 \end{frame}
 
-\begin{frame}{Übereinstimmung berechnen}
+\begin{frame}{Übereinstimmung von Mengen}
 \begin{itemize}
-\item gesucht: $s: S \times S \rightarrow  \mathbb{R}$
-\item Ähnlichkeit vs Distanz
+\item gesucht: $s: S \times S \rightarrow  \mathbb{R}, S = 2^E$
+\item Ähnlichkeit $\leftrightarrow$ Distanz
 \pause
-\item Softwareprodukte als Mengen von Eigenschaften: Jaccard-Koeffizient \[J(A,B) = \frac{|A \cap B|}{|A \cup B|}\]
+\item Ähnlichkeit als Größe der Schnittmenge $|A \cap B|$
 \pause
-\item Sind alle Elemente gleich wichtig? Programmiersprache
+\item Jaccard-Koeffizient \[J(A,B) = \frac{|A \cap B|}{|A \cup B|}\]
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Übereinstimmung darstellen}
+%SELECT ?class (COUNT(?instance) AS ?count)
+%{
+% ?class a owl:Class.
+% ?instance a ?class.
+% FILTER EXISTS {?s a hito:SoftwareProduct. {?s ?p ?instance.} UNION {?s ?p [?q ?instance]}}
+%} ORDER BY DESC(?count)
+
+\begin{frame}{Alternative: Modellierung als Vektor}
+\begin{tabular}{lll}
+\toprule
+Classified / Attribut		&ingesamt	&benutzt\\
+\midrule
+Feature						&619		&245\\
+Function					&85			&49\\	
+Interoperability			&104		&20\\
+Operating System			&97			&20\\
+Application System			&51			&10\\
+Programming Library			&50			&3\\
+User Group					&45			&8\\
+\ldots\\
+\midrule
+$\Sigma$					&			&403\\
+\bottomrule
+\end{tabular}
+~\\~\\
+Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimension.\\
+1: vorhanden, 0: nicht vorhanden.\\
+\end{frame}
+
+\begin{frame}{Modellierung als Vektor---Fiktives Beispiel}
+
+\begin{columns}
+ 
+ \begin{column}{.4\textwidth}
+   \[\left(\begin{array}{c} \textnormal{Archive Pictures} \\ \textnormal{Admit Patients} \\ \textnormal{English} \\ \textnormal{Java} \\ \textnormal{Decision Support System} \\ \textnormal{RIS} \\ \textnormal{PACS} \\ \dots \\ \\ \\ \\ \\ \end{array}\right) \]
+ \end{column}
+ 
+ \begin{column}{.25\textwidth}
+   \[\vec{GnuHealth}	= \left(\begin{array}{c} 0 \\ 0 \\ 0 \\ \both{1} \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ \ldots \\ 0 \\ 1 \end{array}\right) \]
+ \end{column}
+
+ \begin{column}{.25\textwidth}
+   \[\vec{Bahmni}		= \left(\begin{array}{c} 1 \\ 0 \\ 0 \\ \both{1} \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ \ldots \\ 0 \\ 0 \end{array}\right) \]
+ \end{column}
+\end{columns}
 
 \end{frame}
 
-\iffalse
 
-\fi
+\begin{frame}{Dimensionsreduzierung und Clustering}
+\begin{itemize}
+\item Principal Component Analysis (PCA)
+\item k-means clustering
+\end{itemize}
+\end{frame}
+
+\imageslide{HITO l1 norm}{img/cluster-l1.pdf}{}
+\imageslide{HITO l1 norm classified only}{img/cluster-classifiedonly-l1.pdf}{}
+\imageslide{HITO l2 norm}{img/cluster-l2.pdf}{}
+\imageslide{HITO l2 norm classified only}{img/cluster-classifiedonly-l2.pdf}{}
+\imageslide{HITO max norm}{img/cluster-max.pdf}{}
+\imageslide{HITO max norm classified only}{img/cluster-classifiedonly-max.pdf}{}
+
+\begin{frame}{Future Work}
+\begin{itemize}
+\vspace{1em}
+\item Interpretieren und Bewerten der Resultate
+\pause
+\item Optimieren der Methoden für Dimensionsreduktion und Clustering
+\pause
+\item NLP, Textähnlichkeit
+\pause
+\item Welche Eigenschaften interessieren wen wie stark? Programmiersprache vs Feature.
+\pause
+\item Häufige Eigenschaften automatisch abschwächen?
+\pause
+\item Korrelationen einbeziehen? Microsoft\_Windows vs Windows\_7
+\pause
+\item Unterschiedliche Kataloge
+\pause
+\item Gruppieren von Eigenschaften?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fragen?}
+\end{frame}
 
 \end{document}
