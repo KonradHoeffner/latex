@@ -15,6 +15,11 @@
 \newcommand{\xmark}{\ding{55}}%
 \newcommand{\both}[1]{{\color[rgb]{0.8,1,0.8}\textbf{#1}}}
 \newcommand{\onlyone}[1]{{\color[rgb]{1,0.4,0.4}\textbf{#1}}}
+\newcommand{\K}[1]{\textnormal{K}{(#1)}}
+\newcommand{\E}[1]{\textnormal{E}{(#1)}}
+\newcommand{\D}[1]{\textnormal{E}{(#1)}}
+\newcommand{\f}[1]{\ensuremath{f(#1)}}
+\newcommand{\fl}[1]{\ensuremath{f_{\lambda}(#1)}}
 \usetheme{simple}
 \usecolortheme{whiteonblack}
 
@@ -74,9 +79,16 @@
 
 \imageslide{Softwareprodukte und Umgebung}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
 
+\begin{frame}{Exploratives Data Mining}
+\begin{itemize}
+\item Kombination von Eigenschaften zu einem Maß für die Distanz oder Ähnlichkeit zwischen zwei Softwareprodukten
+\item wichtige Eigenschaften sind unbekannt
+\item Exploratives Data Mining: Finden eines solchen Maßes
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Finden von Gemeinsamkeiten}
 \begin{itemize}
-\item Repräsentieren von Softwareprodukte durch ihre Eigenschaften
 \item Citations einzigartig, durch Classifieds ersetzen
 \item Darstellen als Mengen und Bilden der Schnittmenge
 %\item Operating System, Interoperability Standard, $\ldots$ direkt
@@ -283,7 +295,7 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \imageslide{HITO BOW max norm}{img/cluster-bagofwords-max.pdf}{}
 \imageslide{HITO BOW max norm classified only}{img/cluster-bagofwords-classifiedonly-max.pdf}{}
 
-\begin{frame}{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}
+\begin{frame}{UMAP---Uniform Manifold Approximation and Projection for Dimension Reduction}
 \begin{itemize}
 \item Alternative zu PCA
 \item Hyperparameter n\_neighbours bestimmt lokale vs globale Struktur
@@ -301,11 +313,11 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 
 \begin{frame}{Future Work}
 \begin{itemize}
+\item Application System Type vorhersagen
+\item Application System Types vergleichen
+\item neue Application System Types finden
+\pause
 \vspace{1em}
-\item Interpretieren und Bewerten der Resultate
-\pause
-\item Optimieren der Methoden für Dimensionsreduktion und Clustering
-\pause
 \item Welche Eigenschaften interessieren wen wie stark? Programmiersprache vs Feature.
 \pause
 \item Häufige Eigenschaften automatisch abschwächen?
@@ -319,6 +331,73 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \end{frame}
 
 \begin{frame}{Fragen?}
+\end{frame}
+
+\begin{frame}{Informationsgehalt---Kolmogorov-Komplexität}
+\begin{itemize}
+\item Maß für den Informationsgehalt einer Zeichenkette $x$
+\item $\K{x}$ Länge des kürzesten Programms, das $x$ erzeugt
+\item $\K{x|y}$ Länge des kürzesten Programms, das $y$ erzeugt bei Eingabe von $x$
+\item nicht berechenbar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distanz und Metrik~\cite{normalizedinformationdistance}}
+Distanzfunktion $D: X \times  X \rightarrow \mathbb{R}^+$\\
+\pause
+~\\
+Metrik\\~\\
+\begin{tabular}{lr}
+$\D{x,y} = 0$ gdw. $x = y$			&Identität\\
+$\D{x,y} = \D{y,x}$					&Symmetrie\\
+$\D{x,z} \leq \D{x,y} + \D{y,z}$	&Dreiecksungleichung\\
+\end{tabular}\\
+\pause
+~\\~\\Informationsdistanz
+\[\E{x,y} = \max(\K{x|y},\K{y|x}) \approx K(xy) - \min(\K{x},\K{y}) \]
+\pause
+Normalized Information Distance NID\\
+\[e(x,y) = \frac{\max(\K{x|y},\K{y|x})}{\max(\K{x},\K{y})} \]
+\end{frame}
+
+\begin{frame}{NWD---Normalized Web Distance}
+\begin{itemize}
+\item $N$ Webseiten
+\item Suchmaschine G liefert $\f(x)$ Treffer bei Suche nach $x$
+\end{itemize}
+~\\
+\[\textnormal{e}_G(x,y) = \frac
+{\max(\log \f{x}, \log \f{y})- \log \f{x,y}}
+{\log N - \min(\log \f{x}, \log \f{x})}
+\]
+\end{frame}
+
+\begin{frame}{NSWD---Normalized Semantic Web Distance~\cite{normalizedsemanticwebdistance}}
+\begin{align}
+V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
+V_{out}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
+V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
+\end{align}
+\begin{align}
+\f{x}		&= |V_{\lambda}(x)|\\
+\f{x,y}	&= |V_{\lambda}(x) \cap V_{\lambda{y}}|
+\end{align}
+\[
+\textnormal{NSWD}_{\lambda}(x,y) = \frac{\max(\log \fl{x}, \log \fl{y})- \log \fl{x,y}}{\log N - \min(\log \fl{x}, \log \fl{x})}
+\]
+\end{frame}
+
+\begin{frame}{NSWD---Adaptations to HITO}
+\begin{itemize}
+\item Citations werden nur einmal benutzt und tauchen daher nie in $\f{x,y}$ auf
+\item Properties können ignoriert werden, da keine Überschneidung im Wertebereich
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Referenzen}
+\bibliographystyle{unsrt}
+\bibliography{hitocluster}
 \end{frame}
 
 \end{document}
