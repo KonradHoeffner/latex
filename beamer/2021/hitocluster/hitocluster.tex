@@ -363,36 +363,54 @@ Normalized Information Distance NID\\
 \begin{frame}{NWD---Normalized Web Distance}
 \begin{itemize}
 \item $N$ Webseiten
-\item Suchmaschine G liefert $\f(x)$ Treffer bei Suche nach $x$
+\item Suchmaschine G liefert $\f{x}$ Treffer bei Suche nach $x$
 \end{itemize}
 ~\\
 \[\textnormal{e}_G(x,y) = \frac
 {\max(\log \f{x}, \log \f{y})- \log \f{x,y}}
-{\log N - \min(\log \f{x}, \log \f{x})}
+{\log N - \min(\log \f{x}, \log \f{y})}
 \]
 \end{frame}
 
 \begin{frame}{NSWD---Normalized Semantic Web Distance~\cite{normalizedsemanticwebdistance}}
-\begin{align}
+\begin{align*}
 V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
-V_{out}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
+V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
 V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
-\end{align}
-\begin{align}
+\end{align*}
+\begin{align*}
+\lambda		&\in \{\textnormal{in}, \textnormal{out}, \textnormal{all}\}\\
 \f{x}		&= |V_{\lambda}(x)|\\
 \f{x,y}	&= |V_{\lambda}(x) \cap V_{\lambda{y}}|
-\end{align}
+\end{align*}
 \[
-\textnormal{NSWD}_{\lambda}(x,y) = \frac{\max(\log \fl{x}, \log \fl{y})- \log \fl{x,y}}{\log N - \min(\log \fl{x}, \log \fl{x})}
+\textnormal{NSWD}_{\lambda}(x,y) = \frac{\max(\log \fl{x}, \log \fl{y})- \log \fl{x,y}}{\log N - \min(\log \fl{x}, \log \fl{y})}
 \]
 \end{frame}
 
 \begin{frame}{NSWD---Adaptations to HITO}
 \begin{itemize}
-\item Citations werden nur einmal benutzt und tauchen daher nie in $\f{x,y}$ auf
-\item Properties können ignoriert werden, da keine Überschneidung im Wertebereich
+\item Citations werden nur einmal benutzt und tauchen daher nie in $\f{x,y}$ auf $\rightarrow$ ersetzen durch classifieds
+%\item keine Überschneidung im Wertebereich der SWP-Properties $\rightarrow |\langle v,p,x \angle | = | v,x |$ 
+\item Beschränkung auf $V_{out}$
 \end{itemize}
+\end{frame}
 
+\begin{frame}{NSWD}
+\begin{tabular}{llr}
+CscMedChart					&CernerMilleniumPowerOrders	&0.0\\
+GePatchspecdPacs					&AbbottIStat	&0.0\\
+TeleDicom					&EChasqui	&0.0623\\
+CernerSoarianCpoePlatform					&CernerMilleniumPowerOrders	&0.0683\\
+CscMedChart					&CernerSoarianCpoePlatform	&0.0683\\
+Theriak					&Medicator	&0.0798\\
+Theriak					&CernerSoarianCpoePlatform	&0.1153\\
+AgfaPacsImpax					&AbbottIStat	&0.1414\\
+GePatchspecdPacs					&AgfaPacsImpax	&0.1414\\
+Theriak					&CernerMilleniumPowerOrders	&0.1440\\
+Theriak					&CscMedChart	&0.1440\\
+AgfaRisElefante					&AbbottIStat	&0.1502\\
+\end{tabular}
 \end{frame}
 
 \begin{frame}{Referenzen}
