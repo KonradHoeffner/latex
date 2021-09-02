@@ -96,10 +96,16 @@
 \end{frame}
 
 \begin{frame}{Preprocessing}
+Abbilden von SWPs auf direkte Nachbarschaft (siehe Anhang NSWD):
+\begin{align*}
+V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
+V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
+V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
+\end{align*}
 \begin{itemize}
 \item Citations einzigartig, durch Classifieds ersetzen
-\item Operating System, Interoperability Standard, $\ldots$ direkt
-%\item Darstellen als Mengen und Bilden der Schnittmenge
+\item Operating System, Interoperability Standard, $\ldots$ direkt verwenden
+\item bestimmen durch SPARQL query
 \end{itemize}
 \end{frame}
 
@@ -247,7 +253,7 @@ Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimen
 \end{frame}
 
 \begin{frame}{Modellierung als Vektor---Fiktives Beispiel}
-Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Daten mit scikit learn DictVectorizer: one-hot encoding
+Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Daten mit Python Bibliothek scikit learn DictVectorizer: one-hot encoding
 \begin{columns}
  
  \begin{column}{.4\textwidth}
@@ -322,9 +328,10 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \begin{frame}{TODO / Future Work}
 \begin{itemize}
 \item Hierarchical Clustering
-\item Application System Type vorhersagen
-\item Application System Types vergleichen
-\item neue Application System Types finden
+\item Application System Type (AST) vorhersagen
+\item ASTs vergleichen
+\item neue ASTs finden
+\item Vergleich existierende ASTs mit gefundenen Clustern
 \pause
 \vspace{1em}
 \item Welche Eigenschaften interessieren wen wie stark? Programmiersprache vs Feature.
@@ -342,7 +349,7 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \begin{frame}{Fragen?}
 \end{frame}
 
-\section{Optionale Inhalte---Reinnehmen oder aus Zeitgründen rauslassen}
+\section{Anhang---Reinnehmen oder aus Zeitgründen rauslassen}
 
 \begin{frame}{Informationsgehalt---Kolmogorov-Komplexität}
 \begin{itemize}
