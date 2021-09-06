@@ -6,6 +6,7 @@
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \usepackage{csquotes}
 \usepackage{booktabs}
+\usepackage{siunitx}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,quotes}
 \definecolor{darkred}{RGB}{200,50,50}
@@ -23,9 +24,9 @@
 \newcommand{\fl}[1]{\ensuremath{f_{\lambda}(#1)}}
 \usetheme{simple}
 \usecolortheme{whiteonblack}
-
+\graphicspath{{img/}}
 %\title{Semantische Ähnlichkeit von HITO Softwareprodukten}
-\title{Clustern von HITO-Softwareprodukten}
+\title{Automatisches Clustern von HITO-Softwareprodukten}
 %\subtitle{Automatisches Finden von Gemeinsamkeiten und Untersc}
 %\author{Konrad Höffner}
 \date{9. September 2021}
@@ -80,23 +81,25 @@
 
 \imageslide{Softwareprodukte und Umgebung}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
 
-\begin{frame}{Problem}
+\begin{frame}{Vergleichen von Softwareprodukten}
 \begin{itemize}
-\item viel Wissen über SWPs gesammelt, was können wir daraus ableiten?
-\item Tools wie LodView zeigen Details über einzelne SWPs aber SNIK Graph bietet keinen guten Gesamtüberblick
-\item Anwendungsystemtypen (ASTs) bieten manuelle Gruppierung aber wie ähnlich sind deren Produkte wirklich?
-\item Gibt es ähnliche SWPs in unterschiedlichen ASTs?
-\item Können wir neue ASTs finden?
+\item viel Wissen über SWPs gesammelt, aber wie hängen diese zusammen?
+\item LodView vergleicht nicht Details, SNIK Graph unübersichtlich
+\item Anwendungsystemtypen (ASTs) bieten manuelle Gruppierung aber nur für 10/51 SWPs verfügbar, 5 davon $> 1$ AST
+\item automatisches Vergleichen
+%\item Gibt es ähnliche SWPs in unterschiedlichen ASTs?
+%\item Können wir neue ASTs finden?
 %\item Kombination von Eigenschaften zu einem Maß für die Distanz oder Ähnlichkeit zwischen zwei Softwareprodukten
 %\item wichtige Eigenschaften sind unbekannt
 %\item Exploratives Data Mining: Finden eines solchen Maßes
 \end{itemize}
 \end{frame}
 
-\begin{frame}{TODO: Clustering nach Anwendungssystemtypen hier einfügen}
-\end{frame}
+% zuwenig Daten
+%\begin{frame}{TODO: Clustering nach Anwendungssystemtypen hier einfügen}
+%\end{frame}
 
-\begin{frame}{Preprocessing}
+\begin{frame}{Ansatz}
 Abbilden von SWPs auf direkte Nachbarschaft (siehe Anhang NSWD):
 \begin{align*}
 V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
@@ -338,6 +341,73 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \imageslide{HITO BOW max norm classified only UMAP neighbours=15}{img/cluster-bagofwords-classifiedonly-umap-max.pdf}{}
 \imageslide{HITO BOW max norm classified only UMAP neighbours=100}{img/cluster-bagofwords-classifiedonly-umap-n100-max.pdf}{}
 
+\begin{frame}{NSWD---Normalized Semantic Web Distance~\cite{normalizedsemanticwebdistance}}
+\begin{align*}
+V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
+V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
+V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
+\end{align*}
+\begin{align*}
+\lambda		&\in \{\textnormal{in}, \textnormal{out}, \textnormal{all}\}\\
+\f{x}		&= |V_{\lambda}(x)|\\
+\f{x,y}	&= |V_{\lambda}(x) \cap V_{\lambda{y}}|
+\end{align*}
+\[
+\textnormal{NSWD}_{\lambda}(x,y) = \frac{\max(\log \fl{x}, \log \fl{y})- \log \fl{x,y}}{\log N - \min(\log \fl{x}, \log \fl{y})}
+\]
+\end{frame}
+
+%\begin{frame}{NSWD---Adaptations to HITO}
+%\begin{itemize}
+%\item Citations werden nur einmal benutzt und tauchen daher nie in $\f{x,y}$ auf $\rightarrow$ ersetzen durch classifieds
+%%\item keine Überschneidung im Wertebereich der SWP-Properties $\rightarrow |\langle v,p,x \angle | = | v,x |$ 
+%\item Beschränkung auf $V_{out}$
+%\end{itemize}
+%\end{frame}
+
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
+\begin{frame}{NSWD}
+\begin{tabular}{llS}
+\aurl{}{CscMedChart}					&\aurl{}{CernerMilleniumPowerOrders}	&0.0\\
+\aurl{}{GePatchspecdPacs}					&\aurl{}{AbbottIStat}	&0.0 \\
+\aurl{}{TeleDicom}					&\aurl{}{EChasqui}	&0.0623 \T \\
+\aurl{}{CernerSoarianCpoePlatform}					&\aurl{}{CernerMilleniumPowerOrders}	&0.0683\\
+\aurl{}{CscMedChart}					&\aurl{}{CernerSoarianCpoePlatform}	&0.0683\\
+\aurl{}{Theriak}					&\aurl{}{Medicator}	&0.0798\\
+\aurl{}{Theriak}					&\aurl{}{CernerSoarianCpoePlatform}	&0.1153\\
+\aurl{}{AgfaPacsImpax}					&\aurl{}{AbbottIStat}	&0.1414\\
+\aurl{}{GePatchspecdPacs}					&\aurl{}{AgfaPacsImpax}	&0.1414\\
+\aurl{}{Theriak}					&\aurl{}{CernerMilleniumPowerOrders}	&0.1440\\
+\aurl{}{Theriak}					&\aurl{}{CscMedChart}	&0.1440\\
+\aurl{}{AgfaRisElefante}					&\aurl{}{AbbottIStat}	&0.1502\\
+\end{tabular}\\
+\end{frame}
+
+\begin{frame}[plain]
+\begin{columns}
+ \begin{column}{.55\textwidth}
+  \centering\includegraphics[width=1.0\textwidth,height=1.0\textheight,keepaspectratio,trim=0 100 0 0,clip]{cscmedchart-lodview.pdf}
+ \end{column}
+ 
+ \begin{column}{.55\textwidth}
+  \centering\includegraphics[width=1.0\textwidth,height=1.0\textheight,keepaspectratio,trim=0 100 0 0,clip]{cernermillenium-lodview.pdf}
+ \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{columns}
+ \begin{column}{.55\textwidth}
+  \centering\includegraphics[width=1.0\textwidth,height=1.0\textheight,keepaspectratio,trim=0 100 0 0,clip]{cscmedchart-lodview-feature.pdf}
+ \end{column}
+ \begin{column}{.55\textwidth}
+  \centering\includegraphics[width=1.0\textwidth,height=1.0\textheight,keepaspectratio,trim=0 100 0 0,clip]{cernermillenium-lodview-feature.pdf}
+ \end{column}
+\end{columns}
+\end{frame}
+
+
+
 \begin{frame}{TODO / Future Work}
 \begin{itemize}
 \item Hierarchical Clustering
@@ -402,49 +472,7 @@ Normalized Information Distance NID\\
 {\log N - \min(\log \f{x}, \log \f{y})}
 \]
 \end{frame}
-
-\begin{frame}{NSWD---Normalized Semantic Web Distance~\cite{normalizedsemanticwebdistance}}
-\begin{align*}
-V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
-V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
-V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
-\end{align*}
-\begin{align*}
-\lambda		&\in \{\textnormal{in}, \textnormal{out}, \textnormal{all}\}\\
-\f{x}		&= |V_{\lambda}(x)|\\
-\f{x,y}	&= |V_{\lambda}(x) \cap V_{\lambda{y}}|
-\end{align*}
-\[
-\textnormal{NSWD}_{\lambda}(x,y) = \frac{\max(\log \fl{x}, \log \fl{y})- \log \fl{x,y}}{\log N - \min(\log \fl{x}, \log \fl{y})}
-\]
-\end{frame}
-
-\begin{frame}{NSWD---Adaptations to HITO}
-\begin{itemize}
-\item Citations werden nur einmal benutzt und tauchen daher nie in $\f{x,y}$ auf $\rightarrow$ ersetzen durch classifieds
-%\item keine Überschneidung im Wertebereich der SWP-Properties $\rightarrow |\langle v,p,x \angle | = | v,x |$ 
-\item Beschränkung auf $V_{out}$
-\end{itemize}
-\end{frame}
-
-\begin{frame}{NSWD}
-\begin{tabular}{llr}
-CscMedChart					&CernerMilleniumPowerOrders	&0.0\\
-GePatchspecdPacs					&AbbottIStat	&0.0\\
-TeleDicom					&EChasqui	&0.0623\\
-CernerSoarianCpoePlatform					&CernerMilleniumPowerOrders	&0.0683\\
-CscMedChart					&CernerSoarianCpoePlatform	&0.0683\\
-Theriak					&Medicator	&0.0798\\
-Theriak					&CernerSoarianCpoePlatform	&0.1153\\
-AgfaPacsImpax					&AbbottIStat	&0.1414\\
-GePatchspecdPacs					&AgfaPacsImpax	&0.1414\\
-Theriak					&CernerMilleniumPowerOrders	&0.1440\\
-Theriak					&CscMedChart	&0.1440\\
-AgfaRisElefante					&AbbottIStat	&0.1502\\
-\end{tabular}\\
-~\\Hier scheint ein Fehler in den Daten zu sein, Distanz 0 sollte eigentlich dort nicht sein, untersuchen.
-\end{frame}
-
+ 
 \begin{frame}{Referenzen}
 \bibliographystyle{unsrt}
 \bibliography{hitocluster}
