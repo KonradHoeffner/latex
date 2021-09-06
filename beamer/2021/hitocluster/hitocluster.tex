@@ -7,6 +7,7 @@
 \usepackage{csquotes}
 \usepackage{booktabs}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,quotes}
 \definecolor{darkred}{RGB}{200,50,50}
 \usepackage{aurl}
 \daurl{hito}{http://hitontology.eu/ontology/}
@@ -102,11 +103,23 @@ V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
 V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
 V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
 \end{align*}
-\begin{itemize}
-\item Citations einzigartig, durch Classifieds ersetzen
-\item Operating System, Interoperability Standard, $\ldots$ direkt verwenden
-\item bestimmen durch SPARQL query
-\end{itemize}
+
+\begin{tikzpicture}[auto,box/.style={draw},node distance = 6mm and 22mm,->]
+\node (n1) [box] {SoftwareProduct};
+\node (n2) [box] [right=of n1]{*Citation};
+\node (n3) [box] [right=of n2]{*Classified};
+\node (n4) [box] [below=of n3]{Operating System};
+\node (n5) [box] [below=of n4]{Interoperability Standard};
+\node (n6) [box] [below=of n5]{$\ldots$};
+
+\draw	(n1) edge ["1~~~~~~~0..n",dashed] (n2)
+	(n2) edge ["0..n~~~~~0..n",dashed] (n3)
+	(n1) edge [bend left,dotted] (n3)
+	(n1) edge (n4)
+	(n1) edge (n5)
+	(n1) edge (n6);
+\end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}{Tele DICOM vs Cerner FirstNet}
