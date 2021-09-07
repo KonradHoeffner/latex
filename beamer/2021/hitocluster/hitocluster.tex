@@ -1,5 +1,6 @@
 \documentclass[aspectratio=1610,handout]{beamer}
 \usepackage[utf8]{inputenc}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 \usepackage{booktabs}
 \usepackage{tabulary}
 \usepackage{amssymb}% http://ctan.org/pkg/amssymb
@@ -98,6 +99,20 @@
 % zuwenig Daten
 %\begin{frame}{TODO: Clustering nach Anwendungssystemtypen hier einfügen}
 %\end{frame}
+
+\begin{frame}{Distanz und Metrik~\cite{normalizedinformationdistance}}
+Distanzfunktion $D: X \times  X \rightarrow \mathbb{R}^+$\\
+\pause
+~\\
+Metrik\\~\\
+\begin{tabular}{lr}
+$\D{x,y} = 0$ gdw. $x = y$			&Identität\\
+$\D{x,y} = \D{y,x}$					&Symmetrie\\
+$\D{x,z} \leq \D{x,y} + \D{y,z}$	&Dreiecksungleichung\\
+\end{tabular}\\
+~\\
+Ähnlichkeit $\leftrightarrow$ Distanz
+\end{frame}
 
 \begin{frame}{Ansatz}
 Abbilden von SWPs auf direkte Nachbarschaft (siehe Anhang NSWD):
@@ -227,12 +242,13 @@ WhoDhiNonRoutineDataCollectionAndManagement
 
 \begin{frame}{Übereinstimmung von Mengen}
 \begin{itemize}
-\item gesucht: $s: S \times S \rightarrow  \mathbb{R}, S = 2^E$
-\item Ähnlichkeit $\leftrightarrow$ Distanz
-\pause
+%\item gesucht: $s: S \times S \rightarrow  \mathbb{R}, S = 2^E$
+%\pause
 \item Ähnlichkeit als Größe der Schnittmenge $|A \cap B|$
 \pause
-\item Jaccard-Koeffizient \[J(A,B) = \frac{|A \cap B|}{|A \cup B|}\]
+\item Jaccard-Koeffizient \[0 \leq J(A,B) = \frac{|A \cap B|}{|A \cup B|} \leq 1 \]
+\pause
+\item Jaccard-Distanz \[d_J(A,B) = 1 - \frac{|A \cap B|}{|A \cup B|}\]\\
 \end{itemize}
 \begin{center}
 \intersection{0.5}
@@ -269,7 +285,10 @@ Jedes Feature, Function (classified), jede Sprache$\ldots$ ist eine eigene Dimen
 \end{frame}
 
 \begin{frame}{Modellierung als Vektor---Fiktives Beispiel}
-Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Daten mit Python Bibliothek scikit learn DictVectorizer: one-hot encoding
+{
+\small
+Labels sind kategorische (qualitative) Variablen, umwandeln in quantitative Daten. Scikit-learn DictVectorizer: one-hot encoding. 403-dimensionaler Vektorraum.
+}
 \begin{columns}
  
  \begin{column}{.4\textwidth}
@@ -287,6 +306,9 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 
 \end{frame}
 
+\begin{frame}{Wie vergleichen wir Vektoren?---Distanzmaße}
+\end{frame}
+
 \begin{frame}{Dimensionsreduzierung und Clustering}
 \begin{itemize}
 \item Principal Component Analysis (PCA)
@@ -294,10 +316,10 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \end{itemize}
 \end{frame}
 
-\imageslide{HITO l1 norm}{img/cluster-l1.pdf}{}
-\imageslide{HITO l1 norm classified only}{img/cluster-classifiedonly-l1.pdf}{}
-\imageslide{HITO l2 norm}{img/cluster-l2.pdf}{}
-\imageslide{HITO l2 norm classified only}{img/cluster-classifiedonly-l2.pdf}{}
+\imageslide{HITO L1 norm}{img/cluster-l1.pdf}{}
+\imageslide{HITO L1 norm classified only}{img/cluster-classifiedonly-l1.pdf}{}
+\imageslide{HITO L2 norm}{img/cluster-l2.pdf}{}
+\imageslide{HITO L2 norm classified only}{img/cluster-classifiedonly-l2.pdf}{}
 \imageslide{HITO max norm}{img/cluster-max.pdf}{}
 \imageslide{HITO max norm classified only}{img/cluster-classifiedonly-max.pdf}{}
 
@@ -318,10 +340,10 @@ Labels sind kategorische (qualitative) Variablen. Umwandeln in quantitative Date
 \textbf{Ris2} Administrative discharge and billing Archiving of patient information Controlling Data exchange across systems Enrol client for health services/clinical care plan Longitudinal tracking of client’s health status and services received Manage budget and expenditures Quality management Scheduling and resource allocation Track and manage insurance reimbursement patient administration patient admission
 \end{frame}
 
-\imageslide{HITO BOW l1 norm}{img/cluster-bagofwords-l1.pdf}{}
-\imageslide{HITO BOW l1 norm classified only}{img/cluster-bagofwords-classifiedonly-l1.pdf}{}
-\imageslide{HITO BOW l2 norm}{img/cluster-bagofwords-l2.pdf}{}
-\imageslide{HITO BOW l2 norm classified only}{img/cluster-bagofwords-classifiedonly-l2.pdf}{}
+\imageslide{HITO BOW L1 norm}{img/cluster-bagofwords-l1.pdf}{}
+\imageslide{HITO BOW L1 norm classified only}{img/cluster-bagofwords-classifiedonly-l1.pdf}{}
+\imageslide{HITO BOW L2 norm}{img/cluster-bagofwords-l2.pdf}{}
+\imageslide{HITO BOW L2 norm classified only}{img/cluster-bagofwords-classifiedonly-l2.pdf}{}
 \imageslide{HITO BOW max norm}{img/cluster-bagofwords-max.pdf}{}
 \imageslide{HITO BOW max norm classified only}{img/cluster-bagofwords-classifiedonly-max.pdf}{}
 
