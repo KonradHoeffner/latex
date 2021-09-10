@@ -1,4 +1,4 @@
-\documentclass[aspectratio=1610,handout]{beamer}
+\documentclass[aspectratio=1610]{beamer}%,handout
 \usepackage[utf8]{inputenc}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \usepackage{booktabs}
@@ -84,10 +84,13 @@
 
 \begin{frame}{Vergleichen von Softwareprodukten}
 \begin{itemize}
-\item viel Wissen über SWPs gesammelt, aber wie hängen diese zusammen?
-\item LodView vergleicht nicht Details, SNIK Graph unübersichtlich
-\item Anwendungsystemtypen (ASTs) bieten manuelle Gruppierung aber nur für 10/51 SWPs verfügbar, 5 davon $> 1$ AST
+\item LodView Detailsansicht, SNIK Graph unübersichtlich
+\item Anwendungsystemtypen (ASTs) nur bei 10/51 SWPs, 5 davon $> 1$ AST
+\pause
 \item automatisches Vergleichen
+\item machine learning
+\item unsupervised learning
+\item clustering
 %\item Gibt es ähnliche SWPs in unterschiedlichen ASTs?
 %\item Können wir neue ASTs finden?
 %\item Kombination von Eigenschaften zu einem Maß für die Distanz oder Ähnlichkeit zwischen zwei Softwareprodukten
@@ -100,28 +103,18 @@
 %\begin{frame}{TODO: Clustering nach Anwendungssystemtypen hier einfügen}
 %\end{frame}
 
-\begin{frame}{Distanz und Metrik~\cite{normalizedinformationdistance}}
-Distanzfunktion $D: X \times  X \rightarrow \mathbb{R}^+$\\
-\pause
-~\\
-Metrik\\~\\
-\begin{tabular}{lr}
-$\D{x,y} = 0$ gdw. $x = y$			&Identität\\
-$\D{x,y} = \D{y,x}$					&Symmetrie\\
-$\D{x,z} \leq \D{x,y} + \D{y,z}$	&Dreiecksungleichung\\
-\end{tabular}\\
-~\\
-Ähnlichkeit $\leftrightarrow$ Distanz
-\end{frame}
-
-\begin{frame}{Ansatz}
+\begin{frame}{Repräsentation}
 Abbilden von SWPs auf direkte Nachbarschaft (siehe Anhang NSWD):
 \begin{align*}
 V_{in}(x)	&= \{v \in I| \langle v,p,x \rangle \in \textnormal{KB}\}\\
 V_{out}(x)	&= \{v \in I| \langle x,p,v \rangle \in \textnormal{KB}\}\\
 V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
 \end{align*}
+\end{frame}
 
+\imageslide{Nachbarschaft}{img/hito-labelled.jpg}{\tiny\url{https://www.snik.eu/pgraph/?sparql=https://hitontology.eu/sparql&graph=http://hitontology.eu/ontology&instances}}
+
+\begin{frame}{Citations $\rightarrow$ Classifieds}
 \begin{tikzpicture}[auto,box/.style={draw},node distance = 6mm and 22mm,->]
 \node (n1) [box] {SoftwareProduct};
 \node (n2) [box] [right=of n1]{*Citation};
@@ -137,10 +130,9 @@ V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
 	(n1) edge (n5)
 	(n1) edge (n6);
 \end{tikzpicture}
-
 \end{frame}
 
-\begin{frame}{Tele DICOM vs Cerner FirstNet}
+\begin{frame}{Beispiel: Tele DICOM vs Cerner FirstNet}
 \textbf{\aurl{}{TeleDicom}}\\
 \onlyone{
 \aurl{}{EhrSfmManageResults}\\
@@ -245,9 +237,9 @@ WhoDhiNonRoutineDataCollectionAndManagement
 %\item gesucht: $s: S \times S \rightarrow  \mathbb{R}, S = 2^E$
 %\pause
 \item Ähnlichkeit als Größe der Schnittmenge $|A \cap B|$
-\pause
+%\pause
 \item Jaccard-Koeffizient \[0 \leq J(A,B) = \frac{|A \cap B|}{|A \cup B|} \leq 1 \]
-\pause
+%\pause
 \item Jaccard-Distanz \[d_J(A,B) = 1 - \frac{|A \cap B|}{|A \cup B|}\]\\
 \end{itemize}
 \begin{center}
@@ -263,7 +255,7 @@ WhoDhiNonRoutineDataCollectionAndManagement
 % FILTER EXISTS {?s a hito:SoftwareProduct. {?s ?p ?instance.} UNION {?s ?p [?q ?instance]}}
 %} ORDER BY DESC(?count)
 
-\begin{frame}{Alternative: Modellierung als Vektor}
+\begin{frame}{Modellierung als Vektor}
 \begin{tabular}{lll}
 \toprule
 Classified / Attribut		&ingesamt	&benutzt\\
@@ -435,32 +427,30 @@ V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
 \end{frame}
 
 
+\imageslide{Hierarchical Clustering}{hierarchy.pdf}{}
+\imageslide{Hierarchical Clustering Classified Only}{hierarchy-classifiedonly.pdf}{}
+%\imageslide{Hierarchical Clustering Bag of Words}{hierarchy-bagofwords.pdf}{}
+%\imageslide{Hierarchical Clustering Bag of Words Classified Only}{hierarchy-bagofwords-classifiedonly.pdf}{}
 
-\begin{frame}{TODO / Future Work}
+\begin{frame}{Diskussion / Future Work}
 \begin{itemize}
-\item Hierarchical Clustering
-\item Application System Type (AST) vorhersagen
-\item ASTs vergleichen
-\item neue ASTs finden
-\item Vergleich existierende ASTs mit gefundenen Clustern
+\item Ansatz weiter verfolgen?
 \pause
-\vspace{1em}
-\item Welche Eigenschaften interessieren wen wie stark? Programmiersprache vs Feature.
+\item Übereinstimmung Clustering und Intuition?
+\item Anwendungssystemtypen vs Cluster
 \pause
-\item Häufige Eigenschaften automatisch abschwächen?
+\item Mapping zwischen Katalogen
 \pause
+\item Gewichtung der Eigenschaften
+\item Gruppierung der Eigenschaften?
 \item Korrelationen einbeziehen? Microsoft\_Windows vs Windows\_7
-\pause
-\item Unterschiedliche Kataloge
-\pause
-\item Gruppieren von Eigenschaften?
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Fragen?}
 \end{frame}
 
-\section{Anhang---Reinnehmen oder aus Zeitgründen rauslassen}
+\section{Anhang}
 
 \begin{frame}{Informationsgehalt---Kolmogorov-Komplexität}
 \begin{itemize}
@@ -470,6 +460,22 @@ V_{all}(x)	&= V_{in}(x) \cup V_{out}(x)
 \item nicht berechenbar
 \end{itemize}
 \end{frame}
+
+\iffalse
+\begin{frame}{Distanz und Metrik~\cite{normalizedinformationdistance}}
+Distanzfunktion $D: X \times  X \rightarrow \mathbb{R}^+$\\
+\pause
+~\\
+Metrik\\~\\
+\begin{tabular}{lr}
+$\D{x,y} = 0$ gdw. $x = y$			&Identität\\
+$\D{x,y} = \D{y,x}$					&Symmetrie\\
+$\D{x,z} \leq \D{x,y} + \D{y,z}$	&Dreiecksungleichung\\
+\end{tabular}\\
+~\\
+Ähnlichkeit $\leftrightarrow$ Distanz
+\end{frame}
+\fi
 
 \begin{frame}{Distanz und Metrik~\cite{normalizedinformationdistance}}
 Distanzfunktion $D: X \times  X \rightarrow \mathbb{R}^+$\\
