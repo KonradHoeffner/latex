@@ -15,16 +15,18 @@
 \usepackage{siunitx}
 \usepackage{csquotes}
 
-\usetheme{imise2}
+\usetheme{simple}
 \author{Prof. Alfred Winter, Franziska Jahn, Konrad Höffner}%, Institute for Medical Informatics, Statistics and Epidemiology}
 %\title{The SNIK Ontology of Information Management in Hospitals}
 \title{\Large SNIK -- Ein Semantisches Netz des Informationsmanagements im Krankenhaus}
-\subtitle{}
-\date{5.\,12.\,2019, IWIMI 2019}
+%\vspace{7em}
+\subtitle{Stand, neue Ideen und Kooperationsmöglichkeiten}
+%\subtitle{}
+\date{17.\,12.\,2021}
+\date{}
 \def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
 \def\email{konrad.hoeffner@imise.uni-leipzig.de} 
 \def\telephone{+49 341 97 16322}
-
 % TODO: Use SNIK Graph as title slide, get audience attention right away
 
 \newcommand{\imageslide}[4][]
@@ -40,7 +42,6 @@
 }
 
 \begin{document}
-
 \iffalse
 {
 \setbeamertemplate{background canvas}%
@@ -49,11 +50,13 @@
  \hfil \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/snik-graph.png} \hfil}
  }
 }
-\fi
 \begin{frame}
 \titlepage
 \end{frame}
-%}
+}
+\fi
+
+\imageslide{SNIK in 10 Minuten}{img/snik-graph.png}{}{}
 
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Domäne}
@@ -66,13 +69,14 @@
 \end{frame}
 \restoregeometry
 
+\iffalse
 \begin{frame}{Projektziele}
-Abgeschlossenes DFG-Projekt. Projektziele: 
+Abgeschlossenes DFG-Projekt. Ergebnisse:
 \begin{enumerate}
  \item modulare Ontologie des \textit{Informationsmanagements im Krankenhaus}: 
  \begin{itemize}
-  \item Metamodell
-  \item \enquote{Unterontologien} für jedes Lehrbuch
+  \item Metamodell (Ontologie)
+  \item Unterontologien (Knowledge Bases) für jedes Lehrbuch
  \end{itemize}
  \item Weiterentwicklung der Daten
  \item Werkzeuge entwickeln
@@ -101,27 +105,38 @@ Lehre			&Lehrer, Studenten und Autoren\\
 \end{itemize}
 }
 \end{frame}
+\fi
 
 \imageslide{Vokabular}{img/wordcloud-ob.png}{}{}
 \imageslide{Synonyme}{img/wordcloud-synonym.png}{}{}
 
 % Überleitung ?
-
+\iffalse
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Semantisches Netz}
 % SNIK stands for Semantic Network of Information Management in Hospitals (German "Krankenhaus") and tries to unify those views.
 \centering\includegraphics[height=0.95\textheight,keepaspectratio]{img/snik-graph.png}
 \end{frame}
 \restoregeometry
-
-\imageslide{Technologien}{img/semantic-web-stack-snik-de.pdf}{}{}
+\fi
 
 \imageslide{Metamodell}{img/metamodel9s.pdf}{}{}
 % Welche Beispiele? für begriffe und für relationen
 \imageslide{Modellierungsbeispiel}{img/bb-cio.pdf}{}{}
 
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Transformation}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
+\centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
+\end{frame}
+\restoregeometry
+
+\imageslide{Technologien}{img/semantic-web-stack-snik-de.pdf}{}{}
 %http://linkeddata.org/
 
+\iffalse
 \begin{frame}{Herausforderungen}
 \begin{itemize}
 %\item große Domäne
@@ -142,6 +157,8 @@ select *
 }
 }
 \end{frame}
+\fi
+
 \iffalse
 \begin{frame}{Herausforderungen in der Transformation (2)}
 \begin{itemize}
@@ -157,15 +174,6 @@ select *
 \end{itemize}
 \end{frame}
 \fi
-
-\newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{~~~~Transformation}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
-\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
-\centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
-\end{frame}
-\restoregeometry
 
 \imageslide{Lifecycle}{cycle.pdf}
 
@@ -196,7 +204,7 @@ select *
 \imageslide{SNIK Graph --- Spiderworm}{img/spider.png}{}{}
 \imageslide{SNIK Graph --- Exploration}{img/snik-graph-star.png}{}{}
 
-\imageslide{Lifecycle}{cycle.pdf}
+%\imageslide{Lifecycle}{cycle.pdf}
 
 \note{\textit{Krankenhaus-Informations-System} ist ein Homonym:
 1. Die Menge an Hardware, Software und deren Benutzer 
