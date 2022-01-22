@@ -1,0 +1,82 @@
+% Zum Üben von Kalligraphie in Minuskelschrift 
+% Adaptiert von https://tex.stackexchange.com/a/140580/30482
+\documentclass[12pt,a4paper]{article}
+
+% necessary packages
+\usepackage{tikz}
+
+% set the font
+%\usepackage{fontspec}
+%\setmainfont{Zapfino}
+
+% increase baseline skip
+\usepackage{setspace}
+\setstretch{1.7}
+
+% define height of lowercase letters
+\newcommand{\lowercaseheight}{1ex}
+% define height of uppercase letters
+\newcommand{\uppercaseheight}{2ex}
+% define depth of descenders
+\newcommand{\descenderdepth}{-0.5ex}
+    % you may add more values here and then use them in the {tikzpicture}
+    % to add more line to your grid
+
+% package to have a "every line" hook
+\usepackage{lineno}
+
+\newenvironment{drillsheet}{%
+    % let the "line numbers" start directly at the text
+    \setlength\linenumbersep{0pt}%
+    % let the "line numbers" be the grid
+    \renewcommand{\thelinenumber}{%
+        \begin{tikzpicture}[overlay,thick]
+                % baseline
+				\color{black}
+                \draw ((0,0) -- ++(\textwidth,0);
+                % lowercase height
+                %\color{blue}
+				\draw [] ((0,-3mm) -- ++(\textwidth,0);
+                % uppercase height
+                %\color{red}
+				\draw (0,-9.75mm) -- ++(\textwidth,0);
+                % descender depth
+                %\color{green}
+                \draw [] (0,-12mm) -- ++(\textwidth,0);
+        \end{tikzpicture}%
+    }%
+    % the font and color of the numbers must be set explicitly
+    \renewcommand\linenumberfont{\normalfont\color{black}}
+    % start "line numbering", i.e. the grid
+    \begin{linenumbers}%
+        % set text color to gray
+        \color{black!25}%
+}{
+    % end "numbering", i.e. the grid
+    \end{linenumbers}%
+}
+
+\newenvironment{fakedisplaymath}{%
+   \begin{center}%
+   $\displaystyle
+}{%
+   $%
+   \end{center}%
+}
+
+\begin{document}
+\Huge
+\begin{drillsheet}
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+\end{drillsheet}
+\end{document}
