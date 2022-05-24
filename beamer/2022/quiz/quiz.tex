@@ -1,0 +1,126 @@
+% 2022-05-30 Session 27 Rhodes 10 9:00 -- 10:30, presentation 10:15 -- 10:30
+% 7. Leipziger Semantic Web Tag, English presentation about the SNIK Quiz.
+% 15 minutes presentation.
+
+%\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length 
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\usetheme{imise2}
+%\author{\emph{Konrad Höffner}, Arne Roszeitis, Max Niclas Wächtler, Franziska Jahn, Prof. Alfred Winter}
+%Institute for Medical Informatics, Statistics and Epidemiology}
+%\title{The SNIK Ontology of Information Management in Hospitals}
+\title{\large SNIK Quiz: A Multiple Choice Game\\about Information Management in Hospitals}
+\date{~}
+%\date{May 30, 2022, MIE 2022}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@imise.uni-leipzig.de} 
+\def\telephone{+49 341 97 16322}
+
+
+\newcommand{\imageslide}[4][]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+\restoregeometry
+}
+
+\begin{document}
+{
+\setbeamertemplate{background canvas}%
+{
+ \vbox to \paperheight{\vfil\hbox to \paperwidth{%
+ \hfil \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/snik-graph.png} \hfil}
+ }
+}
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Domain}
+% Information Management in Hospitals is a core topic for students of medical computer science.
+% Unfortunately, there are many different views of the domain, whose relationship is often unclear, and the terminology is full of synonyms and homonyms.
+% So this domain is difficult to learn for students. 
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-bb.jpg}
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-ob.jpg}
+\centering\includegraphics[height=0.77\textheight,keepaspectratio]{img/book-he.jpg}
+\end{frame}
+\restoregeometry
+
+%\imageslide{Vocabulary}{img/wordcloud-ob.png}{}{}
+%\imageslide{Synonyms}{img/wordcloud-synonym.png}{}{}
+
+\imageslide{Meta Model}{img/metamodel9s.pdf}{}{}
+
+\imageslide{Modelling Example}{img/bb-cio.pdf}{}{}
+
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Transformation}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-bb.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-ob.jpg}
+\centering\includegraphics[height=0.21\textheight,keepaspectratio]{img/book-he.jpg}
+\centering\includegraphics[width=0.7\textwidth,keepaspectratio]{img/5star.png}
+\end{frame}
+\restoregeometry
+
+%\newgeometry{margin=0cm,top=1em}
+\iffalse
+\begin{frame}[plain]{~~~~Storage/Query, Author, Interlink \& Browse}
+\begin{columns}[t]
+\column{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{img/virtuoso.png}
+\includegraphics[width=\textwidth]{img/limes.png}
+\column{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{img/ontowiki.png}
+\includegraphics[width=\textwidth]{img/lodview.png}
+\end{columns}
+\end{frame}
+\fi
+%\restoregeometry
+
+\imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
+
+%\imageslide{Extraction}{img/5star.png}
+
+\iffalse
+\begin{frame}{Example Slide}
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fragen?}
+\begin{itemize}
+%\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+\vspace{0.5em}%here it works as intended
+\item Überblick \url{http://www.snik.eu}
+\item Visualisierung \url{http://www.snik.eu/graph}
+\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
+\item RDF Browser \url{http://www.snik.eu/ontology}
+\item Evaluation \url{http://www.snik.eu/evaluation}
+\item Twitter \url{https://twitter.com/snik\_proj}
+\item Technisches Blog \url{https://imise.github.io/snik-ontology}
+\item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
+\end{itemize}
+\end{frame}
+\fi
+
+\end{document}
