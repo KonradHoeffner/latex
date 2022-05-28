@@ -122,7 +122,7 @@
 
 \imageslide{Multiple Choice Question Components}{img/snik-quiz-annotated.png}{}{}
 
-\begin{frame}[fragile]{Question Templates}
+\begin{frame}[fragile]{Simple Question Templates}
 \begin{tabulary}{\textwidth}{lL}
 \toprule
 \textbf{Template}	&\textbf{Description}\\
@@ -154,20 +154,29 @@ Distractors				&\emph{Defines the hospital’s long-term strategic goals},
 						\emph{An application component where the controlling rules for data processing are implemented as executable software},
 						\emph{Summarizes monitored key performance indicators (KPIs) and compares them to the expected future state}\\
 }
-\tableonly<5>{
+\bottomrule
+\end{tabulary}
+\end{frame}
+
+\begin{frame}[fragile]{Complex Question Templates}
+\begin{tabulary}{\textwidth}{lL}
+\toprule
+\textbf{Template}	&\textbf{Description}\\
+\midrule
+\tableonly<1>{
 \textbf{Intertwined}	&The correct answer and distractors are more strongly connected.\\
 Stem					&\emph{In the context of Strategic Information Management, which one of the following triples belongs together the most?}\\
 Key						&\emph{Chief Information Officer -- Department of Information management -- IM Staff}\\
 Distractor 1			&\emph{Chief Information Officer -- Strategic Gap -- Corporate Strategy}\\
 Distractor 2			&\emph{Chief Information Officer -- Ticket Evaluation -- Project Monitoring}\\
 }
-\tableonly<6>{
+\tableonly<2>{
 \textbf{Occurence}		&Ask whether a given term is defined in one two textbooks, both or neither.\\
 Stem					&\emph{In which contexts does the term \enquote{Health Insurance Company} occur?}\\
 Key						&\emph{Strategic Information Management}\\
 Distractors				&\emph{Tactical Information Management, Both Contexts, Neither}\\
 }
-\tableonly<7>{
+\tableonly<3>{
 \textbf{CloseMatch}		&Transfer knowledge about one textbook to the other by confirming or denying statements about entity pairs that are marked as near equivalent.\\
 Stem					&\emph{In the Strategic Information Management, the Consultant is associated with the Long-Term HIS Planning, while in the Tactical Information Management, the Consultant is responsible for the Functional Specification Document.} (Key: True, Distractor: False)\\
 }
