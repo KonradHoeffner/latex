@@ -1,0 +1,89 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[ngerman]{babel}
+\usepackage{microtype}
+\usepackage{booktabs}
+%\usepackage{cleveref}
+\usepackage{hyperref}
+\usepackage{tabulary}
+%\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage[authoryear]{natbib}
+\usepackage{amsthm}
+%\usepackage{siunitx}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\author{Konrad Höffner} 
+\title{Ziel und Methodik für Training eines Sprachmodelles auf Lehrbüchern---Entwurf}
+\begin{document}
+\maketitle
+
+
+\section{Ziele}
+\begin{enumerate}
+\item öffentliches Bereitstellen eines Sprachmodells, welches komplexe Fragen über das Management von Krankenhausinformationssystemen mit hoher Genauigkeit beantwortet
+\item Aufbau von in-house Kompetenz in machine learning, deep learning und Sprachmodellen
+\end{enumerate}
+
+\section{Aufgaben}
+\begin{enumerate}
+\item Finden eines möglichst mächtigen frei verfügbaren Sprachmodells das auf der URZ Hardware läuft
+\item Installieren des Modells auf der URZ Hardware
+\item Beschaffung von mehreren Lehrbüchern über das Management von HIS in einem Textformat
+\item Säubern der Lehrbücher
+\item Erstellen eines neuen oder Verbesserung eines existierenden Frage-Antwortkataloges
+\item Fine-Tuning mithilfe der gesäuberten Lehrbuchtexte und des Frage-Antwortkataloges
+\item Laufender Betrieb des Modells
+\item Bereitstellen einer frei verfügbare Webanwendung als Schnittstelle
+\end{enumerate}
+
+\section{Methodik}
+Um das bereits vortrainierte Modell auf das Buch anzupassen, muss das unüberwachte Vortraining auf dem Buch fortgeführt werden (domain-adaptive pretraining, siehe \citet{pretraining}).
+Durch weiteres Fine-Tuning kann das Sprachmodell nun auf die Aufgabe des Question Answering angepasst werden.
+Normalerweise verwendet man dabei überwachtes Lernen (supervised learning\footnotemark{}).%
+\footnotetext{\url{https://web.archive.org/web/20130723143520/http://cs229.stanford.edu/notes/cs229-notes1.pdf}}
+Dabei benötigt man möglichst große Mengen an manuell erstellten Trainingsdaten, wofür auf die Frage-Antwortkataloge von \citet{arneba} und \citet{hannesbell} zurückgegriffen werden kann.
+Allerdings ist auch \enquote{weak supervision}\citep{weaksupervision} möglich.
+Dabei könnte man große Mengen an Trainingsdaten mithilfe von SNIK generieren.
+Außerdem gibt es \enquote{reinforcement learning with human feedback}~\citep{finetuninghuman}.
+Dabei bewerten Domänenexperten die Antworten des Modells, welches daraufhin seine Gewichte anpasst.
+
+\begin{definition}[GPT, siehe~\citet{gpt,gptreport}]
+Generative Pre-trained Transformer ist ein spezieller Transformer, also ein auf Deep Learning basierendes Sprachmodell, welches Texte generiert.
+Das Pre-Training erfolgt durch eine große Menge verschiedener Texte ohne Annotationen.
+Anschließend folgt das \enquote{discriminative fine-tuning} für eine spezielle Aufgabe, z.B. Question Answering, dabei werden kleinere Mengen annotierter Texte benötigt.
+\end{definition}
+
+\begin{definition}[Transformer, siehe~\citet{transformer}]
+Deep Learning-Architektur, welche auf einem Aufmerksamkeitsmechanismus basiert und u.a. Textgenerierung ermöglicht.
+\end{definition}
+
+\begin{definition}{Sprachmodell}
+Das Sprachmodell weist einer Sequenz von Wörtern eine Wahrscheinlichkeit zu.
+Es kann benutzt werden, um Text zu generieren, in dem immer das Wort mit der höchsten Wahrscheinlichkeit generiert wird.
+Optional kann der Anfang der Sequenz vorgegeben werden.
+Dies kann benutzt werden, um einen Text zu vervollständigen.
+Z.B. \enquote{Die Definition von Auftraggeber ist...}.
+\end{definition}
+
+
+%\begin{tabulary}{\textwidth}{ll}
+%\toprule
+%bla	&blubb\\
+%\bottomrule
+%\end{tabulary}
+
+\section{Herausforderungen}
+
+\begin{itemize}
+\item Fine-Tuning
+\item Hardwareressourcen für Training und späteren Betrieb
+\item Abgrenzung und Integration von Masterarbeit PK
+\end{itemize}
+
+\bibliographystyle{plainnat}
+\bibliography{gpt}
+\end{document}
