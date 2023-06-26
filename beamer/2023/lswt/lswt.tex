@@ -26,6 +26,21 @@
 \author{\texorpdfstring{Konrad Höffner\newline\url{konrad.hoeffner@uni-leipzig.de}}{Konrad Höffner}}
 \title{RickView: Lightweight Standalone Knowledge Graph Browsing Powered by Rust}
 \subtitle{}
+
+\iffalse
+\newcommand{\imageslide}[4][]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+\restoregeometry
+}
+\fi
+
 \begin{document}
 
 \begin{frame}
@@ -63,11 +78,15 @@ Technical details\ldots{} are however usually not shared, presumably to protect 
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Client Side Caching}
-\begin{itemize}
-\item strong ETag
-\end{itemize}
+{
+%\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{Caching}
+\centering\includegraphics[width=\textwidth]{img/nocache.png}\\
+\hspace{2em}
+\centering\includegraphics[width=\textwidth]{img/cache.png}
 \end{frame}
+\restoregeometry
+}
 
 \begin{frame}{Standalone}
 \begin{itemize}
