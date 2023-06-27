@@ -6,6 +6,10 @@
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
 \fi
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+%\newcommand{\xmark}{\ding{55}}%
+
 \usepackage[english]{babel}
 \uselanguage{english}
 \usetheme{simple}
@@ -31,7 +35,7 @@
 {
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.8\textheight,keepaspectratio]{#3}}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.88\textheight,keepaspectratio]{#3}}
 \\#1
 \note{#4}
 \end{frame}
@@ -75,7 +79,8 @@ vs\\
 \begin{frame}{RDF Browser Goals}
 \begin{itemize}
 \item lightweight: many instances on small servers
-\item standalone: easy setup, less failure points
+\item standalone: less failure points
+\item adaptable
 \item high performance on client and server
 \pause
 \item intuitive
@@ -112,12 +117,52 @@ vs\\
 \end{frame}
 \fi
 
-\imageslide{LodView}{img/lodview-screenshot.png}{}
+\begin{frame}[plain]{~~~~LodView}
+%\begin{itemize}
+%\item intuitive \cmark
+%\item good design \cmark
+%\item robust
+%\item lightweight: many instances on small servers
+%\item standalone: less failure points
+%\item easy setup and configuration
+%\item high performance on client and server
+%\pause
+%\end{itemize}
+
+\vspace{0.2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.7\textheight,keepaspectratio]{img/lodview-screenshot.png}}
+\footnotesize
+intuitive \cmark{}~~good design \cmark{}
+%
+%lightweight \xmark{}~~standalone \xmark{}~~performant \xmark{}~~efficient development \xmark{}~~adaptable $\approx$ \\
+\end{frame}
+
+\imageslide[KB: HITO, 1.1MB RDF/Turtle.\\LodView 1.2.1-hito server: 533 MB RAM + 210 MB Virtuoso]{LodView---Network}{img/lodview-nocache.png}{}
+\imageslide[KB: HITO, 1.1MB RDF/Turtle.\\LodView 1.2.1-hito server: 533 MB RAM + 210 MB Virtuoso]{LodView---Cached}{img/lodview-cache.png}{}
+
+%\imageslide{LodView}{img/lodview-screenshot.png}{}
 \imageslide{RickView}{img/rickview-screenshot1.png}{}
 \imageslide{RickView}{img/rickview-screenshot2.png}{}
 
-\imageslide{LodView---Network}{img/lodview-nocache.png}{}
-\imageslide{LodView---Cached}{img/lodview-cache.png}{}
+\begin{frame}[plain]{RickView---Network}
+\centering
+Uncached\\
+\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
+%\hspace{2em}
+\pause
+Cached\\
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/cache.png}}
+KB: HITO, 1.1MB RDF/Turtle.\\
+RickView 0.2.2 server: 25 MB RAM
+\end{frame}
+
+\begin{frame}[plain]{RickView LinkedSpending---Network}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-nocache.png}}\\
+\hspace{2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-cache.png}}
+KB: LinkedSpending 2015, 28 GB RDF/N-Triples.\\
+RickView 0.2.2 server: 1.9 GB RAM
+\end{frame}
 
 \imageslide{RDF Libraries}{img/libraries.png}{}
 
@@ -129,21 +174,6 @@ vs\\
 \footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.
 \end{frame}
 
-\begin{frame}[plain]{RickView---Network}
-\centering
-Uncached\\
-\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
-%\hspace{2em}
-\pause
-Cached\\
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/cache.png}}
-\end{frame}
-
-\begin{frame}[plain]{RickView LinkedSpending---Network}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-nocache.png}}\\
-\hspace{2em}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-cache.png}}
-\end{frame}
 
 \begin{frame}{Standalone}
 \begin{itemize}
