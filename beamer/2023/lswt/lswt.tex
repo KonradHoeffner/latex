@@ -31,7 +31,7 @@
 {
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=\textheight,keepaspectratio]{#3}}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.8\textheight,keepaspectratio]{#3}}
 \\#1
 \note{#4}
 \end{frame}
@@ -43,6 +43,7 @@
 \titlepage
 \end{frame}
 
+\iffalse
 \begin{frame}{A Review of the Semantic Web Field (2021)}
 \enquote{
 \ldots{}what the Semantic Web field most needs, at this stage, is consolidation\ldots
@@ -51,7 +52,41 @@ Consolidation of sorts is already happening in industry\ldots
 Technical details\ldots{} are however usually not shared, presumably to protect the own competitive edge.
 }
 \end{frame}
+\fi
 
+\begin{frame}{Problem}
+\begin{itemize}
+\item academic research in Semantic Web\\$\rightarrow$ accumulation of knowledge graphs
+\item best practices: RDF Dump, SPARQL endpoint,\\resolve URIs via \textbf{RDF Browser}
+\pause
+\item funding and responsibility limited to project duration 
+\item no operational management for indefinite deployment
+\pause
+%\item downtime and abandonment of deployment harm knowledge graph value significantly
+%\item time-consuming maintenance of past projects hinders current progress
+\end{itemize}
+~\\
+\centering
+\emph{downtime and abandonment}\\
+vs\\
+\emph{time-consuming maintenance}
+\end{frame}
+
+\begin{frame}{RDF Browser Goals}
+\begin{itemize}
+\item lightweight: many instances on small servers
+\item standalone: easy setup, less failure points
+\item high performance on client and server
+\pause
+\item intuitive
+\item good design
+\item robust
+\pause
+\item efficient development
+\end{itemize}
+\end{frame}
+
+\iffalse
 \begin{frame}{Linked Open Data Dissemination Best Practices}
 \begin{itemize}
 \item RDF Dump
@@ -62,16 +97,9 @@ Technical details\ldots{} are however usually not shared, presumably to protect 
 \item Blogs, Videos, Social Media, \ldots
 \end{itemize}
 \end{frame}
+\fi
 
-\begin{frame}{Dependencies}
-\begin{tabular}{ll}
-RDF Library		&Sophia\\% \cite{sophia}
-HDT Library		&hdt-rs\\
-Web Framework	&Actix Web\\
-Template Engine	&TinyTemplate\\
-\end{tabular}
-\end{frame}
-
+\iffalse
 \begin{frame}{Rust---Ideal fit for the Semantic Web}
 \begin{itemize}
 \item fast
@@ -82,6 +110,7 @@ Template Engine	&TinyTemplate\\
 \item however not that many libraries yet
 \end{itemize}
 \end{frame}
+\fi
 
 \imageslide{LodView}{img/lodview-screenshot.png}{}
 \imageslide{RickView}{img/rickview-screenshot1.png}{}
@@ -90,11 +119,30 @@ Template Engine	&TinyTemplate\\
 \imageslide{LodView---Network}{img/lodview-nocache.png}{}
 \imageslide{LodView---Cached}{img/lodview-cache.png}{}
 
+\imageslide{RDF Libraries}{img/libraries.png}{}
+
+\imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{Direct Relations---HDT Bitmap Triples}{img/bt.png}{}
+
+\begin{frame}[plain]{Inverse Relations---HDT FoQ}
+\centering
+\makebox[\linewidth]{\includegraphics[height=0.6\textheight]{img/hdt-foq.png}}\\
+\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.
+\end{frame}
+
 \begin{frame}[plain]{RickView---Network}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
-\hspace{2em}
+\centering
+Uncached\\
+\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
+%\hspace{2em}
 \pause
+Cached\\
 \centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/cache.png}}
+\end{frame}
+
+\begin{frame}[plain]{RickView LinkedSpending---Network}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-nocache.png}}\\
+\hspace{2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-cache.png}}
 \end{frame}
 
 \begin{frame}{Standalone}
@@ -131,12 +179,21 @@ Template Engine	&TinyTemplate\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{}
-%\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/github.png}
+\begin{frame}{Dependencies}
+\begin{tabular}{ll}
+RDF Library		&Sophia\\% \cite{sophia}
+HDT Library		&hdt-rs\\
+Web Framework	&Actix Web\\
+Template Engine	&TinyTemplate\\
+\end{tabular}
 \end{frame}
 
-\begin{frame}{}
-%\centering\includegraphics[width=1.05\textwidth,height=1.05\textheight,keepaspectratio]{img/netcup.png}
+\begin{frame}{Conclusions}
+\begin{itemize}
+%\item long-term availability of knowledge graphs matters
+\item Rust great fit for stable and performant Semantic Web tooling
+\item 
+\end{itemize}
 \end{frame}
-a
+
 \end{document}
