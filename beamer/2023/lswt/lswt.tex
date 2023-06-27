@@ -1,4 +1,4 @@
-\documentclass[14pt,aspectratio=1610]{beamer}
+\documentclass[14pt,aspectratio=169]{beamer}
 \usepackage{ifxetex}
 \ifxetex
   \usepackage{fontspec}
@@ -27,19 +27,15 @@
 \title{RickView: Lightweight Standalone Knowledge Graph Browsing Powered by Rust}
 \subtitle{}
 
-\iffalse
 \newcommand{\imageslide}[4][]
 {
-\newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
-\centering\includegraphics[width=1.0\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=\textheight,keepaspectratio]{#3}}
 \\#1
 \note{#4}
 \end{frame}
-\restoregeometry
 }
-\fi
 
 \begin{document}
 
@@ -67,6 +63,15 @@ Technical details\ldots{} are however usually not shared, presumably to protect 
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Dependencies}
+\begin{tabular}{ll}
+RDF Library		&Sophia\\% \cite{sophia}
+HDT Library		&hdt-rs\\
+Web Framework	&Actix Web\\
+Template Engine	&TinyTemplate\\
+\end{tabular}
+\end{frame}
+
 \begin{frame}{Rust---Ideal fit for the Semantic Web}
 \begin{itemize}
 \item fast
@@ -78,15 +83,19 @@ Technical details\ldots{} are however usually not shared, presumably to protect 
 \end{itemize}
 \end{frame}
 
-{
-%\newgeometry{margin=0cm,top=1em}
-\begin{frame}[plain]{Caching}
-\centering\includegraphics[width=\textwidth]{img/nocache.png}\\
+\imageslide{LodView}{img/lodview-screenshot.png}{}
+\imageslide{RickView}{img/rickview-screenshot1.png}{}
+\imageslide{RickView}{img/rickview-screenshot2.png}{}
+
+\imageslide{LodView---Network}{img/lodview-nocache.png}{}
+\imageslide{LodView---Cached}{img/lodview-cache.png}{}
+
+\begin{frame}[plain]{RickView---Network}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
 \hspace{2em}
-\centering\includegraphics[width=\textwidth]{img/cache.png}
+\pause
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/cache.png}}
 \end{frame}
-\restoregeometry
-}
 
 \begin{frame}{Standalone}
 \begin{itemize}
