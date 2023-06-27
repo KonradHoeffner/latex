@@ -48,24 +48,30 @@
 \end{frame}
 
 \iffalse
-\begin{frame}{A Review of the Semantic Web Field (2021)}
+\begin{frame}{Problem}
 \enquote{
 \ldots{}what the Semantic Web field most needs, at this stage, is consolidation\ldots
 For academics, there is often limited incentive to develop and maintain stable, easy-to-use software\ldots
 Consolidation of sorts is already happening in industry\ldots
 Technical details\ldots{} are however usually not shared, presumably to protect the own competitive edge.
 }
+Source: P. Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \end{frame}
 \fi
 
 \begin{frame}{Problem}
 \begin{itemize}
-\item academic research in Semantic Web\\$\rightarrow$ accumulation of knowledge graphs
-\item best practices: RDF Dump, SPARQL endpoint,\\resolve URIs via \textbf{RDF Browser}
-\pause
-\item funding and responsibility limited to project duration 
-\item no operational management for indefinite deployment
-\pause
+\item best practice to have RDF browser for every KG 
+\item after a while, you have a lot of them
+\item deployments break, servers shut down, lack of responsibility and resources
+%\item quick prototyping for new projects
+%\item lack of stable and easy-to-use open source Semantic Web tooling
+%\item new knowledge graph in every project
+%\item RDF browser needed as intuitive entry point
+%\item 
+%\item funding and responsibility limited to project duration 
+%\item no operational management for indefinite deployment
+%\pause
 %\item downtime and abandonment of deployment harm knowledge graph value significantly
 %\item time-consuming maintenance of past projects hinders current progress
 \end{itemize}
@@ -73,21 +79,24 @@ Technical details\ldots{} are however usually not shared, presumably to protect 
 \centering
 \emph{downtime and abandonment}\\
 vs\\
-\emph{time-consuming maintenance}
+\emph{time and money}
 \end{frame}
 
-\begin{frame}{RDF Browser Goals}
+\begin{frame}{Goal}
 \begin{itemize}
-\item lightweight: many instances on small servers
-\item standalone: less failure points
-\item adaptable
-\item high performance on client and server
-\pause
-\item intuitive
+\item generic RDF browser: Pubby-class URI dereferencing tool
+\item easy to use
 \item good design
-\item robust
-\pause
-\item efficient development
+\item lightweight
+\item standalone%: less failure points
+\item easy configuration 
+\item high performance
+%\pause
+%\item intuitive
+%\item good design
+%\item robust
+%\pause
+%\item efficient development
 \end{itemize}
 \end{frame}
 
@@ -117,7 +126,9 @@ vs\\
 \end{frame}
 \fi
 
-\begin{frame}[plain]{~~~~LodView}
+\imageslide{Common Architecture}{img/architecture.pdf}{}
+
+\begin{frame}[plain]{~~~~Example: LodView}
 %\begin{itemize}
 %\item intuitive \cmark
 %\item good design \cmark
@@ -132,39 +143,49 @@ vs\\
 \vspace{0.2em}
 \centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.7\textheight,keepaspectratio]{img/lodview-screenshot.png}}
 \footnotesize
-intuitive \cmark{}~~good design \cmark{}
+easy to use \cmark{}~~good design \cmark{}~~lightweight ?
 %
 %lightweight \xmark{}~~standalone \xmark{}~~performant \xmark{}~~efficient development \xmark{}~~adaptable $\approx$ \\
 \end{frame}
 
-\imageslide[KB: HITO, 1.1MB RDF/Turtle.\\LodView 1.2.1-hito server: 533 MB RAM + 210 MB Virtuoso]{LodView---Network}{img/lodview-nocache.png}{}
-\imageslide[KB: HITO, 1.1MB RDF/Turtle.\\LodView 1.2.1-hito server: 533 MB RAM + 210 MB Virtuoso]{LodView---Cached}{img/lodview-cache.png}{}
+\imageslide[KB: SNIK, 2.1MB RDF/Turtle.\\LodView server: 533 MB RAM + 210 MB Virtuoso]{LodView---Network}{img/lodview-nocache.png}{}
+\imageslide[KB: SNIK, 2.1MB RDF/Turtle.\\LodView server: 533 MB RAM + 210 MB Virtuoso]{LodView---Cached}{img/lodview-cache.png}{}
 
-%\imageslide{LodView}{img/lodview-screenshot.png}{}
 \imageslide{RickView}{img/rickview-screenshot1.png}{}
 \imageslide{RickView}{img/rickview-screenshot2.png}{}
 
+\imageslide{Simplified Architecture}{img/architecture-simple.pdf}{}
+
+\begin{frame}[plain]{RDF Libraries}
+\centering
+\makebox[\linewidth]{\includegraphics[height=0.7\textheight]{img/libraries.png}}\\
+\scriptsize Source: \emph{Höffner \& Baccaert:\\hdt-rs: A Rust library for the Header Dictionary Triples binary RDF compression format. 2023.}
+\end{frame}
+
+\begin{frame}{Triple Patterns}
+\begin{itemize}
+\item visualize a resource using all triples where it occurs in subject or object position
+\item expressivity of SPARQL not required
+\item \emph{direct relations}---S?? pattern
+\item \emph{inverse relations}---??O pattern
+\end{itemize}
+\end{frame}
+
+%\imageslide{RDF Libraries}{img/libraries.png}{}
+\imageslide{RickView Architecture}{img/architecture-rickview.pdf}{}
+
+%\imageslide{LodView}{img/lodview-screenshot.png}{}
 \begin{frame}[plain]{RickView---Network}
 \centering
-Uncached\\
 \makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/nocache.png}}\\
 %\hspace{2em}
 \pause
 Cached\\
 \centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/cache.png}}
-KB: HITO, 1.1MB RDF/Turtle.\\
-RickView 0.2.2 server: 25 MB RAM
+KB: SNIK, 2.1MB RDF/Turtle.\\
+RickView 0.2.2 server: 25 MB RAM\\
+binary size 11 MB, Alpine Docker image 18 MB
 \end{frame}
-
-\begin{frame}[plain]{RickView LinkedSpending---Network}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-nocache.png}}\\
-\hspace{2em}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-cache.png}}
-KB: LinkedSpending 2015, 28 GB RDF/N-Triples.\\
-RickView 0.2.2 server: 1.9 GB RAM
-\end{frame}
-
-\imageslide{RDF Libraries}{img/libraries.png}{}
 
 \imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{Direct Relations---HDT Bitmap Triples}{img/bt.png}{}
 
@@ -174,7 +195,15 @@ RickView 0.2.2 server: 1.9 GB RAM
 \footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.
 \end{frame}
 
+\begin{frame}[plain]{RickView LinkedSpending---Network}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-nocache.png}}\\
+\hspace{2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth]{img/linkedspending-cache.png}}
+KB: LinkedSpending 2015, 28 GB RDF/N-Triples, 1.4 GB HDT\\
+RickView 0.2.2 server: 1.9 GB RAM
+\end{frame}
 
+\iffalse
 \begin{frame}{Standalone}
 \begin{itemize}
 \item single binary $\approx 11$ MB, Alpine Docker image $\approx 18$ MB
@@ -187,7 +216,7 @@ RickView 0.2.2 server: 1.9 GB RAM
 \begin{frame}{Use Case: HITO\footnote{v1.1 \url{https://hitontology.eu/ontology/}}}
 \begin{itemize}
 \item RickView 0.2.1: 25 MB RAM
-\item LodView 1.2.1 HITO fork: 533 MB RAM + 210 MB Virtuoso
+\item LodView 1.2.1 SNIK fork: 533 MB RAM + 210 MB Virtuoso
 %\item Docker ulimit extension required
 \end{itemize}
 \end{frame}
@@ -224,6 +253,42 @@ Template Engine	&TinyTemplate\\
 \item Rust great fit for stable and performant Semantic Web tooling
 \item 
 \end{itemize}
+\end{frame}
+
+| Library         | Memory in MB | Load Time in ms | Query Time in ms |
+|:----------------|-------------:|----------------:|-----------------:|
+| hdt_cpp         |      **112** |            1985 |              362 |
+| sophia_hdt      |          263 |             930 |              355 |
+| hdt_rs          |          264 |         **912** |              315 |
+| hdt_java (DelayedString) | 738 |            3170 |          **214** |
+| hdt_java (String)        | 785 |            3476 |          **321** |
+| sophia_lg       |      **834** |       **11656** |               85 |
+| sophia          |         1371 |           15990 |           **20** |
+| jena (java)     |         5352 |           40400 |              159 |
+| n3js (js)       |        12404 |          100820 |              654 |
+| rdflib (python) |        14481 |          182002 |              940 |
+| librdf (c)      |           -- |              -- |               -- |
+\fi
+
+\begin{frame}[fragile]{Thanks! Questions?}
+~\\
+Issues and PRs welcome at \url{https://github.com/KonradHoeffner/rickview}\\
+~\\
+Docker Compose example:
+\scriptsize
+\begin{verbatim}
+services:
+  rickview:
+    image: ghcr.io/konradhoeffner/rickview
+    environment:
+      - RICKVIEW_KB_FILE=https://raw.githubusercontent.com/hitontology/ontology/dist/all.ttl
+      - RICKVIEW_NAMESPACE=http://hitontology.eu/ontology/
+      - RICKVIEW_TITLE=HITO
+      - RICKVIEW_SUBTITLE=Health IT Ontology
+      - RICKVIEW_EXAMPLES=Study SoftwareProduct
+    ports:
+      - "127.0.0.1:8080:8080"
+\end{verbatim}
 \end{frame}
 
 \end{document}
