@@ -27,7 +27,7 @@
 \date{2023-06-28}
 \author{
 \small
-\texorpdfstring{Tim Baccaert\newline{}Your Affiliation\newline{}\url{tim@baccaert.com}}{Tim Baccaert}\\~\\
+\texorpdfstring{Tim Baccaert\newline{}Software Languages Lab, Vrije Universiteit Brussel\newline{}\url{tim.baccaert@vub.be}}{Tim Baccaert}\\~\\
 \texorpdfstring{Konrad Höffner\newline{}Institute for Medical Informatics, Statistics and Epidemiology (IMISE)\newline{}\url{konrad.hoeffner@uni-leipzig.de}}{Konrad Höffner}
 }
 \title{Header Dictionary Triples (HDT) in Rust}
@@ -77,7 +77,10 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \end{itemize}
 \end{frame}
 
-\imageslide{Example: RDF Browser with SPARQL}{img/architecture.pdf}{}
+% tim: this broke on my machine, you may have forgot to commit it
+%\imageslide{Example: RDF Browser with SPARQL}{img/architecture.pdf}{}
+\begin{frame}{Example: RDF Browser with SPARQL}
+\end{frame}
 
 % can also comment this out and just say it while showing architecture slide
 \begin{frame}{SPARQL Endpoints}
@@ -151,7 +154,67 @@ librdf (c) & -- & -- & -- \\
 \end{itemize}
 \end{frame}
 
-\section{base technology behind HDT Rust by Tim}
+\section{HDT\_rs: some history, and the core of the library (Tim)}
+
+\begin{frame}{A brief history}
+    \begin{itemize}
+        \item originally for my master's thesis
+            \begin{itemize}
+                \item Datalog variant for eventually consistent RDF querying
+                \item needed huge volumes of benchmark data.
+                \item hdt files are compressed $\implies$ easier to share data dumps of
+            \end{itemize}
+        \item time constraints: decided to focus on my proofs only
+        \item open-sourced what I had, which was incomplete
+        \item Konrad picked it up and made it actually usable for real
+            \begin{itemize}
+                \item really deserves the vast majority of the credit :)
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic architecture}
+    \begin{itemize}
+        \item resembles Java and C++ versions of hdt
+        \item architecture has 4 major components
+            \begin{itemize}
+                \item \textbf{api}: how do users interact with the library
+                \item \textbf{model}: in-memory representation of triples
+                \item \textbf{containers}: model of compressed on-disk data (PFC strings)
+                \item \textbf{dictionaries}: mapping between triple bitmaps and their compressed
+                    components
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Read path: initialisation time}
+    \textbf{Goal:} compact in-memory representation of triples
+    \begin{verbatim}
+        // [usize, usize, usize],
+        [1, 2, 2],
+        [3, 5, 7],
+        ...
+    \end{verbatim}
+    \begin{enumerate}
+        \item Read the metadata (e.g., triple order, version, ...)
+        \item read the dictionary: mapping between identifiers and actual values
+        \item read the triple bitmap: id-based representation of triples
+        \item build index over bitmap
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Read path: iteration}
+    \begin{enumerate}
+        \item we get a triple pattern \texttt{[1, 2, 3]} in \texttt{SPO} order from the index
+        \item lookup 1, 2, and 3 in the dictionary
+            \begin{itemize}
+                \item strings are stored with plain front coding
+                \item basic idea: exploit that URIs always start with \texttt{https://www.foo}
+                \item store the prefix only once, keep only what is different otherwise
+            \end{itemize}
+        \item return the full, glorious, in-memory representation of the triple
+    \end{enumerate}
+\end{frame}
 
 \section{Challenge: How to return triples?}
 \begin{frame}{Which collection for triples?}
@@ -338,7 +401,7 @@ pub fn triples_with_pattern<'a>(&'a self,
 HDT Rust available at \url{https://crates.io/crates/hdt}\\
 Issues and PRs welcome at \url{https://github.com/KonradHoeffner/hdt}\\
 ~\\
-\url{tim@baccaert.com}\\
+\url{tim.baccaert@vub.be}\\
 \url{konrad.hoeffner@uni-leipzig.de}\\
 \end{frame}
 
