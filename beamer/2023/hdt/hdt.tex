@@ -73,7 +73,7 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \item text-based serialization formats: N-Triples, RDF Turtle or RDF/XML
 \item large file sizes
 \item high compression ratios with general-purpose algorithms
-\item download, uncompress, import into SPARQL endpoint, query
+\item download, import into SPARQL endpoint, query
 \end{itemize}
 \end{frame}
 
@@ -135,7 +135,7 @@ librdf (c) & -- & -- & -- \\
 \scriptsize Source: \emph{Höffner \& Baccaert:\\hdt-rs: A Rust library for the Header Dictionary Triples binary RDF compression format. 2023.}
 \end{frame}
 
-\begin{frame}{Rust---Ideal fit for the Semantic Web}
+\begin{frame}{Rust---Great fit for Semantic Web tooling}
 \begin{itemize}
 \pro fast
 \pro low memory
@@ -151,18 +151,191 @@ librdf (c) & -- & -- & -- \\
 \end{itemize}
 \end{frame}
 
+\section{base technology behind HDT Rust by Tim}
 
+\section{Challenge: How to return triples?}
+\begin{frame}{Which collection for triples?}
+\begin{itemize}
+\item an RDF graph is a set of triples
+\item a triple pattern matches an RDF subgraph
+\item return a \texttt{Set<Triple>}?
+\pause
+\con we may only care about a part of the results
+\con all processing needs to happen at the start
+\item in an uncompressed graph, \texttt{Set<\&Triple>} could make sense
+\con memory needs to be reserved all at once
+\item $\rightarrow$ \texttt{Iterator<Triple>}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{HDT Rust API}
+\small
+\begin{verbatim}
+pub fn triples_with_pattern<'a>(
+    &'a self,
+    sp: Option<&'a str>,
+    pp: Option<&'a str>,
+    op: Option<&'a str>)
+
+  -> Box<dyn Iterator<Item = StringTriple> + '_> {
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{How to represent a single triple?}
+\centering
+\makebox[\linewidth]{\includegraphics[width=\textwidth]{img/bt.png}}\\
+\begin{itemize}
+\item Triple section contains triples of integer IDs
+\item official HDT docs: unsigned 32 bit
+\item HDT Rust uses usize (64 bit on 64 bit platform) but could be changed to u32
+\item HDT Java uses long (signed 64 bit)
+\item Translate IDs to strings using dictionary
+\item $\texttt{Triple} = \texttt{(String, String, String)}$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{String in Java}
+\begin{itemize}
+\pro immutable
+\pro non-primitive, so actually a reference
+\pro duplicates (e.g SP? pattern) don't waste space and performance
+\pro garbage collected when not referenced anymore
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{HDT Java}
+\small
+\begin{verbatim}
+public class TripleString {
+    private CharSequence subject;
+    private CharSequence predicate;
+    private CharSequence object;
+}
+
+//  CharSequence impl that uses only one byte per char
+public class CompactString
+   implements CharSequence, { getDelayed() ... }
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{HDT Java II}
+\small
+\begin{verbatim}
+public final class DelayedString implements CharSequence {
+  private CharSequence str;
+
+  private void ensure() {
+    if(!(str instanceof String)) {str = str.toString();}
+  }
+
+  @Override
+  public String toString() {
+    ensure();
+    return str.toString();
+  }
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{HDT Java III}
+\small
+\begin{verbatim}
+public class DictionaryTranslateIteratorBuffer
+    implements IteratorTripleString {
+Map<Long,CharSequence> mapSubject, mapPredicate, mapObject;
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{String in Rust}
+\begin{itemize}
+\item pointer to the heap
+\con may grow, capacity field uses one extra usize (alternative: \texttt{Box<str>})
+\con ownership of the contents\\$\rightarrow$ waste space on duplication
+\end{itemize}
+\begin{verbatim}
+<s> <http://ex.com/label> "Example Resource".
+<s> <http://ex.com/comment> "wasted space".
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Pointer to String?}
+\begin{itemize}
+\item Rust has raw pointers like \texttt{\&str}, but they...
+\con are not guaranteed to point to valid memory
+\con are not automatically cleaned up
+\con don't move ownership
+\con dereferencing requires \emph{unsafe} Rust
+\item HDT Rust only uses \emph{safe} Rust
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Reference to String}
+\small
+\begin{verbatim}
+let string = String::from("Hello, world!");
+// Convert the String to a string slice
+let s: &str = string.as_str();
+
+// Compile error!
+// Cannot return a reference to a value created in a function.
+return s;
+\end{verbatim}
+\begin{itemize}
+\item Cannot return reference within HDT object because resources only exist in compressed form.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Maybe Owned String}
+\begin{itemize}
+\item \url{https://crates.io/crates/mownstr}
+\item String that may be owned or borrowed
+\item used by HDT Rust in the past
+\pro SP? pattern query: return reference to subject and predicate parameters, create new string for each object
+\con does not work e.g. for ??? pattern
+\end{itemize}
+\small
+\begin{verbatim}
+pub fn triples_with_pattern<'a>(&'a self,
+    sp: Option<&'a str>,
+    pp: Option<&'a str>,
+    op: Option<&'a str>)
+
+  -> Box<dyn Iterator<Item = StringTriple> + '_> { ...
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{Arc<str>}}
+\begin{itemize}
+\item atomic (thread safe) reference counting smart pointer
+\pro safe space on ??? pattern
+\con synchronization overhead $\rightarrow$ not optimal for patterns like SP?
+\item best compromise right now
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{One pattern query method vs many?}
+\begin{itemize}
+\pro best performance
+\con different return types
+\con code duplication
+\con complicated for library users
+\end{itemize}
+\end{frame}
+
+\iffalse
 \begin{frame}{Conclusions}
 \begin{itemize}
-%\item long-term availability of knowledge graphs matters
 \item Rust great fit for stable and performant Semantic Web tooling
-\item 
 \end{itemize}
 \end{frame}
 \fi
 
 \begin{frame}[fragile]{Thanks! Questions?}
 \centering
+HDT Rust available at \url{https://crates.io/crates/hdt}\\
 Issues and PRs welcome at \url{https://github.com/KonradHoeffner/hdt}\\
 ~\\
 \url{tim@baccaert.com}\\
