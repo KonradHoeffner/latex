@@ -37,7 +37,7 @@
 {
 \begin{frame}[plain]{~~~~#2}
 \vspace{0.2em}
-\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.88\textheight,keepaspectratio]{#3}}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.8\textheight,keepaspectratio]{#3}}
 \\#1
 \note{#4}
 \end{frame}
@@ -77,10 +77,7 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \end{itemize}
 \end{frame}
 
-% tim: this broke on my machine, you may have forgot to commit it
-%\imageslide{Example: RDF Browser with SPARQL}{img/architecture.pdf}{}
-\begin{frame}{Example: RDF Browser with SPARQL}
-\end{frame}
+\imageslide{Example: RDF Browser with SPARQL}{img/architecture.pdf}{}
 
 % can also comment this out and just say it while showing architecture slide
 \begin{frame}{SPARQL Endpoints}
@@ -97,14 +94,12 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \end{itemize}
 \end{frame}
 
-%\imageslide{Example: RDF Browser with RDF library}{img/architecture-simple.pdf}{}
+\imageslide{Example: RDF Browser with RDF library}{img/architecture-simple.pdf}{}
 
-\imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{HDT Bitmap Triples}{img/bt.png}{}
-
-\begin{frame}[plain]{HDT Focussed on Querying}
+\begin{frame}[plain]{RDF Libraries}
 \centering
-\makebox[\linewidth]{\includegraphics[height=0.6\textheight]{img/hdt-foq.png}}\\
-\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.
+\makebox[\linewidth]{\includegraphics[height=0.7\textheight]{img/libraries.png}}\\
+\scriptsize Source: \emph{Höffner \& Baccaert:\\hdt-rs: A Rust library for the Header Dictionary Triples binary RDF compression format. 2023.}
 \end{frame}
 
 \begin{frame}[fragile]{RDF Libraries: ?PO, 10M triples}
@@ -130,12 +125,12 @@ librdf (c) & -- & -- & -- \\
 \end{tabular}
 \end{frame}
 
-%\imageslide{Simplified Architecture}{img/architecture-simple.pdf}{}
+\imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{HDT Bitmap Triples}{img/bt.png}{}
 
-\begin{frame}[plain]{RDF Libraries}
+\begin{frame}[plain]{HDT Focussed on Querying}
 \centering
-\makebox[\linewidth]{\includegraphics[height=0.7\textheight]{img/libraries.png}}\\
-\scriptsize Source: \emph{Höffner \& Baccaert:\\hdt-rs: A Rust library for the Header Dictionary Triples binary RDF compression format. 2023.}
+\makebox[\linewidth]{\includegraphics[height=0.6\textheight]{img/hdt-foq.png}}\\
+\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.
 \end{frame}
 
 \begin{frame}{Rust---Great fit for Semantic Web tooling}
@@ -216,7 +211,15 @@ librdf (c) & -- & -- & -- \\
     \end{enumerate}
 \end{frame}
 
+\section{Optimization}
+
+\imageslide[wavelet matrix generated late]{Peak RAM usage: reorder loading I}{img/matrix-last.png}{}
+\imageslide[wavelet matrix generated early]{Peak RAM usage: reorder loading II}{img/matrix-first.png}{}
+
+\imageslide[Parallelize loading]{Profile and optimize CPU performance}{img/parallel.png}{}
+
 \section{Challenge: How to return triples?}
+
 \begin{frame}{Which collection for triples?}
 \begin{itemize}
 \item an RDF graph is a set of triples
