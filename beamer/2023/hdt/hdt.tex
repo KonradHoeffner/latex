@@ -71,17 +71,15 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 
 % assumption: everyone knows what RDF is, maybe 1-2 don't know what HDT is
 % can skip it if everyone knows
-\begin{frame}{Consuming and Querying RDF}
+\begin{frame}{Without HDT: Consuming and Querying RDF}
 \begin{itemize}
-\item default RDF formats are text-based
+\item text-based RDF formats
 \item large KB $\rightarrow$ large file size
-\item high compression ratios with general-purpose algorithms
-\item cannot query directly
 \item download, import into SPARQL endpoint, query
 \end{itemize}
 \end{frame}
 
-\imageslide[best practice to disseminate a knowledge base\\+ reuse of standard tools -overhead -failure point -integration]
+\imageslide[best practice to disseminate a knowledge base\\+ reuse of standard tools -overhead -failure point]
 {SPARQL Endpoint as central component}{img/architecture.pdf}{}
 
 % can also comment this out and just say it while showing architecture slide
@@ -259,9 +257,9 @@ pub fn triples_with_pattern<'a>(
 \makebox[\linewidth]{\includegraphics[width=\textwidth]{img/bt.png}}\\
 \begin{itemize}
 \item Triple section contains triples of integer IDs
-\item official HDT docs: unsigned 32 bit
-\item HDT Rust uses usize (64 bit on 64 bit platform) but could be changed to u32
-\item HDT Java uses long (signed 64 bit)
+%\item official HDT docs: unsigned 32 bit
+%\item HDT Rust uses usize (64 bit on 64 bit platform) but could be changed to u32
+%\item HDT Java uses long (signed 64 bit)
 \item Translate IDs to strings using dictionary
 \item $\texttt{Triple} = \texttt{(String, String, String)}$?
 \end{itemize}
@@ -327,8 +325,8 @@ Map<Long,CharSequence> mapSubject, mapPredicate, mapObject;
 \con ownership of the contents\\$\rightarrow$ waste space on duplication
 \end{itemize}
 \begin{verbatim}
-<http://looongsubject.com> <http://ex.com/label> "Example Resource".
-<http://loongsubject.com> <http://ex.com/comment> "wasted space".
+<http://looongsubject.com> <http://ex.com/l> "label".
+<http://looongsubject.com> <http://ex.com/c> "comment".
 \end{verbatim}
 \end{frame}
 
