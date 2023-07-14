@@ -55,6 +55,8 @@
 % if Wouter Beek says there are only HDT-experts attending, then intro may be shortened
 \section{Introduction}
 
+% cut to save time
+\iffalse
 \begin{frame}{Problem}
 \enquote{
 \ldots{}what the Semantic Web field most needs, at this stage, is consolidation\ldots
@@ -65,21 +67,25 @@ Technical details\ldots{} are however \textbf{usually not shared}, presumably to
 \\~\\
 Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \end{frame}
+\fi
 
 % assumption: everyone knows what RDF is, maybe 1-2 don't know what HDT is
 % can skip it if everyone knows
 \begin{frame}{Consuming and Querying RDF}
 \begin{itemize}
-\item text-based serialization formats: N-Triples, RDF Turtle or RDF/XML
-\item large file sizes
+\item default RDF formats are text-based
+\item large KB $\rightarrow$ large file size
 \item high compression ratios with general-purpose algorithms
+\item cannot query directly
 \item download, import into SPARQL endpoint, query
 \end{itemize}
 \end{frame}
 
-\imageslide{Example: RDF Browser with SPARQL}{img/architecture.pdf}{}
+\imageslide[best practice to disseminate a knowledge base\\+ reuse of standard tools -overhead -failure point -integration]
+{SPARQL Endpoint as central component}{img/architecture.pdf}{}
 
 % can also comment this out and just say it while showing architecture slide
+\iffalse
 \begin{frame}{SPARQL Endpoints}
 \begin{itemize}
 \pro Linked Open Data best practice
@@ -93,8 +99,9 @@ Pascal Hitzler: \emph{A Review of the Semantic Web Field}. 2021
 \con separate component: failure point, hard to integrate
 \end{itemize}
 \end{frame}
+\fi
 
-\imageslide{Example: RDF Browser with RDF library}{img/architecture-simple.pdf}{}
+\imageslide{Inversion: query RDF inside the application}{img/architecture-simple.pdf}{}
 
 \begin{frame}[plain]{RDF Libraries}
 \centering
@@ -125,7 +132,7 @@ librdf (c) & -- & -- & -- \\
 \end{tabular}
 \end{frame}
 
-\imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{HDT Bitmap Triples}{img/bt.png}{}
+\imageslide[\footnotesize Source: \emph{Martínez-Prieto et al: Exchange and consumption of huge RDF data.} 2012.]{HDT: RDF compression allowing fast queries}{img/bt.png}{}
 
 \begin{frame}[plain]{HDT Focussed on Querying}
 \centering
@@ -138,10 +145,9 @@ librdf (c) & -- & -- & -- \\
 \pro fast
 \pro low memory
 \pro static guarantees
-\pro modern features
-\pro builtin tooling: formatting, linting, testing, benchmarking
-\pro concise and fun
+\pro Cargo tooling
 \pro fast evolution
+\pro concise and fun
 \pause
 \con complex: traits, borrow checker
 \con new, less libraries
@@ -228,7 +234,7 @@ librdf (c) & -- & -- & -- \\
 \pause
 \con we may only care about a part of the results
 \con all processing needs to happen at the start
-\item in an uncompressed graph, \texttt{Set<\&Triple>} could make sense
+%\item in an uncompressed graph, \texttt{Set<\&Triple>} could make sense
 \con memory needs to be reserved all at once
 \item $\rightarrow$ \texttt{Iterator<Triple>}
 \end{itemize}
@@ -321,14 +327,14 @@ Map<Long,CharSequence> mapSubject, mapPredicate, mapObject;
 \con ownership of the contents\\$\rightarrow$ waste space on duplication
 \end{itemize}
 \begin{verbatim}
-<s> <http://ex.com/label> "Example Resource".
-<s> <http://ex.com/comment> "wasted space".
+<http://looongsubject.com> <http://ex.com/label> "Example Resource".
+<http://loongsubject.com> <http://ex.com/comment> "wasted space".
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{Pointer to String?}
 \begin{itemize}
-\item Rust has raw pointers like \texttt{\&str}, but they...
+\item Rust has raw pointers like \texttt{*const String}, but they...
 \con are not guaranteed to point to valid memory
 \con are not automatically cleaned up
 \con don't move ownership
@@ -383,6 +389,17 @@ pub fn triples_with_pattern<'a>(&'a self,
 \end{frame}
 
 \begin{frame}[fragile]{One pattern query method vs many?}
+\footnotesize
+\begin{verbatim}
+pub fn all_triples ...
+pub fn triples_with_s ...
+pub fn triples_with_p ...
+pub fn triples_with_o ...
+pub fn triples_with_sp( ...
+pub fn triples_with_so( ...
+pub fn triples_with_po( ...
+pub fn triples_with_spo( ...
+\end{verbatim}
 \begin{itemize}
 \pro best performance
 \con different return types
