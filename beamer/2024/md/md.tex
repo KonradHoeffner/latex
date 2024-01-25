@@ -50,12 +50,12 @@
 
 \begin{frame}{HTML \& CSS selbst schreiben?}
 \scriptsize
-\lstinputlisting[language=html]{test.html}
+\lstinputlisting[language=html]{examples/selfwrite.html}
 \end{frame}
 
 \begin{frame}[fragile]{Markdown}
 \small
-\lstinputlisting{test.md}
+\lstinputlisting{examples/syntax.md}
 \end{frame}
 
 \begin{frame}{Lernziele}
@@ -93,7 +93,7 @@ firefox /tmp/markdown.html }
 
 \begin{frame}[fragile]{Erinnerung}
 \small
-\lstinputlisting{test.md}
+\lstinputlisting{examples/syntax.md}
 \end{frame}
 
 \begin{frame}{3. Webseite veröffentlichen}
@@ -122,27 +122,25 @@ firefox /tmp/markdown.html }
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Themes}
+\begin{frame}[fragile]{Themes}
 \begin{itemize}
+\item {\small\url{https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll}}
 \item Beispiel: Leap Day \url{https://github.com/pages-themes/leap-day}
-\item ...
 \end{itemize}
+\texttt{\_config.yml}:\\
+\begin{verbatim}
+markdown: GFM
+remote_theme: pages-themes/leap-day@v0.2.0
+plugins:
+- jekyll-remote-theme
+\end{verbatim}
 \end{frame}
 
 \iffalse
 \begin{frame}{Varianten}
 \begin{itemize}
 \item GitHub Flavored Markdown (GFM) $\supset$ CommonMark
-\item Jekyll: Kramdown 
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Use Case BaseTRACE}
-\begin{itemize}
-\item \url{https://github.com/medizininformatik-initiative/BaseTRACE}
-\item Fork erstellen
-\item Settings $\rightarrow$ Code and Automation $\rightarrow$ Pages $\rightarrow$ Branch $\rightarrow$ master/main $\rightarrow$ Save
-\item z.B. \texttt{https://konradhoeffner.github.io/BaseTRACE/}
+\item Jekyll: Kramdownc
 \end{itemize}
 \end{frame}
 
@@ -154,5 +152,13 @@ firefox /tmp/markdown.html }
 \end{itemize}
 \end{frame}
 \fi
+
+\begin{frame}{Andere Use Cases}
+\begin{itemize}
+\item \url{https:///hitontology.eu}
+\item \url{https://github.com/hitontology/hitontology.eu}
+\item Use Cases der Zuschauer
+\end{itemize}
+\end{frame}
 
 \end{document}
