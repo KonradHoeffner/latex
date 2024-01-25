@@ -21,9 +21,11 @@
 
 \begin{frame}{Voraussetzungen}
 \begin{itemize}
-\item PC
+\item PC, am besten zwei Monitore
 \item GitHub Account
 \item simple Inhalte: Texte, Bilder, Tabellen
+\item Markdown Cheat Sheet, z.B. \url{https://oddmuse.org/wiki/Markdown\_Cheat\_Sheet}
+\item optional: Git, Discount, Ruby, Bundler
 \end{itemize}
 \end{frame}
 
@@ -33,13 +35,8 @@
 \item Internet:\\\enquote{Was keine Webseite hat, existiert nicht.}
 \item Nicht jedes kleine Projekt braucht Social Media aber wenigstens eine kleine Seite.
 \item Dokumentationen, Linksammlungen.
-\item Beispiel: \url{https://github.com/semantalytics/awesome-semantic-web}
+%\item Beispiel: \url{https://github.com/semantalytics/awesome-semantic-web}
 \end{itemize}
-\end{frame}
-
-\begin{frame}{HTML \& CSS selbst schreiben?}
-\scriptsize
-\lstinputlisting[language=html]{test.html}
 \end{frame}
 
 \begin{frame}{CMS?}
@@ -49,6 +46,11 @@
 \item Overkill für simple, statische Inhalte
 %\item Webspace und Domain mieten, Seite aktuell halten:\\Geld und Arbeit
 \end{itemize}
+\end{frame}
+
+\begin{frame}{HTML \& CSS selbst schreiben?}
+\scriptsize
+\lstinputlisting[language=html]{test.html}
 \end{frame}
 
 \begin{frame}[fragile]{Markdown}
@@ -61,23 +63,32 @@
 \item GitHub repository erstellen
 \item Dokument in Markdown schreiben
 \item Dokument als Webseite veröffentlichen
-\item Webseite gemeinsam bearbeiten
 \end{enumerate}
 \end{frame}
 
 \begin{frame}{1. GitHub repository erstellen}
 \begin{itemize}
 \item oben rechts \enquote{+} $\rightarrow$ new repository
-\item public
+\item \textbf{public}
 \item \enquote{Add a README file}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{2. Dokument in Markdown schreiben}
+\begin{frame}[fragile]{2. Dokument in Markdown schreiben}
 \begin{itemize}
 \item README.md $\rightarrow$ edit this file
 \item Aufgabe: kurzen Text mit Formatierungen schreiben
 \end{itemize}
+
+~\\
+\emph{Optional in \texttt{.bashrc} / \texttt{.zshrc}:}\\
+\begin{verbatim}
+function mdview() {
+markdown -f fencedcode "\@" > /tmp/markdown.html;
+firefox /tmp/markdown.html }
+\end{verbatim}
+
+\url{https://github.com/KonradHoeffner/dotfiles/blob/master/.zshrc}
 \end{frame}
 
 \begin{frame}[fragile]{Erinnerung}
@@ -87,21 +98,53 @@
 
 \begin{frame}{3. Webseite veröffentlichen}
 \begin{itemize}
-\item Settings $\rightarrow$ Code and Automation $\rightarrow$ Pages $\rightarrow$ Branch $\rightarrow$ master $\rightarrow$ Save
-\item 
-\item 
+\item Settings $\rightarrow$ Code and Automation $\rightarrow$ Pages $\rightarrow$ Branch $\rightarrow$ master/main $\rightarrow$ Save
+\item kurz warten
+\item Seite neuladen
+\item \texttt{https://username.github.io/reponame/}
+\item Tipp: Code $\rightarrow$ About $\rightarrow$ Use your GitHub Pages website
 \end{itemize}
 \end{frame}
 
-\begin{frame}{1. GitHub repository erstellen}
+\begin{frame}{Use Case BaseTRACE}
 \begin{itemize}
-\item oben rechts \enquote{+} $\rightarrow$ new repository
-\item public
-\item \enquote{Add a README file}
+\item \url{https://github.com/medizininformatik-initiative/BaseTRACE}
+\item Fork erstellen
+\item Settings $\rightarrow$ Code and Automation $\rightarrow$ Pages $\rightarrow$ Branch $\rightarrow$ master/main $\rightarrow$ Save
+\item z.B. \texttt{https://konradhoeffner.github.io/BaseTRACE/}
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Hintergrund}
+\begin{itemize}
+\item GitHub Workflow wird ausgelöst
+\item Jekyll: Markdown $\rightarrow$ static HTML
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Themes}
+\begin{itemize}
+\item Beispiel: Leap Day \url{https://github.com/pages-themes/leap-day}
+\item ...
+\end{itemize}
+\end{frame}
+
+\iffalse
+\begin{frame}{Varianten}
+\begin{itemize}
+\item GitHub Flavored Markdown (GFM) $\supset$ CommonMark
+\item Jekyll: Kramdown 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Use Case BaseTRACE}
+\begin{itemize}
+\item \url{https://github.com/medizininformatik-initiative/BaseTRACE}
+\item Fork erstellen
+\item Settings $\rightarrow$ Code and Automation $\rightarrow$ Pages $\rightarrow$ Branch $\rightarrow$ master/main $\rightarrow$ Save
+\item z.B. \texttt{https://konradhoeffner.github.io/BaseTRACE/}
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Links}
 \begin{itemize}
@@ -110,5 +153,6 @@
 \item \url{https://github.com/konradhoeffner/shacl}
 \end{itemize}
 \end{frame}
+\fi
 
 \end{document}
