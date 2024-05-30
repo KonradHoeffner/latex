@@ -1,0 +1,164 @@
+\documentclass[14pt,aspectratio=1610]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\uselanguage{ngerman}
+\languagepath{ngerman}
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{tabulary}
+%\usepackage{graphicx}
+%\date{25. März 2022}
+\title{Einfacher Ontologieexperte für Domänenexperten}
+\subtitle{Analyse}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Gegenstand}
+\begin{itemize}
+\item kleinere Forschungsprojekte mit Ontologie als Forschungsergebnis
+\item Beispiel ANNO: Antopological Notation Ontology
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ziele}
+\begin{itemize}
+\item Qualität möglichst hoch
+\item Aufwand möglichst niedrig
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Probleme}
+\begin{itemize}
+\item Meist nicht alle Fähigkeiten in einer Person vereint.
+\item Gruppen: Domänenexperten und Ontologen
+%\item Untergruppen: Top Level Ontologen, Semantic Web Techniker, Entwickler
+\item Domänenexperten wissen nicht, wie Ontologien funktionieren.
+\item Ontologen kennen die Domäne nicht.
+\item Manchmal sogar in unterschiedlichen Unis und Städten.
+\end{itemize}
+%\begin{tabular}{lccc}
+%Gruppe				&Domänenexperten	&Ontologen	&Entwickler\\
+%Domäne				&++\\
+%Ontologien		&
+%Entwickler		&
+%\end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]{Persona I}
+\begin{tabulary}{\textwidth}{lL}
+%Name, Alter		&Lisa Müller, 27\\
+Hintergrund		&Paläontologie\\
+Beruf					&Doktorandin\\
+Situation			&Extrem gestresst, ist in Forschungsprojekt zu Ontologie muss aber nebenbei noch Lehre, Doktorarbeit und viele andere Aufgaben übernehmen.\\
+Ziel					&Möchte möglichst schnell die Ontologie fertig bekommen, Qualität und Vollständigkeit nicht so wichtig.\\
+\end{tabulary}
+\end{frame}
+
+\begin{frame}[fragile]{Persona II}
+\begin{tabulary}{\textwidth}{lL}
+%Name, Alter		&Boris , 27\\
+Hintergrund		&Ontologien\\
+Beruf					&Gruppenleiter\\
+Situation			&Möchte möglichst viele erfolgreiche Projekte beantragen und durchführen.\\
+Ziel					&Hohe Qualität der Ontologie, Anbindung an TLO, Reasoning, Axiome, Publikation in Fachjournal. Ontologie im Vordergrund.\\
+\end{tabulary}
+\end{frame}
+
+\begin{frame}[fragile]{Persona III}
+\begin{tabulary}{\textwidth}{lL}
+Hintergrund		&Semantic Web\\
+Beruf					&Wissenschaftlicher Mitarbeiter\\
+Situation			&Arbeitet in immer neuen Ontologieprojekten mit und erkennt Gemeinsamkeiten und Probleme.\\
+Ziel					&Veröffentlichung nach Semantic Web Standards, elegante Modellierung mit möglichst wenig Tripeln pro Aussage, Performance, Interlinks. Ontologie als leichtgewichtiges Schema.\\
+\end{tabulary}
+\end{frame}
+
+\begin{frame}[fragile]{Persona IV}
+\begin{tabulary}{\textwidth}{lL}
+Hintergrund		&Medizininformatik\\
+Beruf					&Wissenschaftlicher Mitarbeiter\\
+Situation			&Softwareentwicklung für Forschungsprojekte, Publikationen, $\ldots$\\
+Ziel					&möglichst alles in Docker, wiederverwendbare Komponenten, APIs, würde Ontologie am liebsten einfach im Texteditor schreiben.\\
+\end{tabulary}
+\end{frame}
+
+\begin{frame}[fragile]{Ansätze}
+\small
+\begin{tabular}{lcccc}
+											&Domänenexp.	&Ontologen	&\enquote{Semantic Webber}	&Entwickler\\
+Protégé								&--								&++				&$\cdot{}$									&$\cdot$\\
+CRUD									&+++							&+				&+													&---\\
+LLM										&+++							&?				&?													&noch ---\\
+SMOG									&+								&+				&+													&+\\
+\midrule
+SMOG GUI							&++								&+				&+													&$\cdot$\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Anderes}
+\begin{itemize}
+\item \url{https://www.w3.org/wiki/Ontology\_editors}
+\item \url{https://github.com/semantalytics/awesome-semantic-web}
+\item dosdp-tools: CLI
+\item RDFSharp/OWLSharp: Framework für .NET applications
+\item Grafo: visueller designer, kostenpflichtige und freie Version, sign up ging nicht
+\item Cameo Concept Modeler: kommerziell
+\item SWOOP: Link ist tot
+\item Neologism: Fokus auf Vokabulare, Demo ging nicht
+\end{itemize}
+\end{frame}
+
+\begin{frame}{SMOG GUI Ziele}
+\begin{itemize}
+\item einfach zu benutzen für Domänenexperten ohne Ontologie- und Semantic Web Expertise
+\item Properties definieren
+\item Hierarchieven von und Interlinks zwischen Klassen
+\item MUSS in Kooperation benutzt werden
+\item SOLLTE ohne Installation funktionieren
+\item kleines Projekt, vertretbarer Entwicklungsaufwand
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Warum nicht einfach (Web) Protégé}
+\begin{itemize}
+\item mehr Funktionalität
+\item schneller und einfacher für nicht-Ontologie-Experten benutzbar
+\item Ontologiemanagement: Organisationen, Repositories, $\ldots$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konzept}
+\begin{itemize}
+\item Entscheidung gegen modulare Webanwendung: zu viel Aufwand
+\item Da SMOG in Java geschrieben ist auch SMOG GUI
+\item JavaFX Anwendung
+\item Editierung Konfiguration und das was jetzt in Tabelle ist (Hierarchie und Inhalte)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stand jetzt}
+\begin{itemize}
+\item \url{https://github.com/KonradHoeffner/SMOG/tree/gui}
+\item Konfiguration laden
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zusatz}
+\begin{itemize}
+\item \url{http://owlgred.lumii.lv/online\_visualization/pizza2.owl}
+\item Web Protege erweitern?
+\item muss nicht auf SMOG aufbauen
+\item im Juli weiter besprechen
+\end{itemize}
+\end{frame}
+
+\end{document}
