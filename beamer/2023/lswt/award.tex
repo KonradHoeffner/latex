@@ -1,0 +1,196 @@
+\documentclass[14pt,aspectratio=169]{beamer}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+%\newcommand{\xmark}{\ding{55}}%
+
+\usepackage[english]{babel}
+\uselanguage{english}
+\usetheme{simple}
+\usecolortheme{whiteonblack}
+\usepackage{array}
+\usepackage{aurl}
+\daurl{meta}{http://www.snik.eu/ontology/meta/}
+\daurl{ob}{http://www.snik.eu/ontology/ob/}
+\daurl{bb}{http://www.snik.eu/ontology/bb/}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{amssymb}
+\usepackage{pifont}
+\newcommand{\xmark}{\ding{55}}%
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % comment out columns
+\date{2024-09-17}
+\author{\texorpdfstring{Konrad Höffner\newline{}Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)\newline{}\url{konrad.hoeffner@uni-leipzig.de}}{Konrad Höffner}}
+\title{RickView: Robuster, leichtgewichtiger, unabhängiger und performanter Wissensgraphen-Browser}
+\subtitle{}
+
+\newcommand{\imageslide}[4][]
+{
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.88\textheight,keepaspectratio]{#3}}
+\\#1
+\note{#4}
+\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\iffalse
+\begin{frame}{Problem}
+\enquote{
+\ldots{}what the Semantic Web field most needs, at this stage, is consolidation\ldots
+For academics, there is often limited incentive to develop and maintain stable, easy-to-use software\ldots
+Consolidation of sorts is already happening in industry\ldots
+Technical details\ldots{} are however usually not shared, presumably to protect the own competitive edge.
+}
+Source: P. Hitzler: \emph{A Review of the Semantic Web Field}. 2021
+\end{frame}
+\fi
+
+\begin{frame}{Problem}
+\begin{itemize}
+\item best practice to have RDF browser for every KG 
+\item after a while, you have a lot of them
+\item deployments break, servers shut down, lack of responsibility and resources
+%\item quick prototyping for new projects
+%\item lack of stable and easy-to-use open source Semantic Web tooling
+%\item new knowledge graph in every project
+%\item RDF browser needed as intuitive entry point
+%\item 
+%\item funding and responsibility limited to project duration 
+%\item no operational management for indefinite deployment
+%\pause
+%\item downtime and abandonment of deployment harm knowledge graph value significantly
+%\item time-consuming maintenance of past projects hinders current progress
+\end{itemize}
+~\\
+\centering
+\emph{downtime and abandonment}\\
+vs\\
+\emph{time and money}
+\end{frame}
+
+\begin{frame}{Goal}
+\begin{itemize}
+\item generic RDF browser: Pubby-class URI dereferencing tool
+\item easy to use
+\item good design
+\item lightweight
+\item standalone%: less failure points
+\item easy configuration 
+\item high performance
+%\pause
+%\item intuitive
+%\item good design
+%\item robust
+%\pause
+%\item efficient development
+\end{itemize}
+\end{frame}
+
+\iffalse
+\begin{frame}{Linked Open Data Dissemination Best Practices}
+\begin{itemize}
+\item RDF Dump
+\item SPARQL Endpoint
+\item RDF Browser
+\pause
+\item Collaborative Editing
+\item Blogs, Videos, Social Media, \ldots
+\end{itemize}
+\end{frame}
+\fi
+
+\iffalse
+\begin{frame}{Rust---Ideal fit for the Semantic Web}
+\begin{itemize}
+\item fast
+\item low memory
+\item safe
+\item modern features and tooling
+\pause
+\item however not that many libraries yet
+\end{itemize}
+\end{frame}
+\fi
+
+\imageslide{Common Architecture}{img/architecture.pdf}{}
+
+\begin{frame}[plain]{~~~~Example: LodView}
+%\begin{itemize}
+%\item intuitive \cmark
+%\item good design \cmark
+%\item robust
+%\item lightweight: many instances on small servers
+%\item standalone: less failure points
+%\item easy setup and configuration
+%\item high performance on client and server
+%\pause
+%\end{itemize}
+
+\vspace{0.2em}
+\centering\makebox[\linewidth]{\includegraphics[width=1.13\linewidth,height=0.7\textheight,keepaspectratio]{img/lodview-screenshot.png}}
+\footnotesize
+easy to use \cmark{}~~good design \cmark{}~~lightweight ?
+%
+%lightweight \xmark{}~~standalone \xmark{}~~performant \xmark{}~~efficient development \xmark{}~~adaptable $\approx$ \\
+\end{frame}
+
+
+\imageslide{RickView}{img/rickview-screenshot1.png}{}
+\imageslide{RickView}{img/rickview-screenshot2.png}{}
+
+\imageslide{Simplified Architecture}{img/architecture-simple.pdf}{}
+
+\begin{frame}[plain]{RDF Libraries}
+\centering
+\makebox[\linewidth]{\includegraphics[height=0.7\textheight]{img/libraries.png}}\\
+\scriptsize Source: \emph{Höffner \& Baccaert:\\hdt-rs: A Rust library for the Header Dictionary Triples binary RDF compression format. 2023.}
+\end{frame}
+
+\begin{frame}{Triple Patterns}
+\begin{itemize}
+\item visualize a resource using all triples where it occurs in subject or object position
+\item expressivity of SPARQL not required
+\item \emph{direct relations}---S?? pattern
+\item \emph{inverse relations}---??O pattern
+\end{itemize}
+\end{frame}
+
+%\imageslide{RDF Libraries}{img/libraries.png}{}
+\imageslide{RickView Architecture}{img/architecture-rickview.pdf}{}
+
+\begin{frame}[fragile]{Thanks! Questions?}
+~\\
+Issues and PRs welcome at \url{https://github.com/KonradHoeffner/rickview}\\
+~\\
+Docker Compose example:
+\scriptsize
+\begin{verbatim}
+services:
+  rickview:
+    image: ghcr.io/konradhoeffner/rickview
+    environment:
+      - RICKVIEW_KB_FILE=https://raw.githubusercontent.com/hitontology/ontology/dist/all.ttl
+      - RICKVIEW_NAMESPACE=http://hitontology.eu/ontology/
+      - RICKVIEW_TITLE=HITO
+      - RICKVIEW_SUBTITLE=Health IT Ontology
+      - RICKVIEW_EXAMPLES=Study SoftwareProduct
+    ports:
+      - "127.0.0.1:8080:8080"
+\end{verbatim}
+\end{frame}
+
+\end{document}
