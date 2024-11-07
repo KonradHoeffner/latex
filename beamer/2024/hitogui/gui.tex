@@ -15,7 +15,7 @@
 \author{\emph{Konrad Höffner}, Hannes Raphael Brunsch, Franziska Jahn,\\Prof. Alfred Winter}
 %\title{The SNIK Ontology of Information Management in Hospitals}
 \title{\large Visualising Paths for Exploratory Search\\in the Health IT Ontology}
-\date{September 2?, 2024}%, EFMI STC 2024}
+\date{November 29, EFMI STC 2024, 11.15--11.25, Room K1}
 \def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
 \def\email{konrad.hoeffner@imise.uni-leipzig.de} 
 \def\telephone{+49 341 97 16322}
@@ -54,7 +54,25 @@
 \imageslide{Linked Data Browser}{img/cscmedchart-lodview.pdf}{}{}
 \imageslide{Faceted Search}{img/hitofaceted.png}{}{}
 \imageslidebare{img/idea.pdf}
+\imageslide{Alternative Paths}{img/hitogui.pdf}
 
+\begin{frame}
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+Type & Represented by & Example & Triple pattern \\ \midrule
+vertex $w_i$ & HITO class & Study & $?x \ rdfs:subClassOf \ w_i$ \\
+vertex $w_1$ & data type (first vertex, backwards) & First Author & $?x_2 \ rdfs:label \ x_1$ \\
+vertex $w_n$ & data type (last, backwards) & First Author & $?x_{n-1} \ rdfs:label \ x_n$ \\
+edge $p_i$ & property & first author & $?x_i \ p_i \ x_{i+1}$ \\
+edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
+\end{tabular}
+\caption{RDF triple patterns as components of the final SPARQL query. Variables $?x_i$ denote the actual letter x and number $i$ (e.g. $?x_5$ ) while $p_i$ represents the URI of the property $p_i$, such as :firstAuthor.}
+\end{table}
+\end{frame}
+
+%%\imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
 
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Domain}
