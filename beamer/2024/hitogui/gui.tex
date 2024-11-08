@@ -48,15 +48,16 @@
 \titlepage
 \end{frame}
 
-\imageslide{The Health IT Ontology}{img/2024-05-hito\_diagram.pdf}{}{}
+\imageslide{The Health IT Ontology~~~~~~~~~~~~~~~~\url{https://hitontology.eu}}{img/2024-05-hito\_diagram.pdf}{}{}
 %\imageslide{Exploration Options: RDF Browser}{img/rickview-hito.png}{}{}
-\imageslidebare{img/cscmedchart-lodview.pdf}
+%\imageslidebare{img/cscmedchart-lodview.pdf}
 \imageslide{Linked Data Browser}{img/cscmedchart-lodview.pdf}{}{}
 \imageslide{Faceted Search}{img/hitofaceted.png}{}{}
-\imageslidebare{img/idea.pdf}
-\imageslide{Alternative Paths}{img/hitogui.pdf}
+\imageslide{Vision}{img/idea.pdf}{}{}
+%\imageslide{Implementation I}{img/hitogui.pdf}
+\imageslide{Implementation}{img/ast1.png}{}{}
 
-\begin{frame}
+\begin{frame}{Path to SPARQL Query}
 \begin{table}[ht]
 \centering
 \begin{tabular}{@{}llll@{}}
@@ -72,8 +73,12 @@ edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
 \end{table}
 \end{frame}
 
+\imageslide{Results}{img/ast2.png}{}{}
+\imageslide{Filtering}{img/ast3.png}{}{}
+
 %%\imageslide{Search \& Exploration: SNIK Graph}{img/snik-graph-full.png}{}{}
 
+\iffalse
 \newgeometry{margin=0cm,top=1em}
 \begin{frame}[plain]{~~~~Domain}
 % Information Management in Hospitals is a core topic for students of medical computer science.
@@ -95,7 +100,6 @@ edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
 \restoregeometry
 
 %\newgeometry{margin=0cm,top=1em}
-\iffalse
 \begin{frame}[plain]{~~~~Storage/Query, Author, Interlink \& Browse}
 \begin{columns}[t]
 \column{.5\textwidth}
@@ -125,20 +129,22 @@ edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Fragen?}
+\begin{frame}[fragile]{Questions?}
 \begin{itemize}
 %\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
 \vspace{0.5em}%here it works as intended
-\item Überblick \url{http://www.snik.eu}
-\item Visualisierung \url{http://www.snik.eu/graph}
-\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
-\item RDF Browser \url{http://www.snik.eu/ontology}
-\item Evaluation \url{http://www.snik.eu/evaluation}
-\item Twitter \url{https://twitter.com/snik\_proj}
-\item Technisches Blog \url{https://imise.github.io/snik-ontology}
-\item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
+\item Visualization \url{https://hitontology.github.io/gui/}
+\item GitHub \url{https://github.com/hitontology/gui}
+\item HITO Project \url{https://hitontology.eu}
+\item Contact \url{konrad.hoeffner@imise.uni-leipzig.de}
+%\item SPARQL Endpunkt \url{http://www.snik.eu/sparql}
+%\item RDF Browser \url{http://www.snik.eu/ontology}
+%\item Evaluation \url{http://www.snik.eu/evaluation}
+%\item Twitter \url{https://twitter.com/snik\_proj}
+%\item Technisches Blog \url{https://imise.github.io/snik-ontology}
+%\item GitHub Organisation mit Ticketsystem \url{https://github.com/imise}
 \end{itemize}
 \end{frame}
-\fi
 
+\fi
 \end{document}
