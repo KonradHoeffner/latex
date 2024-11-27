@@ -1,6 +1,23 @@
 % 2024-09-?? EFMI STC Timisoara, Romania conference paper presentation
 % 10 minutes presentation.
 % TODO: expand English support on IMISE beamer theme and commit it to the theme
+% notes from draft
+\iffalse
+- zu kurz nur 7 minuten
+%- Ziele der Ontologie
+%- am Anfang erklären: Evaluationsstudien, in denen Softwareprodukte untersucht wurden
+- Studienunterklassen ausblenden
+- ausführlichere Überschriften
+- mehr text am anfang (Einleitung mit Gegenstand, Motivation, Zielstellung)
+- running example: Konkreter Informationsbedarf
+- Z.B. Welche Features haben typische Laborinformationssysteme
+oder "In welchen Publikationen wurden CPOE-Systeme mit welchen Features evaluiert?"
+Alternativ: "Gibt es Pubikationen, in denen die Features von CPOE erläutert und ihr Nutzen evaluiert werden? Welche Features werden dort besprochen?"
+- https://codemeta.github.io/
+- https://citation-file-format.github.io/
+- https://schema.org/SoftwareApplication
+- highlighting auf unterschiedlichen Folien der Implementation oder Sprechblasen
+\fi
 
 %\documentclass[aspectratio=43]{beamer}
 %\documentclass[aspectratio=169]{beamer}
@@ -49,11 +66,14 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{The Health IT Ontology (HITO)}
+\begin{frame}{The Health IT Ontology (HITO)---Background}
 \begin{itemize}
-\item blo
-\only<1>{\item  bli}
-\only<2>{\item  bla}
+\only<1>{
+\item RDFS/OWL ontology and knowledge graph
+\item application systems and software products in health IT
+\item evaluation studies covering software products
+\item goals: support health IT management, research and education
+}
 \end{itemize}
 \centering\includegraphics[width=1\textwidth,height=0.95\textheight,keepaspectratio]{img/2024-05-hito\_diagram.pdf}
 \end{frame}
