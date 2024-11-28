@@ -1,21 +1,20 @@
 % 2024-09-?? EFMI STC Timisoara, Romania conference paper presentation
 % 10 minutes presentation.
-% TODO: expand English support on IMISE beamer theme and commit it to the theme
-% notes from draft
+% TODOs 
 \iffalse
-- zu kurz nur 7 minuten
 %- Ziele der Ontologie
-%- am Anfang erklären: Evaluationsstudien, in denen Softwareprodukte untersucht wurden
 - Studienunterklassen ausblenden
 - ausführlichere Überschriften
 - mehr text am anfang (Einleitung mit Gegenstand, Motivation, Zielstellung)
 - running example: Konkreter Informationsbedarf
 - Z.B. Welche Features haben typische Laborinformationssysteme
 oder "In welchen Publikationen wurden CPOE-Systeme mit welchen Features evaluiert?"
-Alternativ: "Gibt es Pubikationen, in denen die Features von CPOE erläutert und ihr Nutzen evaluiert werden? Welche Features werden dort besprochen?"
+Alternativ: "Gibt es Publikationen, in denen die Features von CPOE erläutert und ihr Nutzen evaluiert werden? Welche Features werden dort besprochen?"
 - https://codemeta.github.io/
 - https://citation-file-format.github.io/
 - https://schema.org/SoftwareApplication
+- mit Bildern
+- medfloss.org ?
 - highlighting auf unterschiedlichen Folien der Implementation oder Sprechblasen
 \fi
 
@@ -66,23 +65,116 @@ Alternativ: "Gibt es Pubikationen, in denen die Features von CPOE erläutert und
 \titlepage
 \end{frame}
 
-\begin{frame}{The Health IT Ontology (HITO)---Background}
+%- https://codemeta.github.io/
+%- https://citation-file-format.github.io/
+%- https://schema.org/SoftwareApplication
+
+\begin{frame}[plain]{HITO\footnote{Jahn F et al. 2023. \emph{A Linked Open Data–Based Terminology to Describe Libre/Free and Open-source Software: Incremental Development Study}. \url{http://dx.doi.org/10.2196/38861}}---Introduction}
 \begin{itemize}
-\only<1>{
-\item RDFS/OWL ontology and knowledge graph
-\item application systems and software products in health IT
-\item evaluation studies covering software products
+\item RDFS/OWL ontology
+\item RDF knowledge graph
+\item describe libre/free and open source software with Linked Open Data
 \item goals: support health IT management, research and education
-}
+%\item application system types, e.g. \emph{Radiology Information System}
+%\item software products, e.g. \emph{Bahmni}
+%\item evaluation studies covering software products
 \end{itemize}
-\centering\includegraphics[width=1\textwidth,height=0.95\textheight,keepaspectratio]{img/2024-05-hito\_diagram.pdf}
+
 \end{frame}
 
+{
+%\newgeometry{top=1em}
+\begin{frame}[plain]{Metadata Attributes}
+%\begin{itemize}
+%\item usual metadata, such as license, 
+%\end{itemize}
+% L U R O
+\centering\includegraphics[width=0.9\textwidth,height=0.9\textheight,trim={0cm 2cm 23.5cm 3cm}, clip, keepaspectratio]{img/2024-05-hito\_diagram.pdf}
+\end{frame}
+\restoregeometry
+}
+
+{
+\newgeometry{margin=0.5cm,top=1em}
+\begin{frame}{~~~~Health IT Specifics}
+\begin{itemize}
+\item application system types, e.g. \emph{Radiology Information System}, \emph{PACS}
+\item supported enterprise functions, e.g. \emph{management of medical devices}
+\item features, e.g. \emph{booking of examinations}
+\item organizational units, user groups
+\item evaluation studies including the software product
+\end{itemize}
+% L U R O
+\centering\includegraphics[width=0.995\textwidth,height=0.995\textheight,trim={8.8cm 4.2cm 7.2cm 4.9cm}, clip, keepaspectratio]{img/2024-05-hito\_diagram.pdf}
+\end{frame}
+\restoregeometry
+}
+
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~Catalogues, Classifieds and Citations}
+\begin{itemize}
+\item catalogue: a collection of classified entries, e.g. features extracted from \emph{WHO Classification of Digital Health Interventions v1.0}
+\item classified: a summarizing term from a catalogue, e.g. \emph{manage orders}
+\item citation: natural language description of a software product from the documentation, e.g. \emph{prescribe longhand}
+\end{itemize}
+% L U R O
+\centering\includegraphics[width=0.995\textwidth,height=0.995\textheight,trim={9.5cm 9.4cm 5.99cm 0cm}, clip, keepaspectratio]{img/2024-05-hito\_diagram.pdf}
+\end{frame}
+\restoregeometry
+}
+
+%[trim={5cm 0 0 0},clip]
+%\imageslide{The Health IT Ontology}{img/2024-05-hito\_diagram.pdf}{}{}
 %\imageslide{The Health IT Ontology~~~~~~~~~~~~~~~~\url{https://hitontology.eu}}{img/2024-05-hito\_diagram.pdf}{}{}
+
+%\begin{frame}[plain]{The Health IT Ontology (HITO)---Background}
+%\begin{itemize}
+%\only<1>{
+%\item describe Libre/Free and Open Source software with Linked Open Data
+%\item RDFS/OWL ontology
+%\item RDF knowledge graph
+%\item application systems and software products
+%\item evaluation studies covering software products
+%\item goals: support health IT management, research and education
+%}
+%\end{itemize}
+%\hspace{-1.2em}\includegraphics[width=1.1\textwidth,height=0.95\textheight,keepaspectratio]{img/2024-05-hito\_diagram.pdf}
+%\end{frame}
+
 %\imageslide{Exploration Options: RDF Browser}{img/rickview-hito.png}{}{}
 %\imageslidebare{img/cscmedchart-lodview.pdf}
-\imageslide{Linked Data Browser}{img/cscmedchart-lodview.pdf}{}{}
+{
+\newgeometry{margin=0.2cm,top=1em}
+\begin{frame}[plain]{~~~~Exploration with RDF Browser\footnote{https://github.com/KonradHoeffner/rickview}}
+~\\
+~\\
+\begin{itemize}
+\setlength\itemsep{1em}
+%\item each resource (software product, feature, $\ldots$) has it's own URL
+\item one resource and its direct neighborhood
+\item traverse connections step by step
+\item missing overview
+\end{itemize}
+\vspace{-9em}
+\hspace{20em}
+\centering\includegraphics[width=0.995\textwidth,height=\textheight,keepaspectratio]{img/cscmedchart-lodview.pdf}
+\end{frame}
+\restoregeometry
+}
+
+
 \imageslide{Faceted Search}{img/hitofaceted.png}{}{}
+
+\begin{frame}{Complex Information Needs: Examples}
+\emph{
+\begin{itemize}
+\item Which enterprise functions do typical Laboratory Information Systems support?
+\item Which publications evaluate features of CPOE systems? Which features are covered?
+\end{itemize}
+}
+\end{frame}
+
 \imageslide{Vision}{img/idea.pdf}{}{}
 %\imageslide{Implementation I}{img/hitogui.pdf}
 %\imageslide{Implementation}{img/ast1.png}{}{}
