@@ -74,7 +74,6 @@ Alternativ: "Gibt es Publikationen, in denen die Features von CPOE erläutert un
 \item RDFS/OWL ontology
 \item RDF knowledge graph
 \item describe libre/free and open source software with Linked Open Data
-\item goals: support health IT management, research and education
 %\item application system types, e.g. \emph{Radiology Information System}
 %\item software products, e.g. \emph{Bahmni}
 %\item evaluation studies covering software products
@@ -169,17 +168,22 @@ Alternativ: "Gibt es Publikationen, in denen die Features von CPOE erläutert un
 \begin{frame}{Complex Information Needs: Examples}
 \emph{
 \begin{itemize}
-\item Which enterprise functions do typical Laboratory Information Systems support?
+\item Which features do typical Laboratory Information Systems support?
 \item Which publications evaluate features of CPOE systems? Which features are covered?
 \end{itemize}
 }
+\begin{itemize}
+\item SPARQL query language high expressivity but only usable by experts
+\item goals: support health IT management, research and education
+\end{itemize}
 \end{frame}
 
 \imageslide{Vision}{img/idea.pdf}{}{}
 %\imageslide{Implementation I}{img/hitogui.pdf}
-%\imageslide{Implementation}{img/ast1.png}{}{}
+\imageslide{Implementation: Select Path}{img/gui.png}{}{}
+\imageslide{Implementation: Select Path (zoomed)}{img/gui1.png}{}{}
 
-\begin{frame}{Path to SPARQL Query}
+\begin{frame}{Mapping of Path to SPARQL Query}
 \begin{table}[ht]
 \centering
 \begin{tabular}{@{}llll@{}}
@@ -194,6 +198,28 @@ edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
 \caption{RDF triple patterns as components of the final SPARQL query. Variables $?x_i$ denote the actual letter x and number $i$ (e.g. $?x_5$ ) while $p_i$ represents the URI of the property $p_i$, such as :firstAuthor.}
 \end{table}
 \end{frame}
+
+\begin{frame}[fragile]{SPARQL Query}
+\begin{verbatim}
+SELECT ?n1 SAMPLE(?l1) AS ?l1 ?n2 SAMPLE(?l2) AS ?l2 ?n3 SAMPLE(?l3) AS ?l3 ?n4 SAMPLE(?l4) AS ?l4 ?n5 SAMPLE(?l5) AS ?l5
+{
+ ?n1 a hito:ApplicationSystemTypeClassified. ?n1 rdfs:label ?l1.
+ ?n2 a hito:ApplicationSystemTypeCitation. ?n2 rdfs:label ?l2.
+ ?n3 a hito:SoftwareProduct. ?n3 rdfs:label ?l3.
+ ?n4 a hito:FeatureCitation. ?n4 rdfs:label ?l4.
+ ?n5 a hito:FeatureClassified. ?n5 rdfs:label ?l5.
+ ?n2 hito:astCitClassifiedAs ?n1.
+ ?n3 hito:spIsOfAstCit ?n2.
+ ?n3 hito:spOffersFCit ?n4.
+ ?n4 hito:fCitClassifiedAs ?n5.
+}
+\end{verbatim}
+\end{frame}
+
+
+\imageslide{Results}{img/gui2.png}{}{}
+\imageslide{\large Which features do typical Laboratory Information Systems support?}{img/gui3.png}{}{}
+
 
 %\imageslide{Results}{img/ast2.png}{}{}
 %\imageslide{Filtering}{img/ast3.png}{}{}
