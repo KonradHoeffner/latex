@@ -189,11 +189,11 @@ Alternativ: "Gibt es Publikationen, in denen die Features von CPOE erläutert un
 \begin{tabular}{@{}llll@{}}
 \toprule
 Type & Represented by & Example & Triple pattern \\ \midrule
-vertex $w_i$ & HITO class & Study & $?x \ rdfs:subClassOf \ w_i$ \\
-vertex $w_1$ & data type (first vertex, backwards) & First Author & $?x_2 \ rdfs:label \ x_1$ \\
-vertex $w_n$ & data type (last, backwards) & First Author & $?x_{n-1} \ rdfs:label \ x_n$ \\
-edge $p_i$ & property & first author & $?x_i \ p_i \ x_{i+1}$ \\
-edge $p_i$ & property & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
+vertex $w_i$ & HITO class & Study & ?$x$ \texttt{rdf:type} $w_i$ \\
+vertex $w_1$ & data type (first vertex, backwards) & First Author & $?x_2$ \texttt{rdfs:label} $x_1$ \\
+vertex $w_n$ & data type (last, backwards) & First Author & $?x_{n-1}$ \texttt{rdfs:label} $x_n$ \\
+edge $p_i$ & property (forwards) & first author & $?x_i \ p_i \ x_{i+1}$ \\
+edge $p_i$ & property (backwards) & first author & $?x_{i+1} \ p_i \ x_i$ \\ \bottomrule
 \end{tabular}
 \caption{RDF triple patterns as components of the final SPARQL query. Variables $?x_i$ denote the actual letter x and number $i$ (e.g. $?x_5$ ) while $p_i$ represents the URI of the property $p_i$, such as :firstAuthor.}
 \end{table}
@@ -267,16 +267,17 @@ SELECT ?n1 SAMPLE(?l1) AS ?l1 ?n2 SAMPLE(?l2) AS ?l2 ?n3 SAMPLE(?l3) AS ?l3 ?n4 
 
 %\imageslide{Extraction}{img/5star.png}
 
-\iffalse
-\begin{frame}{Example Slide}
+\begin{frame}{Future Work}
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
+\item expand HITO
+\item evaluate with stakeholders 
+\item improve path search based on evaluation
+\item gain new insights using path search
+\item adapt path search to other domains
 \end{itemize}
 \end{frame}
 
+\iffalse
 \begin{frame}[fragile]{Questions?}
 \begin{itemize}
 %\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
