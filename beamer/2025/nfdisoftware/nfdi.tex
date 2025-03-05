@@ -1,0 +1,125 @@
+% 2025-03-07 IMISE Colloqium
+% 15 minutes, Deutsch, 16:10
+% Funded by DFG as part of NFDI. Grant Number:  521466146
+%\documentclass[aspectratio=43]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610,12pt]{beamer}
+
+\usepackage[ngerman]{babel}
+\usepackage{booktabs} % fancy tables
+\usepackage{tabulary} % tables with auto column length 
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\usetheme{imise}
+\author{\emph{Matthias Löbe}, Konrad Höffner}
+%\title{The SNIK Ontology of Information Management in Hospitals}
+\title{\large nfdi.software – ein zentraler Marktplatz für Forschungssoftware}
+\date{7. März 2025, 14:55--15:10 Uhr}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+%\def\email{konrad.hoeffner@imise.uni-leipzig.de} 
+\def\email{matthias.loebe@imise.uni-leipzig.de} 
+%nfdi-software@lists.nfdi.de
+%\def\telephone{+49 341 97 16322}
+\def\telephone{+49 341 97 16 113}
+
+
+\newcommand{\imageslide}[4][]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]{~~~~#2}
+\vspace{0.2em}
+\centering\includegraphics[width=0.995\textwidth,height=0.95\textheight,keepaspectratio]{#3}
+\\#1
+\note{#4}
+\end{frame}
+\restoregeometry
+}
+
+\newcommand{\imageslidebare}[1]
+{
+\newgeometry{margin=0cm,top=1em}
+\begin{frame}[plain]
+\centering\includegraphics[width=0.995\textwidth,height=0.995\textheight,keepaspectratio]{#1}
+\end{frame}
+\restoregeometry
+}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Forschungssoftware}
+\begin{itemize}
+\item Definition: Für Forschung verwendet oder im Rahmen von Forschung entstanden
+\item Bedarf an nachhaltiger Nutzung und Weiterentwicklung wächst in Kultur-, Geistes-, Sozial-, Ingenieur-, Natur- und Lebenswissenschaften
+\item Forschungssoftware finden
+\item Forschungssoftware evaluieren und für eigene Forschung verwenden
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Forschungssoftwaremetadaten}
+\begin{itemize}
+\item semantisch strukturierte Metadaten für Forschungssoftware
+\item Citation File Format (CFF)
+\item CodeMeta
+\item Verbindungen zu Forschungsdaten herstellen
+\end{itemize}
+\end{frame}
+
+\begin{frame}{nfdi.software}
+\centering\includegraphics[width=0.5\textwidth,height=0.95\textheight,keepaspectratio]{img/logo.png}
+\begin{itemize}
+\item Nationale Forschungsdateninfrastruktur (NFDI): große Menge an Konsortien
+\item zentraler Einstiegspunkt für Forschungssoftware im NFDI bzw. Deutschland
+\item Forschungssoftware FAIRifizieren
+\item Konsortien und wissenschaftliche Communities integrieren
+\item Metadaten extrahieren, standardisieren und anreichern
+\item Mehrfachentwicklungen verhindern, Wiederverwendung fördern
+\item Kompatibilität erhöhen
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ansatz}
+\begin{itemize}
+\item existierende Quellen und Pläne erfassen, verbinden, verbessern und wiedergeben:
+\item Infrastruktur entwerfen, implementieren und testen
+\item Benutzerfeedback ermöglichen
+\item schrittweise Entwicklung eines Prototyps
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quellen}
+\begin{itemize}
+\item Software-Register
+\item Marktplätze
+\item Metadaten-Repositorien (z.B. physics.tools) und Code-Repositorien (z.B. GitHub)
+\item Publikationen
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Existierende und geplante Komponenten}
+\begin{itemize}
+\item Research Software Directory (RSD): fachgebietsübergreifend Forschungssoftware finden, zitieren und wiederverwenden
+\item ELIXIR Research Software Ecosystem (RSEc \& bio.tools): Software für Bioinformatik finden und vergleichen
+\item Betty’s Research Engine: Suchmaschine für Code-Repositories und damit verbundene Publikationen
+\item Physics.tools: Softwaresuchmaschine für arxiv-Publikationen, ermittelt Metadaten aus dem Code-Repository
+\item LLM-basierte Suchmaschine: Software für einen Zweck intuitiv ermitteln, ähnliche Produkte finden
+\end{itemize}
+\end{frame}
+
+\iffalse
+\begin{frame}[fragile]{Questions?}
+\begin{itemize}
+%\item Diese Präsentation \url{https://github.com/KonradHoeffner/latex/releases/download/colloquium/colloquium.pdf}
+\vspace{0.5em}%here it works as intended
+\item Projekt \url{https://base4nfdi.de/projects/nfdi-software}
+\item Proposal \url{https://doi.org/10.5281/zenodo.14507301}
+\item Contact \url{konrad.hoeffner@imise.uni-leipzig.de}
+\end{itemize}
+\end{frame}
+\fi
+
+\end{document}
