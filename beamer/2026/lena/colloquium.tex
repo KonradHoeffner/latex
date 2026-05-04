@@ -1,0 +1,99 @@
+\documentclass[1610,12pt]{beamer}
+\usepackage[ngerman]{babel}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{siunitx}
+
+\usetheme{imise}
+%\author{\emph{Konrad Höffner},\\Franziska Jahn, Hannah Hoffner, Swen Schipp, Jessica Hoffmann, Nils Holzmann, Tino Neufert, Holger Herzog, Prof. Alfred Winter}
+\author{Konrad Höffner}
+\subtitle[LENA]{LENA -- Leipzig Empowerment \& Navigation Assistant}
+\title[LENA]{KI-Chatbot zur Unterstützung der Straßensozialarbeit}
+
+\date{5. Mai 2026}
+\def\address{Härtelstraße 16-18, 04107 Leipzig, Raum 227}
+\def\email{konrad.hoeffner@uni-leipzig.de}
+\def\telephone{+49 341 97 16322}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+% text von fj:
+\iffalse
+Wohnungs- und Obdachlosigkeit in Leipzig ist wachsende soziale Herausforderung 
+Hilfesystem: Notunterkünfte, Essensausgaben, Beratungsstellen, Suchthilfeeinrichtungen, medizinische Angebote
+Straßensozialarbeit (z. B. „SAFE“ des Suchtzentrums Leipzig) übernimmt Vermittlungsfunktion
+aber: begrenzte Ressourcen, Sprachbarrieren
+
+Idee: mehrsprachiger digitaler Assistent als Lotse zu sozialen und gesundheitlichen Hilfsangeboten
+KI-basierter Chatbot, trainiert mit Informationen aus Hilfesystem in Leipzig
+Spracheingabe und –ausgabe, Druckausgabe 
+mehrsprachig
+besondere Anforderungen an Software und Hardware
+
+Vorbereitung des geplanten Projekts in zwei Abschlussarbeiten: Hannah Hoffner, Swen Schipp
+\fi
+
+
+\begin{frame}{Problemstellung: Straßensozialarbeit}
+    \begin{itemize}
+        \item \textbf{Soziale Herausforderung:} Wachsende Wohnungs- und Obdachlosigkeit mit komplexen Mehrfachproblemlagen.
+        \item \textbf{Fragmentiertes Hilfesystem:} Angebote sind oft schwer zu überblicken und an Öffnungszeiten gebunden[cite: 8].
+        \item \textbf{Barrieren:} Erhebliche Sprachbarrieren durch internationale Zielgruppen sowie eingeschränkte Lese-/Schreibkompetenzen[cite: 8].
+        \item \textbf{Ressourcenmangel:} Personelle Kapazitäten der aufsuchenden Straßensozialarbeit für Verweisberatung sind stark begrenzt[cite: 8].
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Die LENA-Lösung}
+    \begin{itemize}
+        \item \textbf{Konzept:} Ein KI-gestütztes, mehrsprachiges elektronisches Terminal im öffentlichen Raum (geplant am Hbf Leipzig)[cite: 8].
+        \item \textbf{Multimodale Interaktion:} Konsequent sprachbasierte Nutzung (Speech-to-Text/Text-to-Speech) kombiniert mit visueller Navigation (Piktogramme)[cite: 8].
+        \item \textbf{Funktion:} Niedrigschwellige Bereitstellung von Informationen zu Notunterkünften, Essensangeboten und medizinischen Hilfen[cite: 8].
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Infrastruktur \& IT-Methodik (Nutzen für das IMISE)}
+    \begin{itemize}
+        \item \textbf{Software-Architektur:} Free/Libre Open Source Software (FLOSS) zur Gewährleistung von Nachnutzung und Weiterentwicklung[cite: 8].
+        \item \textbf{Technologie-Stack:} 
+        \begin{itemize}
+            \item Integration von RAG-Pipelines (Retrieval-Augmented Generation) zur Anbindung einer lokalen Wissensbasis[cite: 8].
+            \item Nutzung leistungsfähiger Open-Source-Sprachmodelle (LLMs) via DSGVO-konformer API-Anbindung[cite: 8].
+        \end{itemize}
+        \item \textbf{Skalierbarkeit:} Client-Server-Architektur verlagert rechenintensive KI-Prozesse auf externe Server, um Hardwarekosten am Terminal gering zu halten[cite: 8].
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Expertise: Privacy-by-Design im öffentlichen Raum}
+    \begin{itemize}
+        \item \textbf{Herausforderung:} Vulnerable Zielgruppe könnte medizinische oder sensible Daten eingeben[cite: 8]. Klassische Opt-In-Banner blockieren die niedrigschwellige, sprachliche Nutzung[cite: 8].
+        \item \textbf{Lösungsansatz (Privacy-by-Default):}
+        \begin{itemize}
+            \item \textbf{Zustandslose Verarbeitung:} Nutzeranfragen werden nach Abschluss der Interaktion nicht dauerhaft gespeichert[cite: 8].
+            \item \textbf{Guardrails (Filtermechanismen):} Die Eingabe wird auf sensible private Daten geprüft, deren Verarbeitung aktiv unterbunden wird[cite: 8].
+            \item \textbf{Systemgrenzen:} Das System verweist auf Angebote, schließt aber jegliche medizinische Beratung explizit aus[cite: 8].
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Methodik: Evaluation (3 Foki)}
+    Das IMISE übernimmt das wissenschaftlich-technische Projektmanagement sowie die Evaluation[cite: 8]. Die Auswertung erfolgt nach drei Schwerpunkten:
+    \begin{enumerate}
+        \item \textbf{Technik:} Verifikation der Spezifikationen, Antwortqualität des LLMs, Stabilität[cite: 8].
+        \item \textbf{HCI (Interaktion):} Nutzungszeitpunkte, Umfang und Zufriedenheit der NutzerInnen[cite: 8].
+        \item \textbf{Sozialer Impact:} Entlastung der Straßensozialarbeit und Effektivität der Zuführung ins Hilfesystem[cite: 8].
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Take-Home-Message}
+    \begin{block}{Was nehmen wir für das IMISE mit?}
+        \begin{itemize}
+            \item \textbf{Digitale Inklusion:} KI und LLMs bieten enormes Potenzial, kognitive und sprachliche Barrieren abzubauen und vulnerable Gruppen direkt zu erreichen.
+            \item \textbf{Methodischer Transfer:} Zustandslose KI-Architekturen (Privacy-by-Design) ermöglichen den DSGVO-konformen Einsatz von LLMs selbst in hochsensiblen, öffentlichen Kontexten ohne klassische Zustimmungs-Barrieren.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\end{document}
