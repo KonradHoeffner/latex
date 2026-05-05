@@ -1,7 +1,9 @@
 % Lebenslauf als Qualifikationsnachweis für den Projektantrag "LENA---Leipzig Empowerment & Navigation Assistant" 2026 
 % Relevante Qualifikationen für die wissenschaftliche Betreuung der Studenten und relevante Projekte für Chatbots
+% Eine Seite
+% Unterschrift ist nicht mit im git da public
 \documentclass[a4paper,11pt]{article}
-\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage[a4paper, top=2cm, bottom=0.5cm,left=2cm,right=2cm]{geometry}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
@@ -9,15 +11,26 @@
 \usepackage{csquotes}
 \usepackage{comment}
 \usepackage{tabulary}
-\title{Lebenslauf und Qualifikationsnachweis\\für den Projektantrag \enquote{LENA}\\Leipzig Empowerment \& Navigation Assistant}
-\author{Konrad Höffner}
+\usepackage{graphicx}
+\title{Kurzlebenslauf}
+%\title{Lebenslauf und Qualifikationsnachweis\\für den Projektantrag \enquote{LENA}\\Leipzig Empowerment \& Navigation Assistant}
+\author{Dr. Konrad Höffner}
 
 \begin{document}
 %\raggedright% linksbündig wegen den vielen Tabellen ohne Fließtext
 \newcommand{\citep}{}
 \newcommand{\citet}{}
 
-\maketitle
+{\huge\raggedright\noindent
+\textbf{%
+Dr. Konrad Höffner\\
+\vspace{0.5em}
+Kurzlebenslauf
+}
+}
+
+%\maketitle% use manual title instead for single page
+\thispagestyle{empty}% no page numbering for single page
 
 \section*{Ausbildung}
 %\todo{diplom suchen, datum finden}
@@ -31,7 +44,8 @@
 %, academic high school with in-depth education in mathematics and natural sciences
 2003--2012		&Studium Diplominformatik, Universität Leipzig\\% Note ist denke ich nicht relevant, steht bei den anderen Dingen auch nicht
 %2003--2012		&Studium Diplominformatik, 2.3, Universität Leipzig\\
-2007--2008		&Auslandsstudium, \href{http://www.umontpellier.fr/}{Universität Montpellier} und \href{http://www.lirmm.fr/}{Forschungslabor LIRMM}, Montpellier, Frankreich\\
+2007--2008		&Auslandsstudium, \href{http://www.umontpellier.fr/}{Universität Montpellier} und \href{http://www.lirmm.fr/}{Forschungslabor LIRMM}\\
+%, Montpellier, Frankreich\\
 2012--2018  	&Doktorarbeit \enquote{Question Answering on RDF Data Cubes},\newline
 							Universität Leipzig, Institut für Angewandte Informatik (InfAI),\newline
 							Arbeitsgruppe \href{http://aksw.org}{\emph{Agile Knowledge Engineering and Semantic Web} (AKSW)}\newline
@@ -58,13 +72,14 @@
 %2011--2011   	&Softwareentwickler, sedruck KG\\%2011-7 bis 2012-1
 %2012--2016		&Wissenschaftlicher Mitarbeiter, Universität Leipzig, Institut für Angewandte Informatik (InfAI), Arbeitsgruppe \emph{Agile Knowledge Engineering and Semantic Web (AKSW)}\\
 2012--2016		&Wissenschaftlicher Mitarbeiter, AKSW\\
-							&Schwerpunkte: Symbolische Künstliche Intelligenz, Natural Language Interfaces (Question Answering), Wissensgraphen und Ontologien\\ 
+%							&Schwerpunkte: Symbolische Künstliche Intelligenz, Natural Language Interfaces (Question Answering), Wissensgraphen und Ontologien\\ 
 seit 2016			&Wissenschaftlicher Mitarbeiter, Universität Leipzig,\newline
 							Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE),\newline
 							Arbeitsgruppen \emph{Management von Gesundheitsinformationssystemen (MaGIS)}, \newline
 							\emph{Terminologie- und Ontologie-basierte Phänotypisierung (TOP)}\newline
-          		Schwerpunkte: Softwareentwicklung \& Containerisierung (Docker), Modellierung medizininformatischer Wissensgraphen und Ontologien,
-							Lehre (Seminare) und Wissenschaftliche Betreuung von Abschlussarbeiten, häufig im Themenbereich Question Answering, Large Language Models und Chatbots\\
+%          		Schwerpunkte: Softwareentwicklung \& Containerisierung (Docker), Modellierung medizininformatischer Wissensgraphen und Ontologien,
+%							Lehre (Seminare) und Wissenschaftliche Betreuung von Abschlussarbeiten\\%,
+							%häufig im Themenbereich Question Answering, Large Language Models und Chatbots\\
 \end{tabulary}
 
 \iffalse
@@ -82,7 +97,8 @@ seit 2016		&Seminar zu Klinischen Anwendungssystemen und Medizinischer Dokumenta
 \end{tabulary}
 \fi
 
-
+% kein Platz
+\iffalse
 \section*{Auszeichnungen und Zusatzqualifikationen}
 \begin{itemize}
 \item \textbf{2024:} Sonderpreis der Jury für \enquote{RickView: Robuster, leichtgewichtiger, unabhängiger und performanter Wissensgraphen-Browser}
@@ -96,6 +112,7 @@ seit 2016		&Seminar zu Klinischen Anwendungssystemen und Medizinischer Dokumenta
 %2024			&Sonderpreis der Jury \enquote{RickView: Robuster, leichtgewichtiger, unabhängiger und performanter Wissensgraphen-Browser}\\ 
 %3rd prize: Matthias Quasthoff, Sebastian Hellmann, Konrad Höffner with PDF DocumentStandardized Multilingual Language Resources for the Web of Data: http://corpora.uni-leipzig.de/rdf
 %\end{tabulary}
+\fi
 
 % eventuell auf einen Satz zusammenfassen
 \iffalse
@@ -145,17 +162,24 @@ seit 2016		&Seminar zu Klinischen Anwendungssystemen und Medizinischer Dokumenta
 %*******************************************************
 %\newpage
 %TODO: publikationen der letzten jahre hinzufügen
-\section*{Wissenschaftliche Publikationen mit peer-review in Journalen und Konferenzen}
-%\bigskip
+\section*{Ausgewählte Publikationen}
 
 \begin{itemize}
-\item \textbf{LinkedSpending: OpenSpending becomes Linked Open Data}~\\
-K Höffner, M  Martin, and J Lehmann\\
-Semantic Web Journal, 7(1):95--104, 2016
+%\item \textbf{LinkedSpending: OpenSpending becomes Linked Open Data}~\\
+%K Höffner, M  Martin, and J Lehmann\\
+%Semantic Web Journal, 7(1):95--104, 2016
 \item \textbf{Survey on Challenges of Question Answering in the Semantic Web}~\\
 K Höffner, S Walter, E Marx, R Usbeck, J Lehmann, and A.-C Ngonga Ngomo\\
 Semantic Web Journal, 8(6):895--920, 2017
+\item \textbf{Technical Environment for Developing the {SNIK} Ontology of\\Information Management in Hospitals}~\\
+K Höffner, F Jahn, C Kücherer, B Paech, B Schneider, M Schöbel, S Stäubert and A Winter\\
+Studies in Health Technology and Informatics, 243:122--126, 2017
 \end{itemize}
+
+%\section*{Wissenschaftliche Publikationen mit peer-review in Journalen und Konferenzen}
+%\bigskip
+
+\iffalse
 
 \begin{itemize}
 \item \textbf{Towards Question Answering on Statistical Linked Data}~\\
@@ -249,12 +273,14 @@ The Semantic Web: ESWC 2013 Satellite Events, 167--172, 2013
 %\item \textbf{Standardized Multilingual Language Resources for the Web of Data:
 %http://corpora.uni-leipzig.de/rdf}~\\
 
-\subsubsection*{Andere Themen}
+%\subsubsection*{Andere Themen}
 
-\item \textbf{Technical Environment for Developing the {SNIK} Ontology of Information Management in Hospitals}~\\
-K Höffner, F Jahn, C Kücherer, B Paech, B Schneider, M Schöbel, S Stäubert and A Winter\\
-Studies in Health Technology and Informatics, 243:122--126, 2017
 %GMDS Annual Conference, 2017
 
 \end{itemize}
+\fi
+
+\vspace{0.5em}
+\raggedleft\includegraphics[width=0.2\textwidth]{signature.png}
+
 \end{document}
